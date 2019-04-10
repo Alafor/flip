@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class seoController {
+public class SeoController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(seoController.class);
+	private static final Logger logger = LoggerFactory.getLogger(SeoController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
