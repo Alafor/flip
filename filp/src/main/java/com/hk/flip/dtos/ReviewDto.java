@@ -59,7 +59,7 @@ public class ReviewDto {
 
 	public String getReview_delflag() {
 		return review_delflag;
-	}
+	} 
 
 	public void setReview_delflag(String review_delflag) {
 		this.review_delflag = review_delflag;

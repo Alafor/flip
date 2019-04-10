@@ -112,7 +112,7 @@ public class MemberDto {
 		this.member_profile = member_profile;
 		this.member_info = member_info;
 		this.member_regdate = member_regdate;
-	}
+	} 
 
 	@Override
 	public String toString() {

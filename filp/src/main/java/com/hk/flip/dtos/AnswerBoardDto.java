@@ -11,7 +11,7 @@ public class AnswerBoardDto {
 	private String board_content;
 	private String board_delflag;
 	private String board_secret;
-	private int board_refer;
+	private int board_refer;  
 	private int board_step;
 	private int board_depth;
 	

@@ -16,7 +16,7 @@ public class ClassDto {
 	private String class_week;
 	private String class_starttime;
 	private int class_time;
-	private int class_price;
+	private int class_price;  
 	private String class_detail;
 	private String class_img;
 	private String class_hashtag;

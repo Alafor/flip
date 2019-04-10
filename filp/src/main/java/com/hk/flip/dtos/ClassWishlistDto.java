@@ -12,7 +12,7 @@ public class ClassWishlistDto {
 
 	public ClassWishlistDto(String wishlist_id, int seq) {
 		this.wishlist_id = wishlist_id;
-		this.seq = seq;
+		this.seq = seq;  
 	}
 
 	public String getWishlist_id() {
