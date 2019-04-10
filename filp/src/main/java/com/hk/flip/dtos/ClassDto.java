@@ -4,29 +4,28 @@ import java.util.Date;
 
 public class ClassDto {
 
-	private String type;
+	private String class_type;
 	private int seq;
-	private String name;
+	private String class_name;
 	private Date regdate;
-	private String info;
-	private String area;
-	private String depa;
-	private Date sd;
-	private Date cd;
-	private String week;
-	private String starttime;
-	private int time;
-	private int price;
-	private int nop;
-	private String detail;
-	private String img;
-	private String hashtag;
-	private String termin;
-	private String instructor;
-	private int participation;
-	private int now_participation;
-	private int d_day;
-	private float rating;
+	private String class_info;
+	private String class_area;
+	private String class_depa;
+	private Date class_sd;
+	private Date class_cd;
+	private String class_week;
+	private String class_starttime;
+	private int class_time;
+	private int class_price;
+	private String class_detail;
+	private String class_img;
+	private String class_hashtag;
+	private String class_termin;
+	private String class_instructor;
+	private int class_participation;
+	private int class_now_participation;
+	private int class_d_day;
+	private float class_rating;
 	
 	
 	public ClassDto() {
@@ -34,13 +33,13 @@ public class ClassDto {
 	}
 
 
-	public String getType() {
-		return type;
+	public String getClass_type() {
+		return class_type;
 	}
 
 
-	public void setType(String type) {
-		this.type = type;
+	public void setClass_type(String class_type) {
+		this.class_type = class_type;
 	}
 
 
@@ -54,13 +53,13 @@ public class ClassDto {
 	}
 
 
-	public String getName() {
-		return name;
+	public String getClass_name() {
+		return class_name;
 	}
 
 
-	public void setName(String name) {
-		this.name = name;
+	public void setClass_name(String class_name) {
+		this.class_name = class_name;
 	}
 
 
@@ -74,232 +73,230 @@ public class ClassDto {
 	}
 
 
-	public String getInfo() {
-		return info;
+	public String getClass_info() {
+		return class_info;
 	}
 
 
-	public void setInfo(String info) {
-		this.info = info;
+	public void setClass_info(String class_info) {
+		this.class_info = class_info;
 	}
 
 
-	public String getArea() {
-		return area;
+	public String getClass_area() {
+		return class_area;
 	}
 
 
-	public void setArea(String area) {
-		this.area = area;
+	public void setClass_area(String class_area) {
+		this.class_area = class_area;
 	}
 
 
-	public String getDepa() {
-		return depa;
+	public String getClass_depa() {
+		return class_depa;
 	}
 
 
-	public void setDepa(String depa) {
-		this.depa = depa;
+	public void setClass_depa(String class_depa) {
+		this.class_depa = class_depa;
 	}
 
 
-	public Date getSd() {
-		return sd;
+	public Date getClass_sd() {
+		return class_sd;
 	}
 
 
-	public void setSd(Date sd) {
-		this.sd = sd;
+	public void setClass_sd(Date class_sd) {
+		this.class_sd = class_sd;
 	}
 
 
-	public Date getCd() {
-		return cd;
+	public Date getClass_cd() {
+		return class_cd;
 	}
 
 
-	public void setCd(Date cd) {
-		this.cd = cd;
+	public void setClass_cd(Date class_cd) {
+		this.class_cd = class_cd;
 	}
 
 
-	public String getWeek() {
-		return week;
+	public String getClass_week() {
+		return class_week;
 	}
 
 
-	public void setWeek(String week) {
-		this.week = week;
+	public void setClass_week(String class_week) {
+		this.class_week = class_week;
 	}
 
 
-	public String getStarttime() {
-		return starttime;
+	public String getClass_starttime() {
+		return class_starttime;
 	}
 
 
-	public void setStarttime(String starttime) {
-		this.starttime = starttime;
+	public void setClass_starttime(String class_starttime) {
+		this.class_starttime = class_starttime;
 	}
 
 
-	public int getTime() {
-		return time;
+	public int getClass_time() {
+		return class_time;
 	}
 
 
-	public void setTime(int time) {
-		this.time = time;
+	public void setClass_time(int class_time) {
+		this.class_time = class_time;
 	}
 
 
-	public int getPrice() {
-		return price;
+	public int getClass_price() {
+		return class_price;
 	}
 
 
-	public void setPrice(int price) {
-		this.price = price;
+	public void setClass_price(int class_price) {
+		this.class_price = class_price;
 	}
 
 
-	public int getNop() {
-		return nop;
+	public String getClass_detail() {
+		return class_detail;
 	}
 
 
-	public void setNop(int nop) {
-		this.nop = nop;
+	public void setClass_detail(String class_detail) {
+		this.class_detail = class_detail;
 	}
 
 
-	public String getDetail() {
-		return detail;
+	public String getClass_img() {
+		return class_img;
 	}
 
 
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setClass_img(String class_img) {
+		this.class_img = class_img;
 	}
 
 
-	public String getImg() {
-		return img;
+	public String getClass_hashtag() {
+		return class_hashtag;
 	}
 
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setClass_hashtag(String class_hashtag) {
+		this.class_hashtag = class_hashtag;
 	}
 
 
-	public String getHashtag() {
-		return hashtag;
+	public String getClass_termin() {
+		return class_termin;
 	}
 
 
-	public void setHashtag(String hashtag) {
-		this.hashtag = hashtag;
+	public void setClass_termin(String class_termin) {
+		this.class_termin = class_termin;
 	}
 
 
-	public String getTermin() {
-		return termin;
+	public String getClass_instructor() {
+		return class_instructor;
 	}
 
 
-	public void setTermin(String termin) {
-		this.termin = termin;
+	public void setClass_instructor(String class_instructor) {
+		this.class_instructor = class_instructor;
 	}
 
 
-	public String getInstructor() {
-		return instructor;
+	public int getClass_participation() {
+		return class_participation;
 	}
 
 
-	public void setInstructor(String instructor) {
-		this.instructor = instructor;
+	public void setClass_participation(int class_participation) {
+		this.class_participation = class_participation;
 	}
 
 
-	public int getParticipation() {
-		return participation;
+	public int getClass_now_participation() {
+		return class_now_participation;
 	}
 
 
-	public void setParticipation(int participation) {
-		this.participation = participation;
-	}
-	public int getNow_participation() {
-		return now_participation;
-	}
-	
-	
-	public void setNow_participation(int now_participation) {
-		this.now_participation = now_participation;
+	public void setClass_now_participation(int class_now_participation) {
+		this.class_now_participation = class_now_participation;
 	}
 
 
-	public int getD_day() {
-		return d_day;
+	public int getClass_d_day() {
+		return class_d_day;
 	}
 
 
-	public void setD_day(int d_day) {
-		this.d_day = d_day;
+	public void setClass_d_day(int class_d_day) {
+		this.class_d_day = class_d_day;
 	}
 
 
-	public float getRating() {
-		return rating;
+	public float getClass_rating() {
+		return class_rating;
 	}
 
 
-	public void setRating(float rating) {
-		this.rating = rating;
+	public void setClass_rating(float class_rating) {
+		this.class_rating = class_rating;
 	}
 
 
-	public ClassDto(String type, int seq, String name, Date regdate, String info, String area, String depa, Date sd,
-			Date cd, String week, String starttime, int time, int price, int nop, String detail, String img,
-			String hashtag, String termin, String instructor, int participation,int now_participation, int d_day, float rating) {
-		this.type = type;
+	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
+			String class_depa, Date class_sd, Date class_cd, String class_week, String class_starttime, int class_time,
+			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
+			String class_instructor, int class_participation, int class_now_participation, int class_d_day,
+			float class_rating) {
+		this.class_type = class_type;
 		this.seq = seq;
-		this.name = name;
+		this.class_name = class_name;
 		this.regdate = regdate;
-		this.info = info;
-		this.area = area;
-		this.depa = depa;
-		this.sd = sd;
-		this.cd = cd;
-		this.week = week;
-		this.starttime = starttime;
-		this.time = time;
-		this.price = price;
-		this.nop = nop;
-		this.detail = detail;
-		this.img = img;
-		this.hashtag = hashtag;
-		this.termin = termin;
-		this.instructor = instructor;
-		this.participation = participation;
-		this.now_participation = now_participation;
-		this.d_day = d_day;
-		this.rating = rating;
+		this.class_info = class_info;
+		this.class_area = class_area;
+		this.class_depa = class_depa;
+		this.class_sd = class_sd;
+		this.class_cd = class_cd;
+		this.class_week = class_week;
+		this.class_starttime = class_starttime;
+		this.class_time = class_time;
+		this.class_price = class_price;
+		this.class_detail = class_detail;
+		this.class_img = class_img;
+		this.class_hashtag = class_hashtag;
+		this.class_termin = class_termin;
+		this.class_instructor = class_instructor;
+		this.class_participation = class_participation;
+		this.class_now_participation = class_now_participation;
+		this.class_d_day = class_d_day;
+		this.class_rating = class_rating;
 	}
 
 
 	@Override
 	public String toString() {
-		return "ClassDto [type=" + type + ", seq=" + seq + ", name=" + name + ", regdate=" + regdate + ", info=" + info
-				+ ", area=" + area + ", depa=" + depa + ", sd=" + sd + ", cd=" + cd + ", week=" + week + ", starttime="
-				+ starttime + ", time=" + time + ", price=" + price + ", nop=" + nop + ", detail=" + detail + ", img="
-				+ img + ", hashtag=" + hashtag + ", termin=" + termin + ", instructor=" + instructor
-				+ ", participation=" + participation + ", now_participation=" + now_participation + ", d_day=" + d_day
-				+ ", rating=" + rating + "]";
+		return "ClassDto [class_type=" + class_type + ", seq=" + seq + ", class_name=" + class_name + ", regdate="
+				+ regdate + ", class_info=" + class_info + ", class_area=" + class_area + ", class_depa=" + class_depa
+				+ ", class_sd=" + class_sd + ", class_cd=" + class_cd + ", class_week=" + class_week
+				+ ", class_starttime=" + class_starttime + ", class_time=" + class_time + ", class_price=" + class_price
+				+ ", class_detail=" + class_detail + ", class_img=" + class_img + ", class_hashtag=" + class_hashtag
+				+ ", class_termin=" + class_termin + ", class_instructor=" + class_instructor + ", class_participation="
+				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
+				+ class_d_day + ", class_rating=" + class_rating + "]";
 	}
+
+
+	
 
 
 

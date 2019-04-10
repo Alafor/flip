@@ -4,121 +4,121 @@ import java.util.Date;
 
 public class AnswerBoardDto {
 
-	private int seq;
-	private String id;
-	private Date regdate;
-	private String title;
-	private String content;
-	private String delflag;
-	private String secret;
-	private int refer;
-	private int step;
-	private int depth;
+	private int board_seq;
+	private String board_id;
+	private Date board_regdate;
+	private String board_title;
+	private String board_content;
+	private String board_delflag;
+	private String board_secret;
+	private int board_refer;
+	private int board_step;
+	private int board_depth;
 	
 	public AnswerBoardDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AnswerBoardDto(int seq, String id, Date regdate, String title, String content, String delflag, String secret,
-			int refer, int step, int depth) {
-		super();
-		this.seq = seq;
-		this.id = id;
-		this.regdate = regdate;
-		this.title = title;
-		this.content = content;
-		this.delflag = delflag;
-		this.secret = secret;
-		this.refer = refer;
-		this.step = step;
-		this.depth = depth;
+	public int getBoard_seq() {
+		return board_seq;
 	}
 
-	public int getSeq() {
-		return seq;
+	public void setBoard_seq(int board_seq) {
+		this.board_seq = board_seq;
 	}
 
-	public void setSeq(int seq) {
-		this.seq = seq;
+	public String getBoard_id() {
+		return board_id;
 	}
 
-	public String getId() {
-		return id;
+	public void setBoard_id(String board_id) {
+		this.board_id = board_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public Date getBoard_regdate() {
+		return board_regdate;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public void setBoard_regdate(Date board_regdate) {
+		this.board_regdate = board_regdate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public String getBoard_title() {
+		return board_title;
 	}
 
-	public String getTitle() {
-		return title;
+	public void setBoard_title(String board_title) {
+		this.board_title = board_title;
 	}
 
-	public void setTitle(String title) {
-		this.title = title;
+	public String getBoard_content() {
+		return board_content;
 	}
 
-	public String getContent() {
-		return content;
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
 	}
 
-	public void setContent(String content) {
-		this.content = content;
+	public String getBoard_delflag() {
+		return board_delflag;
 	}
 
-	public String getDelflag() {
-		return delflag;
+	public void setBoard_delflag(String board_delflag) {
+		this.board_delflag = board_delflag;
 	}
 
-	public void setDelflag(String delflag) {
-		this.delflag = delflag;
+	public String getBoard_secret() {
+		return board_secret;
 	}
 
-	public String getSecret() {
-		return secret;
+	public void setBoard_secret(String board_secret) {
+		this.board_secret = board_secret;
 	}
 
-	public void setSecret(String secret) {
-		this.secret = secret;
+	public int getBoard_refer() {
+		return board_refer;
 	}
 
-	public int getRefer() {
-		return refer;
+	public void setBoard_refer(int board_refer) {
+		this.board_refer = board_refer;
 	}
 
-	public void setRefer(int refer) {
-		this.refer = refer;
+	public int getBoard_step() {
+		return board_step;
 	}
 
-	public int getStep() {
-		return step;
+	public void setBoard_step(int board_step) {
+		this.board_step = board_step;
 	}
 
-	public void setStep(int step) {
-		this.step = step;
+	public int getBoard_depth() {
+		return board_depth;
 	}
 
-	public int getDepth() {
-		return depth;
+	public void setBoard_depth(int board_depth) {
+		this.board_depth = board_depth;
 	}
 
-	public void setDepth(int depth) {
-		this.depth = depth;
+	public AnswerBoardDto(int board_seq, String board_id, Date board_regdate, String board_title, String board_content,
+			String board_delflag, String board_secret, int board_refer, int board_step, int board_depth) {
+		this.board_seq = board_seq;
+		this.board_id = board_id;
+		this.board_regdate = board_regdate;
+		this.board_title = board_title;
+		this.board_content = board_content;
+		this.board_delflag = board_delflag;
+		this.board_secret = board_secret;
+		this.board_refer = board_refer;
+		this.board_step = board_step;
+		this.board_depth = board_depth;
 	}
 
 	@Override
 	public String toString() {
-		return "AnswerBoardDto [seq=" + seq + ", id=" + id + ", regdate=" + regdate + ", title=" + title + ", content="
-				+ content + ", delflag=" + delflag + ", secret=" + secret + ", refer=" + refer + ", step=" + step
-				+ ", depth=" + depth + "]";
+		return "AnswerBoardDto [board_seq=" + board_seq + ", board_id=" + board_id + ", board_regdate=" + board_regdate
+				+ ", board_title=" + board_title + ", board_content=" + board_content + ", board_delflag="
+				+ board_delflag + ", board_secret=" + board_secret + ", board_refer=" + board_refer + ", board_step="
+				+ board_step + ", board_depth=" + board_depth + "]";
 	}
 
 	

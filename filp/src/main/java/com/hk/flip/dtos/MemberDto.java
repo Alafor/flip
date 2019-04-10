@@ -4,121 +4,124 @@ import java.util.Date;
 
 public class MemberDto {
 
-	private String type;
-	private String id;
-	private String password;
-	private String name;
-	private Date birth;
-	private String phone;
-	private String email;
-	private String profile;
-	private String info;
-	private Date regdate;
+	private String member_type;
+	private String member_id;
+	private String member_password;
+	private String member_name;
+	private Date member_birth;
+	private String member_phone;
+	private String member_email;
+	private String member_profile;
+	private String member_info;
+	private Date member_regdate;
 	
 	public MemberDto() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public String getType() {
-		return type;
+	public String getMember_type() {
+		return member_type;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setMember_type(String member_type) {
+		this.member_type = member_type;
 	}
 
-	public String getId() {
-		return id;
+	public String getMember_id() {
+		return member_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getMember_password() {
+		return member_password;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setMember_password(String member_password) {
+		this.member_password = member_password;
 	}
 
-	public String getName() {
-		return name;
+	public String getMember_name() {
+		return member_name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
 
-	public Date getBirth() {
-		return birth;
+	public Date getMember_birth() {
+		return member_birth;
 	}
 
-	public void setBirth(Date birth) {
-		this.birth = birth;
+	public void setMember_birth(Date member_birth) {
+		this.member_birth = member_birth;
 	}
 
-	public String getPhone() {
-		return phone;
+	public String getMember_phone() {
+		return member_phone;
 	}
 
-	public void setPhone(String phone) {
-		this.phone = phone;
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getMember_email() {
+		return member_email;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
 	}
 
-	public String getProfile() {
-		return profile;
+	public String getMember_profile() {
+		return member_profile;
 	}
 
-	public void setProfile(String profile) {
-		this.profile = profile;
+	public void setMember_profile(String member_profile) {
+		this.member_profile = member_profile;
 	}
 
-	public String getInfo() {
-		return info;
+	public String getMember_info() {
+		return member_info;
 	}
 
-	public void setInfo(String info) {
-		this.info = info;
+	public void setMember_info(String member_info) {
+		this.member_info = member_info;
 	}
 
-	public Date getRegdate() {
-		return regdate;
+	public Date getMember_regdate() {
+		return member_regdate;
 	}
 
-	public void setRegdate(Date regdate) {
-		this.regdate = regdate;
+	public void setMember_regdate(Date member_regdate) {
+		this.member_regdate = member_regdate;
 	}
 
-	public MemberDto(String type, String id, String password, String name, Date birth, String phone, String email,
-			String profile, String info, Date regdate) {
-		super();
-		this.type = type;
-		this.id = id;
-		this.password = password;
-		this.name = name;
-		this.birth = birth;
-		this.phone = phone;
-		this.email = email;
-		this.profile = profile;
-		this.info = info;
-		this.regdate = regdate;
+	public MemberDto(String member_type, String member_id, String member_password, String member_name,
+			Date member_birth, String member_phone, String member_email, String member_profile, String member_info,
+			Date member_regdate) {
+		this.member_type = member_type;
+		this.member_id = member_id;
+		this.member_password = member_password;
+		this.member_name = member_name;
+		this.member_birth = member_birth;
+		this.member_phone = member_phone;
+		this.member_email = member_email;
+		this.member_profile = member_profile;
+		this.member_info = member_info;
+		this.member_regdate = member_regdate;
 	}
 
 	@Override
 	public String toString() {
-		return "MemberDto [type=" + type + ", id=" + id + ", password=" + password + ", name=" + name + ", birth="
-				+ birth + ", phone=" + phone + ", email=" + email + ", profile=" + profile + ", info=" + info
-				+ ", regdate=" + regdate + "]";
+		return "MemberDto [member_type=" + member_type + ", member_id=" + member_id + ", member_password="
+				+ member_password + ", member_name=" + member_name + ", member_birth=" + member_birth
+				+ ", member_phone=" + member_phone + ", member_email=" + member_email + ", member_profile="
+				+ member_profile + ", member_info=" + member_info + ", member_regdate=" + member_regdate + "]";
 	}
+
+	
 
 }

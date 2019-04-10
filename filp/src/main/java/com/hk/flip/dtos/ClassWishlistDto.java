@@ -2,25 +2,25 @@ package com.hk.flip.dtos;
 
 public class ClassWishlistDto {
 
-	private String id;
+	private String wishlist_id;
 	private int seq;
 	
 	@Override
 	public String toString() {
-		return "ClassWishlistDto [id=" + id + ", seq=" + seq + "]";
+		return "ClassWishlistDto [wishlist_id=" + wishlist_id + ", seq=" + seq + "]";
 	}
 
-	public ClassWishlistDto(String id, int seq) {
-		this.id = id;
+	public ClassWishlistDto(String wishlist_id, int seq) {
+		this.wishlist_id = wishlist_id;
 		this.seq = seq;
 	}
 
-	public String getId() {
-		return id;
+	public String getWishlist_id() {
+		return wishlist_id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setWishlist_id(String wishlist_id) {
+		this.wishlist_id = wishlist_id;
 	}
 
 	public int getSeq() {
