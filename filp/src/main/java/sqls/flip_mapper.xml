@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.flip">
+	
+   <insert id="insertfile" parameterType="FileDto"> 
+       insert into FILEINFO values (fileinfo_seq.nextval,#{origin_fname},#{stored_fname},
+       #{file_size},sysdate,'N')
+   </insert>
+   
+   <select id="filelist" resultType="FileDto" flushCache="false" useCache="false">
+   	 select SEQ,ORIGIN_FNAME,STORED_FNAME,FILE_SIZE,F_REGDATE,F_DELFLAG FROM FILEINFO ORDER BY SEQ
+   </select>
+   
+   <select id="filepagelist" resultType="FileDto" parameterType="int" flushCache="false" useCache="false">
+   	
+   	          select rn,seq,origin_fname,stored_fname,file_size,f_regdate,f_delflag from(
+	select rownum as rn,seq,origin_fname,stored_fname,file_size,f_regdate,f_delflag from fileinfo
+	)
+	
+	where ceil(rn/10)=#{pnum}
+	 ORDER BY rn
+	 
+   </select>
+   
+   <select id="lastpage" resultType="int" >
+   	 select max(rn) from(
+	select rownum as rn,seq,origin_fname,stored_fname,file_size,f_regdate,f_delflag from fileinfo
+	)
+   </select>
+  
+  <select id="getfile" resultType="FileDto" parameterType="int">
+  	 select SEQ,ORIGIN_FNAME,STORED_FNAME,FILE_SIZE,F_REGDATE,F_DELFLAG
+	 from FILEINFO WHERE SEQ=#{seq}
+  </select> 
+  
+  <update id="muldelfile" parameterType="Map">
+  	update from FILEINFO F_DELFLAG = 'Y' WHERE SEQ=IN
+  	<foreach collection="chks" item="chk" open="(" separator="," close=")">
+ 	 	#{chk}
+ 	 </foreach>
+  </update>
+  
+ <delete id="rmuldelfile" parameterType="Map">
+ 	 DELETE from FILEINFO WHERE SEQ=IN
+ 	 <foreach collection="chks" item="chk" open="(" separator="," close=")">
+ 	 	#{chk}
+ 	 </foreach>
+ </delete>
+ 
+</mapper>
+
+
+

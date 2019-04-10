@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.hk.flip.dtos.AnswerBoardDto" alias="AnswerBoardDto"/>
+		<typeAlias type="com.hk.flip.dtos.ClassDto" alias="ClassDto"/>
+		<typeAlias type="com.hk.flip.dtos.ClassWishlistDto" alias="ClassWishlistDto"/>
+		<typeAlias type="com.hk.flip.dtos.InclassDto" alias="InclassDto"/>
+		<typeAlias type="com.hk.flip.dtos.MemberDto" alias="MemberDto"/>
+		<typeAlias type="com.hk.flip.dtos.ReviewDto" alias="ReviewDto"/>
+	</typeAliases>
+	
+	<mappers>
+		<mapper resource="/sqls/flip_mapper.xml"/>
+		<mapper resource="/sqls/flip_AnswerBoard_mapper.xml"/>
+		<mapper resource="/sqls/flip_Class_mapper.xml"/>
+		<mapper resource="/sqls/flip_ClassWishlist_mapper.xml"/>
+		<mapper resource="/sqls/flip_Inclass_mapper.xml"/>
+		<mapper resource="/sqls/flip_Member_mapper.xml"/>
+		<mapper resource="/sqls/flip_Member_Review.xml"/>
+	</mappers>
+</configuration>
