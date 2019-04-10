@@ -15,5 +15,5 @@ public class AnswerBoardDao implements IAnswerBoardDao {
 	public AnswerBoardDao() {
 		// TODO Auto-generated constructor stub
 	}
-
+//ㅁㅁㅁㅁㅁㄴㅁㅇㄴㅁㅇㄴㅁㅇㄴㅇㅁ
 }
