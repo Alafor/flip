@@ -113,6 +113,12 @@ public class MemberDto {
 		this.member_info = member_info;
 		this.member_regdate = member_regdate;
 	} 
+	
+	public MemberDto(String member_type, String member_id, String member_password) {
+		this.member_type = member_type;
+		this.member_id = member_id;
+		this.member_password = member_password;
+	}
 
 	@Override
 	public String toString() {
