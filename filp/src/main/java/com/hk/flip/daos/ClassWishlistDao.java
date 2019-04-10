@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public class ClassWishlistDao implements IClassWishlistDao {
 
 	@Autowired
-	private SqlSessionTemplate sqlsettion;
+	private SqlSessionTemplate sqlsession;
 	
 	String nameSpace = "com.hk.flip.";
 	

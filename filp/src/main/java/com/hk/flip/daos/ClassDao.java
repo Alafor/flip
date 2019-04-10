@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 public class ClassDao implements IClassDao {
 
 	@Autowired
-	private SqlSessionTemplate sqlsettion;
+	private SqlSessionTemplate sqlsession;
 	
 	String nameSpace = "com.hk.flip.";
 	
