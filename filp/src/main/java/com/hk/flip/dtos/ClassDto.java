@@ -24,6 +24,7 @@ public class ClassDto {
 	private String termin;
 	private String instructor;
 	private int participation;
+	private int now_participation;
 	private int d_day;
 	private float rating;
 	
@@ -231,6 +232,14 @@ public class ClassDto {
 	public void setParticipation(int participation) {
 		this.participation = participation;
 	}
+	public int getNow_participation() {
+		return now_participation;
+	}
+	
+	
+	public void setNow_participation(int now_participation) {
+		this.now_participation = now_participation;
+	}
 
 
 	public int getD_day() {
@@ -255,7 +264,7 @@ public class ClassDto {
 
 	public ClassDto(String type, int seq, String name, Date regdate, String info, String area, String depa, Date sd,
 			Date cd, String week, String starttime, int time, int price, int nop, String detail, String img,
-			String hashtag, String termin, String instructor, int participation, int d_day, float rating) {
+			String hashtag, String termin, String instructor, int participation,int now_participation, int d_day, float rating) {
 		this.type = type;
 		this.seq = seq;
 		this.name = name;
@@ -276,6 +285,7 @@ public class ClassDto {
 		this.termin = termin;
 		this.instructor = instructor;
 		this.participation = participation;
+		this.now_participation = now_participation;
 		this.d_day = d_day;
 		this.rating = rating;
 	}
@@ -287,7 +297,10 @@ public class ClassDto {
 				+ ", area=" + area + ", depa=" + depa + ", sd=" + sd + ", cd=" + cd + ", week=" + week + ", starttime="
 				+ starttime + ", time=" + time + ", price=" + price + ", nop=" + nop + ", detail=" + detail + ", img="
 				+ img + ", hashtag=" + hashtag + ", termin=" + termin + ", instructor=" + instructor
-				+ ", participation=" + participation + ", d_day=" + d_day + ", rating=" + rating + "]";
+				+ ", participation=" + participation + ", now_participation=" + now_participation + ", d_day=" + d_day
+				+ ", rating=" + rating + "]";
 	}
+
+
 
 }
