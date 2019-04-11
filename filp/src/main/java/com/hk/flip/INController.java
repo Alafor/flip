@@ -29,19 +29,6 @@ public class INController {
 	@Autowired
 	private IMemberService memberService;
 	
-	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public String home(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "home";
-	}
 	
 	@RequestMapping(value = "/loginform.do", method = RequestMethod.GET)//로그인폼 이동
 	public String loginform(Locale locale, Model model) {

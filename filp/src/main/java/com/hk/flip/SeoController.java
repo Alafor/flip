@@ -22,10 +22,9 @@ public class SeoController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Started main{}.", locale);
-		
 		return "main";
 	}
 	

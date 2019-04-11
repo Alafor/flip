@@ -8,9 +8,9 @@
 
 <head>
 	<title>home.jsp</title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">    
+	<meta http-equiv="refresh" content="0; url=main.do">    
 </head>
 <body>
-<a href="main.do">메인페이지 이동</a>
+
 </body>
 </html>
