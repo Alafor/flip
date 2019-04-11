@@ -51,11 +51,11 @@ public class MemberDto {
 		this.member_name = member_name;
 	}
 
-	public Date getMember_birth() {
+	public String getMember_birth() {
 		return member_birth;
 	}
 
-	public void setMember_birth(Date member_birth) {
+	public void setMember_birth(String member_birth) {
 		this.member_birth = member_birth;
 	}
 
@@ -100,7 +100,7 @@ public class MemberDto {
 	}
 
 	public MemberDto(String member_type, String member_id, String member_password, String member_name,
-			Date member_birth, String member_phone, String member_email, String member_profile, String member_info,
+			String member_birth, String member_phone, String member_email, String member_profile, String member_info,
 			Date member_regdate) {
 		this.member_type = member_type;
 		this.member_id = member_id;
