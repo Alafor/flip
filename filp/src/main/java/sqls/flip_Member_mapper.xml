@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Member">
+
+   <select id="login" resultType="MemberDto" parameterType="Map">
+   		SELECT MEMBER_ID ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password};
+   </select>
+
+	<insert id="signupmember" parameterType="MemberDto">
+		INSERT INTO MEMBER(MEMBER_TYPE,MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_PHONE,MEMBER_EMAIL,MEMBER_PROFILE,MEMBER_INFO,MEMBER_REGDATE) 
+		VALUES(#{member_type},#{member_id},#{member_password},#{member_name},to_date(#{member_birth},'mm-dd-yyyy'),
+				#{member_phone},#{member_email},#{member_profile},#{member_info},SYSDATE);
+		
+	</insert>
 </mapper>
