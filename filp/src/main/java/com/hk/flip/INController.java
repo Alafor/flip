@@ -90,4 +90,10 @@ public class INController {
 		}
 	}
 	
+	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	public String main(Locale locale, Model model) {
+		logger.info("회원가입 폼 이동하기 {}.", locale);	
+		return "main";
+	}
+	
 }

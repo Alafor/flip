@@ -13,12 +13,12 @@
 	</typeAliases>
 	
 	<mappers>
-		<mapper resource="/sqls/flip_mapper.xml"/>
 		<mapper resource="/sqls/flip_AnswerBoard_mapper.xml"/>
 		<mapper resource="/sqls/flip_Class_mapper.xml"/>
 		<mapper resource="/sqls/flip_ClassWishlist_mapper.xml"/>
 		<mapper resource="/sqls/flip_Inclass_mapper.xml"/>
+		<mapper resource="/sqls/flip_mapper.xml"/>
 		<mapper resource="/sqls/flip_Member_mapper.xml"/>
-		<mapper resource="/sqls/flip_Member_Review.xml"/>
+		<mapper resource="/sqls/flip_Review_mapper.xml"/>
 	</mappers>
 </configuration>
