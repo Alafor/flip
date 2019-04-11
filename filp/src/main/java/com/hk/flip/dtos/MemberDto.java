@@ -117,7 +117,8 @@ public class MemberDto {
 	public MemberDto(String member_type, String member_id, String member_name) {
 		this.member_type = member_type;
 		this.member_id = member_id;
-		this.member_name = member_name;
+		this.member_name = member_name; 
+		
 	}
 
 	@Override
