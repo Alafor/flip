@@ -66,8 +66,8 @@ public class INController {
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)//로그아웃
 	public String logout(Locale locale, Model model,HttpSession session) {
 		logger.info("로그아웃 하기{}.", locale);
-		/*session.invalidate();*/
-		session.removeAttribute("logInMember");
+		session.invalidate();
+		/*session.removeAttribute("logInMember");*/
 			return "redirect:main.do";
 	}
 	
