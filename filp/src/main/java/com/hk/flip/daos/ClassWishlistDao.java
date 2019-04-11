@@ -18,7 +18,7 @@ public class ClassWishlistDao implements IClassWishlistDao {
 	@Autowired
 	private SqlSessionTemplate sqlsession;
 	
-	String nameSpace = "com.hk.flip.wishlist";
+	String nameSpace = "com.hk.flip.ClassWishlist";
 	
 	public ClassWishlistDao() {
 		// TODO Auto-generated constructor stub
@@ -38,4 +38,12 @@ public class ClassWishlistDao implements IClassWishlistDao {
 		return sqlsession.insert(nameSpace+"insertwishlist", map)>0?true:false;
 	}
 
+	//마감일이 3일이하 남은 위시리스트 출력
+	public List<ClassDto> imminentWishlist(String id) {
+		List<ClassDto> list = new ArrayList();
+		list = sqlsession.selectList(nameSpace+"imminentwishlist", id);
+		return list;
+	}
+	
+	//
 }
