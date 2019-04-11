@@ -33,6 +33,6 @@
 	</insert>
 	
 	<select id="getTProfile" parameterType="String" resultMap="MemberDtoMap">
-		
+		 
 	</select>
 </mapper>

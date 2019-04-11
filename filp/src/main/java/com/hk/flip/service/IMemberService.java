@@ -12,5 +12,5 @@ public interface IMemberService {
 	public boolean newMember(MemberDto dto);
 	//강사정보가져오기
 	public MemberDto getTProfile(String member_id);
-
+ 
 }

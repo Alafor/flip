@@ -29,6 +29,7 @@ public class LeeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(LeeController.class);
 	
+	
 	@RequestMapping(value = "/tdetail.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
 	public String tdetail(HttpServletRequest request,Locale locale, Model model,String member_id) {
 		logger.info("강사상세보기{}.", locale);

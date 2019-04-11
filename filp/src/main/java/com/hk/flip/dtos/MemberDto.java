@@ -16,6 +16,7 @@ public class MemberDto {
 	private Date member_regdate;
 	private ClassDto classdto;
 	
+	
 	public ClassDto getClassdto() {
 		return classdto;
 	}

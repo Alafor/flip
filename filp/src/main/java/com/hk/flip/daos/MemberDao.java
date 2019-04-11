@@ -33,6 +33,7 @@ public class MemberDao implements IMemberDao {
 		return cnt>0?true:false;
 	}
 
+	
 	//강사 상세보기
 	@Override
 	public MemberDto getTProfile(String member_id) {
