@@ -35,4 +35,18 @@
 	<select id="getTProfile" parameterType="String" resultMap="MemberDtoMap">
 		 
 	</select>
+	
+	<select id="selectmember" resultType="MemberDto">
+		SELECT member_type, member_id, member_password, member_name, member_birth, member_phone, member_email, 
+		member_profile, member_info, member_regdate FROM member where member_id=#{id}
+	</select>
+	
+	<update id="updatemember">
+		UPDATE member SET (member_password, member_name, member_phone, member_email, member_profile, member_info) 
+		= (#{password}, #{name}, #{phone}, #{email}, #{profile}, #{info}) WHERE member_id = #{id}
+	</update>
+	
+	<delete id="deletemember">
+		DELETE FROM member WHERE member_id = #{id}
+	</delete>
 </mapper>
