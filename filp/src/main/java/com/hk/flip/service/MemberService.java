@@ -24,4 +24,7 @@ public class MemberService implements IMemberService {
 		return memberDao.newMember(dto);
 	}
 
+	public MemberDto getTProfile(String member_id) {	//강사 상세보기
+		return memberDao.getTProfile(member_id);	
+	}
 }

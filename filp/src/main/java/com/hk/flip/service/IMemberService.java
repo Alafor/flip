@@ -10,5 +10,7 @@ public interface IMemberService {
 	public MemberDto logCheck(String id, String password);
 	//회원가입
 	public boolean newMember(MemberDto dto);
+	//강사정보가져오기
+	public MemberDto getTProfile(String member_id);
 
 }

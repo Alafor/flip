@@ -14,7 +14,16 @@ public class MemberDto {
 	private String member_profile;
 	private String member_info;
 	private Date member_regdate;
+	private ClassDto classdto;
 	
+	public ClassDto getClassdto() {
+		return classdto;
+	}
+
+	public void setClassdto(ClassDto classdto) {
+		this.classdto = classdto;
+	}
+
 	public MemberDto() {
 		// TODO Auto-generated constructor stub
 	}

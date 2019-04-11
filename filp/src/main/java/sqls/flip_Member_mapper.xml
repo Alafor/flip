@@ -3,6 +3,24 @@
 
 <mapper namespace="com.hk.flip.Member">
 
+	<resultMap type="com.hk.flip.dtos.MemberDto" id="MemberDtoMap">
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<collection property="classdto" resultMap="ClassDtoMap"/>
+	</resultMap>
+	
+	<resultMap type="com.hk.flip.dtos.ClassDto" id="ClassDtoMap">
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+	</resultMap>
    <select id="login" resultType="MemberDto" parameterType="Map">
    		SELECT MEMBER_ID ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password};
    </select>
@@ -13,4 +31,8 @@
 				#{member_phone},#{member_email},#{member_profile},#{member_info},SYSDATE);
 		
 	</insert>
+	
+	<select id="getTProfile" parameterType="String" resultMap="MemberDtoMap">
+		
+	</select>
 </mapper>

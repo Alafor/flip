@@ -15,7 +15,7 @@ public class MemberDao implements IMemberDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlsession;
-	private String namespace = "com.hk.flip.";
+	private String namespace = "com.hk.flip.Member.";
 	
 	//로그인
 	@Override
@@ -31,6 +31,12 @@ public class MemberDao implements IMemberDao {
 	public boolean newMember(MemberDto dto) {
 		int cnt = sqlsession.insert(namespace+"signupmember",dto);
 		return cnt>0?true:false;
+	}
+
+	//강사 상세보기
+	@Override
+	public MemberDto getTProfile(String member_id) {
+		return sqlsession.selectOne(namespace+"getTprofile", member_id);
 	}
 
 }
