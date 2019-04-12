@@ -44,8 +44,13 @@ public class MemberDao implements IMemberDao {
 	}
 
 	@Override
-	public MemberDto viewMyMember(String id) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean deleteMember(String id) {		
+		return sqlsession.delete(namespace+"deletemember", id)>0?true:false;		
 	}
+
+	@Override
+	public boolean updateMember(MemberDto dto) {
+		return sqlsession.update(namespace+"updatemember", dto)>0?true:false; 
+	}
+
 }
