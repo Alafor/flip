@@ -19,7 +19,7 @@
 	</select>
 	
 	<!-- 강사 상세보기 페이지-강사 프로필+평균 평점 // avg=강사 평균 평점-->
-	<select id="getTProfile" parameterType="String" resultMap="MemberDto">
+	<select id="getTProfile" parameterType="String" resultType="MemberDto">
 		SELECT MEMBER_NAME, MEMBER_PROFILE, MEMBER_INFO,  (SELECT round(AVG(REVIEW.REVIEW_RATING),1) AS RATING_AVG FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ AND CLASS.CLASS_INSTRUCTOR = 'KIN' ) AS AVG FROM MEMBER 
 		WHERE MEMBER_NAME = #{member_name};
 	</select>
