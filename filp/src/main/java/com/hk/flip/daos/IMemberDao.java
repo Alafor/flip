@@ -14,7 +14,7 @@ public interface IMemberDao {
 
 	public boolean newMember(MemberDto dto);//회원가입
 	
-	public MemberDto getTProfile(String member_id);//강사상세정보-강사프로필
+	public MemberDto getTProfile(String member_name);//강사상세정보-강사프로필
 	
 	public List<ClassDto> getTclass(String member_name);//강사상세정보-강사 강의목록
 
