@@ -2,10 +2,10 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Class">
-	
-	<!-- 강사들의 강의 불러오기 10개만 불러오기 -->
-	
-	<select id="classlistmain" parameterType="String" resultType="ClassDto">
+
+	<!-- 강사들의 강의 10개만 불러오기 -->
+	<select id="mainclasslist" parameterType="String"
+		resultType="ClassDto">
 	<![CDATA[ 
 		SELECT
 		E.SEQ,
@@ -36,6 +36,34 @@
 		AND MEMBERS.MEMBER_ID = D.CLASS_INSTRUCTOR
 		AND e.CLASS_DEPA = #{department}
 		AND ROWNUM <= 10
+	]]>
+	</select>
+
+	<!-- 강사들의 강의 인기순 10개만 불러오기 -->
+	<select id="mainpopularclasslist">
+	<![CDATA[
+	SELECT 
+	e.SEQ,
+	e.CLASS_TYPE,
+	e.CLASS_NAME name,
+	e.CLASS_PRICE price,
+	e.CLASS_INSTRUCTOR instructor,
+	e.CLASS_IMG img,
+	d.RATING rating,
+	e.CLASS_AREA area,
+	f.participation,
+	f.d_day,
+	members.MEMBER_PROFILE AS profile_img	
+  	FROM 
+  	CLASS e,
+  	(SELECT CLASS.CLASS_INSTRUCTOR, round(AVG(REVIEW.REVIEW_RATING),1) AS RATING FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ GROUP BY CLASS.CLASS_INSTRUCTOR ORDER BY RATING  desc) d,
+  	(SELECT 
+    SEQ,
+	(SELECT COUNT(INCLASS.SEQ) FROM INCLASS WHERE INCLASS.SEQ = CLASS.SEQ) AS participation,
+	(TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS d_day FROM CLASS) f,
+	(SELECT MEMBER.MEMBER_ID,MEMBER.MEMBER_PROFILE FROM MEMBER) members
+ 	WHERE e.CLASS_INSTRUCTOR=d.CLASS_INSTRUCTOR
+	AND e.SEQ = f.SEQ AND members.MEMBER_ID = d.CLASS_INSTRUCTOR AND ROWNUM <= 9;
 	]]>
 	</select>
 </mapper>
