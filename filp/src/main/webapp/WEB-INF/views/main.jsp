@@ -828,6 +828,6 @@
 	<script>
 		
 	</script>
-
+<a href="tdetail.do?member_name=김일남">test강사1</a>
 </body>
 </html>
