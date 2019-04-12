@@ -7,29 +7,28 @@
 <head>
 	<title>회원가입</title>
 	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->	
-	<link rel="icon" type="image/png" href="Resources/LoginForm/images/icons/favicon.ico"/>
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/vendor/bootstrap/css/bootstrap.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/vendor/animate/animate.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/vendor/css-hamburgers/hamburgers.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/vendor/animsition/css/animsition.min.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/vendor/select2/select2.min.css">
-<!--===============================================================================================-->	
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/vendor/daterangepicker/daterangepicker.css">
-<!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/css/util.css">
-	<link rel="stylesheet" type="text/css" href="Resources/LoginForm/css/main.css">
-<!--===============================================================================================-->
+	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+	
+	<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
+	rel="stylesheet">
+<link rel="stylesheet" href="resources/fonts/icomoon/style.css">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/magnific-popup.css">
+<link rel="stylesheet" href="resources/css/jquery-ui.css">
+<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
+
+<link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
+
+<link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
+
+<link rel="stylesheet" href="resources/css/aos.css">
+<link rel="stylesheet" href="resources/css/rangeslider.css">
+
+<link rel="stylesheet" href="resources/css/style.css">
+
 <script type="text/javascript">
     function checkpw() {
         var pw = document.getElementById("Pw").value;
@@ -97,84 +96,115 @@ if( len == 7 ) oThis.value += "-";
 
 </head>
 <body>
-	
+	  <div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    
 	<!-- header -->
 		<jsp:include page="header.jsp" />
 		<!-- header 종료 -->
 	
-	<div class="limiter">
-		<div class="container-login100">
-			<div class="wrap-login100 p-t-50 p-b-90">
-				<form class="login100-form validate-form flex-sb flex-w" action="signup.do" onsubmit="return checkpw()" method="post">
-					<span class="login100-form-title p-b-51">
-						회원가입<p><hr style="border: solid 2px #30e3ca; width:100%;"></p>
-					</span>
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "성함을 입력해주세요">
-						<input class="input100" type="text" name="member_name" placeholder="이름">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "아이디를 입력해주세요">
-						<input class="input100" id="t_id" type="text" name="member_id" placeholder="아이디" onchange="fn_process()">
-						<span class="focus-input100"></span>
-						<div id="message"></div>
-					</div>
-					
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "비밀번호를 입력해주세요">
-						<input class="input100" id="Pw" type="password" name="member_password" placeholder="비밀번호">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "비밀번호를 입력해주세요">
-						<input class="input100" id="PwCheck" type="password" name="member_password" placeholder="비밀번호확인">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "이메일을 정확히 입력해주세요">
-						<input class="input100" type="text" name="member_email" placeholder="이메일">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "생년월일을 입력해주세요">
-						<input class="input100" type="text" name="member_birth" placeholder="생년월일"
-						onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
-						<span class="focus-input100"></span>
-					</div>
-					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "연락처를 입력해주세요">
-						<input class="input100" type="text" name="member_phone" placeholder="연락처">
-						<span class="focus-input100"></span>
-					</div>
-					
-					
-					
-					<div class="flex-sb-m w-full p-t-3 p-b-24">
-						<div class="contact100-form-checkbox">
-							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-							<label class="label-checkbox100" for="ckb1">
-								Remember me
-							</label>
-						</div>
+	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
 
-						<div>
-							<a href="/loginform.do" class="txt1">
-								로그인?
-							</a>
-						</div>
-					</div>
+          <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
+            
+            
+            <div class="row justify-content-center mt-5">
+              <div class="col-md-8 text-center">
+                <h1>일상을 뒤집다.플립</h1>
+              </div>
+            </div>
 
-					<div class="container-login100-form-btn m-t-17">
-						<button class="login100-form-btn" type="submit">
-							회원가입
-						</button>
-					</div>
-
-				</form>
-			</div>
-		</div>
-	</div>
+            
+          </div>
+        </div>
+      </div>
+    </div>  
+	
+	
+	
+	<div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 mb-5"  data-aos="fade">
+          
+          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post">
+             
+ 			<div class="row form-group">              
+                <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
+                  <label class="text-black" for="name">이름</label> 
+                  <input type="text" class="form-control" name="member_name">
+                </div>
+              </div>	            
+             
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
+                  <label class="text-black" for="id">아이디</label> 
+                  <input type="text" id="t_id" class="form-control" name="member_id" >
+                </div>
+                <div id="message"></div>
+              </div>
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
+                  <label class="text-black" for="password">패스워드</label> 
+                  <input type="text" id="Pw" class="form-control" name="member_password" >
+                </div>
+              </div>
+              <div class="row form-group validate-input" data-validate = "패스워드를 입력해주세요">              
+                <div class="col-md-12">
+                  <label class="text-black" for="password">패스워드확인</label> 
+                  <input type="text" id="PwCheck" class="form-control" name="member_password" >
+                </div>
+              </div>
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input m-b-16" data-validate = "이메일을 정확히 입력해주세요">
+                  <label class="text-black" for="email">이메일</label> 
+                  <input type="text" class="form-control" name="member_email">
+                </div>
+              </div>
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
+                  <label class="text-black" for="birth">생년월일</label> 
+                  <input type="text"  class="form-control" name="member_birth" 
+                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
+                </div>
+              </div>
+          	<div class="row form-group">              
+                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
+                  <label class="text-black" for="phone">전화번호</label> 
+                  <input type="text" class="form-control" name="member_phone" >
+                </div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-12">
+                  <p>Have an account? <a href="login.html">Log In</a></p>
+                </div>
+              </div>
+              
+              <div class="row form-group">
+                <div class="col-md-12">
+                  <input type="submit" value="회원가입" class="btn btn-primary py-2 px-4 text-white">
+                </div>
+              </div>
+              </form>
+          </div>
+          </div>
+          </div>
+          </div>
+	
+	
+	
+	
 	
 
 	<!-- <div id="dropDownSelect1"></div> -->
@@ -182,23 +212,20 @@ if( len == 7 ) oThis.value += "-";
 	<jsp:include page="footer.jsp" />
 	</div>
 	
-	
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/vendor/jquery/jquery-3.2.1.min.js"></script>
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/vendor/animsition/js/animsition.min.js"></script>
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/vendor/bootstrap/js/popper.js"></script>
-	<script src="Resources/LoginForm/vendor/bootstrap/js/bootstrap.min.js"></script>
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/vendor/select2/select2.min.js"></script>
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/vendor/daterangepicker/moment.min.js"></script>
-	<script src="Resources/LoginForm/vendor/daterangepicker/daterangepicker.js"></script>
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/vendor/countdowntime/countdowntime.js"></script>
-<!--===============================================================================================-->
-	<script src="Resources/LoginForm/js/main.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="resources/js/jquery-ui.js"></script>
+	<script src="resources/js/popper.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/jquery.stellar.min.js"></script>
+	<script src="resources/js/jquery.countdown.min.js"></script>
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="resources/js/bootstrap-datepicker.min.js"></script>
+	<script src="resources/js/aos.js"></script>
+	<script src="resources/js/rangeslider.min.js"></script>
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/signup.js"></script>
 
 </body>
 </html>
