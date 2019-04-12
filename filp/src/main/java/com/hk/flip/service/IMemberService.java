@@ -10,5 +10,7 @@ public interface IMemberService {
 	public MemberDto logCheck(String id, String password);
 	//회원가입
 	public boolean newMember(MemberDto dto);
+	//ajax id값 비교
+	public boolean overlappedID(String id);
 
 }

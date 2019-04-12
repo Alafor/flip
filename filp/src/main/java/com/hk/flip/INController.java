@@ -1,10 +1,13 @@
 package com.hk.flip;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.util.Date;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -77,6 +80,17 @@ public class INController {
 		}
 	}
 	
-	
+	@RequestMapping(value = "/handler.do", method = RequestMethod.GET)
+	public void handler(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,String id) throws IOException {
+		logger.info("아이디 중복 확인 {}.", locale);
+		PrintWriter writer = response.getWriter();
+		boolean isS = memberService.overlappedID(id);
+		if(isS) {
+			writer.print("not_usable");
+		} else {
+			writer.print("usable");
+		}
+		
+	}
 	
 }

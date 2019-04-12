@@ -33,4 +33,17 @@ public class MemberDao implements IMemberDao {
 		return cnt>0?true:false;
 	}
 
+	@Override
+	public boolean overlappedID(String id) {
+		int cnt = sqlsession.selectOne(namespace+"idcheck",id);
+		return cnt>0?true:false;
+	}
+
+	
+	//강사 상세보기
+	@Override
+	public MemberDto getTProfile(String member_id) {
+		return sqlsession.selectOne(namespace+"getTprofile", member_id);
+	}
+
 }

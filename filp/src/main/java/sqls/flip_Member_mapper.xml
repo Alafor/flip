@@ -13,4 +13,9 @@
 				#{member_phone},#{member_email},#{member_profile},#{member_info},SYSDATE);
 		
 	</insert>
+	
+	<select id="idcheck" parameterType="String" resultType="int">
+		SELECT COUNT(MEMBER_ID) FROM MEMBER WHERE MEMBER_ID=#{ID};
+	</select>
+	
 </mapper>

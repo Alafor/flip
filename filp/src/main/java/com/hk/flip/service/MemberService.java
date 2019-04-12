@@ -24,4 +24,9 @@ public class MemberService implements IMemberService {
 		return memberDao.newMember(dto);
 	}
 
+	@Override
+	public boolean overlappedID(String id) {
+		return memberDao.overlappedID(id);
+	}
+
 }
