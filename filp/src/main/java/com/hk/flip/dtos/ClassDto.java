@@ -25,7 +25,10 @@ public class ClassDto {
 	private int class_participation;
 	private int class_now_participation;
 	private int class_d_day;
+	//별점 평균
 	private float class_rating;
+	//강사, 수강생 프로필 이미지
+	private String profile_img;
 	
 	
 	public ClassDto() {
@@ -253,11 +256,23 @@ public class ClassDto {
 	}
 
 
+
+	public String getProfile_img() {
+		return profile_img;
+	}
+
+
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
+	}
+
+
 	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
 			String class_depa, Date class_sd, Date class_cd, String class_week, String class_starttime, int class_time,
 			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
 			String class_instructor, int class_participation, int class_now_participation, int class_d_day,
-			float class_rating) {
+			float class_rating, String profile_img) {
+		super();
 		this.class_type = class_type;
 		this.seq = seq;
 		this.class_name = class_name;
@@ -280,6 +295,7 @@ public class ClassDto {
 		this.class_now_participation = class_now_participation;
 		this.class_d_day = class_d_day;
 		this.class_rating = class_rating;
+		this.profile_img = profile_img;
 	}
 
 
@@ -292,7 +308,7 @@ public class ClassDto {
 				+ ", class_detail=" + class_detail + ", class_img=" + class_img + ", class_hashtag=" + class_hashtag
 				+ ", class_termin=" + class_termin + ", class_instructor=" + class_instructor + ", class_participation="
 				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
-				+ class_d_day + ", class_rating=" + class_rating + "]";
+				+ class_d_day + ", class_rating=" + class_rating + ", profile_img=" + profile_img + "]";
 	}
 
 
