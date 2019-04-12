@@ -29,7 +29,7 @@ public class ClassDto {
 	private float class_rating;
 	//강사, 수강생 프로필 이미지
 	private String profile_img;
-	
+	 
 	
 	public ClassDto() {
 		// TODO Auto-generated constructor stub

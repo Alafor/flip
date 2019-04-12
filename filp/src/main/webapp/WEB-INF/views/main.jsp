@@ -1,7 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<% request.setCharacterEncoding("utf-8"); %>
-<% response.setContentType("text/html; charset=utf-8"); %>
+	pageEncoding="UTF-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<%
+	response.setContentType("text/html; charset=utf-8");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,21 +46,26 @@
 			</div>
 			<div class="site-mobile-menu-body"></div>
 		</div>
-		
+
 		<!-- header -->
 		<jsp:include page="header.jsp" />
 		<!-- header 종료 -->
-		
+
 		<div class="site-blocks-cover overlay"
 			style="background-image: url('resources/images/제빵.png');"
 			data-aos="fade" data-stellar-background-ratio="0.5">
 			<div class="container">
-				<div class="row align-items-center justify-content-center text-center">
+				<div
+					class="row align-items-center justify-content-center text-center">
 					<div class="col-md-12">
 						<div class="row justify-content-center mb-4">
 							<div class="col-md-8 text-center">
-								<h1 class="" data-aos="fade-up">지루한 일상을 뒤엎다!!<span class="text-warning">플</span><span class="text-primary">립</span></h1>
-								<p data-aos="fade-up" data-aos-delay="100">You can buy, sell anything you want.</p>
+								<h1 class="" data-aos="fade-up">
+									지루한 일상을 뒤엎다!!<span class="text-warning">플</span><span
+										class="text-primary">립</span>
+								</h1>
+								<p data-aos="fade-up" data-aos-delay="100">You can buy, sell
+									anything you want.</p>
 							</div>
 						</div>
 					</div>
@@ -66,104 +75,104 @@
 
 		<div class="site-section bg-light">
 			<div class="container">
-
 				<div class="overlap-category mb-5">
-					<!-- 아이콘 -->
+
+					<!-- 카테고리 시작 -->
 					<div class="row align-items-stretch no-gutters">
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-1 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-meeting"></span></span>
-							  <span class="caption mb-2 d-block"><b>인기수업</b></span>
-							   <span class="number">219</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-meeting"></span></span> <span
+								class="caption mb-2 d-block"><b>인기수업</b></span> <span
+								class="number">219</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> 
-							<span class="icon"><span class="flaticon-running"></span></span>
-							 <span class="caption mb-2 d-block"><b>운동</b></span>
-							  <span class="number">3,921</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-running"></span></span> <span
+								class="caption mb-2 d-block"><b>운동</b></span> <span
+								class="number">3,921</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-microphone"></span></span>
-							  <span class="caption mb-2 d-block"><b>음악</b></span>
-							   <span class="number">398</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-microphone"></span></span> <span
+								class="caption mb-2 d-block"><b>음악</b></span> <span
+								class="number">398</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-cameras"></span></span>
-							  <span class="caption mb-2 d-block"><b>사진</b></span>
-							   <span class="number">1,229</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-cameras"></span></span> <span
+								class="caption mb-2 d-block"><b>사진</b></span> <span
+								class="number">1,229</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-dance"></span></span>
-							  <span class="caption mb-2 d-block"><b>YOLO</b></span>
-							   <span class="number">32,891</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-dance"></span></span> <span
+								class="caption mb-2 d-block"><b>YOLO</b></span> <span
+								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-money"></span></span>
-							  <span class="caption mb-2 d-block"><b>재태크</b></span>
-							   <span class="number">29,221</span>
-							</a>
-						</div>
-
-
-						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-soap"></span></span>
-							  <span class="caption mb-2 d-block"><b>뷰티</b></span>
-							   <span class="number">32,891</span>
-							</a>
-						</div>
-						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-book"></span></span>
-							  <span class="caption mb-2 d-block"><b>외국어</b></span>
-							   <span class="number">29,221</span>
-							</a>
-						</div>
-						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> 
-							<span class="icon"><span class="flaticon-video-player"></span></span>
-								<span class="caption mb-2 d-block"><b>영상편집</b></span>
-								 <span class="number">32,891</span>
-							</a>
-						</div>
-						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> 
-							<span class="icon"><span class="flaticon-airplane"></span></span>
-							 <span class="caption mb-2 d-block"><b>여행</b></span> 
-							 <span class="number">29,221</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-money"></span></span> <span
+								class="caption mb-2 d-block"><b>재태크</b></span> <span
+								class="number">29,221</span>
 							</a>
 						</div>
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> 
-							<span class="icon"><span class="flaticon-workstation"></span></span> 
-							 <span class="caption mb-2 d-block"><b>IT</b></span> 
-							 <span class="number">219</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-soap"></span></span> <span
+								class="caption mb-2 d-block"><b>뷰티</b></span> <span
+								class="number">32,891</span>
+							</a>
+						</div>
+						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-book"></span></span> <span
+								class="caption mb-2 d-block"><b>외국어</b></span> <span
+								class="number">29,221</span>
+							</a>
+						</div>
+						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-video-player"></span></span>
+								<span class="caption mb-2 d-block"><b>영상편집</b></span> <span
+								class="number">32,891</span>
+							</a>
+						</div>
+						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-airplane"></span></span> <span
+								class="caption mb-2 d-block"><b>여행</b></span> <span
+								class="number">29,221</span>
+							</a>
+						</div>
+
+
+						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-workstation"></span></span> <span
+								class="caption mb-2 d-block"><b>IT</b></span> <span
+								class="number">219</span>
 							</a>
 						</div>
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon"><span class="flaticon-presenter"></span></span>
-							   <span class="caption mb-2 d-block"><b>다자인</b></span> 
-							 <span class="number">219</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"><span class="flaticon-presenter"></span></span> <span
+								class="caption mb-2 d-block"><b>디자인</b></span> <span
+								class="number">219</span>
 							</a>
 						</div>
 					</div>
 				</div>
+				<!-- 카테고리 메뉴 종료 -->
 
-				                                                                                 <!-- 선생님 찾기 세션 -->
-
+				<!-- 선생님 찾기 세션 -->
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
@@ -177,68 +186,10 @@
 					<div class="col-12  block-13">
 						<div class="owl-carousel nonloop-block-13">
 
+							<!-- 선생님 찾기  -->
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_1.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">Cars &amp; Vehicles</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">Red Luxury Car</a>
-									</h3>
-									<address>Don St, Brooklyn, New York</address>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
-									</p>
-								</div>
-							</div>
-
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_2.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">Real Estate</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">House with Swimming Pool</a>
-									</h3>
-									<address>Don St, Brooklyn, New York</address>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
-									</p>
-								</div>
-							</div>
-
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_3.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">Furniture</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">Wooden Chair &amp; Table</a>
-									</h3>
-									<address>Don St, Brooklyn, New York</address>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
-									</p>
-								</div>
-							</div>
-
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_4.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Electronics</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -255,67 +206,11 @@
 											Reviews)</span>
 									</p>
 								</div>
-							</div>
-
+							</div>	
+							
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_1.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">Cars &amp; Vehicles</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">Red Luxury Car</a>
-									</h3>
-									<address>Don St, Brooklyn, New York</address>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
-									</p>
-								</div>
-							</div>
-
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_2.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">Real Estate</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">House with Swimming Pool</a>
-									</h3>
-									<address>Don St, Brooklyn, New York</address>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
-									</p>
-								</div>
-							</div>
-
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_3.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">Furniture</span> <a href="#" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">Wooden Chair &amp; Table</a>
-									</h3>
-									<address>Don St, Brooklyn, New York</address>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									</p>
-								</div>
-							</div>
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_4.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Electronics</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -332,7 +227,8 @@
 											Reviews)</span>
 									</p>
 								</div>
-							</div>
+							</div>	
+							<!-- 선생님 찾기 종료 -->			
 						</div>
 					</div>
 				</div>
@@ -361,7 +257,8 @@
 						<div class="owl-carousel nonloop-block-13">
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_1.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_1.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Cars &amp; Vehicles</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -381,7 +278,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_2.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_2.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Real Estate</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -401,7 +299,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_3.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_3.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Furniture</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -421,7 +320,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_4.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Electronics</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -441,7 +341,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_1.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_1.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Cars &amp; Vehicles</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -461,7 +362,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_2.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_2.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Real Estate</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -481,7 +383,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_3.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_3.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Furniture</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -501,7 +404,8 @@
 							</div>
 
 							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block" style="background-image: url('resources/images/img_4.jpg')"></a>
+								<a href="#" class="img d-block"
+									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
 									<span class="category">Electronics</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
@@ -555,7 +459,8 @@
 					<div class="owl-carousel nonloop-block-13">
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_1.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_1.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Cars &amp; Vehicles</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -575,7 +480,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_2.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_2.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Real Estate</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -595,7 +501,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_3.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_3.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Furniture</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -615,7 +522,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_4.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_4.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Electronics</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -635,7 +543,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_1.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_1.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Cars &amp; Vehicles</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -655,7 +564,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_2.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_2.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Real Estate</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -675,7 +585,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_3.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_3.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Furniture</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -695,7 +606,8 @@
 						</div>
 
 						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block" style="background-image: url('resources/images/img_4.jpg')"></a>
+							<a href="#" class="img d-block"
+								style="background-image: url('resources/images/img_4.jpg')"></a>
 							<div class="lh-content">
 								<span class="category">Electronics</span> <a href="#"
 									class="bookmark"><span class="icon-heart"></span></a>
@@ -719,7 +631,8 @@
 		</div>
 	</div>
 
-	<div class="site-section bg-white">                                                         <!-- 배경색 인기 강사 세션 지정-->
+	<div class="site-section bg-white">
+		<!-- 배경색 인기 강사 세션 지정-->
 		<div class="container">
 
 			<div class="row justify-content-center mb-5">
@@ -820,7 +733,8 @@
 
 
 
-	<div class="site-section bg-light">                                                              <!-- 배경색 스터디 룸 세션 지정 -->
+	<div class="site-section bg-light">
+		<!-- 배경색 스터디 룸 세션 지정 -->
 		<div class="container">
 			<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
@@ -879,7 +793,8 @@
 					</div>
 				</div>
 
-				<div class="col-12 text-center mt-4">                                                                <!-- 예약버튼 -->
+				<div class="col-12 text-center mt-4">
+					<!-- 예약버튼 -->
 					<a href="#" class="btn btn-primary rounded py-2 px-4 text-white">예약하러
 						가기</a>
 				</div>
@@ -890,12 +805,12 @@
 	<!-- 광고 이미지 세션 -->
 	<jsp:include page="advertisor.jsp" />
 	<!-- 광고 이미지 세션 종료 -->
-	
+
 	<!-- footer 수정 해야함  -->
 	<div>
-	<jsp:include page="footer.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
-	
+
 	<!-- footer종료 -->
 	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
