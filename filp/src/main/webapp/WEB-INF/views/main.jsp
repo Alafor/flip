@@ -825,7 +825,9 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
+	<script>
+		
+	</script>
 
-	
 </body>
 </html>
