@@ -25,14 +25,24 @@
 
 	<div class=”tab-content”>
 		<!–탭내용을 보여주는 곳에 ‘tab-content’ 클래스를걸어줍니다–>
-		<div class=”tab-pane active”id=“tab1″>
+		<div class=”tab-pane active” id=“tab1″>
 			<!–nav-tab부분 링크부분과 탭내용을 보여줄 id를 맞춰줍니다–>
-			<p>home 부분입니다.</p>
+			<p>내수강보기 부분입니다.</p>
+			<c:forEach var="wishlist" items="allWishlist" >
+				<p>${wishlist.class_name}</p>
+			</c:forEach>
+			
 		</div>
 		<div class=”tab-pane” id=“tab2″>
-			<p>menu1 부분입니다.</p>
+			<p>내스터디 보기 부분입니다.</p>
+			<c:forEach var="study" items="allStudyList" >
+				<p>${study.class_name}</p>
+			</c:forEach>
 		</div>
 		<div class=”tab-pane” id=“tab3″>
+			<p>menu2 부분입니다.</p>
+		</div>
+		<div class=”tab-pane” id=“tab4″>
 			<p>menu2 부분입니다.</p>
 		</div>
 	</div>
