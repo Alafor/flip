@@ -33,7 +33,7 @@ public class LeeController {
 	private static final Logger logger = LoggerFactory.getLogger(LeeController.class);
 
 	//강사 상세보기
-	@RequestMapping(value = "/tdetail.do", method = RequestMethod.POST)//로그인 성공 여부 확인 후 메인으로
+	@RequestMapping(value = "/tdetail.do", method = RequestMethod.GET)//로그인 성공 여부 확인 후 메인으로
 	public String tdetail(HttpServletRequest request,Locale locale, Model model,String member_name) {
 		logger.info("강사상세보기{}.", locale);
 		MemberDto dto=memberService.getTProfile(member_name);
