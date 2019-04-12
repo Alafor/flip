@@ -11,30 +11,21 @@
 <head>
 <title>Insert title here</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
 	rel="stylesheet">
 <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
-
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
 <link rel="stylesheet" href="resources/css/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-
 <link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
-
 <link rel="stylesheet" href="resources/css/aos.css">
 <link rel="stylesheet" href="resources/css/rangeslider.css">
-
 <link rel="stylesheet" href="resources/css/style.css">
-
-
-
 </head>
 <body>
 	<div class="site-wrap">
@@ -185,7 +176,6 @@
 				<div class="row">
 					<div class="col-12  block-13">
 						<div class="owl-carousel nonloop-block-13">
-
 							<!-- 선생님 찾기  -->
 							<div class="d-block d-md-flex listing vertical">
 								<a href="#" class="img d-block"
@@ -423,18 +413,9 @@
 									</p>
 								</div>
 							</div>
-
 						</div>
 					</div>
-
-
 				</div>
-
-
-
-
-
-
 			</div>
 		</div>
 	</div>
@@ -825,7 +806,9 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
-
+	<script>
+		
+	</script>
 
 </body>
 </html>
