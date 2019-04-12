@@ -24,6 +24,7 @@ public class ClassWishlistDao implements IClassWishlistDao {
 		// TODO Auto-generated constructor stub
 	}
 	
+	//위시리스트 조회 
 	public List<ClassDto> viewMyWishlist(String id) {
 		List<ClassDto> list = new ArrayList();
 		
@@ -31,11 +32,21 @@ public class ClassWishlistDao implements IClassWishlistDao {
 		return list;
 	}
 	
+	//위시리스트 추가 ++++++위시리스트 중복검사 필수
 	public boolean insertWishlist(String id,String seq) {
 		Map<String,String> map = new HashMap();
 		map.put("id", id);
 		map.put("seq", seq);
 		return sqlsession.insert(nameSpace+"insertwishlist", map)>0?true:false;
+	}
+	
+	//위시리스트 중복검사 중복시 true
+	public boolean cheakWishlist(String id,String seq) {
+		Map<String,String> map = new HashMap();
+		map.put("id", id);
+		map.put("seq", seq);
+		int result = sqlsession.selectOne(nameSpace+"cheakwishlist", map);
+		return result>0?true:false;
 	}
 
 	//마감일이 3일이하 남은 위시리스트 출력

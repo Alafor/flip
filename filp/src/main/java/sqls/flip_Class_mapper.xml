@@ -3,27 +3,4 @@
 
 <mapper namespace="com.hk.flip.Class">
 
-	<select id="selectallwishilst">
-		SELECT 
-		a.class_type,a. seq, a.class_name,a. regdat, a.class_info, a.class_area, a.class_depa 
-		, a.class_sd , a.class_cd, a.class_week
-		, a.class_starttime , a.class_time
-		, a.class_price, a.class_nop, a.class_detail, a.class_img , a.class_hashtag, a.class_termin,
-			b.rating,	
-			c.participation,
-			c.d_day
-		  FROM (SELECT class_type, seq, class_name, regdat, class_info, class_area, class_depa 
-		, class_sd , class_cd, class_week
-		, class_starttime , class_time
-		, class_price, class_nop, class_detail, class_img , class_hashtag, class_termin  FROM class_wishlist WHERE seq = in (SELECT SEQ FROM class_wishlist WHERE wishlist_id= #{id})) a,
-		 (SELECT CLASS.CLASS_INSTRUCTOR, ROUND(AVG(REVIEW.REVIEW_RATING),1) AS RATING FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ GROUP BY CLASS.CLASS_INSTRUCTOR) b,
-		  (SELECT seq,	(SELECT COUNT(INCLASS.SEQ) FROM INCLASS WHERE INCLASS.SEQ = CLASS.SEQ) AS participation, (TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS d_day
-			FROM CLASS) c
-		 WHERE b.CLASS_INSTRUCTOR=a.CLASS_INSTRUCTOR
-			AND b.SEQ = c.SEQ	
-	</select>
-	
-	<insert id="insertwishlist">
-		INSERT INTO wishlist (wishlist_id, seq)  VALUES( #{id}, #{seq} )
-	</insert>
 </mapper>

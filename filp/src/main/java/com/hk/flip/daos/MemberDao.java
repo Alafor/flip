@@ -17,7 +17,7 @@ public class MemberDao implements IMemberDao {
 	private SqlSessionTemplate sqlsession;
 	private String namespace = "com.hk.flip.Member.";
 	
-	//로그인
+	//濡쒓렇�씤
 	@Override
 	public MemberDto logCheck(String id, String password) {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -25,28 +25,27 @@ public class MemberDao implements IMemberDao {
 		map.put("password", password);
 		return sqlsession.selectOne(namespace+"login",map);
 	}
-
-	//회원가입
+	
 	@Override
 	public boolean newMember(MemberDto dto) {
 		int cnt = sqlsession.insert(namespace+"signupmember",dto);
 		return cnt>0?true:false;
 	}
 
-<<<<<<< HEAD
 	@Override
 	public boolean overlappedID(String id) {
 		int cnt = sqlsession.selectOne(namespace+"idcheck",id);
 		return cnt>0?true:false;
-	}
-
-=======
->>>>>>> branch 'master' of https://github.com/Alafor/FLIP.git
+	}	
 	
-	//강사 상세보기
 	@Override
 	public MemberDto getTProfile(String member_id) {
 		return sqlsession.selectOne(namespace+"getTprofile", member_id);
 	}
 
+	@Override
+	public MemberDto viewMyMember(String id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

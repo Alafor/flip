@@ -15,4 +15,6 @@ public interface IMemberDao {
 	MemberDto viewMyMember(String id);
 	
 	public MemberDto getTProfile(String member_id);//강사정보가져오기
+
+	public boolean overlappedID(String id);
 }

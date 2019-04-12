@@ -2,7 +2,39 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.ClassWishlist">
+
 	<select id="selectallwishilst" resultType="ClassDto">
-	
+		SELECT 
+		a.class_type,a. seq, a.class_name,a. regdate, a.class_info, a.class_area, a.class_depa 
+		, a.class_sd , a.class_cd, a.class_week
+		, a.class_starttime , a.class_time
+		, a.class_price, a.class_PARTICIPATION, a.class_detail, a.class_img , a.class_hashtag, a.class_termin,
+			b.rating,	
+			c.participation,
+			c.d_day
+		  FROM (SELECT class_type, seq, class_name, regdate, class_info, class_area, class_depa 
+		, class_sd , class_cd, class_week
+		, class_starttime , class_time
+		, class_price, class_PARTICIPATION, class_detail, class_img , class_hashtag, class_termin,CLASS_INSTRUCTOR  FROM class WHERE seq in(SELECT SEQ FROM class_wishlist WHERE wishlist_id= #{id})) a,
+		 (SELECT CLASS.CLASS_INSTRUCTOR, ROUND(AVG(REVIEW.REVIEW_RATING),1) AS RATING FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ GROUP BY CLASS.CLASS_INSTRUCTOR) b,
+		  (SELECT seq,	(SELECT COUNT(INCLASS.SEQ) FROM INCLASS WHERE INCLASS.SEQ = CLASS.SEQ) AS participation, (TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS d_day
+			FROM CLASS) c
+		 WHERE a.CLASS_INSTRUCTOR=b.CLASS_INSTRUCTOR
+			AND a.SEQ = c.SEQ
 	</select>
+	
+	<insert id="insertwishlist" parameterType="Map">
+		INSERT INTO class_wishlist (wishlist_id, seq)  VALUES( #{id}, #{seq} )
+	</insert>
+	
+	<select id="imminentWishlist" resultMap="ClassDto">
+		SELECT a.seq, a.d_day from (SELECT seq,(TO_CHAR(class_sd,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS d_day from class) a,
+ 		class_wishlist b WHERE a.seq = b.seq and d_day &lt;= 3 and d_day>=0 and b.wishlist_id = #{id}
+	</select>
+	
+	<select id="cheakwishlist" resultType="int">
+		 SELECT COUNT(seq) FROM class_wishlist where seq = #{seq} and wishlist_id=#{id}
+	</select>
+	
+	
 </mapper>
