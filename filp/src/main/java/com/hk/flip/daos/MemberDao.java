@@ -43,19 +43,19 @@ public class MemberDao implements IMemberDao {
 	//강의 상세보기 페이지-강사 프로필
 	@Override
 	public MemberDto getTProfile(String member_name) {
-		return sqlsession.selectOne(namespace+"getTprofile", member_name);
+		return sqlsession.selectOne(namespace+"getTProfile", member_name);
 	}
 	
 	//강의 상세보기 페이지-강사 강의목록
 	@Override
 	public List<ClassDto> getTclass(String member_name) {
-	return sqlsession.selectList(namespace+"getTprofile", member_name);
+	return sqlsession.selectList(namespace+"getTclass", member_name);
 	}
 	
 	//강의 상세보기 페이지-강사 강의후기
 	@Override
 	public List<ReviewDto> getTreview(String member_name) {
-	return sqlsession.selectList(namespace+"getTprofile", member_name);
+	return sqlsession.selectList(namespace+"getTreview", member_name);
 	}
 	
 

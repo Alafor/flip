@@ -2,37 +2,37 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Member">
-
+	
    <select id="login" resultType="MemberDto" parameterType="Map">
-   		SELECT MEMBER_ID ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password};
+   		SELECT MEMBER_ID ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password}
    </select>
 
 	<insert id="signupmember" parameterType="MemberDto">
 		INSERT INTO MEMBER(MEMBER_TYPE,MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_PHONE,MEMBER_EMAIL,MEMBER_PROFILE,MEMBER_INFO,MEMBER_REGDATE) 
 		VALUES(#{member_type},#{member_id},#{member_password},#{member_name},to_date(#{member_birth},'mm-dd-yyyy'),
-				#{member_phone},#{member_email},#{member_profile},#{member_info},SYSDATE);
+				#{member_phone},#{member_email},#{member_profile},#{member_info},SYSDATE)
 		
 	</insert>
 	
 	<select id="idcheck" parameterType="String" resultType="int">
-		SELECT COUNT(MEMBER_ID) FROM MEMBER WHERE MEMBER_ID=#{ID};
+		SELECT COUNT(MEMBER_ID) FROM MEMBER WHERE MEMBER_ID=#{ID}
 	</select>
 	
 	<!-- 강사 상세보기 페이지-강사 프로필+평균 평점 // avg=강사 평균 평점-->
 	<select id="getTProfile" parameterType="String" resultType="MemberDto">
 		SELECT MEMBER_NAME, MEMBER_PROFILE, MEMBER_INFO,  (SELECT round(AVG(REVIEW.REVIEW_RATING),1) AS RATING_AVG FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ AND CLASS.CLASS_INSTRUCTOR = 'KIN' ) AS AVG FROM MEMBER 
-		WHERE MEMBER_NAME = #{member_name};
+		WHERE MEMBER_NAME = #{member_name}
 	</select>
 	
 	<!-- 강사 상세보기 페이지-강사가 진행했던 강의 리스트 조회-->
 	<select id="getTclass" parameterType="String" resultType="ClassDto">
 		SELECT SEQ, CLASS_TYPE, CLASS_NAME, REGDATE, CLASS_INFO, CLASS_AREA, CLASS_DEPA, CLASS_SD, CLASS_CD, CLASS_WEEK, CLASS_STARTTIME, 
-		CLASS_TIME, CLASS_PRICE, CLASS_PARTICIPATION, CLASS_DETAIL, CLASS_IMG, CLASS_HASHTAG, CLASS_TERMIN, CLASS_INSTRUCTOR FROM CLASS WHERE CLASS_INSTRUCTOR=#{member_name}; 
+		CLASS_TIME, CLASS_PRICE, CLASS_PARTICIPATION, CLASS_DETAIL, CLASS_IMG, CLASS_HASHTAG, CLASS_TERMIN, CLASS_INSTRUCTOR FROM CLASS WHERE CLASS_INSTRUCTOR=#{member_name} 
 	</select>
 	
 	<!-- 강사 상세보기 페이지-강사가 진행했던 강의의 후기 리스트 -->
 	<select id="getTreview" parameterType="String" resultType="ReviewDto">
-		SELECT REVIEW.REVIEW_CLASS_SEQ,REVIEW.REVIEW_DETAIL, CLASS.CLASS_INSTRUCTOR, REVIEW.REVIEW_RATING, CLASS.CLASS_NAME, REVIEW.REVIEW_STUDENT FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ AND CLASS.CLASS_INSTRUCTOR = #{member_name};
+		SELECT REVIEW.REVIEW_CLASS_SEQ,REVIEW.REVIEW_DETAIL, CLASS.CLASS_INSTRUCTOR, REVIEW.REVIEW_RATING, CLASS.CLASS_NAME, REVIEW.REVIEW_STUDENT FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ AND CLASS.CLASS_INSTRUCTOR = #{member_name}
 	</select>
 		
 	<update id="updatemember">

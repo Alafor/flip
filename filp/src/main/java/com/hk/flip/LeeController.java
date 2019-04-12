@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.util.concurrent.SynchronousQueue;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -36,6 +37,7 @@ public class LeeController {
 	@RequestMapping(value = "/tdetail.do", method = RequestMethod.GET)//로그인 성공 여부 확인 후 메인으로
 	public String tdetail(HttpServletRequest request,Locale locale, Model model,String member_name) {
 		logger.info("강사상세보기{}.", locale);
+		System.out.println(member_name);
 		MemberDto dto=memberService.getTProfile(member_name);
 		List<ClassDto> classlist = memberService.getTclass(member_name);
 		List<ReviewDto> reviewlist = memberService.getTreview(member_name);

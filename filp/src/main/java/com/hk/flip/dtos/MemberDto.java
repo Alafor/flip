@@ -15,8 +15,17 @@ public class MemberDto {
 	private String member_info;
 	private Date member_regdate;
 	private ClassDto classdto;
+	private String avg; //강사 상세정보 페이지에 강사 평균 평점 as avg
 	
 	
+	public String getAvg() {
+		return avg;
+	}
+
+	public void setAvg(String avg) {
+		this.avg = avg;
+	}
+
 	public ClassDto getClassdto() {
 		return classdto;
 	}
