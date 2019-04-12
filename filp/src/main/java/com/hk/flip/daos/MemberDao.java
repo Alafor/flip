@@ -15,7 +15,7 @@ public class MemberDao implements IMemberDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlsession;
-	private String namespace = "com.hk.flip.";
+	private String namespace = "com.hk.flip.Member.";
 	
 	//로그인
 	@Override
@@ -33,12 +33,15 @@ public class MemberDao implements IMemberDao {
 		return cnt>0?true:false;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public boolean overlappedID(String id) {
 		int cnt = sqlsession.selectOne(namespace+"idcheck",id);
 		return cnt>0?true:false;
 	}
 
+=======
+>>>>>>> branch 'master' of https://github.com/Alafor/FLIP.git
 	
 	//강사 상세보기
 	@Override

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <% request.setCharacterEncoding("utf-8"); %>
 <% response.setContentType("text/html; charset=utf-8"); %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <title>Insert title here</title>
@@ -42,46 +42,11 @@
 			</div>
 			<div class="site-mobile-menu-body"></div>
 		</div>
-
-		<header class="site-navbar container py-0 bg-white navbar-fixed-top" style="position: fixed;" role="banner">
-
-			<!-- <div class="container"> -->
-			<div class="row align-items-center">
-				<div class="col-6 col-xl-2">
-					<h1 class="mb-0 site-logo">
-						<a href="main2.do" class="text-black mb-0"><img alt="로고" src="resources/images/로고.png"></a>
-					</h1>
-				</div>
-				<div class="col-12 col-md-10 d-none d-xl-block">
-					<nav class="site-navigation position-relative text-right " role="navigation">
-						<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-							<li>
-								<form action="#" method="post">
-									<div class="input-group mb-3 ">
-										<input type="text" class="form-control  text-black bg-transparent " style="border-left-radius: 10px;" placeholder="검색어를 입력하세요.">
-										<div class="input-group-append">
-											<button class="btn btn-primary text-white rounded" type="button">Search</button>
-										</div>
-									</div>
-								</form>
-							</li>
-
-							<li><a href="#"><b>서비스 소개</b></a></li>
-							<li class="ml-xl-3 login"><a href="#"><span class="border-left pl-xl-4"></span><b>로그인</b></a></li>
-							<li><a href="#"><b>강사가입</b></a></li>
-							<li><a href="#"><b>회원가입</b></a></li>
-							<li><a href="#" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
-						</ul>
-					</nav>
-				</div>
-				<div class="d-inline-block d-xl-none ml-auto py-3 col-6 text-right" style="position: relative; top: 3px;">
-					<a href="#" class="site-menu-toggle js-menu-toggle text-black">
-					<span class="icon-menu h3"></span></a>
-				</div>
-			</div>
-		</header>
-
-
+		
+		<!-- header -->
+		<jsp:include page="header.jsp" />
+		<!-- header 종료 -->
+		
 		<div class="site-blocks-cover overlay"
 			style="background-image: url('resources/images/제빵.png');"
 			data-aos="fade" data-stellar-background-ratio="0.5">
@@ -922,85 +887,16 @@
 		</div>
 	</div>
 
-					<!-- 광고 이미지 세션 -->
-	<div class="newsletter bg-white py-5 " style="background-size: cover;">
-		<div class="container" style="max-width: 100%; height: auto;">
-			<div class="listing-item">
-				<div class="listing-image">
-					<img src="resources/images/사진.jpg" alt="Image" class="img-fluid">
-				</div>
-			</div>
-		</div>
+	<!-- 광고 이미지 세션 -->
+	<jsp:include page="advertisor.jsp" />
+	<!-- 광고 이미지 세션 종료 -->
+	
+	<!-- footer 수정 해야함  -->
+	<div>
+	<jsp:include page="footer.jsp" />
 	</div>
-
-
-	<footer class="site-footer">						                                          <!-- footer 수정 해야함  -->
-		<div class="container">
-			<div class="row">
-				<div class="col-md-9">
-					<div class="row">
-						<div class="col-md-6">
-							<h2 class="footer-heading mb-4">About</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Provident rerum unde possimus molestias dolorem fuga, illo quis
-								fugiat!</p>
-						</div>
-
-						<div class="col-md-3">
-							<h2 class="footer-heading mb-4">Navigations</h2>
-							<ul class="list-unstyled">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Testimonials</a></li>
-								<li><a href="#">Contact Us</a></li>
-							</ul>
-						</div>
-						<div class="col-md-3">
-							<h2 class="footer-heading mb-4">Follow Us</h2>
-							<a href="#" class="pl-0 pr-3"><span class="icon-facebook"></span></a>
-							<a href="#" class="pl-3 pr-3"><span class="icon-twitter"></span></a>
-							<a href="#" class="pl-3 pr-3"><span class="icon-instagram"></span></a>
-							<a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-3">
-					<form action="#" method="post">
-						<div class="input-group mb-3">
-							<input type="text"
-								class="form-control border-secondary text-white bg-transparent"
-								placeholder="Search products..." aria-label="Enter Email"
-								aria-describedby="button-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary text-white" type="button"
-									id="button-addon2">Search</button>
-							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-			<div class="row pt-5 mt-5 text-center">
-				<div class="col-md-12">
-					<div class="border-top pt-5">
-						<p>
-
-							Copyright &copy;
-							<script>
-								document.write(new Date().getFullYear());
-							</script>
-							All rights reserved | This template is made with <i
-								class="icon-heart" aria-hidden="true"></i> by <a
-								href="https://colorlib.com" target="_blank">Colorlib</a>
-
-						</p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</footer>
-	</div>
-
+	
+	<!-- footer종료 -->
 	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/jquery-ui.js"></script>

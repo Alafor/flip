@@ -10,7 +10,13 @@ public interface IMemberService {
 	public MemberDto logCheck(String id, String password);
 	//회원가입
 	public boolean newMember(MemberDto dto);
+<<<<<<< HEAD
 	//ajax id값 비교
 	public boolean overlappedID(String id);
 
+=======
+	//강사정보가져오기
+	public MemberDto getTProfile(String member_id);
+ 
+>>>>>>> branch 'master' of https://github.com/Alafor/FLIP.git
 }

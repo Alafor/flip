@@ -3,6 +3,24 @@
 
 <mapper namespace="com.hk.flip.Member">
 
+	<resultMap type="com.hk.flip.dtos.MemberDto" id="MemberDtoMap">
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<collection property="classdto" resultMap="ClassDtoMap"/>
+	</resultMap>
+	
+	<resultMap type="com.hk.flip.dtos.ClassDto" id="ClassDtoMap">
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+		<result property="" column=""/>
+	</resultMap>
    <select id="login" resultType="MemberDto" parameterType="Map">
    		SELECT MEMBER_ID ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password};
    </select>
@@ -14,8 +32,28 @@
 		
 	</insert>
 	
+<<<<<<< HEAD
 	<select id="idcheck" parameterType="String" resultType="int">
 		SELECT COUNT(MEMBER_ID) FROM MEMBER WHERE MEMBER_ID=#{ID};
 	</select>
 	
+=======
+	<select id="getTProfile" parameterType="String" resultMap="MemberDtoMap">
+		 
+	</select>
+	
+	<select id="selectmember" resultType="MemberDto">
+		SELECT member_type, member_id, member_password, member_name, member_birth, member_phone, member_email, 
+		member_profile, member_info, member_regdate FROM member where member_id=#{id}
+	</select>
+	
+	<update id="updatemember">
+		UPDATE member SET (member_password, member_name, member_phone, member_email, member_profile, member_info) 
+		= (#{password}, #{name}, #{phone}, #{email}, #{profile}, #{info}) WHERE member_id = #{id}
+	</update>
+	
+	<delete id="deletemember">
+		DELETE FROM member WHERE member_id = #{id}
+	</delete>
+>>>>>>> branch 'master' of https://github.com/Alafor/FLIP.git
 </mapper>

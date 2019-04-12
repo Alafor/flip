@@ -29,4 +29,8 @@ public class MemberService implements IMemberService {
 		return memberDao.overlappedID(id);
 	}
 
+	public MemberDto getTProfile(String member_id) {	//강사 상세보기
+		return memberDao.getTProfile(member_id);
+		
+	}
 }
