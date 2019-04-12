@@ -37,6 +37,7 @@ public class MemberDao implements IMemberDao {
 	@Override
 	public boolean overlappedID(String id) {
 		int cnt = sqlsession.selectOne(namespace+"idcheck",id);
+		System.out.println("cnt:"+cnt);
 		return cnt>0?true:false;
 	}	
 	

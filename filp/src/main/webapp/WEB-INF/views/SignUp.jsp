@@ -19,7 +19,7 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-
+<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 
 <link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
@@ -157,7 +157,7 @@ if( len == 7 ) oThis.value += "-";
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
                   <label class="text-black" for="id">아이디</label> 
-                  <input type="text" id="t_id" class="form-control" name="member_id" >
+                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()">
                 </div>
                 <div id="message"></div>
               </div>
@@ -167,16 +167,16 @@ if( len == 7 ) oThis.value += "-";
                   <input type="text" id="Pw" class="form-control" name="member_password" >
                 </div>
               </div>
-              <div class="row form-group validate-input" data-validate = "패스워드를 입력해주세요">              
-                <div class="col-md-12">
+              <div class="row form-group ">              
+                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요">
                   <label class="text-black" for="password">패스워드확인</label> 
                   <input type="text" id="PwCheck" class="form-control" >
                 </div>
               </div>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input m-b-16" data-validate = "이메일을 정확히 입력해주세요">
+                <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
                   <label class="text-black" for="email">이메일</label> 
-                  <input type="text" class="form-control" name="member_email">
+                  <input type="email" class="form-control" name="member_email">
                 </div>
               </div>
               <div class="row form-group">              

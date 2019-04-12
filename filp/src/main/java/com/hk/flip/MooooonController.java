@@ -30,9 +30,12 @@ public class MooooonController {
 	private IMemberService memberService;
 	
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
-	public String mypage(Locale locale, Model model,HttpServletRequest request) {
+	public String mypage(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		String type = ((MemberDto)request.getSession().getAttribute("loginMember")).getMember_type();
+		/*String type = ((MemberDto)request.getSession().getAttribute("loginMember")).getMember_type();*/
+		
+		MemberDto dto = (MemberDto)session.getAttribute("logInMember");                 /*대영씨 주제 넘게 제가 수정좀 했습니다.*/
+		String type = dto.getMember_type();
 		if(type.equals("S")) {
 			return "s_mypage";
 		}else if(type.equals("T")){

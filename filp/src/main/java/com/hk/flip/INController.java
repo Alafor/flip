@@ -46,7 +46,7 @@ public class INController {
 		MemberDto dto = memberService.logCheck(id,password);
 		System.out.println("dto:"+dto);
 		if(dto!=null) {	
-			session.setAttribute("logInMember", dto );		
+			session.setAttribute("logInMember", dto );	
 			return "redirect:main.do";
 		}else{
 			model.addAttribute("msg", "로그인실패" );
@@ -80,10 +80,11 @@ public class INController {
 		}
 	}
 	
-	@RequestMapping(value = "/handler.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/handler.do", method = RequestMethod.POST)
 	public void handler(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,String id) throws IOException {
 		logger.info("아이디 중복 확인 {}.", locale);
 		PrintWriter writer = response.getWriter();
+		System.out.println("id:"+id);
 		boolean isS = memberService.overlappedID(id);
 		if(isS) {
 			writer.print("not_usable");

@@ -1765,19 +1765,19 @@ h1, h2, h3, h4, h5,
   border: 1px solid #c80000;
   border-radius: 3px;
   padding: 4px 25px 5px 10px;
-  top: 50%;
+  top: 70%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 12px;
+  right: 30px;
   pointer-events: none;
 
-  font-family: "Nanum Gothic",Ubuntu-Regular;
+  font-family: Ubuntu-Regular;
   color: #c80000;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.1;
   text-align: left;
 
   visibility: hidden;
@@ -1791,18 +1791,18 @@ h1, h2, h3, h4, h5,
 
 .alert-validate::after {
   content: "\f12a";
-  font-family: "Nanum Gothic",FontAwesome;
+  font-family: FontAwesome;
   display: block;
   position: absolute;
   color: #c80000;
   font-size: 18px;
-  top: 50%;
+  top: 70%;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
   -o-transform: translateY(-50%);
   transform: translateY(-50%);
-  right: 18px;
+  right: 30px;
 }
 
 .alert-validate:hover:before {

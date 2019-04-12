@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-
+<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
 
 <link rel="stylesheet" href="resources/css/aos.css">
@@ -87,7 +87,7 @@
              
               <div class="row form-group">
                 
-                <div class="col-md-12">
+                <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
                   <label class="text-black" for="id">아이디</label> 
                   <input type="text" name="id" class="form-control">
                 </div>
@@ -95,7 +95,7 @@
 
               <div class="row form-group">
                 
-                <div class="col-md-12">
+                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
                   <label class="text-black" for="password">패스워드</label> 
                   <input type="password" name="password" class="form-control">
                 </div>
@@ -110,7 +110,7 @@
             
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="submit" value="회원가입" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
+                  <input type="submit" value="로그인" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
                 </div>
               </div>
 
