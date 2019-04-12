@@ -130,9 +130,18 @@ if( len == 7 ) oThis.value += "-";
     </div>  
 	
 	
-	<div><h1>회원가입</h1></div>
+
 	<div class="site-section bg-light">
       <div class="container">
+      	<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center border-primary">
+					<h2 class="font-weight-light text-primary">
+						회원<span class="text-warning">가입</span>
+					</h2>
+					<p class="color-black-opacity-5">SIGN&amp;
+						UP</p>
+				</div>
+			</div>
         <div class="row justify-content-center">
           <div class="col-md-7 mb-5"  data-aos="fade">
           
@@ -190,9 +199,9 @@ if( len == 7 ) oThis.value += "-";
                 </div>
               </div>
               
-              <div class="row form-group">
+              <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="submit" value="회원가입" class="btn btn-primary py-2 px-4 text-white">
+                  <input type="submit" value=" 회원가입 " class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
                 </div>
               </div>
               </form>
