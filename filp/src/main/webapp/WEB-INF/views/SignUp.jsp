@@ -64,7 +64,7 @@
           }
        },
        error:function(data,textStatus){
-          alert("에러가 발생했습니다.");ㅣ
+          alert("에러가 발생했습니다.");
        },
        complete:function(data,textStatus){
           //alert("작업을완료 했습니다");
@@ -108,7 +108,7 @@ if( len == 7 ) oThis.value += "-";
     </div>
     
 	<!-- header -->
-		<jsp:include page="header.jsp" />
+		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->
 	
 	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -124,14 +124,13 @@ if( len == 7 ) oThis.value += "-";
               </div>
             </div>
 
-            
           </div>
         </div>
       </div>
     </div>  
 	
 	
-	
+	<div><h1>회원가입</h1></div>
 	<div class="site-section bg-light">
       <div class="container">
         <div class="row justify-content-center">
