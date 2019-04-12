@@ -17,7 +17,7 @@ public class MemberDao implements IMemberDao {
 	private SqlSessionTemplate sqlsession;
 	private String namespace = "com.hk.flip.Member.";
 	
-	//濡쒓렇�씤
+	//
 	@Override
 	public MemberDto logCheck(String id, String password) {
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -43,14 +43,16 @@ public class MemberDao implements IMemberDao {
 		return sqlsession.selectOne(namespace+"getTprofile", member_id);
 	}
 
+
 	@Override
-	public boolean deleteMember(String id) {		
-		return sqlsession.delete(namespace+"deletemember", id)>0?true:false;		
+	public boolean deleteMember(String id) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 	@Override
 	public boolean updateMember(MemberDto dto) {
-		return sqlsession.update(namespace+"updatemember", dto)>0?true:false; 
+		// TODO Auto-generated method stub
+		return false;
 	}
-
 }

@@ -73,71 +73,78 @@
     });  //end ajax    
  }      
 </script>
+<script type="text/javascript">
 
+function auto_date( e, oThis ){
+
+var num_arr = [ 
+97, 98, 99, 100, 101, 102, 103, 104, 105, 96,
+48, 49, 50, 51, 52, 53, 54, 55, 56, 57
+]
+
+var key_code = ( e.which ) ? e.which : e.keyCode;
+if( num_arr.indexOf( Number( key_code ) ) != -1 ){
+
+var len = oThis.value.length;
+if( len == 4 ) oThis.value += "-";
+if( len == 7 ) oThis.value += "-";
+
+}
+
+}
+
+</script>
 
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-    <div class="container">
-      <a class="navbar-brand" href="ShopControl.do?command=main">Flip</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarResponsive">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item active">
-            <a class="nav-link" href="ShopControl.do?command=main">Home
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-         </ul>
-      </div>
-    </div>
-  </nav>
+	
+	<!-- header -->
+		<jsp:include page="header.jsp" />
+		<!-- header 종료 -->
 	
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100 p-t-50 p-b-90">
-				<form class="login100-form validate-form flex-sb flex-w" action="ShopControl.do" onsubmit="return checkpw()" method="post">
-				<input type="hidden" name ="command" value="signup">
+				<form class="login100-form validate-form flex-sb flex-w" action="signup.do" onsubmit="return checkpw()" method="post">
 					<span class="login100-form-title p-b-51">
-						SIGNUP
+						회원가입<p><hr style="border: solid 2px #30e3ca; width:100%;"></p>
 					</span>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Username is required">
-						<input class="input100" type="text" name="name" placeholder="이름">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "성함을 입력해주세요">
+						<input class="input100" type="text" name="member_name" placeholder="이름">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Userid is required">
-						<input class="input100" id="t_id" type="text" name="id" placeholder="아이디" onchange="fn_process()">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "아이디를 입력해주세요">
+						<input class="input100" id="t_id" type="text" name="member_id" placeholder="아이디" onchange="fn_process()">
 						<span class="focus-input100"></span>
 						<div id="message"></div>
 					</div>
 					
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" id="Pw" type="password" name="password" placeholder="비밀번호">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "비밀번호를 입력해주세요">
+						<input class="input100" id="Pw" type="password" name="member_password" placeholder="비밀번호">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Password is required">
-						<input class="input100" id="PwCheck" type="password" name="password" placeholder="비밀번호확인">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "비밀번호를 입력해주세요">
+						<input class="input100" id="PwCheck" type="password" name="member_password" placeholder="비밀번호확인">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Email is required">
-						<input class="input100" type="text" name="email" placeholder="이메일">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "이메일을 정확히 입력해주세요">
+						<input class="input100" type="text" name="member_email" placeholder="이메일">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Address is required">
-						<input class="input100" type="text" name="address" placeholder="배송지">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "생년월일을 입력해주세요">
+						<input class="input100" type="text" name="member_birth" placeholder="생년월일"
+						onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
 						<span class="focus-input100"></span>
 					</div>
 					
-					<div class="wrap-input100 validate-input m-b-16" data-validate = "Address is required">
-						<input class="input100" type="text" name="phone" placeholder="연락처">
+					<div class="wrap-input100 validate-input m-b-16" data-validate = "연락처를 입력해주세요">
+						<input class="input100" type="text" name="member_phone" placeholder="연락처">
 						<span class="focus-input100"></span>
 					</div>
 					
@@ -152,15 +159,15 @@
 						</div>
 
 						<div>
-							<a href="/LoginForm.jsp" class="txt1">
-								Go To LogIn?
+							<a href="/loginform.do" class="txt1">
+								로그인?
 							</a>
 						</div>
 					</div>
 
 					<div class="container-login100-form-btn m-t-17">
 						<button class="login100-form-btn" type="submit">
-							Sign UP
+							회원가입
 						</button>
 					</div>
 
@@ -170,7 +177,11 @@
 	</div>
 	
 
-	<div id="dropDownSelect1"></div>
+	<!-- <div id="dropDownSelect1"></div> -->
+	<div>
+	<jsp:include page="footer.jsp" />
+	</div>
+	
 	
 <!--===============================================================================================-->
 	<script src="Resources/LoginForm/vendor/jquery/jquery-3.2.1.min.js"></script>
