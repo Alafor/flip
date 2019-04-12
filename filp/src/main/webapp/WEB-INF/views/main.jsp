@@ -76,14 +76,15 @@
 		<div class="site-section bg-light">
 			<div class="container">
 				<div class="overlap-category mb-5">
-
 					<!-- 카테고리 시작 -->
 					<div class="row align-items-stretch no-gutters">
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-1 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
-								class="icon"><span class="flaticon-meeting"></span></span> <span
-								class="caption mb-2 d-block"><b>인기수업</b></span> <span
-								class="number">219</span>
+							<a href="#" class="popular-category h-100">
+							 <span class="icon">
+							 	<span class="flaticon-meeting"></span>
+							 </span>
+							 <span class="caption mb-2 d-block"><b>인기수업</b></span> 
+							 <span class="number">219</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">

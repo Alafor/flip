@@ -1497,16 +1497,16 @@ h1, h2, h3, h4, h5,
     -webkit-transition: .1s all ease;
     -o-transition: .1s all ease;
     transition: .1s all ease; }
-  .popular-category:hover {
+  .popular-category:focus {
     background: #30e3ca;
     -webkit-box-shadow: 0 5px 30px -5px rgba(48, 227, 202, 0.5);
     box-shadow: 0 5px 30px -5px rgba(48, 227, 202, 0.5);
     top: -10px; }
-    .popular-category:hover .caption {
+    .popular-category:focus .caption {
       color: #fff; }
-    .popular-category:hover .icon {
+    .popular-category:focus .icon {
       color: #fff; }
-    .popular-category:hover .number {
+    .popular-category:focus .number {
       background: #1bc5ad;
       color: #fff; }
 
