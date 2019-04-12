@@ -44,6 +44,7 @@ public class INController {
 		logger.info("로그인 하기{}.", locale);
 		HttpSession session =request.getSession();
 		MemberDto dto = memberService.logCheck(id,password);
+		System.out.println("dto:"+dto);
 		if(dto!=null) {	
 			session.setAttribute("logInMember", dto );		
 			return "redirect:main.do";
