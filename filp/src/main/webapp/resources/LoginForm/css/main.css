@@ -396,7 +396,7 @@ iframe {
 
 .alert-validate::after {
   content: "\f12a";
-  font-family: FontAwesome;
+  font-family: "Nanum Gothic",FontAwesome;
   display: block;
   position: absolute;
   color: #c80000;
