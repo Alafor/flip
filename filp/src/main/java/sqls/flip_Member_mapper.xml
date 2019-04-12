@@ -3,24 +3,6 @@
 
 <mapper namespace="com.hk.flip.Member">
 
-	<resultMap type="com.hk.flip.dtos.MemberDto" id="MemberDtoMap">
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<collection property="classdto" resultMap="ClassDtoMap"/>
-	</resultMap>
-	
-	<resultMap type="com.hk.flip.dtos.ClassDto" id="ClassDtoMap">
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-		<result property="" column=""/>
-	</resultMap>
    <select id="login" resultType="MemberDto" parameterType="Map">
    		SELECT MEMBER_ID ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password};
    </select>
@@ -32,12 +14,11 @@
 		
 	</insert>
 	
-<<<<<<< HEAD
 	<select id="idcheck" parameterType="String" resultType="int">
 		SELECT COUNT(MEMBER_ID) FROM MEMBER WHERE MEMBER_ID=#{ID};
 	</select>
 	
-=======
+	
 	<select id="getTProfile" parameterType="String" resultMap="MemberDtoMap">
 		 
 	</select>
@@ -55,5 +36,4 @@
 	<delete id="deletemember">
 		DELETE FROM member WHERE member_id = #{id}
 	</delete>
->>>>>>> branch 'master' of https://github.com/Alafor/FLIP.git
 </mapper>
