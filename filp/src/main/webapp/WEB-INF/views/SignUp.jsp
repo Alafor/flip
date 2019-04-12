@@ -138,8 +138,7 @@ if( len == 7 ) oThis.value += "-";
 					<h2 class="font-weight-light text-primary">
 						회원<span class="text-warning">가입</span>
 					</h2>
-					<p class="color-black-opacity-5">SIGN&amp;
-						UP</p>
+					<p class="color-black-opacity-5">SIGN&amp;UP</p>
 				</div>
 			</div>
         <div class="row justify-content-center">
