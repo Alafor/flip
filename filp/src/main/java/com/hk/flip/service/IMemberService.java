@@ -2,7 +2,11 @@ package com.hk.flip.service;
 
 
 
+import java.util.List;
+
+import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.dtos.ReviewDto;
 
 public interface IMemberService {
 
@@ -12,7 +16,10 @@ public interface IMemberService {
 	public boolean newMember(MemberDto dto);
 	//ajax id값 비교
 	public boolean overlappedID(String id);
-	//강사정보가져오기
-	public MemberDto getTProfile(String member_id);
- 
+	//강사 상세정보 - 강사프로필가져오기
+	public MemberDto getTProfile(String member_name);
+	//강사 상세정보 - 강사 강의목록 가져오기
+	public List<ClassDto> getTclass(String member_name);
+	//강사 상세정보 - 강사 강의후기 가져오기
+	public List<ReviewDto> getTreview(String member_name);
 }

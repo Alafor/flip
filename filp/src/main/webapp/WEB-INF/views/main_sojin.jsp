@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- 클릭할 이미지 없을 때 임시 링크 페이지 -->
-<a href="tdetail.do?member_id=kin">강사1</a>
+<a href="tdetail.do?member_name=김일남">test강사1</a>
 <a href="tdetail.do?member_id=kin">강사1</a>
 <a href="tdetail.do?member_id=kin">강사1</a>
 </body>
