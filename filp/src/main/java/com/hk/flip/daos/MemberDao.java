@@ -29,8 +29,8 @@ public class MemberDao implements IMemberDao {
 	}
 	
 	@Override
-	public boolean newMember(MemberDto dto) {
-		int cnt = sqlsession.insert(namespace+"signupmember",dto);
+	public boolean newMember(MemberDto dto) {	
+		int cnt = sqlsession.insert(namespace+"signupmember",dto);	
 		return cnt>0?true:false;
 	}
 

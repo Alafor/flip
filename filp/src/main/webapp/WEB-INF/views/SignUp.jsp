@@ -145,6 +145,7 @@ if( len == 7 ) oThis.value += "-";
           <div class="col-md-7 mb-5"  data-aos="fade">
           
           	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post">
+          	<input type="hidden" name="member_type"  value="S">
              
  			<div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
@@ -169,7 +170,7 @@ if( len == 7 ) oThis.value += "-";
               <div class="row form-group validate-input" data-validate = "패스워드를 입력해주세요">              
                 <div class="col-md-12">
                   <label class="text-black" for="password">패스워드확인</label> 
-                  <input type="text" id="PwCheck" class="form-control" name="member_password" >
+                  <input type="text" id="PwCheck" class="form-control" >
                 </div>
               </div>
               <div class="row form-group">              

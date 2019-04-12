@@ -71,7 +71,6 @@ public class INController {
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String signup(Locale locale, Model model,MemberDto dto) {
 		logger.info("회원가입하기{}.", locale);
-		
 		boolean isS = memberService.newMember(dto);
 		if(isS) {
 			return "redirect:loginform.do";

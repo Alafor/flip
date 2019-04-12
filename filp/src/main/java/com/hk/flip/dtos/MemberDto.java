@@ -132,6 +132,17 @@ public class MemberDto {
 		this.member_info = member_info;
 		this.member_regdate = member_regdate;
 	} 
+	public MemberDto(String member_type, String member_id, String member_password, String member_name,
+			String member_birth, String member_phone, String member_email) {
+		this.member_type = member_type;
+		this.member_id = member_id;
+		this.member_password = member_password;
+		this.member_name = member_name;
+		this.member_birth = member_birth;
+		this.member_phone = member_phone;
+		this.member_email = member_email;
+	
+	}
 	
 	public MemberDto(String member_type, String member_id, String member_name) {
 		this.member_type = member_type;
