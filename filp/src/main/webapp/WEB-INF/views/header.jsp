@@ -27,7 +27,7 @@
 							</li>
 
 							<li><a href="#"><b>서비스 소개</b></a></li>
-							<li class="ml-xl-3 login"><a href="loginform.do"><span class="border-left pl-xl-4"></span><b>로그인</b></a></li>
+							<li class="ml-xl-3 login"><a href= "loginform.do"><span class="border-left pl-xl-4"></span><b>로그인</b></a></li>
 							<li><a href="#"><b>강사가입</b></a></li>
 							<li><a href="signupform.do"><b>회원가입</b></a></li>
 							<li><a href="#" class="cta"><span class="bg-primary text-white rounded">+ Post an Ad</span></a></li>
