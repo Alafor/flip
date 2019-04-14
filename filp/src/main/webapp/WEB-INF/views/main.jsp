@@ -79,18 +79,17 @@
 					<!-- 카테고리 시작 -->
 					<div class="row align-items-stretch no-gutters">
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-1 col-lg-1">
-							<a href="#" class="popular-category h-100">
-							 <span class="icon">
-							 	<span class="flaticon-meeting"></span>
-							 </span>
-							 <span class="caption mb-2 d-block"><b>인기수업</b></span> 
-							 <span class="number">219</span>
+							<a href="#" class="popular-category h-100"> <span
+								class="icon"> <span class="flaticon-meeting"></span>
+							</span> <span class="caption mb-2 d-block"><b>인기수업</b></span> <span
+								class="number">219</span>
 							</a>
 						</div>
 						<!-- 하라라 -->
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100" id="exercise}" data-exercise="exercise"> <span
-								class="icon"><span class="flaticon-running"></span></span> <span
+							<a href="#" class="popular-category h-100" id="exercise}"
+								data-exercise="exercise"> <span class="icon"><span
+									class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
 							</a>
@@ -187,37 +186,36 @@
 				<div class="row">
 					<div class="col-12  block-13">
 						<div class="owl-carousel nonloop-block-13">
-
 							<!-- 선생님 찾기  -->
 							<div class="d-block d-md-flex listing vertical">
 								<a href="#" class="img d-block"
 									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
-									<span class="category">Electronics</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
+									<span class="category">강사이름</span> 
+									<span class="instructor_img">강사사진</span>
+									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
 										<a href="#"></a>
 									</h3>
-									<address>Don St, Brooklyn, New York</address>
+									
+									<p>강의내용</p>
 									<p class="mb-0">
 										<span class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
+											class="icon-star text-warning"></span> 
+											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
 									</p>
+									<address>주소</address>
 								</div>
-							</div>	
-							
-							<!-- 선생님 찾기 종료 -->			
+							</div>
+
+							<!-- 선생님 찾기 종료 -->
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-
-
 
 
 
@@ -242,20 +240,22 @@
 								<a href="#" class="img d-block"
 									style="background-image: url('resources/images/img_1.jpg')"></a>
 								<div class="lh-content">
-									<span class="category">Cars &amp; Vehicles</span> <a href="#"
-										class="bookmark"><span class="icon-heart"></span></a>
+									<span class="category">강사이름</span> 
+									<span class="instructor_img">강사사진</span>
+									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
-										<a href="#">Red Luxury Car</a>
+										<a href="#"></a>
 									</h3>
-									<address>Don St, Brooklyn, New York</address>
+									
+									<p>강의내용</p>
 									<p class="mb-0">
 										<span class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-secondary"></span> <span class="review">(3
-											Reviews)</span>
+											class="icon-star text-warning"></span> 
+											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
 									</p>
+									<address>주소</address>
 								</div>
 							</div>
 						</div>
@@ -286,20 +286,22 @@
 							<a href="#" class="img d-block"
 								style="background-image: url('resources/images/img_1.jpg')"></a>
 							<div class="lh-content">
-								<span class="category">Cars &amp; Vehicles</span> <a href="#"
-									class="bookmark"><span class="icon-heart"></span></a>
-								<h3>
-									<a href="#">Red Luxury Car</a>
-								</h3>
-								<address>Don St, Brooklyn, New York</address>
-								<p class="mb-0">
-									<span class="icon-star text-warning"></span> <span
-										class="icon-star text-warning"></span> <span
-										class="icon-star text-warning"></span> <span
-										class="icon-star text-warning"></span> <span
-										class="icon-star text-secondary"></span> <span class="review">(3
-										Reviews)</span>
-								</p>
+							<span class="category">강사이름</span> 
+									<span class="instructor_img">강사사진</span>
+									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
+									<h3>
+										<a href="#"></a>
+									</h3>
+									
+									<p>강의내용</p>
+									<p class="mb-0">
+										<span class="icon-star text-warning"></span> <span
+											class="icon-star text-warning"></span> <span
+											class="icon-star text-warning"></span> <span
+											class="icon-star text-warning"></span> 
+											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
+									</p>
+									<address>주소</address>
 							</div>
 						</div>
 					</div>
@@ -518,6 +520,6 @@
 			});
 		});
 	</script>
-<a href="tdetail.do?member_name=김일남">test강사1</a>
+	<a href="tdetail.do?member_name=김일남">test강사1</a>
 </body>
 </html>
