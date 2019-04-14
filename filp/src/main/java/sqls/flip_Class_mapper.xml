@@ -4,8 +4,7 @@
 <mapper namespace="com.hk.flip.Class">
 
 	<!-- 강사들의 강의 10개만 불러오기 -->
-	<select id="mainclasslist" parameterType="String"
-		resultType="ClassDto">
+	<select id="mainclasslist" parameterType="String" resultType="ClassDto">
 	<![CDATA[ 
 		SELECT
 		E.SEQ,

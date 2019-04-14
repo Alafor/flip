@@ -87,8 +87,9 @@
 							 <span class="number">219</span>
 							</a>
 						</div>
+						<!-- 하라라 -->
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" id="exercise}" data-exercise="exercise"> <span
 								class="icon"><span class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
@@ -195,7 +196,7 @@
 									<span class="category">Electronics</span> <a href="#"
 										class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
-										<a href="#">iPhone X gray</a>
+										<a href="#"></a>
 									</h3>
 									<address>Don St, Brooklyn, New York</address>
 									<p class="mb-0">
@@ -502,7 +503,20 @@
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	<script>
-		
+		$(function(){
+			
+			$(this).on("click",function(){
+				var department = $(this).attr("data-exercise");
+				$.ajax({
+					url:"mainlist.do",
+					method:"get",
+					data: department,
+					success: function(data,status,xhr){
+						
+					}
+				})
+			});
+		});
 	</script>
 <a href="tdetail.do?member_name=김일남">test강사1</a>
 </body>
