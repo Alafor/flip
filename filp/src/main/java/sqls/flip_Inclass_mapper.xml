@@ -19,7 +19,7 @@
 	</select>
 	
 	<delete id="delmyinclass" parameterType="Map">
-		DELETE FROM inclass WHERE inclass_member_seq = #{member_seqs[0]} AND inclass_class_seq = IN
+		DELETE FROM inclass WHERE inclass_member_seq = #{member_seqs[0]} AND inclass_class_seq IN
 		<foreach collection="class_seqs" item="class_seq" open="(" separator="," close=")">
 			#{class_seq}
 		</foreach>
