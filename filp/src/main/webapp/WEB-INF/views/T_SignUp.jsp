@@ -227,7 +227,7 @@ if( len == 7 ) oThis.value += "-";
         					<h6><b>프로필</b></h6></div></div>
         		       <div class="col-md-6 hidden_input" style="text-align:center;margin-top:15%"><p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
         					<label for="hidden_file">프로필등록</label>
-        						<input type="file" id="hidden_file" class="text-center center-block file-upload" name=""></figure>
+        						<input type="file" id="hidden_file" class="text-center center-block file-upload"  name=""></figure>
      					</div><br>
               
               		</div>
