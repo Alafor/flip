@@ -88,36 +88,35 @@
 						</div>
 						
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100" id="exercise}"
-								data-exercise="exercise"> <span class="icon"><span
+							<a href="#" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
 									class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="music"> <span
 								class="icon"><span class="flaticon-microphone"></span></span> <span
 								class="caption mb-2 d-block"><b>음악</b></span> <span
 								class="number">398</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="photo"> <span
 								class="icon"><span class="flaticon-cameras"></span></span> <span
 								class="caption mb-2 d-block"><b>사진</b></span> <span
 								class="number">1,229</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="lifestyle"> <span
 								class="icon"><span class="flaticon-dance"></span></span> <span
 								class="caption mb-2 d-block"><b>YOLO</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="investment"> <span
 								class="icon"><span class="flaticon-money"></span></span> <span
 								class="caption mb-2 d-block"><b>재태크</b></span> <span
 								class="number">29,221</span>
@@ -126,28 +125,28 @@
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="beauty"> <span
 								class="icon"><span class="flaticon-soap"></span></span> <span
 								class="caption mb-2 d-block"><b>뷰티</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="foreignlanguage"> <span
 								class="icon"><span class="flaticon-book"></span></span> <span
 								class="caption mb-2 d-block"><b>외국어</b></span> <span
 								class="number">29,221</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="videoediting"> <span
 								class="icon"><span class="flaticon-video-player"></span></span>
 								<span class="caption mb-2 d-block"><b>영상편집</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="travel"> <span
 								class="icon"><span class="flaticon-airplane"></span></span> <span
 								class="caption mb-2 d-block"><b>여행</b></span> <span
 								class="number">29,221</span>
@@ -156,7 +155,7 @@
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="it"> <span
 								class="icon"><span class="flaticon-workstation"></span></span> <span
 								class="caption mb-2 d-block"><b>IT</b></span> <span
 								class="number">219</span>
@@ -164,7 +163,7 @@
 						</div>
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="#" class="popular-category h-100" data-category="design"> <span
 								class="icon"><span class="flaticon-presenter"></span></span> <span
 								class="caption mb-2 d-block"><b>디자인</b></span> <span
 								class="number">219</span>
@@ -196,15 +195,17 @@
 								<div class="lh-content">
 									<span class="category">${classlist.class_creator_name}</span> 
 									<span class="instructor_img">강사사진</span>
-									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
+									<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
-										<a href="#"></a>
+										<a href="#">${classlist.class_name}</a>
 									</h3>
-									
+									<!-- 별 -->
 									<p>${class_name}</p>
-									<p class="mb-0 teacherstar" data-minority="${classlist.class_rating}">
-										<span class="review">(3 Reviews)</span>
+									<p class="mb-0" data-minority="${classlist.class_rating}">
+										<div class="teacherstar" style="float:left;"></div>
+										<span class="review" >(3 Reviews)</span>
 									</p>
+									<!-- 별 -->
 									<address>${classlist.class_area}</address>
 								</div>
 							</div>
@@ -243,9 +244,8 @@
 									<span class="instructor_img">강사사진</span>
 									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
-										<a href="#"></a>
+										<a href="#">강의이름</a>
 									</h3>
-									
 									<p>강의내용</p>
 									<p class="mb-0">
 										<span class="icon-star text-warning"></span> <span
@@ -289,7 +289,7 @@
 									<span class="instructor_img">강사사진</span>
 									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
-										<a href="#"></a>
+										<a href="#">강의이름</a>
 									</h3>
 									
 									<p>강의내용</p>
@@ -503,34 +503,19 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
-	<script defer="defer">
+	<script src="resources/js/star.js" defer="defer"></script>
+	<script>
 		$(function(){
-			$(this).on("click",function(){
-				var department = $(this).attr("data-exercise");
+			$(".popular-category").on("click",function(){
+				var department = $(".popular-category").attr("data-category");
 				$.ajax({
-					url:"mainlist.do",
-					method:"get",
+					url:"main.do",
+					method:"post",
 					data: department,
 					success: function(data,status,xhr){
 					}
 				})
 			});
-			
-			var mino = $(".teacherstar").attr("data-minority");
-			//소수점 뒷자리
-			var transmino = mino.substr(2,1);
-			//소수점 앞자리
-			var integer = mino.substr(0,1);
-			var star="";
-			var halfstar='<span class="fas fa-star-half" style="color: gold"></span>';
-			var minonum=parseInt(transmino);
-			for(i=0;i<=integer;i++){
-				star+='<span class="fas fa-star" style="color:gold;"></span>'
-			}
-			if(transmino>=5){
-				star+=halfstar;
-			}
-			$(".teacherstar").after(star);
 		});
 	</script>
 	<a href="tdetail.do?member_name=김일남">test강사1</a>
