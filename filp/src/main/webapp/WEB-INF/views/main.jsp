@@ -6,6 +6,7 @@
 <%
 	response.setContentType("text/html; charset=utf-8");
 %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -85,7 +86,7 @@
 								class="number">219</span>
 							</a>
 						</div>
-						<!-- 하라라 -->
+						
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
 							<a href="#" class="popular-category h-100" id="exercise}"
 								data-exercise="exercise"> <span class="icon"><span
@@ -182,16 +183,17 @@
 						<p class="color-black-opacity-5">Find a tutor</p>
 					</div>
 				</div>
-
+				
 				<div class="row">
 					<div class="col-12  block-13">
 						<div class="owl-carousel nonloop-block-13">
 							<!-- 선생님 찾기  -->
+							<c:forEach var="classlist" items="${classlist}">
 							<div class="d-block d-md-flex listing vertical">
 								<a href="#" class="img d-block"
 									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
-									<span class="category">강사이름</span> 
+									<span class="category">${classlist.class_instructor}</span> 
 									<span class="instructor_img">강사사진</span>
 									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
@@ -209,7 +211,7 @@
 									<address>주소</address>
 								</div>
 							</div>
-
+							</c:forEach>
 							<!-- 선생님 찾기 종료 -->
 						</div>
 					</div>

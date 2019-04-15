@@ -26,13 +26,7 @@ public class SeoController {
 	private IClassService classService;
 		
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
-	public String mainOpen(Locale locale, Model model) {
-		logger.info("Started main{}.", locale);
-		return "main";
-	}
-	
-	@RequestMapping(value = "/mainlist.do", method = RequestMethod.GET )
-	public String mainClassList(Locale locale, Model model, String department) {
+	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
 		List<ClassDto> classList = classService.mainClassList(department);
 		System.out.println("classdto="+classList);

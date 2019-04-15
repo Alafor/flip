@@ -8,7 +8,7 @@
 
 <head>
 	<title>home.jsp</title>
-	<meta http-equiv="refresh" content="0; url=main.do">    
+	<meta http-equiv="refresh" content="0; url=main.do?department = exercise">    
 </head>
 <body>
 
