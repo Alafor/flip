@@ -19,34 +19,34 @@ public class MyPageService implements IMyPageService {
 		// TODO Auto-generated constructor stub
 	}
 	
+
+	//내 정보 가져오기
+	@Override
+	public MemberDto viewMyMember(int member_seq) {
+		return memberDao.getTProfile(member_seq);
+	}
 	
-		//내 정보 가져오기
-		@Override
-		public MemberDto viewMyMember(String id) {
-			return memberDao.getTProfile(id);
-		}
-		
-		//내정보 수정
-		@Override
-		public boolean updateMyMember(MemberDto dto) {
-			return memberDao.updateMember(dto);
-		}
-		
-		//회원 탈퇴
-		@Override
-		public boolean delMyMember(String id) {
-			return memberDao.deleteMember(id);
-		}
-		
-		//내 수강 리스트 가져오기
-		@Override
-		public List<ClassDto> getAllInclassList(String id){
-			return dao.getAllMyInclass(id);
-		}
-		
-		//내 수강삭제
-		@Override
-		public boolean delMyInclass(String id, String[] seqs){
-			return dao.delMyinclass(id, seqs);
-		}
+	//내정보 수정
+	@Override
+	public boolean updateMyMember(MemberDto dto) {
+		return memberDao.updateMember(dto);
+	}
+	
+	//회원 탈퇴
+	@Override
+	public boolean delMyMember(String[] chks) {
+		return memberDao.deleteMember(chks);
+	}
+	
+	//내 수강 리스트 가져오기
+	@Override
+	public List<ClassDto> getAllInclassList(int member_seq){
+		return dao.getAllMyInclass(member_seq);
+	}
+	
+	//내 수강삭제
+	@Override
+	public boolean delMyInclass(String id, String[] seqs){
+		return dao.delMyinclass(id, seqs);
+	}
 }

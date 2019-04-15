@@ -21,24 +21,24 @@ public class ClassWishlistService implements IClassWishlistService {
 	}
 
 	//위시리스트 추가
-	@Override 
-	public boolean addWishlist(String id, int seq){
-		//위시리스트 중복인지 확인
-		if(dao.cheakWishlist(id, seq)) {
-			return false;
-		}else {
-			return dao.insertWishlist(id, seq);
-		}			
+		@Override 
+		public boolean addWishlist(int member_seq, int class_seq){
+			//위시리스트 중복인지 확인
+			if(dao.cheakWishlist(member_seq, class_seq)) {
+				return false;
+			}else {
+				return dao.insertWishlist(member_seq, class_seq);
+			}			
+		}
+		//위시리스트 목록 출력
+		@Override 
+		public List<ClassDto> viewAllWishlist(int member_seq){
+			return dao.viewMyWishlist(member_seq);
+		}	
+		
+		//위시리스트 삭제
+		@Override 
+		public boolean delWishlist(int member_seq, String[] seqs){
+			return dao.delWishlist(seqs, member_seq);
+		}
 	}
-	//위시리스트 목록 출력
-	@Override 
-	public List<ClassDto> viewAllWishlist(String id){
-		return dao.viewMyWishlist(id);
-	}	
-	
-	//위시리스트 삭제
-	@Override 
-	public boolean delWishlist(String id, String[] seqs){
-		return dao.delWishlist(seqs, id);
-	}
-}

@@ -32,20 +32,18 @@ public class MemberService implements IMemberService {
 	}
 	//강사 상세보기 -강사프로필가져오기
 	@Override
-	public MemberDto getTProfile(String member_name) {	
-		return memberDao.getTProfile(member_name);
+	public MemberDto getTProfile(int member_seq) {	
+		return memberDao.getTProfile(member_seq);
 		
 	}
 	//강사 상세정보 - 강사 강의목록 가져오기
 	@Override
-	public List<ClassDto> getTclass(String member_name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ClassDto> getTclass(int member_seq) {
+		return memberDao.getTclass(member_seq);
 	}
 	//강사 상세정보 - 강사 강의후기 가져오기
 	@Override
-	public List<ReviewDto> getTreview(String member_name) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<ReviewDto> getTreview(int member_seq) {
+		return memberDao.getTreview(member_seq);
 	}
 }

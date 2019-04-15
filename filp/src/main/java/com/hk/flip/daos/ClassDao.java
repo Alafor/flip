@@ -26,4 +26,6 @@ public class ClassDao implements IClassDao {
 	public List<ClassDto> mainClassList(String department){
 		return sqlsession.selectList(nameSpace+"mainclasslist", department);
 	}
+	
+	
 }

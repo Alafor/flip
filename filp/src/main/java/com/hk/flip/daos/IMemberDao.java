@@ -14,17 +14,17 @@ public interface IMemberDao {
 
 	public boolean newMember(MemberDto dto);//회원가입
 	
-	public MemberDto getTProfile(String member_name);//강사상세정보-강사프로필
-	
-	public List<ClassDto> getTclass(String member_name);//강사상세정보-강사 강의목록
-
-	public List<ReviewDto> getTreview(String member_name);//강사상세정보 - 강사 강의후기목록
-
 	public boolean overlappedID(String id);
 
-	boolean deleteMember(String id);
+	public boolean updateMember(MemberDto dto);
 
-	boolean updateMember(MemberDto dto);
+	public MemberDto getTProfile(int member_seq);//강사상세정보-강사프로필
+
+	public List<ClassDto> getTclass(int member_seq);//강사상세정보-강사 강의목록
+
+	public List<ReviewDto> getTreview(int member_seq);//강사상세정보 - 강사 강의후기목록
+
+	public boolean deleteMember(String[] chks);
 
 	
 }

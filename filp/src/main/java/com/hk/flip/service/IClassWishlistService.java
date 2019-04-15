@@ -9,11 +9,10 @@ import com.hk.flip.dtos.MemberDto;
 
 public interface IClassWishlistService {
 
-	public boolean addWishlist(String id, int seq);
+	public boolean addWishlist(int member_seq, int class_seq);
 
-	public List<ClassDto> viewAllWishlist(String id);
+	public List<ClassDto> viewAllWishlist(int member_seq);
 
-	public boolean delWishlist(String id, String[] seqs);
-
+	public boolean delWishlist(int member_seq, String[] seqs);
 	
 }

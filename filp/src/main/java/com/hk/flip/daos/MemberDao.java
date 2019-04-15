@@ -43,32 +43,30 @@ public class MemberDao implements IMemberDao {
 	
 	//강의 상세보기 페이지-강사 프로필
 	@Override
-	public MemberDto getTProfile(String member_name) {
-		return sqlsession.selectOne(namespace+"getTProfile", member_name);
+	public MemberDto getTProfile(int member_seq) {
+		return sqlsession.selectOne(namespace+"getTProfile", member_seq);
 	}
 	
 	//강의 상세보기 페이지-강사 강의목록
 	@Override
-	public List<ClassDto> getTclass(String member_name) {
-	return sqlsession.selectList(namespace+"getTclass", member_name);
+	public List<ClassDto> getTclass(int member_seq) {
+	return sqlsession.selectList(namespace+"getTclass", member_seq);
 	}
 	
 	//강의 상세보기 페이지-강사 강의후기
 	@Override
-	public List<ReviewDto> getTreview(String member_name) {
-	return sqlsession.selectList(namespace+"getTreview", member_name);
+	public List<ReviewDto> getTreview(int member_seq) {
+	return sqlsession.selectList(namespace+"getTreview", member_seq);
 	}
 	
 
 	@Override
-	public boolean deleteMember(String id) {
-		// TODO Auto-generated method stub
-		return false;
+	public boolean deleteMember(String[] chks) {
+		return sqlsession.delete(namespace+"getTProfile", chks)>0?true:false;
 	}
 
 	@Override
 	public boolean updateMember(MemberDto dto) {
-		// TODO Auto-generated method stub
-		return false;
+		return sqlsession.update(namespace+"updatemember", dto)>0?true:false;
 	}
 }

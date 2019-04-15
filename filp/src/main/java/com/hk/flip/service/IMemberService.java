@@ -17,9 +17,9 @@ public interface IMemberService {
 	//ajax id값 비교
 	public boolean overlappedID(String id);
 	//강사 상세정보 - 강사프로필가져오기
-	public MemberDto getTProfile(String member_name);
+	public MemberDto getTProfile(int member_seq);
 	//강사 상세정보 - 강사 강의목록 가져오기
-	public List<ClassDto> getTclass(String member_name);
+	public List<ClassDto> getTclass(int member_seq);
 	//강사 상세정보 - 강사 강의후기 가져오기
-	public List<ReviewDto> getTreview(String member_name);
+	public List<ReviewDto> getTreview(int member_seq);
 }
