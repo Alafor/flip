@@ -28,7 +28,10 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<style type="text/css">
+	#id {margin-left: 20px;}
 
+</style>
 <script type="text/javascript">
     function checkpw() {
         var pw = document.getElementById("Pw").value;
@@ -159,7 +162,7 @@ if( len == 7 ) oThis.value += "-";
                   <label class="text-black" for="id">아이디</label> 
                   <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()">
                 </div>
-                <div id="message"></div>
+                <div id="message" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">

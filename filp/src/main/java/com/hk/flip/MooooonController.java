@@ -36,6 +36,7 @@ public class MooooonController {
 		
 		MemberDto dto = (MemberDto)session.getAttribute("logInMember");                 /*대영씨 주제 넘게 제가 수정좀 했습니다.*/
 		String type = dto.getMember_type();
+		System.out.println(type);
 		if(type.equals("S")) {
 			return "s_mypage";
 		}else if(type.equals("T")){
