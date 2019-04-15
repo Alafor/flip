@@ -16,7 +16,7 @@
 	<div class="row align-items-center">
 		<div class="col-6 col-xl-2">
 			<h1 class="mb-0 site-logo">
-				<a href="main2.do" class="text-black mb-0"><img alt="로고"
+				<a href="main.do" class="text-black mb-0"><img alt="로고"
 					src="resources/images/로고.png"></a>
 			</h1>
 		</div>
@@ -38,7 +38,7 @@
 						</form>
 					</li>
 					<li><a href=""><b>서비스 소개 </b></a></li>
-					<c:if test="${loginsession eq null}">
+					<c:if test="${logInMember eq null}">
 						<li class="ml-xl-3 login"><a href="loginform.do"><span
 								class="border-left pl-xl-4"></span><b>로그인</b></a></li>
 						<li><a href="#"><b>회원가입</b></a></li>
@@ -46,9 +46,9 @@
 						<li><a href="#" class="cta"><span
 								class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>
-					<c:if test="${loginsession ne null}">
+					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login"><a href="mypage.do"><span
-								class="border-left pl-xl-4"></span><b>${loginsession.member_name }</b></a></li>
+								class="border-left pl-xl-4"></span><b>${logInMember.member_name }</b></a></li>
 						<li><a href="signupform.do"><b>강사가입</b></a></li>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="#" class="cta"><span

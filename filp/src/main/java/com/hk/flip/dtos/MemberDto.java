@@ -16,148 +16,115 @@ public class MemberDto {
 	private Date member_regdate;
 	private ClassDto classdto;
 	private String avg; //강사 상세정보 페이지에 강사 평균 평점 as avg
-	
-	
-	public String getAvg() {
-		return avg;
-	}
-
-	public void setAvg(String avg) {
-		this.avg = avg;
-	}
-
-	public ClassDto getClassdto() {
-		return classdto;
-	}
-
-	public void setClassdto(ClassDto classdto) {
-		this.classdto = classdto;
-	}
-
+	private int member_seq;
 	public MemberDto() {
-		// TODO Auto-generated constructor stub
 	}
-
-	public String getMember_type() {
-		return member_type;
-	}
-
-	public void setMember_type(String member_type) {
-		this.member_type = member_type;
-	}
-
-	public String getMember_id() {
-		return member_id;
-	}
-
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
-	}
-
-	public String getMember_password() {
-		return member_password;
-	}
-
-	public void setMember_password(String member_password) {
-		this.member_password = member_password;
-	}
-
-	public String getMember_name() {
-		return member_name;
-	}
-
-	public void setMember_name(String member_name) {
-		this.member_name = member_name;
-	}
-
-	public String getMember_birth() {
-		return member_birth;
-	}
-
-	public void setMember_birth(String member_birth) {
-		this.member_birth = member_birth;
-	}
-
-	public String getMember_phone() {
-		return member_phone;
-	}
-
-	public void setMember_phone(String member_phone) {
-		this.member_phone = member_phone;
-	}
-
-	public String getMember_email() {
-		return member_email;
-	}
-
-	public void setMember_email(String member_email) {
-		this.member_email = member_email;
-	}
-
-	public String getMember_profile() {
-		return member_profile;
-	}
-
-	public void setMember_profile(String member_profile) {
-		this.member_profile = member_profile;
-	}
-
-	public String getMember_info() {
-		return member_info;
-	}
-
-	public void setMember_info(String member_info) {
-		this.member_info = member_info;
-	}
-
-	public Date getMember_regdate() {
-		return member_regdate;
-	}
-
-	public void setMember_regdate(Date member_regdate) {
-		this.member_regdate = member_regdate;
-	}
-
-	public MemberDto(String member_type, String member_id, String member_password, String member_name,
-			String member_birth, String member_phone, String member_email, String member_profile, String member_info,
-			Date member_regdate) {
-		this.member_type = member_type;
-		this.member_id = member_id;
-		this.member_password = member_password;
-		this.member_name = member_name;
-		this.member_birth = member_birth;
-		this.member_phone = member_phone;
-		this.member_email = member_email;
-		this.member_profile = member_profile;
-		this.member_info = member_info;
-		this.member_regdate = member_regdate;
-	} 
-	public MemberDto(String member_type, String member_id, String member_password, String member_name,
-			String member_birth, String member_phone, String member_email) {
-		this.member_type = member_type;
-		this.member_id = member_id;
-		this.member_password = member_password;
-		this.member_name = member_name;
-		this.member_birth = member_birth;
-		this.member_phone = member_phone;
-		this.member_email = member_email;
-	
-	}
-	
-	public MemberDto(String member_type, String member_id, String member_name) {
-		this.member_type = member_type;
-		this.member_id = member_id;
-		this.member_name = member_name; 
-		
-	}
-
 	@Override
 	public String toString() {
 		return "MemberDto [member_type=" + member_type + ", member_id=" + member_id + ", member_password="
 				+ member_password + ", member_name=" + member_name + ", member_birth=" + member_birth
 				+ ", member_phone=" + member_phone + ", member_email=" + member_email + ", member_profile="
-				+ member_profile + ", member_info=" + member_info + ", member_regdate=" + member_regdate + "]";
+				+ member_profile + ", member_info=" + member_info + ", member_regdate=" + member_regdate + ", classdto="
+				+ classdto + ", avg=" + avg + ", member_seq=" + member_seq + "]";
 	}
+	public MemberDto(String member_type, String member_id, String member_password, String member_name,
+			String member_birth, String member_phone, String member_email, String member_profile, String member_info,
+			Date member_regdate, ClassDto classdto, String avg, int member_seq) {
+		super();
+		this.member_type = member_type;
+		this.member_id = member_id;
+		this.member_password = member_password;
+		this.member_name = member_name;
+		this.member_birth = member_birth;
+		this.member_phone = member_phone;
+		this.member_email = member_email;
+		this.member_profile = member_profile;
+		this.member_info = member_info;
+		this.member_regdate = member_regdate;
+		this.classdto = classdto;
+		this.avg = avg;
+		this.member_seq = member_seq;
+	}
+	public String getMember_type() {
+		return member_type;
+	}
+	public void setMember_type(String member_type) {
+		this.member_type = member_type;
+	}
+	public String getMember_id() {
+		return member_id;
+	}
+	public void setMember_id(String member_id) {
+		this.member_id = member_id;
+	}
+	public String getMember_password() {
+		return member_password;
+	}
+	public void setMember_password(String member_password) {
+		this.member_password = member_password;
+	}
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+	public String getMember_birth() {
+		return member_birth;
+	}
+	public void setMember_birth(String member_birth) {
+		this.member_birth = member_birth;
+	}
+	public String getMember_phone() {
+		return member_phone;
+	}
+	public void setMember_phone(String member_phone) {
+		this.member_phone = member_phone;
+	}
+	public String getMember_email() {
+		return member_email;
+	}
+	public void setMember_email(String member_email) {
+		this.member_email = member_email;
+	}
+	public String getMember_profile() {
+		return member_profile;
+	}
+	public void setMember_profile(String member_profile) {
+		this.member_profile = member_profile;
+	}
+	public String getMember_info() {
+		return member_info;
+	}
+	public void setMember_info(String member_info) {
+		this.member_info = member_info;
+	}
+	public Date getMember_regdate() {
+		return member_regdate;
+	}
+	public void setMember_regdate(Date member_regdate) {
+		this.member_regdate = member_regdate;
+	}
+	public ClassDto getClassdto() {
+		return classdto;
+	}
+	public void setClassdto(ClassDto classdto) {
+		this.classdto = classdto;
+	}
+	public String getAvg() {
+		return avg;
+	}
+	public void setAvg(String avg) {
+		this.avg = avg;
+	}
+	public int getMember_seq() {
+		return member_seq;
+	}
+	public void setMember_seq(int member_seq) {
+		this.member_seq = member_seq;
+	}
+	
+
 
 	
 

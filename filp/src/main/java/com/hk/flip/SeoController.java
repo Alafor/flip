@@ -19,12 +19,12 @@ import com.hk.flip.service.IClassService;
  */
 @Controller
 public class SeoController {
-	
+
 	private static final Logger logger = LoggerFactory.getLogger(SeoController.class);
-	
+
 	@Autowired
 	private IClassService classService;
-		
+
 	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
@@ -34,3 +34,4 @@ public class SeoController {
 		return "main";
 	}
 }
+
