@@ -34,12 +34,12 @@
  		class_wishlist b WHERE a.seq = b.wishlist_class_seq and d_day &lt;= 3 and d_day>=0 and b.wishlist_class_seq = #{class_seq}
 	</select>
 	
-	<select id="cheakwishlist" resultType="int">
+	<select id="checkwishlist" resultType="int">
 		 SELECT COUNT(wishlist_class_seq) FROM class_wishlist where wishlist_class_seq = #{class_seq} and wishlist_member_seq= #{member_seq}
 	</select>
 	
 	<delete id="delwishlist" parameterType="Map">
-		DELETE FROM class_wishlist WHERE wishlist_member_seq = #{member_seq} wishlist_class_seq = IN
+		DELETE FROM class_wishlist WHERE wishlist_member_seq = #{member_seq} wishlist_class_seq IN
 		<foreach collection="member_seqs" item="seq" open="(" separator="," close=")">
 			#{seq}
 		</foreach>

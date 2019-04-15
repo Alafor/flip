@@ -29,7 +29,7 @@
 							<div class="input-group mb-3 ">
 								<input type="text"
 									class="form-control text-black bg-transparent "
-									style="border-left-radius: 10px;" placeholder="검색어를 입력하세요.">
+									style="border-left-radius: 10px; min-width: 350px;" placeholder="검색어를 입력하세요.">
 								<div class="input-group-append">
 									<button class="btn btn-primary text-white rounded"
 										type="button">Search</button>
@@ -41,7 +41,7 @@
 						<li class="ml-xl-3 login"><a href="loginform.do"><span
 								class="border-left pl-xl-4"></span><b>로그인</b></a></li>
 						<li><a href="signupform.do"><b>회원가입</b></a></li>
-						<li><a href="signupform.do"><b>강사가입</b></a></li>
+						<li><a href="t_signupform.do"><b>강사가입</b></a></li>
 						<li><a href="#" class="cta"><span
 								class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>

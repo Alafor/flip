@@ -41,7 +41,7 @@
 	</update>
 	
 	<delete id="deletemember" parameterType="Map">
-		DELETE FROM member WHERE member_seq = IN
+		DELETE FROM member WHERE member_seq IN
 		<foreach collection="chks" item="chk" open="(" separator="," close=")">
 			#{chk}
 		</foreach>

@@ -34,27 +34,27 @@ public class InclassDao implements IInclassDao {
 	
 	//수강신청
 	@Override
-	public boolean addInclass(String id,int seq) {
+	public boolean addInclass(int member_seq,int class_seq) {
 		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		map.put("seq", Integer.toString(seq));
+		map.put("member_seq", Integer.toString(member_seq));
+		map.put("seq", Integer.toString(class_seq));
 		return sqlSession.insert(nameSpace+"insertinclass", map)>0?true:false;
 	}
 	
 	//내수강 보기
 	@Override
-	public List<ClassDto> getAllMyInclass(String id){
-		List<ClassDto> list = sqlSession.selectList(nameSpace+"getinclasslist", id);
+	public List<ClassDto> getAllMyInclass(int member_seq){
+		List<ClassDto> list = sqlSession.selectList(nameSpace+"getinclasslist", member_seq);
 		return list;
 	}
 	
 	//수강삭제 
-	@Override
-	public boolean delMyinclass(String id, String[] seqs) {
-		Map<String,String[]> map = new HashMap<String, String[]>();
-		String[] ids = {id};
-		map.put("id", ids);
-		map.put("seqs",seqs);
-		return sqlSession.delete(nameSpace+"delmyinclass", map)>0?true:false;
-	}
+		@Override
+		public boolean delMyinclass(int member_seq, String[] class_seqs) {
+			Map<String,String[]> map = new HashMap<String, String[]>();
+			String[] member_seqs = {Integer.toString(member_seq)};
+			map.put("member_seqs", member_seqs);
+			map.put("class_seqs",class_seqs);
+			return sqlSession.delete(nameSpace+"delmyinclass", map)>0?true:false;
+		}
 }

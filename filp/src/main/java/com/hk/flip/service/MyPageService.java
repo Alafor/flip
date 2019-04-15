@@ -46,7 +46,7 @@ public class MyPageService implements IMyPageService {
 	
 	//내 수강삭제
 	@Override
-	public boolean delMyInclass(String id, String[] seqs){
-		return dao.delMyinclass(id, seqs);
+	public boolean delMyInclass(int member_seq, String[] class_seqs){
+		return dao.delMyinclass(member_seq, class_seqs);
 	}
 }
