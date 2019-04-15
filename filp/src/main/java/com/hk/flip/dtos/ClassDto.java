@@ -21,7 +21,7 @@ public class ClassDto {
 	private String class_img;
 	private String class_hashtag;
 	private String class_termin;
-	private String class_instructor;
+	private int class_member_seq;
 	private int class_participation;
 	private int class_now_participation;
 	private int class_d_day;
@@ -33,6 +33,19 @@ public class ClassDto {
 	
 	public ClassDto() {
 		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
+	public String toString() {
+		return "ClassDto [class_type=" + class_type + ", seq=" + seq + ", class_name=" + class_name + ", regdate="
+				+ regdate + ", class_info=" + class_info + ", class_area=" + class_area + ", class_depa=" + class_depa
+				+ ", class_sd=" + class_sd + ", class_cd=" + class_cd + ", class_week=" + class_week
+				+ ", class_starttime=" + class_starttime + ", class_time=" + class_time + ", class_price=" + class_price
+				+ ", class_detail=" + class_detail + ", class_img=" + class_img + ", class_hashtag=" + class_hashtag
+				+ ", class_termin=" + class_termin + ", class_member_seq=" + class_member_seq + ", class_participation="
+				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
+				+ class_d_day + ", class_rating=" + class_rating + ", profile_img=" + profile_img + "]";
 	}
 
 
@@ -206,13 +219,13 @@ public class ClassDto {
 	}
 
 
-	public String getClass_instructor() {
-		return class_instructor;
+	public int getClass_member_seq() {
+		return class_member_seq;
 	}
 
 
-	public void setClass_instructor(String class_instructor) {
-		this.class_instructor = class_instructor;
+	public void setClass_member_seq(int class_member_seq) {
+		this.class_member_seq = class_member_seq;
 	}
 
 
@@ -256,7 +269,6 @@ public class ClassDto {
 	}
 
 
-
 	public String getProfile_img() {
 		return profile_img;
 	}
@@ -270,7 +282,7 @@ public class ClassDto {
 	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
 			String class_depa, Date class_sd, Date class_cd, String class_week, String class_starttime, int class_time,
 			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
-			String class_instructor, int class_participation, int class_now_participation, int class_d_day,
+			int class_member_seq, int class_participation, int class_now_participation, int class_d_day,
 			float class_rating, String profile_img) {
 		super();
 		this.class_type = class_type;
@@ -290,27 +302,13 @@ public class ClassDto {
 		this.class_img = class_img;
 		this.class_hashtag = class_hashtag;
 		this.class_termin = class_termin;
-		this.class_instructor = class_instructor;
+		this.class_member_seq = class_member_seq;
 		this.class_participation = class_participation;
 		this.class_now_participation = class_now_participation;
 		this.class_d_day = class_d_day;
 		this.class_rating = class_rating;
 		this.profile_img = profile_img;
 	}
-
-
-	@Override
-	public String toString() {
-		return "ClassDto [class_type=" + class_type + ", seq=" + seq + ", class_name=" + class_name + ", regdate="
-				+ regdate + ", class_info=" + class_info + ", class_area=" + class_area + ", class_depa=" + class_depa
-				+ ", class_sd=" + class_sd + ", class_cd=" + class_cd + ", class_week=" + class_week
-				+ ", class_starttime=" + class_starttime + ", class_time=" + class_time + ", class_price=" + class_price
-				+ ", class_detail=" + class_detail + ", class_img=" + class_img + ", class_hashtag=" + class_hashtag
-				+ ", class_termin=" + class_termin + ", class_instructor=" + class_instructor + ", class_participation="
-				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
-				+ class_d_day + ", class_rating=" + class_rating + ", profile_img=" + profile_img + "]";
-	}
-
 
 	
 

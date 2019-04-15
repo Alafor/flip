@@ -3,11 +3,11 @@ package com.hk.flip.dtos;
 public class InclassDto {
 
 	private int seq;
-	private String inclass_id;
+	private int inclass_member_seq;
 	
-	public InclassDto(int seq, String inclass_id) {
+	public InclassDto(int seq, int inclass_member_seq) {
 		this.seq = seq;
-		this.inclass_id = inclass_id;
+		this.inclass_member_seq = inclass_member_seq;
 	}
 
 	public InclassDto() {
@@ -22,12 +22,12 @@ public class InclassDto {
 		this.seq = seq;
 	}
 
-	public String getInclass_id() {
-		return inclass_id;
+	public int getinclass_member_seq() {
+		return inclass_member_seq;
 	}
 
-	public void setInclass_id(String inclass_id) {
-		this.inclass_id = inclass_id;
+	public void setinclass_member_seq(int inclass_member_seq) {
+		this.inclass_member_seq = inclass_member_seq;
 	}
 
 }

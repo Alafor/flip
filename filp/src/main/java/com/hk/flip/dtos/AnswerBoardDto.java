@@ -5,7 +5,7 @@ import java.util.Date;
 public class AnswerBoardDto {
 
 	private int board_seq;
-	private String board_id;
+	private int board_member_seq;
 	private Date board_regdate;
 	private String board_title;
 	private String board_content;
@@ -27,12 +27,12 @@ public class AnswerBoardDto {
 		this.board_seq = board_seq;
 	}
 
-	public String getBoard_id() {
-		return board_id;
+	public int getBoard_member_seq() {
+		return board_member_seq;
 	}
 
-	public void setBoard_id(String board_id) {
-		this.board_id = board_id;
+	public void setBoard_member_seq(int board_member_seq) {
+		this.board_member_seq = board_member_seq;
 	}
 
 	public Date getBoard_regdate() {
@@ -99,10 +99,12 @@ public class AnswerBoardDto {
 		this.board_depth = board_depth;
 	}
 
-	public AnswerBoardDto(int board_seq, String board_id, Date board_regdate, String board_title, String board_content,
-			String board_delflag, String board_secret, int board_refer, int board_step, int board_depth) {
+	public AnswerBoardDto(int board_seq, int board_member_seq, Date board_regdate, String board_title,
+			String board_content, String board_delflag, String board_secret, int board_refer, int board_step,
+			int board_depth) {
+		super();
 		this.board_seq = board_seq;
-		this.board_id = board_id;
+		this.board_member_seq = board_member_seq;
 		this.board_regdate = board_regdate;
 		this.board_title = board_title;
 		this.board_content = board_content;
@@ -115,12 +117,11 @@ public class AnswerBoardDto {
 
 	@Override
 	public String toString() {
-		return "AnswerBoardDto [board_seq=" + board_seq + ", board_id=" + board_id + ", board_regdate=" + board_regdate
-				+ ", board_title=" + board_title + ", board_content=" + board_content + ", board_delflag="
-				+ board_delflag + ", board_secret=" + board_secret + ", board_refer=" + board_refer + ", board_step="
-				+ board_step + ", board_depth=" + board_depth + "]";
+		return "AnswerBoardDto [board_seq=" + board_seq + ", board_member_seq=" + board_member_seq + ", board_regdate="
+				+ board_regdate + ", board_title=" + board_title + ", board_content=" + board_content
+				+ ", board_delflag=" + board_delflag + ", board_secret=" + board_secret + ", board_refer=" + board_refer
+				+ ", board_step=" + board_step + ", board_depth=" + board_depth + "]";
 	}
-
 	
 	
 }
