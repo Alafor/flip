@@ -29,7 +29,8 @@ public class ClassDto {
 	private float class_rating;
 	//강사, 수강생 프로필 이미지
 	private String profile_img;
-	 
+	//강사, 수강생 이름
+	private String class_creator_name;
 	
 	public ClassDto() {
 		// TODO Auto-generated constructor stub
@@ -278,12 +279,20 @@ public class ClassDto {
 		this.profile_img = profile_img;
 	}
 
+	public String getClass_creator_name() {
+		return class_creator_name;
+	}
 
+
+	public void setClass_creator_name(String class_creator_name) {
+		this.class_creator_name = class_creator_name;
+	}
+	
 	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
 			String class_depa, Date class_sd, Date class_cd, String class_week, String class_starttime, int class_time,
 			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
 			int class_member_seq, int class_participation, int class_now_participation, int class_d_day,
-			float class_rating, String profile_img) {
+			float class_rating, String profile_img, String class_creator_name) {
 		super();
 		this.class_type = class_type;
 		this.seq = seq;
@@ -308,7 +317,11 @@ public class ClassDto {
 		this.class_d_day = class_d_day;
 		this.class_rating = class_rating;
 		this.profile_img = profile_img;
+		this.class_creator_name = class_creator_name;
 	}
+
+
+	
 
 	
 

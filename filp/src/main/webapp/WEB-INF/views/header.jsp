@@ -28,7 +28,7 @@
 						<form action="#" method="post">
 							<div class="input-group mb-3 ">
 								<input type="text"
-									class="form-control  text-black bg-transparent "
+									class="form-control text-black bg-transparent "
 									style="border-left-radius: 10px;" placeholder="검색어를 입력하세요.">
 								<div class="input-group-append">
 									<button class="btn btn-primary text-white rounded"
@@ -37,11 +37,10 @@
 							</div>
 						</form>
 					</li>
-					<li><a href=""><b>서비스 소개 </b></a></li>
 					<c:if test="${logInMember eq null}">
 						<li class="ml-xl-3 login"><a href="loginform.do"><span
 								class="border-left pl-xl-4"></span><b>로그인</b></a></li>
-						<li><a href="#"><b>회원가입</b></a></li>
+						<li><a href="signupform.do"><b>회원가입</b></a></li>
 						<li><a href="signupform.do"><b>강사가입</b></a></li>
 						<li><a href="#" class="cta"><span
 								class="bg-primary text-white rounded">강의등록</span></a></li>
@@ -49,8 +48,8 @@
 					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login"><a href="mypage.do"><span
 								class="border-left pl-xl-4"></span><b>${logInMember.member_name }</b></a></li>
-						<li><a href="signupform.do"><b>강사가입</b></a></li>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
+						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
 						<li><a href="#" class="cta"><span
 								class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>
