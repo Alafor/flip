@@ -6,13 +6,15 @@ import com.hk.flip.dtos.ClassDto;
 
 public interface IInclassDao {
 
-	boolean addInclass(String id, int seq);
+	public boolean addInclass(int member_id, int class_seq);
 
-	boolean checkInclass(String id, int seq);
+	public boolean checkInclass(String id, int seq);
 
 	public List<ClassDto> getAllMyInclass(int member_seq);
 
-	boolean delMyinclass(String id, String[] seq);
+	public boolean delMyinclass(int member_seq, String[] class_seqs);
+
+
 
 
 }
