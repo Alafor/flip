@@ -46,7 +46,7 @@ public class INController {
 		MemberDto dto = memberService.logCheck(id,password);
 		System.out.println("dto:"+dto);
 		if(dto!=null) {	
-			session.setAttribute("loginsession", dto );	
+			session.setAttribute("logInMember", dto );	
 			return "redirect:main.do";
 		}else{
 			model.addAttribute("msg", "로그인실패" );

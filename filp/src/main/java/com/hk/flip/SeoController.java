@@ -31,12 +31,12 @@ public class SeoController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/mainlist.do", method = RequestMethod.GET )
+/*	@RequestMapping(value = "/mainlist.do", method = RequestMethod.GET )
 	public String mainClassList(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
 		List<ClassDto> classList = classService.mainClassList(department);
 		System.out.println("classdto="+classList);
 		model.addAttribute("classlist", classList);
 		return "main";
-	}
+	}*/
 }
