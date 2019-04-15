@@ -221,7 +221,7 @@ if( len == 7 ) oThis.value += "-";
               
 			<div class="container">     
     		<label class="text-black" >프로필등록</label>
-    			<div class="row form-group mb-6" style="border: 1px solid #ced4da; border-radius: 10px;">
+    			<div class="row form-group mb-6" style="border: 1px solid #ced4da; border-radius: 10px; ">
   					<div class="col-md-6"><!--left col--><br>
                        <div class="text-center testimonial"><figure class="mb-6"><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar"><br><br>
         					<h6><b>프로필</b></h6></div></div>
