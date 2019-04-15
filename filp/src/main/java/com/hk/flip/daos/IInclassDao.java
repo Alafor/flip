@@ -10,8 +10,9 @@ public interface IInclassDao {
 
 	boolean checkInclass(String id, int seq);
 
-	List<ClassDto> getAllMyInclass(String id);
+	public List<ClassDto> getAllMyInclass(int member_seq);
 
 	boolean delMyinclass(String id, String[] seq);
+
 
 }
