@@ -68,6 +68,12 @@ public class INController {
 		return "SignUp";
 	}
 	
+	@RequestMapping(value = "/t_signupform.do", method = RequestMethod.GET)
+	public String t_signupform(Locale locale, Model model) {
+		logger.info("회원가입 폼 이동하기 {}.", locale);	
+		return "T_SignUp";
+	}
+	
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
 	public String signup(Locale locale, Model model,MemberDto dto) {
 		logger.info("회원가입하기{}.", locale);
@@ -93,5 +99,13 @@ public class INController {
 		}
 		
 	}
+	
+	@RequestMapping(value = "/ansboard.do", method = RequestMethod.GET)
+	public String ansboard(Locale locale, Model model) {
+		logger.info("문의게시판 이동 {}.", locale);	
+		return "AnsBoard";
+	}
+	
+	
 	
 }
