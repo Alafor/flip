@@ -8,9 +8,9 @@
    </select>
 
 	<insert id="signupmember" parameterType="MemberDto">
-		INSERT INTO MEMBER(MEMBER_TYPE,MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_PHONE,MEMBER_EMAIL,MEMBER_REGDATE) 
+		INSERT INTO MEMBER(MEMBER_TYPE,MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_PHONE,MEMBER_EMAIL,MEMBER_REGDATE,MEMBER_SEQ) 
 		VALUES(#{member_type},#{member_id},#{member_password},#{member_name},#{member_birth},
-				#{member_phone},#{member_email},SYSDATE)
+				#{member_phone},#{member_email},SYSDATE,MEMBER_SEQ.nextval)
 		
 	</insert>
 	
