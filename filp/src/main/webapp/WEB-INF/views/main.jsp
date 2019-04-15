@@ -187,28 +187,25 @@
 				<div class="row">
 					<div class="col-12  block-13">
 						<div class="owl-carousel nonloop-block-13">
+						
 							<!-- 선생님 찾기  -->
 							<c:forEach var="classlist" items="${classlist}">
 							<div class="d-block d-md-flex listing vertical">
 								<a href="#" class="img d-block"
 									style="background-image: url('resources/images/img_4.jpg')"></a>
 								<div class="lh-content">
-									<span class="category">${classlist.class_instructor}</span> 
+									<span class="category">${classlist.class_creator_name}</span> 
 									<span class="instructor_img">강사사진</span>
 									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
 									<h3>
 										<a href="#"></a>
 									</h3>
 									
-									<p>강의내용</p>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> 
-											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
+									<p>${class_name}</p>
+									<p class="mb-0 teacherstar" data-minority="${classlist.class_rating}">
+										<span class="review">(3 Reviews)</span>
 									</p>
-									<address>주소</address>
+									<address>${classlist.class_area}</address>
 								</div>
 							</div>
 							</c:forEach>
@@ -506,9 +503,8 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
-	<script>
+	<script defer="defer">
 		$(function(){
-			
 			$(this).on("click",function(){
 				var department = $(this).attr("data-exercise");
 				$.ajax({
@@ -516,10 +512,25 @@
 					method:"get",
 					data: department,
 					success: function(data,status,xhr){
-						
 					}
 				})
 			});
+			
+			var mino = $(".teacherstar").attr("data-minority");
+			//소수점 뒷자리
+			var transmino = mino.substr(2,1);
+			//소수점 앞자리
+			var integer = mino.substr(0,1);
+			var star="";
+			var halfstar='<span class="fas fa-star-half" style="color: gold"></span>';
+			var minonum=parseInt(transmino);
+			for(i=0;i<=integer;i++){
+				star+='<span class="fas fa-star" style="color:gold;"></span>'
+			}
+			if(transmino>=5){
+				star+=halfstar;
+			}
+			$(".teacherstar").after(star);
 		});
 	</script>
 	<a href="tdetail.do?member_name=김일남">test강사1</a>
