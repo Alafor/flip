@@ -28,10 +28,14 @@ public class SeoController {
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
+		if(department==null) {
+			return "main";
+		}else {
 		List<ClassDto> classList = classService.mainClassList(department);
 		System.out.println("classdto="+classList);
 		model.addAttribute("classlist", classList);
 		return "main";
+		}
 	}
 	
 //	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
