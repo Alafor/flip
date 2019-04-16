@@ -15,7 +15,7 @@ public class ClassDao implements IClassDao {
 	@Autowired
 	private SqlSessionTemplate sqlsession;
 	
-	String nameSpace = "com.hk.flip.Class";
+	String nameSpace = "com.hk.flip.Class.";
 	
 	public ClassDao() {
 		
