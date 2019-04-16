@@ -526,6 +526,6 @@
 			});
 		});
 	</script> -->
-	<a href="tdetail.do?member_name=김일남">test강사1</a>
+	<a href="tdetail.do?member_seq=2">test강사1</a>
 </body>
 </html>
