@@ -35,12 +35,12 @@ public class LeeController {
 
 	//강사 상세보기
 	@RequestMapping(value = "/tdetail.do", method = RequestMethod.GET)//로그인 성공 여부 확인 후 메인으로
-	public String tdetail(HttpServletRequest request,Locale locale, Model model,String member_name) {
+	public String tdetail(HttpServletRequest request,Locale locale, Model model,int member_seq) {
 		logger.info("강사상세보기{}.", locale);
-		System.out.println(member_name);
-		MemberDto dto=memberService.getTProfile(member_name);
-		List<ClassDto> classlist = memberService.getTclass(member_name);
-		List<ReviewDto> reviewlist = memberService.getTreview(member_name);
+		System.out.println(member_seq);
+		MemberDto dto=memberService.getTProfile(member_seq);
+		List<ClassDto> classlist = memberService.getTclass(member_seq);
+		List<ReviewDto> reviewlist = memberService.getTreview(member_seq);
 		model.addAttribute("tDto", dto);
 		model.addAttribute("clist", classlist);
 		model.addAttribute("rDto", reviewlist);
