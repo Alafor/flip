@@ -25,13 +25,22 @@ public class SeoController {
 	@Autowired
 	private IClassService classService;
 
-	@RequestMapping(value = "/main.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
+		List<ClassDto> classList = classService.mainClassList(department);
+		System.out.println("classdto="+classList);
+		model.addAttribute("classlist", classList);
+		return "main";
+	}
+	
+//	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String mainOpen(Locale locale, Model model, String department) {
+//		logger.info("Started main{}.", locale);
 //		List<ClassDto> classList = classService.mainClassList(department);
 //		System.out.println("classdto="+classList);
 //		model.addAttribute("classlist", classList);
-		return "main";
-	}
+//		return "main_test";
+//	}
 }
 

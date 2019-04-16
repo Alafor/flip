@@ -31,7 +31,8 @@ public class ClassDto {
 	private String profile_img;
 	//강사, 수강생 이름
 	private String class_creator_name;
-	
+	// 강의 리뷰 개수
+	private int class_review_count;
 	public ClassDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -292,7 +293,7 @@ public class ClassDto {
 			String class_depa, Date class_sd, Date class_cd, String class_week, String class_starttime, int class_time,
 			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
 			int class_member_seq, int class_participation, int class_now_participation, int class_d_day,
-			float class_rating, String profile_img, String class_creator_name) {
+			float class_rating, String profile_img, String class_creator_name, int class_review_count) {
 		super();
 		this.class_type = class_type;
 		this.seq = seq;
@@ -318,6 +319,17 @@ public class ClassDto {
 		this.class_rating = class_rating;
 		this.profile_img = profile_img;
 		this.class_creator_name = class_creator_name;
+		this.class_review_count = class_review_count;
+	}
+
+
+	public int getClass_review_count() {
+		return class_review_count;
+	}
+
+
+	public void setClass_review_count(int class_review_count) {
+		this.class_review_count = class_review_count;
 	}
 
 

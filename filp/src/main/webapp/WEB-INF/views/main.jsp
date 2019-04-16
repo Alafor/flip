@@ -293,13 +293,13 @@
 									</h3>
 									
 									<p>강의내용</p>
-									<p class="mb-0">
+									<p class="mb-0"></p>
 										<span class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> <span
 											class="icon-star text-warning"></span> 
 											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									</p>
+									
 									<address>주소</address>
 							</div>
 						</div>
@@ -503,8 +503,16 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
+	<script defer
+	src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+	integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	crossorigin="anonymous"></script>
+	<script defer
+	src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	<script>
+	<!-- <script>
 		$(function(){
 			$(".popular-category").on("click",function(){
 				var department = $(".popular-category").attr("data-category");
@@ -517,7 +525,7 @@
 				})
 			});
 		});
-	</script>
+	</script> -->
 	<a href="tdetail.do?member_name=김일남">test강사1</a>
 </body>
 </html>
