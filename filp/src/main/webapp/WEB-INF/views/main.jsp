@@ -171,6 +171,7 @@
 						</div>
 					</div>
 				</div>
+			
 				<!-- 카테고리 메뉴 종료 -->
 
 				<!-- 선생님 찾기 세션 -->
@@ -185,33 +186,44 @@
 				
 				<div class="row">
 					<div class="col-12  block-13">
-						<div class="owl-carousel nonloop-block-13">
+					<!-- EL FOR문 시작 부분  -->
+						<c:choose>
+							<c:when test="${not empty classlist.length}">
+							<div class="owl-carousel nonloop-block-13">
 						
 							<!-- 선생님 찾기  -->
-							<c:forEach var="classlist" items="${classlist}">
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block"
-									style="background-image: url('resources/images/img_4.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">${classlist.class_creator_name}</span> 
-									<span class="instructor_img">강사사진</span>
-									<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">${classlist.class_name}</a>
-									</h3>
-									<!-- 별 -->
-									<p>${class_name}</p>
-									<p class="mb-0" data-minority="${classlist.class_rating}">
-										<div class="teacherstar" style="float:left;"></div>
-										<span class="review" >(3 Reviews)</span>
-									</p>
-									<!-- 별 -->
-									<address>${classlist.class_area}</address>
+								<c:forEach var="classlist" items="${classlist}">
+								<div class="d-block d-md-flex listing vertical">
+									<a href="#" class="img d-block"
+										style="background-image: url('resources/images/img_4.jpg')"></a>
+									<div class="lh-content">
+										<span class="category">${classlist.class_creator_name}</span> 
+										<span class="instructor_img">강사사진</span>
+										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<h3>
+											<a href="#">${classlist.class_name}</a>
+										</h3>
+										<!-- 별 -->
+										<p>${class_name}</p>
+										<p class="mb-0" data-minority="${classlist.class_rating}">
+											<div class="teacherstar" style="float:left;"></div>
+											<span class="review" >(3 Reviews)</span>
+										</p>
+										<!-- 별 -->
+										<address>${classlist.class_area}</address>
+									</div>
 								</div>
-							</div>
-							</c:forEach>
+								</c:forEach>
 							<!-- 선생님 찾기 종료 -->
-						</div>
+							</div>
+							</c:when>
+							<c:otherwise>
+								<h2 class="font-weight-light text-primary">
+									<b>강의가 <span class="text-warning">없어요 ㅠㅠ</span></b>
+								</h2>
+							</c:otherwise>
+						</c:choose>
+					<!-- EL FOR문 끝 -->
 					</div>
 				</div>
 			</div>
@@ -221,7 +233,6 @@
 
 		<div class="site-section" data-aos="fade">
 			<div class="container">
-
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
@@ -262,7 +273,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	
 
 
 	<div class="site-section bg-light">
