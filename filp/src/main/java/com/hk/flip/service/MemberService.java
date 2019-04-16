@@ -46,4 +46,9 @@ public class MemberService implements IMemberService {
 	public List<ReviewDto> getTreview(int member_seq) {
 		return memberDao.getTreview(member_seq);
 	}
+
+	@Override
+	public boolean newT_member(MemberDto dto) {
+		return memberDao.newT_member(dto);
+	}
 }

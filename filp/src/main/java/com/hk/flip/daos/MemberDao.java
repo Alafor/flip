@@ -69,4 +69,10 @@ public class MemberDao implements IMemberDao {
 	public boolean updateMember(MemberDto dto) {
 		return sqlsession.update(namespace+"updatemember", dto)>0?true:false;
 	}
+
+	@Override
+	public boolean newT_member(MemberDto dto) {
+		int cnt =  sqlsession.insert(namespace+"t_signupmember",dto);
+		return cnt>0?true:false;
+	}
 }

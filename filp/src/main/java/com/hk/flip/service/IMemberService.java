@@ -22,4 +22,6 @@ public interface IMemberService {
 	public List<ClassDto> getTclass(int member_seq);
 	//강사 상세정보 - 강사 강의후기 가져오기
 	public List<ReviewDto> getTreview(int member_seq);
+	//강사 회원가입
+	public boolean newT_member(MemberDto dto);
 }

@@ -26,5 +26,7 @@ public interface IMemberDao {
 
 	public boolean deleteMember(String[] chks);
 
+	public boolean newT_member(MemberDto dto);//강사회원가입
+
 	
 }
