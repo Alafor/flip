@@ -7,6 +7,7 @@
 	response.setContentType("text/html; charset=utf-8");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -190,7 +191,9 @@
 							<div class="owl-carousel nonloop-block-13">
 							
 							<!-- 선생님 찾기  -->
-								<c:forEach var="classlist" items="${classlist}">
+							<!-- EL FOR문 시작 부분  -->
+							
+								<c:forEach var="classlist" items="${classlist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical">
 									<a href="#" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
@@ -203,28 +206,26 @@
 										</h3>
 										<!-- 별 -->
 										<p>${class_name}</p>
-										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_rating}"></div>
+										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_rating}" onclick="gogostar(this)">
+										</div>
 											<!-- <p class="teacherstar" style="float:left;"></p> -->
 											<span class="review" >(${classlist.class_review_count} Reviews)</span>
-										
 										<!-- 별 -->
 										<address>${classlist.class_area}</address>
 									</div>
 								</div>
 								</c:forEach>
-							<!-- 선생님 찾기 종료 -->
-							</div>
-							<%-- <!-- EL FOR문 시작 부분  -->
-						<c:choose>
+								<%-- <c:choose>
 							<c:when test="${not empty classlist.length}">
-							</c:when>
-							<c:otherwise>
+								</c:when>
+									<c:otherwise>
 								<h2 class="font-weight-light text-primary">
 									<b>강의가 <span class="text-warning">없어요 ㅠㅠ</span></b>
 								</h2>
 							</c:otherwise>
-						</c:choose>
-					<!-- EL FOR문 끝 --> --%>
+						</c:choose> --%>
+							<!-- 선생님 찾기 종료 -->
+							</div>
 					</div>
 				</div>
 			</div>
@@ -590,6 +591,9 @@
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
+
+	
+
 	<!-- <script>
 		$(function(){
 			$(".popular-category").on("click",function(){
