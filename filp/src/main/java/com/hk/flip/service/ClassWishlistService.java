@@ -24,7 +24,7 @@ public class ClassWishlistService implements IClassWishlistService {
 		@Override 
 		public boolean addWishlist(int member_seq, int class_seq){
 			//위시리스트 중복인지 확인
-			if(dao.cheakWishlist(member_seq, class_seq)) {
+			if(dao.checkWishlist(member_seq, class_seq)) {
 				return false;
 			}else {
 				return dao.insertWishlist(member_seq, class_seq);

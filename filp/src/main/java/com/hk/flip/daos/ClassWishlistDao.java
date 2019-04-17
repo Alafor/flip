@@ -52,11 +52,11 @@ public class ClassWishlistDao implements IClassWishlistDao {
 	
 	//위시리스트 중복검사 중복시 true
 	@Override
-	public boolean cheakWishlist(int member_seq,int class_seq) {//아이디 , 수업 seq
+	public boolean checkWishlist(int member_seq,int class_seq) {//아이디 , 수업 seq
 		Map<String,String> map = new HashMap();
 		map.put("id", Integer.toString(member_seq));
 		map.put("seq", Integer.toString(class_seq));
-		int result = sqlsession.selectOne(nameSpace+"cheakwishlist", map);
+		int result = sqlsession.selectOne(nameSpace+"checkwishlist", map);
 		return result>0?true:false;
 	}
 

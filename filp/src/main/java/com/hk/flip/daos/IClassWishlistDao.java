@@ -12,7 +12,7 @@ public interface IClassWishlistDao {
 
 	public List<ClassDto> imminentWishlist(int member_seq);
 
-	public boolean cheakWishlist(int member_seq, int class_seq);
+	public boolean checkWishlist(int member_seq, int class_seq);
 
 	boolean delWishlist(String[] class_seqs, int member_seq);
 

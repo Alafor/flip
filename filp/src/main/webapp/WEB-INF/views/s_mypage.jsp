@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%
 	request.setCharacterEncoding("utf-8");
 %>
@@ -85,183 +85,125 @@
 				<div class="w3-row">
 					<a href="javascript:void(0)" onclick="openCity(event, 'MyClass');">
 						<div
-							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding">내수강보기</div>
-					</a> <a href="javascript:void(0)" onclick="openCity(event, 'Mystudy');">
+							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-aqua w3-col s3">내수강보기</div>
+					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyStudy');">
 						<div
-							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding">내스터디보기</div>
+							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3">스터디보기</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyWant');">
 						<div
-							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding">원해요보기</div>
-					</a> <a href="javascript:void(0)" onclick="openCity(event, 'wish');">
+							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3">원해요보기</div>
+					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyWishlist');">
 						<div
-							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding">위시리스트</div>
+							class="w3-quarter tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3">위시리스트</div>
 					</a>
 				</div>
 
-				<div id="MyClass" class="container depa" style="display: none">    <!-- 내 수강 보기 탭 내용  -->
-
-					
-						<div class="container">
-							<div class="row mb-5">
-						<div class="col-md-7 text-left border-primary">
-							<h2 class="font-weight-light text-primary">
-								<b>리스트<span class="text-warning">보기</span>
-							</h2>
-							<p class="color-black-opacity-5">MY LIST</p>
-
-						</div>
-					</div>
-
-
-
-							<div class="row mt-5">
-								<div class="col-lg-6">
-
-									<div class="d-block d-md-flex listing">
-										<a href="listings-single.html" class="img d-block"
-											style="background-image: url('resources/images/img_2.jpg')"></a>
-										<div class="lh-content">
-											<span class="category">Real Estate</span> <a href="#"
-												class="bookmark"><span class="icon-heart"></span></a>
-											<h3>
-												<a href="listings-single.html">House with Swimming Pool</a>
-											</h3>
-											<address>Don St, Brooklyn, New York</address>
-											<p class="mb-0">
-												<span class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-secondary"></span> <span
-													class="review">(3 Reviews)</span>
-											</p>
-										</div>
-									</div>
-									<div class="d-block d-md-flex listing">
-										<a href="listings-single.html" class="img d-block"
-											style="background-image: url('resources/images/img_3.jpg')"></a>
-										<div class="lh-content">
-											<span class="category">Furniture</span> <a href="#"
-												class="bookmark"><span class="icon-heart"></span></a>
-											<h3>
-												<a href="listings-single.html">Wooden Chair &amp; Table</a>
-											</h3>
-											<address>Don St, Brooklyn, New York</address>
-											<p class="mb-0">
-												<span class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-secondary"></span> <span
-													class="review">(3 Reviews)</span>
-											</p>
-										</div>
-									</div>
-
-
-								</div>
-								<div class="col-lg-6">                      <!-- 2개 이상 출력시 div 한번씩 찍어줘야함 그래야 리스트 모양이 안 틀어짐 -->
-
-									<div class="d-block d-md-flex listing">
-										<a href="listings-single.html" class="img d-block"
-											style="background-image: url('resources/images/img_4.jpg')"></a>
-										<div class="lh-content">
-											<span class="category">Electronics</span> <a href="#"
-												class="bookmark"><span class="icon-heart"></span></a>
-											<h3>
-												<a href="listings-single.html">iPhone X gray</a>
-											</h3>
-											<address>Don St, Brooklyn, New York</address>
-											<p class="mb-0">
-												<span class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-secondary"></span> <span
-													class="review">(3 Reviews)</span>
-											</p>
-										</div>
-									</div>
-
-
-
-
-
-									<div class="d-block d-md-flex listing">
-										<a href="listings-single.html" class="img d-block"
-											style="background-image: url('resources/images/img_1.jpg')"></a>
-										<div class="lh-content">
-											<span class="category">Cars &amp; Vehicles</span> <a href="#"
-												class="bookmark"><span class="icon-heart"></span></a>
-											<h3>
-												<a href="listings-single.html">Red Luxury Car</a>
-											</h3>
-											<address>Don St, Brooklyn, New York</address>
-											<p class="mb-0">
-												<span class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-secondary"></span> <span
-													class="review">(3 Reviews)</span>
-											</p>
-										</div>
-									</div>
-
-								</div>
-								<div class="col-lg-6">
-
-
-									<div class="d-block d-md-flex listing">
-										<a href="listings-single.html" class="img d-block"
-											style="background-image: url('resources/images/img_2.jpg')"></a>
-										<div class="lh-content">
-											<span class="category">Real Estate</span> <a href="#"
-												class="bookmark"><span class="icon-heart"></span></a>
-											<h3>
-												<a href="listings-single.html">House with Swimming Pool</a>
-											</h3>
-											<address>Don St, Brooklyn, New York</address>
-											<p class="mb-0">
-												<span class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-warning"></span> <span
-													class="icon-star text-secondary"></span> <span
-													class="review">(3 Reviews)</span>
-											</p>
-										</div>
-									</div>
-
-
-							
+				<div id="MyClass" class="container depa">    <!-- 내 수강 보기 탭 내용  -->
+					<div class="container">
+						<div class="row mb-5">
+							<div class="col-md-7 text-left border-primary">
+								<h2 class="font-weight-light text-primary">
+									<b>내강의<span class="text-warning">보기</span>
+								</h2>
+								<p class="color-black-opacity-5">MY LIST</p>
+	
 							</div>
+						</div>
+						<div class="row mt-5">
+						<c:choose>
+						
+							<c:when test="${not empty classlist}">
+<%-- 								<c:set var="i" value="1" /> --%>
+								<div class="col-lg-6">
+<%-- 								<c:forEach items="${inclassList}" var="inclass"> --%>
+									<c:forEach begin="1" end="${inclassList.length}" var="i" step="1">
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${(i %2) =1 } }"> --%>
+												<div class="d-block d-md-flex listing">
+													<a href="listings-single.html" class="img d-block"
+														style="background-image: url('resources/images/img_2.jpg')"></a>
+													<div class="lh-content">
+														<span class="category">Real Estate</span> <a href="#"
+															class="bookmark"><span class="icon-heart"></span></a>
+														<h3>
+															<a href="listings-single.html">House with Swimming Pool</a>
+														</h3>
+														<address>Don St, Brooklyn, New York</address>
+														<p class="mb-0">
+															<span class="icon-star text-warning"></span>
+															<span class="icon-star text-warning"></span>
+															<span class="icon-star text-warning"></span> 
+															<span class="icon-star text-warning"></span> 
+															<span class="icon-star text-secondary"></span> 
+															<span class="review">(3 Reviews)</span>
+														</p>
+													</div>
+												</div>
+					
+												<c:if test="${i%2==0}">
+														<br/>
+<!-- 													</div><div class="col-lg-6"> -->
+												</c:if>
+<%-- 												<c:set var="i" value="${i+1}" /> --%>
+<%-- 										</c:when> --%>
+<%-- 										<c:otherwise> --%>
+<!-- 												<div class="d-block d-md-flex listing"> -->
+<!-- 													<a href="listings-single.html" class="img d-block" -->
+<!-- 														style="background-image: url('resources/images/img_2.jpg')"></a> -->
+<!-- 													<div class="lh-content"> -->
+<!-- 														<span class="category">Real Estate</span> <a href="#" -->
+<!-- 															class="bookmark"><span class="icon-heart"></span></a> -->
+<!-- 														<h3> -->
+<!-- 															<a href="listings-single.html">House with Swimming Pool</a> -->
+<!-- 														</h3> -->
+<!-- 														<address>Don St, Brooklyn, New York</address> -->
+<!-- 														<p class="mb-0"> -->
+<!-- 															<span class="icon-star text-warning"></span> -->
+<!-- 															<span class="icon-star text-warning"></span> -->
+<!-- 															<span class="icon-star text-warning"></span>  -->
+<!-- 															<span class="icon-star text-warning"></span>  -->
+<!-- 															<span class="icon-star text-secondary"></span>  -->
+<!-- 															<span class="review">(3 Reviews)</span> -->
+<!-- 														</p> -->
+<!-- 													</div> -->
+<!-- 												</div> -->
+<!-- 											</div> -->
+<%-- 											<c:set var="i" value="${i+1}" /> --%>
+<%-- 										</c:otherwise> --%>
+												
+											
+										
+<%-- 									</c:choose> --%>
+									
+								</c:forEach>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="col-lg-6">
+									<h2 class="font-weight-light text-primary">
+										<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+									</h2>
+								</div>
+							</c:otherwise>
+						</c:choose>
 						</div>
 					</div>
 				</div>
 
-
-
-
-
-
-				<div id="Mystudy" class="container depa" style="display: none">      <!-- 내 스터디 보기 탭 내용  -->
+				<div id="MyStudy" class="container depa" style="display: none">      <!-- 내 스터디 보기 탭 내용  -->
 					<div class="container">
 							<div class="row mb-5">
 						<div class="col-md-7 text-left border-primary">
 							<h2 class="font-weight-light text-primary">
-								<b>리스트<span class="text-warning">보기</span>
+								<b>스터디<span class="text-warning">보기</span></b>
 							</h2>
 							<p class="color-black-opacity-5">MY LIST</p>
 
 						</div>
 					</div>
 
-
-
 							<div class="row mt-5">
 								<div class="col-lg-6">
-
 									<div class="d-block d-md-flex listing">
 										<a href="listings-single.html" class="img d-block"
 											style="background-image: url('resources/images/img_2.jpg')"></a>
@@ -338,7 +280,7 @@
 							<div class="row mb-5">
 						<div class="col-md-7 text-left border-primary">
 							<h2 class="font-weight-light text-primary">
-								<b>리스트<span class="text-warning">보기</span>
+								<b>원해요<span class="text-warning">보기</span>
 							</h2>
 							<p class="color-black-opacity-5">MY LIST</p>
 
@@ -440,20 +382,18 @@
 											</p>
 										</div>
 									</div>
-
-								
 							</div>
 						</div>
 					</div>
 				</div>
 
 
-				<div id="wish" class="container depa" style="display: none">   <!-- 내 위시리스트 보기 탭 내용  -->
+				<div id="MyWishlist" class="container depa" style="display: none">   <!-- 내 위시리스트 보기 탭 내용  -->
 					<div class="container">
 							<div class="row mb-5">
 						<div class="col-md-7 text-left border-primary">
 							<h2 class="font-weight-light text-primary">
-								<b>리스트<span class="text-warning">보기</span>
+								<b>찜목록<span class="text-warning">보기</span>
 							</h2>
 							<p class="color-black-opacity-5">MY LIST</p>
 
