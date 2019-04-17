@@ -84,8 +84,18 @@
    <!-------------------------------------------------------------------------------------------------->
 
 <body>
-${tDto.member_name} 
+<!-- 강사 이름 -->
+${tDto.member_name}
+<!-- 강사 프로필 사진 --> 
+${tDto.member_profile}
+<!-- 강사 평점 -->
+${tDto.avg}
+<!-- 강사 상세사항 -->
+${tDto.member_info}
+<!-- 강의 리스트 -->
 ${clist[0].class_name}
+<!-- 후기 내용 -->
+${rDto[0].review_detail}
 
 
 <!-- <div id="dropDownSelect1"></div> -->
