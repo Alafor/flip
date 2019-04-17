@@ -3,12 +3,14 @@ package com.hk.flip.service;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.hk.flip.daos.IInclassDao;
 import com.hk.flip.daos.IMemberDao;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.MemberDto;
 
+@Service
 public class MyPageService implements IMyPageService {
 	
 	@Autowired
