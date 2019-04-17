@@ -18,7 +18,7 @@
 <p>${classlist.class_member_seq}</p>
 <p>${classlist.class_creator_name}</p>
 <p>${classlist.profile_img}</p>
-<p class="teacherstar" id="teacherstar${seq.count}" data-minority="${classlist.class_rating}"></p>
+<p class="teacherstar" data-minority="${classlist.class_rating}" onclick="clickstar()"></p>
 <p>foreach 실험: ${seq.count}</p>
 <p>강의 평균:${classlist.class_rating}</p>
 <p>리뷰 카운트: ${classlist.class_review_count}</p>

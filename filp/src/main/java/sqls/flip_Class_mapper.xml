@@ -7,6 +7,7 @@
 <select id="mainclasslist" parameterType="String" resultType="ClassDto">
 	<![CDATA[ 
 	SELECT
+	C.SEQ,
 	C.CLASS_IMG, 
 	C.CLASS_MEMBER_SEQ, 
 	M.MEMBER_NAME AS CLASS_CREATOR_NAME, 
@@ -33,10 +34,11 @@ FROM
    		GROUP BY CL.SEQ) PARTI
 WHERE
 	C.SEQ = R.SEQ (+)
-	AND C.CLASS_MEMBER_SEQ = M.MEMBER_SEQ
+	AND C.CLASS_MEMBER_SEQ = M.MEMBER_SEQ(+)
 	AND C.SEQ = D_DAY.SEQ
 	AND C.SEQ = PARTI.SEQ (+)
 	AND C.CLASS_DEPA = #{department}
+	AND C.CLASS_TYPE = 'C'
 	AND ROWNUM <= 10
 	]]>
 	</select>
