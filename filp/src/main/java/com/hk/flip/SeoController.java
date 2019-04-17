@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.service.IClassService;
+import com.hk.flip.service.IClassWishlistService;
 
 /**
  * Handles requests for the application home page.
@@ -24,7 +25,8 @@ public class SeoController {
 
 	@Autowired
 	private IClassService classService;
-
+	private IClassWishlistService classwishlistService;
+	
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
@@ -32,11 +34,23 @@ public class SeoController {
 			return "main";
 		}else {
 		List<ClassDto> classList = classService.mainClassList(department);
+		List<ClassDto> studyList = classService.mainStudyList(department);
+		List<ClassDto> wantList = classService.mainWantList(department);
 		System.out.println("classdto="+classList);
 		model.addAttribute("classlist", classList);
+		model.addAttribute("studylist", studyList);
+		model.addAttribute("wantlist", wantList);
 		return "main";
 		}
 	}
+	
+//	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
+//	public String addWishList(Locale locale, Model model, int member_seq, int class_seq) {
+//		logger.info("Started main{}.", locale);
+//			boolean check
+//		return "main";
+//		}
+//	}
 	
 //	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 //	public String mainOpen(Locale locale, Model model, String department) {

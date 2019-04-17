@@ -22,5 +22,15 @@ public class ClassService implements IClassService {
 	public List<ClassDto> mainClassList(String department){
 		return classDao.mainClassList(department);
 	}
+	@Override
+	public List<ClassDto> mainStudyList(String department) {
+		// TODO Auto-generated method stub
+		return classDao.mainStudyList(department);
+	}
+	@Override
+	public List<ClassDto> mainWantList(String department) {
+		// TODO Auto-generated method stub
+		return classDao.mainWantList(department);
+	}
 
 }

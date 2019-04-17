@@ -27,5 +27,13 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectList(nameSpace+"mainclasslist", department);
 	}
 	
+	@Override
+	public List<ClassDto> mainStudyList(String department){
+		return sqlsession.selectList(nameSpace+"mainstudylist",department);
+	}
+	@Override
+	public List<ClassDto> mainWantList(String department){
+		return sqlsession.selectList(nameSpace+"mainwantlist",department);
+	}
 	
 }

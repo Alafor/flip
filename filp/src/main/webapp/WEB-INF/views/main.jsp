@@ -179,9 +179,9 @@
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
-							<b>선생님<span class="text-warning">찾기</span></b>
+							<b>학생<span class="text-warning">찾기</span></b>
 						</h2>
-						<p class="color-black-opacity-5">Find a tutor</p>
+						<p class="color-black-opacity-5">Find a Student</p>
 					</div>
 				</div>
 				
@@ -205,7 +205,6 @@
 											<a href="#">${classlist.class_name}</a>
 										</h3>
 										<!-- 별 -->
-										<p>${class_name}</p>
 										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_rating}" onclick="gogostar(this)">
 										</div>
 											<!-- <p class="teacherstar" style="float:left;"></p> -->
@@ -238,9 +237,9 @@
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
-							<b>학생<span class="text-warning">찾기</span></b>
+							<b>선생님<span class="text-warning">찾기</span></b>
 						</h2>
-						<p class="color-black-opacity-5">Find a student</p>
+						<p class="color-black-opacity-5">Find a Instructor</p>
 
 					</div>
 				</div>
@@ -248,94 +247,30 @@
 				<div class="row">
 					<div class="col-12  block-13">
 						<div class="owl-carousel nonloop-block-13">
-
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block"
-									style="background-image: url('resources/images/img_1.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">강사이름</span> 
-									<span class="instructor_img">강사사진</span>
-									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">강의이름</a>
-									</h3>
-									<p>강의내용</p>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> 
-											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									</p>
-									<address>주소</address>
-								</div>
-							</div>
+					<!-- 학생 찾기  -->
+							<!-- EL FOR문 시작 부분  -->
 							
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block"
-									style="background-image: url('resources/images/img_1.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">강사이름</span> 
-									<span class="instructor_img">강사사진</span>
-									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">강의이름</a>
-									</h3>
-									<p>강의내용</p>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> 
-											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									</p>
-									<address>주소</address>
+								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
+								<div class="d-block d-md-flex listing vertical">
+									<a href="#" class="img d-block"
+										style="background-image: url('resources/images/img_4.jpg')"></a>
+									<div class="lh-content">
+										<span class="category">${wantlist.class_creator_name}</span> 
+										<span class="instructor_img">강사사진</span>
+										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<h3>
+											<a href="#">${wantlist.class_name}</a>
+										</h3>
+										<!-- 별 -->
+										
+											<!-- <p class="teacherstar" style="float:left;"></p> -->
+											
+										<!-- 별 -->
+										<address>${wantlist.class_area}</address>
+									</div>
 								</div>
-							</div>
-							
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block"
-									style="background-image: url('resources/images/img_1.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">강사이름</span> 
-									<span class="instructor_img">강사사진</span>
-									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">강의이름</a>
-									</h3>
-									<p>강의내용</p>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> 
-											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									</p>
-									<address>주소</address>
-								</div>
-							</div>
-							
-							<div class="d-block d-md-flex listing vertical">
-								<a href="#" class="img d-block"
-									style="background-image: url('resources/images/img_1.jpg')"></a>
-								<div class="lh-content">
-									<span class="category">강사이름</span> 
-									<span class="instructor_img">강사사진</span>
-									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">강의이름</a>
-									</h3>
-									<p>강의내용</p>
-									<p class="mb-0">
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> 
-											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									</p>
-									<address>주소</address>
-								</div>
-							</div>
+								</c:forEach>
+						
 						</div>
 					</div>
 				</div>
@@ -351,7 +286,7 @@
 					<h2 class="font-weight-light text-primary">
 						<b>스터디<span class="text-warning">찾기</span></b>
 					</h2>
-					<p class="color-black-opacity-5">Find a student</p>
+					<p class="color-black-opacity-5">Find a Study</p>
 
 				</div>
 			</div>
@@ -359,29 +294,26 @@
 			<div class="row">
 				<div class="col-12  block-13">
 					<div class="owl-carousel nonloop-block-13">
-
-						<div class="d-block d-md-flex listing vertical">
-							<a href="#" class="img d-block"
-								style="background-image: url('resources/images/img_1.jpg')"></a>
-							<div class="lh-content">
-							<span class="category">강사이름</span> 
-									<span class="instructor_img">강사사진</span>
-									<a href="#" class="bookmark"><span class="icon-heart"></span></a>
-									<h3>
-										<a href="#">강의이름</a>
-									</h3>
-									
-									<p>강의내용</p>
-									<p class="mb-0"></p>
-										<span class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> <span
-											class="icon-star text-warning"></span> 
-											<span class="icon-star text-secondary"></span> <span class="review">(3 Reviews)</span>
-									
-									<address>주소</address>
-							</div>
-						</div>
+						<c:forEach var="studylist" items="${studylist}" varStatus="seq">
+								<div class="d-block d-md-flex listing vertical">
+									<a href="#" class="img d-block"
+										style="background-image: url('resources/images/img_4.jpg')"></a>
+									<div class="lh-content">
+										<span class="category">${studylist.class_creator_name}</span> 
+										<span class="instructor_img">강사사진</span>
+										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<h3>
+											<a href="#">${studylist.class_name}</a>
+										</h3>
+										<!-- 별 -->
+										
+											<!-- <p class="teacherstar" style="float:left;"></p> -->
+											
+										<!-- 별 -->
+										<address>${studylist.class_area}</address>
+									</div>
+								</div>
+						</c:forEach>						
 					</div>
 				</div>
 			</div>
@@ -608,6 +540,6 @@
 			});
 		});
 	</script> -->
-	<a href="tdetail.do?member_seq=2">test강사1</a>
+	<a href="tdetail.do?member_seq=33">test강사1</a>
 </body>
 </html>
