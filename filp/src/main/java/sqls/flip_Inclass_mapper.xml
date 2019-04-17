@@ -9,7 +9,7 @@
          WHERE a.seq = #{seq} and b.class_now_participation <![CDATA[>=]]> a.class_participation;
 	</select>
 	
-	<select id="chkinclasstime_join" parameterType="Map" resultType="java.lang.Integer">
+	<select id="aaaa" parameterType="Map" resultType="java.lang.Integer">
 		SELECT (SELECT COUNT(inclass.seq) FROM inclass WHERE inclass.seq = class.seq) 
 		AS now_participation FROM class WHERE class.seq = #{seq} and now_participation <![CDATA[>=]]> class.participation
 	</select>

@@ -6,9 +6,10 @@ import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import com.hk.flip.dtos.ClassDto;
-
+@Repository
 public class InclassDao implements IInclassDao {
 
 	@Autowired
