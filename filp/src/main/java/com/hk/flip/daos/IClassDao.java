@@ -13,4 +13,6 @@ public interface IClassDao {
 	public List<ClassDto> mainWantList(String department);
 	//강의 상세보기
 	public List<ClassDto> getCdetail(int class_seq);
+
+	boolean addClass(ClassDto dto);
 }

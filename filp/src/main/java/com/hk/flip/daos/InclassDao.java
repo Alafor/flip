@@ -19,99 +19,91 @@ public class InclassDao implements IInclassDao {
 	public InclassDao() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	/////////////////////////////////////학생전용
-	
-	//수강신청전 인원 제한 검사
-	@Override
-	public boolean checkInclass(String id, int seq) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		map.put("seq", Integer.toString(seq));
-		if(sqlSession.selectOne(nameSpace+"chkinclass", map)==null) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	//수강신청전 시간이 겹치는지 검사
-	@Override
-	public boolean chkInclassTime(String id, int seq) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("id", id);
-		map.put("seq", Integer.toString(seq));
-		if(sqlSession.selectOne(nameSpace+"chkinclasstime", map)==null) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	//수강신청
-	@Override
-	public boolean addInclass(int member_seq,int class_seq) {
-		Map<String, String> map = new HashMap<String, String>();
-		map.put("member_seq", Integer.toString(member_seq));
-		map.put("seq", Integer.toString(class_seq));
-		return sqlSession.insert(nameSpace+"insertinclass", map)>0?true:false;
-	}
-	
-	//내수강 보기
-	@Override
-	public List<ClassDto> getAllMyInclass(int member_seq){
-		List<ClassDto> list = sqlSession.selectList(nameSpace+"getinclasslist", member_seq);
-		return list;
-	}
-	
-	//수강삭제 
+	////------------------------------------공통--------------------------------------------------------
+		//수강신청전 인원 제한 검사
 		@Override
-		public boolean delMyinclass(int member_seq, String[] class_seqs) {
-			Map<String,String[]> map = new HashMap<String, String[]>();
-			String[] member_seqs = {Integer.toString(member_seq)};
-			map.put("member_seqs", member_seqs);
-			map.put("class_seqs",class_seqs);
-			return sqlSession.delete(nameSpace+"delmyinclass", map)>0?true:false;
-		}
-		
-	/////////////////////////////////////////강사전용
-
-		//수강신청전 기존의 나의 강의와 겹치는지 검사
-		@Override
-		public boolean checkTInclass(String id, int seq) {
+		public boolean checkInclassNumber(int member_seq, int class_seq,String member_type) {
 			Map<String, String> map = new HashMap<String, String>();
-			map.put("id", id);
-			map.put("seq", Integer.toString(seq));
-			if(sqlSession.selectOne(nameSpace+"chkinclass", map)==null) {
+			map.put("member_seq",Integer.toString(member_seq));
+			map.put("class_seq", Integer.toString(class_seq));
+			map.put("member_type", member_type);
+			int rst = sqlSession.selectOne(nameSpace+"chkinclassmember", map);
+			if(rst>0) {
 				return true;
 			}else {
 				return false;
 			}
 		}
 		
-		//수강신청
+		//수강신청전 중복 검사
 		@Override
-		public boolean addTInclass(int member_seq,int class_seq) {
+		public boolean checkIsInclass(int member_seq, int class_seq) {
+			Map<String, String> map = new HashMap<String, String>();
+			map.put("member_seq",Integer.toString(member_seq));
+			map.put("class_seq", Integer.toString(class_seq));
+			int rst = sqlSession.selectOne(nameSpace+"chkisinclass", map);
+			if(rst==0) {
+				return true;
+			}else {
+				return false;
+			}
+		}
+		
+		//수강신청 ,,, 강의 개설
+		@Override
+		public boolean addInclass(int member_seq,int class_seq) {
 			Map<String, String> map = new HashMap<String, String>();
 			map.put("member_seq", Integer.toString(member_seq));
-			map.put("seq", Integer.toString(class_seq));
+			map.put("class_seq", Integer.toString(class_seq));
 			return sqlSession.insert(nameSpace+"insertinclass", map)>0?true:false;
+		}
+		
+		//수강신청전 시간이 겹치는지 검사
+		@Override
+		public List<String> chkInclassTime_Join(int member_seq, int class_seq) {
+			Map<String, ClassDto> map = new HashMap<String, ClassDto>();
+			map.put("ClassDto",getClassDto(member_seq, class_seq));
+			return sqlSession.selectList(nameSpace+"chkinclasstime_join", map);
+		}
+		
+		//강의 개설전 시간이 겹치는지 검사
+		@Override
+		public List<String> chkInclassTime_Create(ClassDto dto) {
+			Map<String, ClassDto> map = new HashMap<String, ClassDto>();
+			map.put("ClassDto",dto);
+			return sqlSession.selectList(nameSpace+"chkinclasstime_create", map);
 		}
 		
 		//내수강 보기
 		@Override
-		public List<ClassDto> getTAllMyInclass(int member_seq){
+		public List<ClassDto> getAllMyInclass(int member_seq){
 			List<ClassDto> list = sqlSession.selectList(nameSpace+"getinclasslist", member_seq);
 			return list;
 		}
 		
-		//수강삭제 
-			@Override
-			public boolean delTMyinclass(int member_seq, String[] class_seqs) {
-				Map<String,String[]> map = new HashMap<String, String[]>();
-				String[] member_seqs = {Integer.toString(member_seq)};
-				map.put("member_seqs", member_seqs);
-				map.put("class_seqs",class_seqs);
-				return sqlSession.delete(nameSpace+"delmyinclass", map)>0?true:false;
-			}
+		//수강 취소 
+		@Override
+		public boolean cancelInclass(int member_seq, int class_seq) {
+			Map<String,String> map = new HashMap<String, String>();
+			
+			map.put("member_seqs",Integer.toString(member_seq));
+			map.put("class_seqs",Integer.toString(class_seq));
+			return sqlSession.delete(nameSpace+"delmyinclass", map)>0?true:false;
+		}
+	//------------------------------------학생전용	--------------------------------------------------------
+	
+
+
+
+	
+		
+		
+			
+	//------------------------------------강사전용	--------------------------------------------------------
+	public ClassDto getClassDto(int member_seq,int class_seq){
+		ClassDto dto = sqlSession.selectOne(nameSpace+"getinclasslist", class_seq);
+		dto.setClass_member_seq(member_seq);
+		return dto;
+	}
+	
 }

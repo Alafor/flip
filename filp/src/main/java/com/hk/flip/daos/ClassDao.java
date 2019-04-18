@@ -1,7 +1,9 @@
 package com.hk.flip.daos;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,4 +44,12 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectList(nameSpace+"getCdetail", class_seq);
 	}
 	
+	//강의 등록
+	@Override
+	public boolean addClass(ClassDto dto) {
+		Map<String, ClassDto> map = new HashMap<String, ClassDto>();
+		map.put("dto", dto);
+		
+		return sqlsession.insert(nameSpace+"insertclass", map)>0?true:false;
+	}
 }
