@@ -184,7 +184,7 @@
 						<p class="color-black-opacity-5">Find a Student</p>
 					</div>
 				</div>
-				
+				<div class="classlistinclude"></div>
 				<div class="row">
 					<div class="col-12  block-13">
 					
@@ -194,7 +194,7 @@
 							<!-- EL FOR문 시작 부분  -->
 							
 								<c:forEach var="classlist" items="${classlist}" varStatus="seq">
-								<div class="d-block d-md-flex listing vertical">
+								<div class="d-block d-md-flex listing vertical instructorAjax">
 									<a href="#" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
 									<div class="lh-content">
@@ -251,7 +251,7 @@
 							<!-- EL FOR문 시작 부분  -->
 							
 								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
-								<div class="d-block d-md-flex listing vertical">
+								<div class="d-block d-md-flex listing vertical studentAjax">
 									<a href="#" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
 									<div class="lh-content">
@@ -295,7 +295,7 @@
 				<div class="col-12  block-13">
 					<div class="owl-carousel nonloop-block-13">
 						<c:forEach var="studylist" items="${studylist}" varStatus="seq">
-								<div class="d-block d-md-flex listing vertical">
+								<div class="d-block d-md-flex listing vertical studyAjax">
 									<a href="#" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
 									<div class="lh-content">
@@ -523,23 +523,7 @@
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-
-	
-
-	<!-- <script>
-		$(function(){
-			$(".popular-category").on("click",function(){
-				var department = $(".popular-category").attr("data-category");
-				$.ajax({
-					url:"main.do",
-					method:"post",
-					data: department,
-					success: function(data,status,xhr){
-					}
-				})
-			});
-		});
-	</script> -->
 	<a href="tdetail.do?member_seq=33">test강사1</a>
+	<a href="cdetail.do?class_seq=83">test강의1</a>
 </body>
 </html>
