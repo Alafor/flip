@@ -32,5 +32,11 @@ public class ClassService implements IClassService {
 		// TODO Auto-generated method stub
 		return classDao.mainWantList(department);
 	}
+	//강의 상세보기
+	@Override
+	public List<ClassDto> getCdetail(int class_seq) {
+		// TODO Auto-generated method stub
+		return classDao.getCdetail(class_seq);
+	}
 
 }
