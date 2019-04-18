@@ -75,7 +75,7 @@
 					<h2 class="font-weight-light text-primary">
 						강사<span class="text-warning">상세보기</span>
 					</h2>
-					<p class="color-black-opacity-5">LOG&amp;IN</p>
+					<p class="color-black-opacity-5">Teacher detail</p>
 				</div>
 			</div>
       

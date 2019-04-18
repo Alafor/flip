@@ -20,6 +20,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.dtos.ReviewDto;
+import com.hk.flip.service.ClassService;
+import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IMemberService;
 
 /**
@@ -30,6 +32,8 @@ public class LeeController {
 
 	@Autowired
 	private IMemberService memberService;
+	@Autowired
+	private IClassService classService;
 
 	private static final Logger logger = LoggerFactory.getLogger(LeeController.class);
 
@@ -47,10 +51,14 @@ public class LeeController {
 		return "tdetail";
 	}
 	
-	
-
-	
-
-
+	//강사들의 강의 상세보기
+	@RequestMapping(value = "/cdetail.do", method = RequestMethod.GET)
+	public String cdetail(HttpServletRequest request,Locale locale, Model model,int class_seq) {
+		logger.info("강의상세보기{}.", locale);
+		System.out.println(class_seq);
+		List<ClassDto> getCdetail = classService.getCdetail(class_seq);
+		model.addAttribute("cDto", getCdetail);
+		return "cdetail";
+	}
 
 }

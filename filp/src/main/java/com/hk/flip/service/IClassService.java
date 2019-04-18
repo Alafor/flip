@@ -9,4 +9,6 @@ public interface IClassService {
 	public List<ClassDto> mainClassList(String department);
 	public List<ClassDto> mainStudyList(String department);
 	public List<ClassDto> mainWantList(String department);
+	//강의 상세보기
+	public List<ClassDto> getCdetail(int member_seq);
 }

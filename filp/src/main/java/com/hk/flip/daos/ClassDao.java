@@ -36,4 +36,10 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectList(nameSpace+"mainwantlist",department);
 	}
 	
+	//강사들의 강의 상세보기 페이지
+	@Override
+	public List<ClassDto> getCdetail(int class_seq){
+		return sqlsession.selectList(nameSpace+"getCdetail", class_seq);
+	}
+	
 }
