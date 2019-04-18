@@ -60,7 +60,22 @@
 		  <artifactId>commons-io</artifactId>
 		  <version>2.4</version>
 		</dependency>	
-	
+		<!-- jackson라이브러리 -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-core</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.4</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+			<version>2.9.4</version>
+		</dependency>
 	
 		<!--   서블릿이나 웹애플리케이션에서 파일업로드를 쉽고 빠르게 해주는 file upload관련 패키지      -->
 		<dependency>

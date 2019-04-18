@@ -46,8 +46,8 @@
 								class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>
 					<c:if test="${logInMember ne null}">
-						<li class="ml-xl-3 login"><a href="mypage.do"><span
-								class="border-left pl-xl-4"></span><b>${logInMember.member_name }</b></a></li>
+						<li class="ml-xl-3 login" ><a href="mypage.do"><span
+								class="border-left pl-xl-3" ></span><b>${logInMember.member_name }</b></a></li>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
 						<li><a href="#" class="cta"><span

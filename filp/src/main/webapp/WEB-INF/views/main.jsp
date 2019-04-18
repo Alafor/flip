@@ -174,8 +174,10 @@
 				</div>
 			
 				<!-- 카테고리 메뉴 종료 -->
-
+<div class="classlistinclude"></div>
 				<!-- 선생님 찾기 세션 -->
+		<div class="site-section" data-aos="fade">
+			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
@@ -184,7 +186,7 @@
 						<p class="color-black-opacity-5">Find a Student</p>
 					</div>
 				</div>
-				<div class="classlistinclude"></div>
+				
 				<div class="row">
 					<div class="col-12  block-13">
 					
@@ -229,7 +231,8 @@
 				</div>
 			</div>
 		</div>
-
+	</div>
+</div>
 
 
 		<div class="site-section" data-aos="fade">
