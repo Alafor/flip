@@ -9,7 +9,7 @@ public class AnswerBoardDto implements Serializable{
 
 	private int board_seq;
 	private int board_member_seq;
-	private String board_member_name;
+	private String member_name;
 	private Date board_regdate;
 	private String board_title;
 	private String board_content;
@@ -22,12 +22,12 @@ public class AnswerBoardDto implements Serializable{
 	public AnswerBoardDto() {
 		// TODO Auto-generated constructor stub
 	}
-	public String getBorad_member_name() {
-		return board_member_name;
+	public String getMember_name() {
+		return member_name;
 	}
 	
-	public void setBorad_member_name(String borad_member_name) {
-		this.board_member_name = borad_member_name;
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
 
 	public int getBoard_seq() {
@@ -110,13 +110,13 @@ public class AnswerBoardDto implements Serializable{
 		this.board_depth = board_depth;
 	}
 
-	public AnswerBoardDto(int board_seq, int board_member_seq,String board_mamber_name, Date board_regdate, String board_title,
+	public AnswerBoardDto(int board_seq, int board_member_seq,String member_name, Date board_regdate, String board_title,
 			String board_content, String board_delflag, String board_secret, int board_refer, int board_step,
 			int board_depth) {
 		super();
 		this.board_seq = board_seq;
 		this.board_member_seq = board_member_seq;
-		this.board_member_name = board_member_name;
+		this.member_name = member_name;
 		this.board_regdate = board_regdate;
 		this.board_title = board_title;
 		this.board_content = board_content;

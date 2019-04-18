@@ -2,4 +2,33 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.AnswerBoard">
+
+	<select id="boardlist" resultType="AnswerBoardDto" >
+		SELECT A.BOARD_SEQ,B.MEMBER_NAME,A.BOARD_TITLE,A.BOARD_CONTENT,A.BOARD_REGDATE,
+		A.BOARD_REFER,A.BOARD_STEP,A.BOARD_DEPTH,A.BOARD_SECRET,A.BOARD_DELFLAG
+		FROM ANSWER_BOARD A INNER JOIN MEMBER B ON A.BOARD_MEMBER_SEQ = B.MEMBER_SEQ 
+		ORDER BY A.BOARD_REFER DESC,A.BOARD_STEP
+	</select>
+
+	<insert id="insertboard" parameterType="AnswerBoardDto">
+		INSERT INTO ANSWER_BOARD (BOARD_SEQ,BOARD_MEMBER_SEQ,BOARD_TITLE,BOARD_CONTENT,
+		BOARD_REGDATE,BOARD_REFER,BOARD_STEP,BOARD_DEPTH,BOARD_SECRET,BOARD_DELFLAG)
+		VALUES (ANSWER_BOARD_SEQ.NEXTVAL,#{board_member_seq},#{board_title},#{board_content},SYSDATE,
+		(SELECT NVL(MAX(BOARD_REFER)+1,0)FROM ANSWER_BOARD),0,0,#{board_secret},'N')
+	</insert>
+	
+	<select id="checksecret" parameterType="int" resultType="int">
+		SELECT BOARD_MEMBER_SEQ FROM ANSWER_BOARD WHERE BOARD_SEQ = #{seq} 
+	</select>
+	
+	<select id="getboard" parameterType="int" resultType="AnswerBoardDto">
+		SELECT A.BOARD_SEQ,B.MEMBER_NAME,A.BOARD_TITLE,A.BOARD_CONTENT,A.BOARD_REGDATE,
+		A.BOARD_REFER,A.BOARD_STEP,A.BOARD_DEPTH,A.BOARD_SECRET,A.BOARD_DELFLAG
+		FROM ANSWER_BOARD A INNER JOIN MEMBER B ON A.BOARD_MEMBER_SEQ = B.MEMBER_SEQ WHERE A.BOARD_SEQ=#{seq}  
+	</select>
+	
+	<update id="updateboard" parameterType="AnswerBoardDto">
+		 UPDATE ANSWER_BOARD SET BOARD_TITLE=#{board_title}, BOARD_CONTENT=#{board_content},BOARD_REGDATE=SYSDATE
+		 WHERE BOARD_SEQ=#{board_seq}
+	</update>
 </mapper>

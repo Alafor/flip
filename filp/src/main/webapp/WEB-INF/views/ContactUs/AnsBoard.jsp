@@ -44,7 +44,6 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 		<th>refer</th>
 		<th>step</th>
 		<th>depth</th>
-		<th>조회수</th>
 		<th>삭제</th>
 	</tr>
 	<c:choose>
@@ -56,16 +55,28 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 				<tr>
 					<td><input type="checkbox" name="chk" value="${dto.board_seq}"/></td>
 					<td>${dto.board_seq}</td>
-					<td>${dto.board_member_name}</td>
+					<td>${dto.member_name}</td>
 					<c:choose>
 						<c:when test="${dto.board_delflag=='Y'}">
 							<td>---삭제된 글입니다.---</td>
 						</c:when>
 						<c:otherwise>
+					       <c:choose>
+					        <c:when test="${dto.board_secret=='Y'}">
+					        	<td><jsp:setProperty property="arrowNbsp" name="util" value="${dto.board_depth}"/>
+					        <jsp:getProperty property="arrowNbsp" name="util"/>
+					        <a href="anssecret.do?seq=${dto.board_seq}">${dto.board_title}</a>
+					        <img alt="자물쇠" src="resources/images/자물쇠.png">
+					        </td>
+					        </c:when>
+					        
+					        <c:otherwise>
 					        <td><jsp:setProperty property="arrowNbsp" name="util" value="${dto.board_depth}"/>
 					        <jsp:getProperty property="arrowNbsp" name="util"/>
 					        <a href="ansdetail.do?seq=${dto.board_seq}">${dto.board_title}</a>
-					        </td>									
+					        </td>
+					        </c:otherwise>
+					       </c:choose> 	        									
 						</c:otherwise>
 					</c:choose>
 					<td> <fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년MM월dd일"/> </td>
