@@ -4,8 +4,7 @@
 <mapper namespace="com.hk.flip.Class">
 
 	<!-- 강사들의 강의 10개만 불러오기 -->
-	<select id="mainclasslist" parameterType="String" resultType="ClassDto">
-	<![CDATA[ 
+	<select id="mainclasslist" parameterType="Map" resultType="ClassDto">
 	SELECT
 	C.SEQ,
 	C.CLASS_IMG, 
@@ -37,14 +36,16 @@ WHERE
 	AND C.CLASS_MEMBER_SEQ = M.MEMBER_SEQ(+)
 	AND C.SEQ = D_DAY.SEQ
 	AND C.SEQ = PARTI.SEQ (+)
+	<if test="department != null">
 	AND C.CLASS_DEPA = #{department}
+	</if>
 	AND C.CLASS_TYPE = 'C'
+	<![CDATA[
 	AND ROWNUM <= 10
 	]]>
 	</select>
-
+	
 	<select id="mainwantlist" parameterType="String" resultType="ClassDto">
-	<![CDATA[ 
 	SELECT
 	C.SEQ,
 	C.CLASS_IMG, 
@@ -68,13 +69,15 @@ WHERE
 	C.CLASS_MEMBER_SEQ = M.MEMBER_SEQ(+)
 	AND C.SEQ = D_DAY.SEQ
 	AND C.SEQ = PARTI.SEQ (+)
+	<if test="department != null">
 	AND C.CLASS_DEPA = #{department}
+	</if>
 	AND C.CLASS_TYPE = 'W'
+	<![CDATA[
 	AND ROWNUM <= 10
 	]]>
 	</select>
 	<select id="mainstudylist" parameterType="String" resultType="ClassDto">
-	<![CDATA[ 
 	SELECT
 	C.SEQ,
 	C.CLASS_IMG, 
@@ -98,12 +101,15 @@ WHERE
 	C.CLASS_MEMBER_SEQ = M.MEMBER_SEQ(+)
 	AND C.SEQ = D_DAY.SEQ
 	AND C.SEQ = PARTI.SEQ (+)
+	<if test="department != null">
 	AND C.CLASS_DEPA = #{department}
+	</if>
 	AND C.CLASS_TYPE = 'S'
+	<![CDATA[
 	AND ROWNUM <= 10
 	]]>
 	</select>
-
+	
 	<!--강의 상세보기 페이지 -->
 	<select id="getCdetail" parameterType="int" resultType="ClassDto">
 	SELECT
