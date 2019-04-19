@@ -49,10 +49,7 @@
 
 			<input type="hidden" name="board_seq" value="${dto.board_seq}"/>
 			<table border="1">
-				<tr>
-					<th>이름</th>
-					<td><input type="text" name="member_name"></td>
-				</tr>
+				
 				<tr>
 					<th>제목</th>
 					<td>
@@ -65,6 +62,11 @@
 						<textarea rows="10" cols="60" name="board_content"></textarea>
 					</td>
 				</tr>
+				<tr>
+			<th>비밀글</th>
+			<td><input type="radio" name="board_secret" value="N" checked="checked">공개</td>
+			<td><input type="radio" name="board_secret" value="Y">비공개</td>
+		</tr>
 				<tr>
 					<td colspan="2">
 						<input type="submit" value="답글등록"> 
@@ -79,10 +81,10 @@
 
 	<script type="text/javascript">
 	function ansupdateForm(){
-		location.href="ansupdateform.do?board_seq=${dto.board_seq}";
+		location.href="ansupdateform.do?seq=${dto.board_seq}";
 	}
 	function ansdelboard() {
-		location.href="ansmuldel.do?chk=${dto.board_seq}";
+		location.href="ansmuldel.do?seq=${dto.board_seq}";
 	}
 	function ansreplyForm(){
 		$("#ansreplyForm").toggle(800);//show(),hide(),toggle()

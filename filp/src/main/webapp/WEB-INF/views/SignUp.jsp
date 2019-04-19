@@ -109,7 +109,7 @@ if( len == 7 ) oThis.value += "-";
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+    </div>
 	<!-- header -->
 		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->

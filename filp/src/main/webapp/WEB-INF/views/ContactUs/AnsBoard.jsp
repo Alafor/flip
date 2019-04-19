@@ -10,7 +10,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>문의게시판</title>
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
-<script type="text/javascript">
+ <script type="text/javascript">
 function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는다
 	//	alert(bool.tagName);
 	var kk= bool.parentNode;//parentNode:부모태그구할때,childNodes:자식요소 구할때
@@ -32,11 +32,11 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 
 <form action="ansmuldel.do" method="post">
 <table border="1">
-	<col width="20px">
+	<%-- <col width="20px"> --%>
 	<col width="50px"><col width="100px"><col width="300px"><col width="150px"><col width="60px">
 	<col width="60px"><col width="60px"><col width="60px"><col width="50px">
 	<tr style="background-color: yellow;">
-		<th><input type="checkbox" name="all" onclick="allSel(this)"/></th><!-- this.checked:체크여부를 판단하여 true,false 반환 -->
+		<!-- <th><input type="checkbox" name="all" onclick="allSel(this)"/></th> --><!-- this.checked:체크여부를 판단하여 true,false 반환 -->
 		<th>번호</th>
 		<th>작성자</th>
 		<th>제목</th>
@@ -53,7 +53,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 		<c:otherwise>
 			<c:forEach items="${list}" var="dto">
 				<tr>
-					<td><input type="checkbox" name="chk" value="${dto.board_seq}"/></td>
+					<%-- <td><input type="checkbox" name="chk" value="${dto.board_seq}"/></td> --%>
 					<td>${dto.board_seq}</td>
 					<td>${dto.member_name}</td>
 					<c:choose>
@@ -92,7 +92,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 	<tr>
 		<td colspan="10">
 			<input type="button" value="글추가" onclick="location.href='ansinsertform.do'"/>
-			<input type="submit" value="글삭제"/>
+			
 		</td>
 	</tr>
 </table>

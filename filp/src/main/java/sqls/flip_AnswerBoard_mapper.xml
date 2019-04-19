@@ -17,7 +17,7 @@
 		(SELECT NVL(MAX(BOARD_REFER)+1,0)FROM ANSWER_BOARD),0,0,#{board_secret},'N')
 	</insert>
 	
-	<select id="checksecret" parameterType="int" resultType="int">
+	<select id="checkedMember" parameterType="int" resultType="int">
 		SELECT BOARD_MEMBER_SEQ FROM ANSWER_BOARD WHERE BOARD_SEQ = #{seq} 
 	</select>
 	
@@ -31,4 +31,23 @@
 		 UPDATE ANSWER_BOARD SET BOARD_TITLE=#{board_title}, BOARD_CONTENT=#{board_content},BOARD_REGDATE=SYSDATE
 		 WHERE BOARD_SEQ=#{board_seq}
 	</update>
+	
+	<update id="muldelboard" parameterType="int">
+		UPDATE ANSWER_BOARD SET BOARD_DELFLAG='Y' WHERE BOARD_SEQ=#{board_seq}
+	</update>
+	
+	<update id="replyupdate" parameterType="int">
+   		<![CDATA[
+   		UPDATE ANSWER_BOARD SET BOARD_STEP=BOARD_STEP+1 WHERE BOARD_REFER=(SELECT BOARD_REFER FROM ANSWER_BOARD WHERE BOARD_SEQ=#{seq})
+		AND BOARD_STEP > (SELECT BOARD_STEP FROM ANSWER_BOARD WHERE BOARD_SEQ=#{seq})
+		]]>    
+   </update>
+   
+   <insert id="replyinsert" parameterType="AnswerBoardDto">
+   		INSERT INTO ANSWER_BOARD VALUES(ANSWER_BOARD_SEQ.NEXTVAL,#{board_member_seq},#{board_title},#{board_content},SYSDATE,
+                                (SELECT BOARD_REFER FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq}),
+                                (SELECT BOARD_STEP FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,
+                                (SELECT BOARD_DEPTH FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,
+                                #{board_secret},'N')
+   </insert>
 </mapper>
