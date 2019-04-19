@@ -14,7 +14,7 @@ public class InclassDao implements IInclassDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlSession;
-	String nameSpace = "com.hk.flip.Inclass";
+	String nameSpace = "com.hk.flip.Inclass.";
 	
 	public InclassDao() {
 		// TODO Auto-generated constructor stub
