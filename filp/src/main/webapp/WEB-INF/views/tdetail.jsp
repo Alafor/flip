@@ -23,7 +23,7 @@
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
 
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
-
+<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
 
 <link rel="stylesheet" href="resources/css/aos.css">
@@ -31,7 +31,7 @@
 
 <link rel="stylesheet" href="resources/css/style.css">
 </head>
-
+<body>
 
 <div class="site-wrap">
 
@@ -43,7 +43,7 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+    </div>
 	<!-- header -->
 		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->
@@ -68,14 +68,14 @@
     
               
 
-    <div class="site-section bg-light">
+  <div class="site-section bg-light">
       <div class="container">
       	<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						강사<span class="text-warning">상세보기</span>
+						강의<span class="text-warning">상세보기</span>
 					</h2>
-					<p class="color-black-opacity-5">Teacher detail</p>
+					<p class="color-black-opacity-5">Teacher&amp;Detail</p>
 				</div>
 			</div>
       
@@ -83,20 +83,49 @@
           <div class="col-md-7 mb-5"  data-aos="fade">
    <!-------------------------------------------------------------------------------------------------->
 
-<body>
-<!-- 강사 이름 -->
-${tDto.member_name}
+
+<table>
+<tr>
+<td>
 <!-- 강사 프로필 사진 --> 
 ${tDto.member_profile}
+</td>
+<!-- 강사 이름 -->
+<td>
+${tDto.member_name}
+</td>
+</tr>
+<tr>
 <!-- 강사 평점 -->
+<td>
 ${tDto.avg}
+</td>
+</tr>
+<tr>
 <!-- 강사 상세사항 -->
+<td>
 ${tDto.member_info}
+</td>
+</tr>
+<tr>
 <!-- 강의 리스트 -->
+<td>
 ${clist[0].class_name}
+</td>
+</tr>
+<tr>
 <!-- 후기 내용 -->
+<td>
 ${rDto[0].review_detail}
+</td>
+</tr>
+</table>
 
+
+</div>
+</div>
+</div>
+</div>
 
 <!-- <div id="dropDownSelect1"></div> -->
 	<div>

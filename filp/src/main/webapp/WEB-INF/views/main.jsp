@@ -525,7 +525,5 @@
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	<a href="tdetail.do?member_seq=33">test강사1</a>
-	<a href="cdetail.do?class_seq=83">test강의1</a>
 </body>
 </html>

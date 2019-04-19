@@ -2,4 +2,11 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Review">
+
+<!--강사 후기 남기기-->
+<insert id="Treview">
+INSERT INTO REVIEW(REVIEW_SEQ, REVIEW_MEMBER_SEQ, REVIEW_CLASS_SEQ, REVIEW_RATING, REVIEW_DETAIL, REVIEW_DELFLAG, REVIEW_REGDATE)
+VALUES(REVIEW_SEQ.nextval,{review_member_seq},{review_class_seq},{review_rating},'{review_detail}','N',SYSDATE); 
+</insert>
+
 </mapper>
