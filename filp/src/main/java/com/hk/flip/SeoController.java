@@ -34,8 +34,10 @@ public class SeoController {
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
-		
-		
+		if(department==null) {
+			return "main";
+		}else {
+			System.out.println(department);
 		List<ClassDto> classList = classService.mainClassList(department);
 		List<ClassDto> studyList = classService.mainStudyList(department);
 		List<ClassDto> wantList = classService.mainWantList(department);
@@ -44,7 +46,7 @@ public class SeoController {
 		model.addAttribute("studylist", studyList);
 		model.addAttribute("wantlist", wantList);
 		return "main";
-		
+		}
 	}
 	
 	//ajax controller

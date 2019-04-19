@@ -58,6 +58,7 @@ public class LeeController {
 		System.out.println(class_seq);
 		List<ClassDto> getCdetail = classService.getCdetail(class_seq);
 		model.addAttribute("cDto", getCdetail);
+		System.out.println(getCdetail.size());
 		return "cdetail";
 	}
 

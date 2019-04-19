@@ -42,7 +42,7 @@
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+    </div>
 	<!-- header -->
 		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->

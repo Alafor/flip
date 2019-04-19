@@ -196,15 +196,14 @@
 							
 								<c:forEach var="classlist" items="${classlist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical instructorAjax">
-									<a href="cdetail.do?class_seq=${classlist.seq}" class="img d-block"
+									<a href="#" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
 									<div class="lh-content">
-										<a href="tdetail.do?member_seq=${class_member_seq}">
 										<span class="category">${classlist.class_creator_name}</span> 
-										<span class="instructor_img">강사사진</span></a>
+										<span class="instructor_img">강사사진</span>
 										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
 										<h3>
-											<a href="cdetail.do?class_seq=${classlist.seq}">${classlist.class_name}</a>
+											<a href="#">${classlist.class_name}</a>
 										</h3>
 										<!-- 별 -->
 										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_member_rating}" onclick="gogostar(this)">
