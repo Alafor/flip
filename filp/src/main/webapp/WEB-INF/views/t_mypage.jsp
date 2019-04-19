@@ -230,19 +230,18 @@
 														</div>
 													</div>
 												</div>
-	
 												<c:set var="i" value="${i+1}" />
 											</c:when>
 											<c:otherwise>
+												<c:if test="${i == 1}">
+													<div class="col-lg-6">
+														<h2 class="font-weight-light text-primary">
+															<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+														</h2>
+													</div>
+												</c:if>
 											</c:otherwise>
 										</c:choose>
-											<c:if test="${i == 1}">
-												<div class="col-lg-6">
-													<h2 class="font-weight-light text-primary">
-														<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-													</h2>
-												</div>
-											</c:if>
 									</c:forEach>
 								</c:when>
 									
@@ -305,15 +304,15 @@
 												<c:set var="i" value="${i+1}" />
 											</c:when>
 											<c:otherwise>
+												<c:if test="${i == 1}">
+													<div class="col-lg-6">
+														<h2 class="font-weight-light text-primary">
+															<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+														</h2>
+													</div>
+												</c:if>
 											</c:otherwise>
 										</c:choose>
-											<c:if test="${i == 1}">
-												<div class="col-lg-6">
-													<h2 class="font-weight-light text-primary">
-														<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-													</h2>
-												</div>
-											</c:if>
 										</c:forEach>
 								</c:when>
 								
@@ -375,19 +374,18 @@
 													</div>
 												</div>
 												<c:set var="i" value="${i+1}" />
-												</c:when>
-												<c:otherwise>
-												</c:otherwise>
-											</c:choose>
-												<c:if test="${i == 1}">
-													<div class="col-lg-6">
-														<h2 class="font-weight-light text-primary">
-															<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-														</h2>
-													</div>
-												</c:if>
-											</c:forEach>
-	<!-- 								</div> -->
+											</c:when>
+											<c:otherwise>
+											<c:if test="${i == 1}">
+												<div class="col-lg-6">
+													<h2 class="font-weight-light text-primary">
+														<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+													</h2>
+												</div>
+											</c:if>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
 								</c:when>
 								
 								<c:otherwise>
