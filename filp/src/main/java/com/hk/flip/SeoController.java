@@ -48,23 +48,7 @@ public class SeoController {
 		}
 	}
 	
-//	@RequestMapping(value = "/mainchange.do", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String mainChangeCategoryList(Locale locale, Model model, String department) {
-//		logger.info("Started main{}.", locale);
-//		System.out.println(department);
-//		if(department==null) {
-//			return "mainclasslist";
-//		}else {
-//		List<ClassDto> classList = classService.mainClassList(department);
-//		List<ClassDto> studyList = classService.mainStudyList(department);
-//		List<ClassDto> wantList = classService.mainWantList(department);
-//
-//		model.addAttribute("classlist", classList);
-//		model.addAttribute("studylist", studyList);
-//		model.addAttribute("wantlist", wantList);
-//		return "mainclasslist";
-//		}
-//	}
+	//ajax controller
 	@ResponseBody
 	@RequestMapping(value = "/mainAjax.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public Map mainAjax(Locale locale, Model model, String department) {
