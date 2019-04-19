@@ -15,7 +15,7 @@
 <table border="1">
 		<tr>
 			<th>이름</th>
-			<td>${dto.board_member_name}</td>
+			<td>${dto.member_name}</td>
 		</tr>
 		<tr>
 			<th>제목</th>

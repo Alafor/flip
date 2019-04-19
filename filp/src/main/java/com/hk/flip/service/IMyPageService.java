@@ -14,7 +14,7 @@ public interface IMyPageService {
 
 	public List<ClassDto> getAllInclassList(int member_seq);
 
-	public boolean delMyInclass(int member_seq, String[] class_seqs);
+	public boolean cancelInclass(int member_seq, int class_seq);
 
 
 
