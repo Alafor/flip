@@ -26,16 +26,22 @@ public class ClassDao implements IClassDao {
 	//메인 강의목록
 	@Override
 	public List<ClassDto> mainClassList(String department){
-		return sqlsession.selectList(nameSpace+"mainclasslist", department);
+		Map<String, String> departmentMap = new HashMap<String, String>();
+		departmentMap.put("department", department);
+		return sqlsession.selectList(nameSpace+"mainclasslist", departmentMap);
 	}
 	
 	@Override
 	public List<ClassDto> mainStudyList(String department){
-		return sqlsession.selectList(nameSpace+"mainstudylist",department);
+		Map<String, String> departmentMap = new HashMap<String, String>();
+		departmentMap.put("department", department);
+		return sqlsession.selectList(nameSpace+"mainstudylist",departmentMap);
 	}
 	@Override
 	public List<ClassDto> mainWantList(String department){
-		return sqlsession.selectList(nameSpace+"mainwantlist",department);
+		Map<String, String> departmentMap = new HashMap<String, String>();
+		departmentMap.put("department", department);
+		return sqlsession.selectList(nameSpace+"mainwantlist",departmentMap);
 	}
 	
 	//강사들의 강의 상세보기 페이지

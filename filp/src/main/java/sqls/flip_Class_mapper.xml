@@ -45,7 +45,7 @@ WHERE
 	]]>
 	</select>
 	
-	<select id="mainwantlist" parameterType="String" resultType="ClassDto">
+	<select id="mainwantlist" parameterType="Map" resultType="ClassDto">
 	SELECT
 	C.SEQ,
 	C.CLASS_IMG, 
@@ -77,7 +77,7 @@ WHERE
 	AND ROWNUM <= 10
 	]]>
 	</select>
-	<select id="mainstudylist" parameterType="String" resultType="ClassDto">
+	<select id="mainstudylist" parameterType="Map" resultType="ClassDto">
 	SELECT
 	C.SEQ,
 	C.CLASS_IMG, 
