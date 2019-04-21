@@ -40,7 +40,7 @@
 
 </head>
 <body>
-
+<jsp:include page="header.jsp"/>
 <div class="site-wrap">
 
 <div class="site-mobile-menu">
@@ -53,7 +53,7 @@
 </div>
 
 <!-- header -->
-<jsp:include page="header.jsp"/>
+
 <!-- header 종료 -->
 
 <div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
@@ -86,19 +86,16 @@
 				<div class="w3-row">
 					<a href="javascript:void(0)" onclick="openCity(event, 'AllMyClass');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-aqua w3-col s3" style="width: 20%; font-size: 1.5vw">내모든수강</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-aqua w3-col s3" style="width: 25%; font-size: 1.5vw">내모든강의</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyClass');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">내수강보기</div>
-					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyStudy');">
-						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">스터디보기</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 25%;font-size: 1.5vw;">내강의보기</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyWant');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">원해요보기</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 25%;font-size: 1.5vw;">원해요보기</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyWishlist');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">위시리스트</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 25%;font-size: 1.5vw;">위시리스트</div>
 					</a>
 				</div>
 
@@ -107,7 +104,7 @@
 						<div class="row mb-5">
 							<div class="col-md-7 text-left border-primary">
 								<h2 class="font-weight-light text-primary">
-									<b>내강의<span class="text-warning">보기</span>
+									<b>모든 강의 <span class="text-warning">보기</span>
 								</h2>
 								<p class="color-black-opacity-5">MY LIST</p>
 	
@@ -196,7 +193,7 @@
 						<div class="row mb-5">
 							<div class="col-md-7 text-left border-primary">
 								<h2 class="font-weight-light text-primary">
-									<b>내강의<span class="text-warning">보기</span>
+									<b>강의<span class="text-warning">보기</span>
 								</h2>
 								<p class="color-black-opacity-5">MY LIST</p>
 	
@@ -230,19 +227,20 @@
 														</div>
 													</div>
 												</div>
+	
 												<c:set var="i" value="${i+1}" />
 											</c:when>
 											<c:otherwise>
-												<c:if test="${i == 1}">
-													<div class="col-lg-6">
-														<h2 class="font-weight-light text-primary">
-															<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-														</h2>
-													</div>
-												</c:if>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
+									<c:if test="${i == 1}">
+										<div class="col-lg-6">
+											<h2 class="font-weight-light text-primary">
+												<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+											</h2>
+										</div>
+									</c:if>
 								</c:when>
 									
 									<c:otherwise>
@@ -253,77 +251,6 @@
 										</div>
 									</c:otherwise>
 								</c:choose>
-						</div>
-					</div>
-				</div>
-
-				<div id="MyStudy" class="container depa" style="display: none">      <!-- 내 스터디 보기 탭 내용  -->
-					<div class="container">
-						<div class="row mb-5">
-							<div class="col-md-7 text-left border-primary">
-								<h2 class="font-weight-light text-primary">
-									<b>스터디<span class="text-warning">보기</span></b>
-								</h2>
-								<p class="color-black-opacity-5">MY LIST</p>
-	
-							</div>
-						</div>
-
-						<div class="row mt-5">
-							<c:choose>						
-								<c:when test="${not empty inclassList}">
-									<c:set var="i" value="1" />
-									<c:forEach items="${inclassList}" var="inclass">
-	<%-- 									<c:forEach begin="1" end="${fn:length(inclassList)}" var="j" step="1"> --%>
-	<%-- 									<c:choose> --%>
-	<%-- 										<c:when test="${(i %2) ==1 } }"> --%>
-										<c:choose>
-											<c:when test="${inclass.class_type eq 'S'}">
-												<div class="col-lg-6">
-													<div class="d-block d-md-flex listing">
-														<a href="#" class="img d-block"
-															style="background-image: url('resources/images/img_4.jpg')"></a>
-														<div class="lh-content">
-															<span class="category">${inclass.class_creator_name}</span> 
-															<span class="instructor_img"></span>
-															<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-															<h3>
-																<a href="#">${inclass.class_name}</a>
-															</h3>
-															<!-- 별 -->
-															<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
-															</div>
-																<!-- <p class="teacherstar" style="float:left;"></p> -->
-																<span class="review" >(${inclass.class_review_count} Reviews)</span>
-															<!-- 별 -->
-															<address>${inclass.class_area}</address>
-														</div>
-													</div>
-												</div>
-	
-												<c:set var="i" value="${i+1}" />
-											</c:when>
-											<c:otherwise>
-												<c:if test="${i == 1}">
-													<div class="col-lg-6">
-														<h2 class="font-weight-light text-primary">
-															<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-														</h2>
-													</div>
-												</c:if>
-											</c:otherwise>
-										</c:choose>
-										</c:forEach>
-								</c:when>
-								
-								<c:otherwise>
-									<div class="col-lg-6">
-										<h2 class="font-weight-light text-primary">
-											<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-										</h2>
-									</div>
-								</c:otherwise>
-							</c:choose>
 						</div>
 					</div>
 				</div>
@@ -374,18 +301,19 @@
 													</div>
 												</div>
 												<c:set var="i" value="${i+1}" />
-											</c:when>
-											<c:otherwise>
-											<c:if test="${i == 1}">
-												<div class="col-lg-6">
-													<h2 class="font-weight-light text-primary">
-														<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-													</h2>
-												</div>
-											</c:if>
-											</c:otherwise>
+												</c:when>
+												<c:otherwise>
+												</c:otherwise>
 										</c:choose>
 									</c:forEach>
+									<c:if test="${i == 1}">
+										<div class="col-lg-6">
+											<h2 class="font-weight-light text-primary">
+												<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+											</h2>
+										</div>
+									</c:if>
+	<!-- 								</div> -->
 								</c:when>
 								
 								<c:otherwise>
@@ -468,6 +396,7 @@
 
 			</div>
 		</div>
+		</div>
 		<script>
 function openCity(evt, cityName) {
 var i, x, tablinks;
@@ -484,44 +413,8 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 }
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		<!-- <div id="dropDownSelect1"></div> -->
 <div>
 <jsp:include page="footer.jsp" />
-</div>
 
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
@@ -537,63 +430,6 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 <script src="resources/js/rangeslider.min.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="resources/js/signup.js"></script>
-
-
-<%-- <p>${member.member_name}</p>
-<p>${member.member_email}</p>
-<p>${member.member_phone}</p>
-<p>${member.member_email}</p>
-<p>${member.member_email}</p>
-
-	<ul class=”navnav-tabs”><!–nav/ nav-tab 클래스를 추가하면 탭스타일로 나타납니다.–>
-		<li class=”active”><a href=“#tab1″ data-toggle=”tab” onclick="myclass(myclass)">내수강보기</a></li>
-		<li><a href=“#tab2″ data-toggle=”tab” onclick="myclass(mystudy)">내스터디 보기</a></li><!–탭메뉴를 사용하기위해 data-toggle=”tab”을 지정해줍니다.–>
-		<li><a href=”#tab3″ data-toggle=”tab” onclick="myclass(want)">원해요 보기</a></li>
-		<li><a href=”#tab4″ data-toggle=”tab” onclick="myclass(wishlist)">위시리스트 보기</a></li>
-	</ul>
-
-	<div class=”tab-content”>
-		<!–탭내용을 보여주는 곳에 ‘tab-content’ 클래스를걸어줍니다–>
-		<div class=”tab-pane active” id=“tab1″>
-			<!–nav-tab부분 링크부분과 탭내용을 보여줄 id를 맞춰줍니다–>
-			<p>내수강보기 부분입니다.</p>
-			<c:forEach var="inclass" items="allInclass" >
-				<p>${inclass.class_name}</p>
-				<p>${inclass.regdate}</p>
-				<p>${inclass.class_area}</p>
-				<p>${inclass.class_depa}</p>
-				<p>${inclass.class_sd}</p>
-				<p>${inclass.class_instructor}</p>
-				<p>${inclass.class_termin}</p>
-				<p>${inclass.class_participation}</p>
-				<p>${inclass.class_detail}</p>
-				<p>${inclass.class_img}</p>
-				<p>${inclass.class_participation}</p>
-				<p>${inclass.class_now_participation}</p>
-				<p>${inclass.class_rating}</p>
-				<p>${inclass.d_day}</p>
-			</c:forEach>
-			
-		</div>
-		<div class=”tab-pane” id=“tab2″>
-			<p>내스터디 보기 부분입니다.</p>
-			<c:forEach var="study" items="allStudyList" >
-				<p>${study.class_name}</p>
-			</c:forEach>
-		</div>
-		<div class=”tab-pane” id=“tab3″>
-			<p>내원해요 보기 부분입니다.</p>
-			<c:forEach var="want" items="allwantList" >
-				<p>${want.class_name}</p>
-			</c:forEach>
-		</div>
-		<div class=”tab-pane” id=“tab4″>
-			<p>내위시리스트 보기 부분입니다.</p>
-			<c:forEach var="wishlist" items="allwishlist" >
-				<p>${wishlist.class_name}</p>
-			</c:forEach>
-		</div>
-	</div> --%>
 
 </body>
 </html>

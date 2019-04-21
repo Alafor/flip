@@ -89,7 +89,7 @@
 							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-aqua w3-col s3" style="width: 20%; font-size: 1.5vw">내모든수강</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyClass');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">내수강보기</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">내강의보기</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyStudy');">
 						<div
 							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%;font-size: 1.5vw;">스터디보기</div>
@@ -107,7 +107,7 @@
 						<div class="row mb-5">
 							<div class="col-md-7 text-left border-primary">
 								<h2 class="font-weight-light text-primary">
-									<b>내강의<span class="text-warning">보기</span>
+									<b>모든 강의 <span class="text-warning">보기</span>
 								</h2>
 								<p class="color-black-opacity-5">MY LIST</p>
 	
@@ -196,7 +196,7 @@
 						<div class="row mb-5">
 							<div class="col-md-7 text-left border-primary">
 								<h2 class="font-weight-light text-primary">
-									<b>내강의<span class="text-warning">보기</span>
+									<b>강의<span class="text-warning">보기</span>
 								</h2>
 								<p class="color-black-opacity-5">MY LIST</p>
 	
@@ -236,14 +236,14 @@
 											<c:otherwise>
 											</c:otherwise>
 										</c:choose>
-											<c:if test="${i == 1}">
-												<div class="col-lg-6">
-													<h2 class="font-weight-light text-primary">
-														<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-													</h2>
-												</div>
-											</c:if>
 									</c:forEach>
+									<c:if test="${i == 1}">
+										<div class="col-lg-6">
+											<h2 class="font-weight-light text-primary">
+												<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+											</h2>
+										</div>
+									</c:if>
 								</c:when>
 									
 									<c:otherwise>
@@ -307,14 +307,14 @@
 											<c:otherwise>
 											</c:otherwise>
 										</c:choose>
-											<c:if test="${i == 1}">
-												<div class="col-lg-6">
-													<h2 class="font-weight-light text-primary">
-														<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-													</h2>
-												</div>
-											</c:if>
-										</c:forEach>
+									</c:forEach>
+									<c:if test="${i == 1}">
+										<div class="col-lg-6">
+											<h2 class="font-weight-light text-primary">
+												<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+											</h2>
+										</div>
+									</c:if>
 								</c:when>
 								
 								<c:otherwise>
@@ -378,15 +378,15 @@
 												</c:when>
 												<c:otherwise>
 												</c:otherwise>
-											</c:choose>
-												<c:if test="${i == 1}">
-													<div class="col-lg-6">
-														<h2 class="font-weight-light text-primary">
-															<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
-														</h2>
-													</div>
-												</c:if>
-											</c:forEach>
+										</c:choose>
+									</c:forEach>
+									<c:if test="${i == 1}">
+										<div class="col-lg-6">
+											<h2 class="font-weight-light text-primary">
+												<b>등록된 강의가 <span class="text-warning">없습니다</span></b>
+											</h2>
+										</div>
+									</c:if>
 	<!-- 								</div> -->
 								</c:when>
 								
