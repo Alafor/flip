@@ -4,18 +4,8 @@
 <%response.setContentType("text/html;charset=utf-8"); %> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
-
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <head>
-<title>수업등록하기</title>
+	<title>회원가입</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
 	
@@ -107,22 +97,9 @@ if( len == 7 ) oThis.value += "-";
 
 </script>
 
-<style type="text/css">
-.hidden_input{margin: 0 auto;}
-.hidden_input label { padding: .5em .75em; color: #fff; font-size: inherit; line-height: normal; vertical-align: middle;
-					 background-color: #30e3ca; cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; }
-
-.hidden_input input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
-
-
-	
-</style>
-<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
 </head>
 <body>
-	 <div class="site-wrap">
+	  <div class="site-wrap">
 
     <div class="site-mobile-menu">
       <div class="site-mobile-menu-header">
@@ -132,7 +109,7 @@ if( len == 7 ) oThis.value += "-";
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+    </div>
 	<!-- header -->
 		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->
@@ -156,20 +133,21 @@ if( len == 7 ) oThis.value += "-";
     </div>  
 	
 	
+
 	<div class="site-section bg-light">
       <div class="container">
       	<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						수업<span class="text-warning"> 등록</span>
+						회원<span class="text-warning">가입</span>
 					</h2>
 					<p class="color-black-opacity-5">SIGN&amp;UP</p>
 				</div>
 			</div>
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" >
           <div class="col-md-7 mb-5"  data-aos="fade">
           
-          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post">
+          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
           	<input type="hidden" name="member_type"  value="S">
              
  			<div class="row form-group">              
@@ -218,35 +196,6 @@ if( len == 7 ) oThis.value += "-";
                 </div>
               </div>
               
-              
-			<div class="container">     
-    		<label class="text-black" >프로필등록</label>
-    			<div class="row form-group mb-6" style="border: 1px solid #ced4da; border-radius: 10px; ">
-  					<div class="col-md-6"><!--left col--><br>
-                       <div class="text-center testimonial"><figure class="mb-6"><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar"><br><br>
-        					<h6><b>프로필</b></h6></div></div>
-        		       <div class="col-md-6 hidden_input" style="text-align:center;margin-top:15%"><p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
-        					<label for="hidden_file">프로필등록</label>
-        						<input type="file" id="hidden_file" class="text-center center-block file-upload"  name=""></figure>
-     					</div><br>
-              
-              		</div>
-              </div>
-              
-              <div class="container">
-              	<div class="row form-group">
-              		<div class="col-md-12" style="padding: 0;">
-                 	 <label class="text-black" for="message">강사소개</label> 
-                 		 <textarea name="" id="message" cols="40" rows="7" class="form-control" placeholder="학력사항&#13;&#10;경력사항&#13;&#10;수상내역"></textarea>
-               		 </div>
-              			
-              		</div>
-             	</div>
-              
-              
-             
-              
-              
               <div class="row form-group">
                 <div class="col-12">
                   <p>Have an account? <a href="loginform.do">Log In</a></p>
@@ -273,28 +222,7 @@ if( len == 7 ) oThis.value += "-";
 	<div>
 	<jsp:include page="footer.jsp" />
 	</div>
-	<script type="text/javascript">
-	$(document).ready(function() {
-
-	    
-	    var readURL = function(input) {
-	        if (input.files && input.files[0]) {
-	            var reader = new FileReader();
-
-	            reader.onload = function (e) {
-	                $('.avatar').attr('src', e.target.result);
-	            }
-	    
-	            reader.readAsDataURL(input.files[0]);
-	        }
-	    }
-	    
-
-	    $(".file-upload").on('change', function(){
-	        readURL(this);
-	    });
-	});
-	</script>
+	
 	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/jquery-ui.js"></script>
@@ -312,25 +240,3 @@ if( len == 7 ) oThis.value += "-";
 
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

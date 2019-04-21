@@ -15,6 +15,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IMemberService;
 import com.hk.flip.service.IMyPageService;
@@ -59,6 +60,20 @@ public class MooooonController {
 	public String loginform(Locale locale, Model model) {
 		logger.info("로그인 폼 이동하기{}.", locale);	
 		return "testlogin";
+	}
+	
+	@RequestMapping(value = "/class_addform_c.do", method = RequestMethod.GET)
+	public String class_addform(Locale locale, Model model,HttpServletRequest request) {
+		logger.info("강의등록폼이동{}.", locale);
+		return "AddClass_C";
+	}
+	
+	@RequestMapping(value = "/class_add.do", method = RequestMethod.POST)
+	public String class_add(Locale locale, Model model,HttpServletRequest request,ClassDto classdto) {
+		logger.info("강의등록폼이동{}.", locale);
+		int memberSeq = ((MemberDto)request.getSession().getAttribute("LogInMember")).getMember_seq();
+		classdto.setClass_member_seq(memberSeq);
+		return "main";
 	}
 	
 	@RequestMapping(value = "/test-login.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
