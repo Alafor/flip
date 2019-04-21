@@ -137,5 +137,8 @@ WHERE
 	AND A.SEQ =C.SEQ ORDER BY
 	REGDATE
 	</select>
-
+	
+	<!-- 검색리스트 -->
+	<select id="searchlist" parameterType="Map" resultType="ClassDto">
+	</select>
 </mapper>

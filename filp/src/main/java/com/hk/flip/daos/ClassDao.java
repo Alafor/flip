@@ -31,12 +31,15 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectList(nameSpace+"mainclasslist", departmentMap);
 	}
 	
+	//메인 스터디 목록
 	@Override
 	public List<ClassDto> mainStudyList(String department){
 		Map<String, String> departmentMap = new HashMap<String, String>();
 		departmentMap.put("department", department);
 		return sqlsession.selectList(nameSpace+"mainstudylist",departmentMap);
 	}
+	
+	//메인 원해요 목록
 	@Override
 	public List<ClassDto> mainWantList(String department){
 		Map<String, String> departmentMap = new HashMap<String, String>();
@@ -57,5 +60,15 @@ public class ClassDao implements IClassDao {
 		map.put("dto", dto);
 		
 		return sqlsession.insert(nameSpace+"insertclass", map)>0?true:false;
+	}
+	
+	//검색 리스트
+	@Override
+	public List<ClassDto> searchList(String search, String department, String classType){
+		Map<String, String> searchFilter = new HashMap<String, String>();
+		searchFilter.put("search", search);
+		searchFilter.put("department",department);
+		searchFilter.put("classType", classType);
+		return sqlsession.selectList(nameSpace + "searchlist",searchFilter);
 	}
 }

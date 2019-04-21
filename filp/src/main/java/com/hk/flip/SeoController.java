@@ -31,6 +31,7 @@ public class SeoController {
 //	@Autowired
 //	private IClassWishlistService classwishlistService;
 	
+	//main list
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
@@ -44,27 +45,37 @@ public class SeoController {
 		model.addAttribute("studylist", studyList);
 		model.addAttribute("wantlist", wantList);
 		return "main";
-		
+	}
+	
+	//search list
+	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String searchlist(Locale locale, Model model,String search, String department, String classType) {
+		logger.info("search list 시작{}.", locale);
+		System.out.println("search: "+search+", department: "+department+", classType: "+classType);
+		List<ClassDto> searchList = classService.searchList(search, department, classType);
+		model.addAttribute("searchList",searchList);
+		return "all_list";
 	}
 	
 	//ajax controller
-	@ResponseBody
-	@RequestMapping(value = "/mainAjax.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public Map mainAjax(Locale locale, Model model, String department) {
-		logger.info("Ajax main{}.", locale);
-		System.out.println("department: "+department);
-		List<ClassDto> classList = classService.mainClassList(department);
-		List<ClassDto> studyList = classService.mainStudyList(department);
-		List<ClassDto> wantList = classService.mainWantList(department);
-		Map<String, List<ClassDto>> ajaxMap = new HashMap<String, List<ClassDto>>();
-		ajaxMap.put("classList", classList);
-		ajaxMap.put("studyList", studyList);
-		ajaxMap.put("wantList", wantList);
-		System.out.println("classList:"+classList);
-		System.out.println("studyList:"+studyList);
-		System.out.println("wantList:"+wantList);
-		return ajaxMap;
-	}
+//	@ResponseBody
+//	@RequestMapping(value = "/mainAjax.do", method = {RequestMethod.GET, RequestMethod.POST})
+//	public Map mainAjax(Locale locale, Model model, String department) {
+//		logger.info("Ajax main{}.", locale);
+//		System.out.println("department: "+department);
+//		List<ClassDto> classList = classService.mainClassList(department);
+//		List<ClassDto> studyList = classService.mainStudyList(department);
+//		List<ClassDto> wantList = classService.mainWantList(department);
+//		Map<String, List<ClassDto>> ajaxMap = new HashMap<String, List<ClassDto>>();
+//		ajaxMap.put("classList", classList);
+//		ajaxMap.put("studyList", studyList);
+//		ajaxMap.put("wantList", wantList);
+//		System.out.println("classList:"+classList);
+//		System.out.println("studyList:"+studyList);
+//		System.out.println("wantList:"+wantList);
+//		return ajaxMap;
+//	}
+	
 	
 //	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 //	public String mainOpen(Locale locale, Model model, String department) {

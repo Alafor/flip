@@ -63,5 +63,8 @@ public class ClassService implements IClassService {
 			return null;
 		}
 	}
-
+	@Override
+	public List<ClassDto> searchList(String search, String department, String classType){
+		return classDao.searchList(search, department, classType);
+	}
 }

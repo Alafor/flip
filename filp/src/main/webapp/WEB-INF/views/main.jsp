@@ -81,7 +81,7 @@
 				<div class="overlap-category mb-5">
 					<div class="row align-items-stretch no-gutters">
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-1 col-lg-1">
-							<a href="search.do?category=popular" class="popular-category h-100"> <span
+							<a href="search.do" class="popular-category h-100"> <span
 								class="icon"> <span class="flaticon-meeting"></span>
 							</span> <span class="caption mb-2 d-block"><b>전체수업</b></span> <span
 								class="number">219</span>
@@ -149,7 +149,7 @@
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
 							<a href="search.do?category=travel" class="popular-category h-100" data-category="travel"> <span
 								class="icon"><span class="flaticon-airplane"></span></span> <span
-								class="caption mb-2 d-block"><b>여행</b></span> <span
+								class="caption mb-2 d-block"><b>요리</b></span> <span
 								class="number">29,221</span>
 							</a>
 						</div>
