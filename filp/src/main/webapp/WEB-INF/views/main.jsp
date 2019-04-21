@@ -175,7 +175,7 @@
 			
 				<!-- 카테고리 메뉴 종료 -->
 				<!-- 선생님 찾기 세션 -->
-		<div class="site-section" data-aos="fade">
+		<!-- <div class="site-section" data-aos="fade"> -->
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
@@ -232,7 +232,7 @@
 			</div>
 		</div>
 	</div>
-</div>
+<!-- </div> -->
 
 
 		<div class="site-section" data-aos="fade">
