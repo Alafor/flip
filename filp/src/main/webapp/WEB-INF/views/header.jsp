@@ -42,7 +42,7 @@
 								class="border-left pl-xl-4"></span><b>로그인</b></a></li>
 						<li><a href="signupform.do"><b>회원가입</b></a></li>
 						<li><a href="t_signupform.do"><b>강사가입</b></a></li>
-						<li><a href="#" class="cta"><span
+						<li><a href="class_addform.do" class="cta"><span
 								class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>
 					<c:if test="${logInMember ne null}">
