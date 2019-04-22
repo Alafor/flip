@@ -15,7 +15,8 @@
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
 	rel="stylesheet">
 <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
-
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
 <link rel="stylesheet" href="resources/css/jquery-ui.css">
@@ -30,33 +31,40 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
 <style type="text/css">
 	#id {margin-left: 20px;}
 
 </style>
 <script type="text/javascript">
-    function checkpw() {
-        var pw = document.getElementById("Pw").value;
-        var pwck = document.getElementById("PwCheck").value;
- 
-        if (pw != pwck) {
-            alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
-            return false;
-        }
-    }
-    $(document).ready(function(){
+    $(function(){
+    	var time1 = "";
     	var time2 = "";
-    	for(var i=0;i<61;i++){
-    		var mim = "";
+    	for(var i=0;i<24;i++){
+    		var time = "";
     		if(i<10){
-    			mim="0"+i;
+    			time="0"+i;
+    		}else{
+    			time=i+"";
     		}
-    		time2 +="<option value='"+mim+"'>"+mim+"<option>";
+    		time1 +="<option value='"+time+"'>"+time+" 시 </option>";
     	}
-    	var starttime2 = $("#class_starttime2").html(starttime2);
+    	
+    	for(var i=0;i<61;i++){
+    		var mim1 = "";
+    		if(i<10){
+    			mim1="0"+i;
+    		}else{
+    			min1=i+"";	    		
+    		}
+    		time2 +="<option value='"+mim1+"'>"+mim1+" 분 </option>";
+    	}
+    	var starttime1 = $("#class_starttime1").html(time1);
+    	var starttime2 = $("#class_starttime2").html(time2);
+    	
     });
+   
     
 </script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
@@ -187,32 +195,34 @@
                   <input type="email" class="form-control" name="member_email">
                 </div>
               </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "수업시간을 입력해 주세요">
-                  <label class="text-black" for="birth">수업 시작시간</label>
-                  <select class="form-control .col-xs-6 .col-md-4" id ="class_starttime1" onchange="changedata(this.value)">
-                  	<option value="1">1</option>
-                  	<option value="1">2</option>
-                  	<option value="1">3</option>
-                  	<option value="1">4</option>
-                  	<option value="1">5</option>
-                  	<option value="1">6</option>
-                  	<option value="1">7</option>
-                  	<option value="1">8</option>
-                  	<option value="1">9</option>
-                  	<option value="1">10</option>
-                  	<option value="1">11</option>
-                  	<option value="1">12</option>
-                  </select>:
-                  <select class="form-control .col-xs-6 .col-md-4" id="class_starttime2">
-                  	
-                  </select>
+	                  <label class="text-black" for="birth">수업 시작시간</label>
+              <div class="form-group">
+	              <div class="row">              
+	                <div class="col-3">
+	                  <select class="form-control .col-xs-6 .col-md-4" id ="class_starttime1">                
+	                  </select>
+	                </div>
+	                <div class="col-3">  	
+	                  <select class="form-control .col-xs-6 .col-md-4" id="class_starttime2">
+	                  </select>
+	                </div>
+	              </div>
+              </div>
+          	<div class="row form-group text-center">              
+                <div class="col-md-12 validate-input .center-block"  data-validate = "연락처를 입력해주세요">
+                 <button class="btn" type="button">수업 시간 추가</button>
+                </div>
+              </div>
+          	<div class="row form-group">              
+                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
+                  <label class="text-black" for="phone">인원설정</label> 
+                  <input type="text" class="form-control" name="class_party" >
                 </div>
               </div>
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
                   <label class="text-black" for="phone">전화번호</label> 
-                  <input type="text" class="form-control" name="member_phone" >
+                  <input type="text" class="form-control" name="class_participation" placeholder="">
                 </div>
               </div>
               
@@ -243,8 +253,8 @@
 	<jsp:include page="footer.jsp" />
 	</div>
 	
-	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	
+
 	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

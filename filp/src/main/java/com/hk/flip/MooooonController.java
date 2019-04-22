@@ -62,7 +62,7 @@ public class MooooonController {
 		return "testlogin";
 	}
 	
-	@RequestMapping(value = "/class_addform_c.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/class_addform.do", method = RequestMethod.GET)
 	public String class_addform(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("강의등록폼이동{}.", locale);
 		return "AddClass_C";
