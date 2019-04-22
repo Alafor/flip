@@ -375,7 +375,7 @@
 										</c:forEach>
 	<!-- 								</div> -->
 								</c:when>
-								
+								 
 								<c:otherwise>
 									<div class="col-lg-6">
 										<h2 class="font-weight-light text-primary">
