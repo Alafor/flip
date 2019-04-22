@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>   
@@ -28,6 +30,8 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
 <style type="text/css">
 	#id {margin-left: 20px;}
 
@@ -42,6 +46,18 @@
             return false;
         }
     }
+    $(document).ready(function(){
+    	var time2 = "";
+    	for(var i=0;i<61;i++){
+    		var mim = "";
+    		if(i<10){
+    			mim="0"+i;
+    		}
+    		time2 +="<option value='"+mim+"'>"+mim+"<option>";
+    	}
+    	var starttime2 = $("#class_starttime2").html(starttime2);
+    });
+    
 </script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -92,7 +108,7 @@
           <div class="col-md-7 mb-5"  data-aos="fade">
           
           	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
-          	<input type="hidden" name="member_type"  value="S">
+          	<input type="hidden" name="member_type"  value="${membertype}">
              
              <div class="row form-group">              
                 <div class="col-md-12" >
@@ -124,14 +140,39 @@
                 <div class="col-md-12 validate-input" data-validate = "수업 요약을 입력해주세요">
                   <label class="text-black" for="class_info">수업 요약</label>
                   <textarea rows="5" cols="" class='form-control'></textarea> 
-                	
                 </div>
                 <div id="message" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드</label> 
-                  <input type="text" id="Pw" class="form-control" name="member_password" >
+                <div class="col-md-12" >
+                  <label class="text-black" for="class_depa">지역 설정</label> 
+                  <select class="form-control" name='class_depa'>
+                  	<option value="강남구">강남구</option>
+                  	<option value="강동구">강동구</option>
+                  	<option value="강북구">강북구</option>
+                  	<option value="강서구">강서구</option>
+                  	<option value="관악구">관악구</option>
+                  	<option value="광진구">광진구</option>
+                  	<option value="구로구">구로구</option>
+                  	<option value="금천구">금천구</option>
+                  	<option value="노원구">노원구</option>
+                  	<option value="도봉구">도봉구</option>
+                  	<option value="동대문구">동대문구</option>
+                  	<option value="동작구">동작구</option>
+                  	<option value="마포구">마포구</option>
+                  	<option value="서대문구">서대문구</option>
+                  	<option value="서초구">서초구</option>
+                  	<option value="성동구">성동구</option>
+                  	<option value="성북구">성북구</option>
+                  	<option value="송파구">송파구</option>
+                  	<option value="양천구">양천구</option>
+                  	<option value="영등포구">영등포구</option>
+                  	<option value="용산구">용산구</option>
+                  	<option value="은평구">은평구</option>
+                  	<option value="종로구">종로구</option>
+                  	<option value="중구">중구</option>
+                  	<option value="중랑구">중랑구</option>
+                  </select>
                 </div>
               </div>
               <div class="row form-group ">              
@@ -147,10 +188,25 @@
                 </div>
               </div>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
-                  <label class="text-black" for="birth">생년월일</label> 
-                  <input type="text"  class="form-control" name="member_birth" 
-                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
+                <div class="col-md-12 validate-input" data-validate = "수업시간을 입력해 주세요">
+                  <label class="text-black" for="birth">수업 시작시간</label>
+                  <select class="form-control .col-xs-6 .col-md-4" id ="class_starttime1" onchange="changedata(this.value)">
+                  	<option value="1">1</option>
+                  	<option value="1">2</option>
+                  	<option value="1">3</option>
+                  	<option value="1">4</option>
+                  	<option value="1">5</option>
+                  	<option value="1">6</option>
+                  	<option value="1">7</option>
+                  	<option value="1">8</option>
+                  	<option value="1">9</option>
+                  	<option value="1">10</option>
+                  	<option value="1">11</option>
+                  	<option value="1">12</option>
+                  </select>:
+                  <select class="form-control .col-xs-6 .col-md-4" id="class_starttime2">
+                  	
+                  </select>
                 </div>
               </div>
           	<div class="row form-group">              
