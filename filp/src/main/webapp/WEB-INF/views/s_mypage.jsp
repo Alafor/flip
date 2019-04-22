@@ -487,40 +487,6 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 }
 </script>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		<!-- <div id="dropDownSelect1"></div> -->
 <div>
 <jsp:include page="footer.jsp" />
