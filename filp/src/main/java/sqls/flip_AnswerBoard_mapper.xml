@@ -44,10 +44,11 @@
    </update>
    
    <insert id="replyinsert" parameterType="AnswerBoardDto">
-   		INSERT INTO ANSWER_BOARD VALUES(ANSWER_BOARD_SEQ.NEXTVAL,#{board_member_seq},#{board_title},#{board_content},SYSDATE,
-                                (SELECT BOARD_REFER FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq}),
-                                (SELECT BOARD_STEP FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,
-                                (SELECT BOARD_DEPTH FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,
-                                #{board_secret},'N')
+   		INSERT INTO ANSWER_BOARD (BOARD_SEQ,BOARD_MEMBER_SEQ,BOARD_TITLE,BOARD_CONTENT,
+		BOARD_REGDATE,BOARD_REFER,BOARD_STEP,BOARD_DEPTH,BOARD_SECRET,BOARD_DELFLAG) 
+		VALUES(ANSWER_BOARD_SEQ.NEXTVAL,#{board_member_seq},#{board_title},#{board_content},SYSDATE,
+         (SELECT BOARD_REFER FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq}),
+           (SELECT BOARD_STEP FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,
+             (SELECT BOARD_DEPTH FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,#{board_secret},'N')
    </insert>
 </mapper>

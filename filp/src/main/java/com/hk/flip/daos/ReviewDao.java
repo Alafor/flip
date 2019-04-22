@@ -4,6 +4,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.flip.dtos.ReviewDto;
+
 @Repository
 public class ReviewDao implements IReviewDao {
 	
@@ -15,5 +17,12 @@ public class ReviewDao implements IReviewDao {
 	public ReviewDao() {
 		// TODO Auto-generated constructor stub
 	}
+	//강의 후기 등록
+	@Override
+	public boolean cReview(ReviewDto dto) {
+		int count=sqlsession.insert(nameSpace+"cReview", dto);
+		return count>0?true:false;
+	}
+
 
 }

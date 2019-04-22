@@ -194,7 +194,7 @@ public class INController {
 		int member_seq = memberDto.getMember_seq();
 		int board_member_seq  = ansService.checkedMember(seq);
 		System.out.println("비밀글board_member_seq:"+board_member_seq);
-		if(member_seq==board_member_seq) {
+		if(member_seq==board_member_seq||member_seq==0) {//세션에 값과 DB에 저장된 seq값으로 검색한 MEMBER_SEQ값이 같거나 0(운영자)이면 실행하기
 			return "redirect:ansdetail.do?seq="+seq;
 		}else {
 			model.addAttribute("msg","비밀글입니다.본인외에는 열람하실수 없습니다.");
@@ -219,12 +219,12 @@ public class INController {
 		MemberDto memberDto	=(MemberDto)session.getAttribute("logInMember");
 		int member_seq = memberDto.getMember_seq();
 		int board_member_seq  = ansService.checkedMember(seq);
-		if(member_seq==board_member_seq) {
+		if(member_seq==board_member_seq||member_seq==0) {//세션에 값과 DB에 저장된 seq값으로 검색한 MEMBER_SEQ값이 같거나 0(운영자)이면 실행하기
 			AnswerBoardDto dto = ansService.getBoard(seq);
 			model.addAttribute("dto", dto);
 			return "ContactUs/AnsUpdate";		
 		}else {
-			model.addAttribute("msg","작성자외에는 수정하실수 없습니다.");
+			model.addAttribute("msg","수정할수 있는 권한이 없습니다.");
 			model.addAttribute("url","ansdetail.do?seq="+seq);
 			return "Redirect";
 		}
@@ -251,7 +251,7 @@ public class INController {
 		MemberDto memberDto	=(MemberDto)session.getAttribute("logInMember");
 		int member_seq = memberDto.getMember_seq();
 		int board_member_seq  = ansService.checkedMember(seq);
-		if(member_seq==board_member_seq) {
+		if(member_seq==board_member_seq||member_seq==0) {//세션에 값과 DB에 저장된 seq값으로 검색한 MEMBER_SEQ값이 같거나 0(운영자)이면 실행하기
 			boolean isS = ansService.mulDel(seq);
 			
 		if(isS) {
@@ -262,7 +262,7 @@ public class INController {
 			return "error";
 		}	
 	  }else {
-		  model.addAttribute("msg","작성자외에는 삭제하실수 없습니다.");
+		  model.addAttribute("msg"," 삭제할수 있는 권한이 없습니다.");
 			model.addAttribute("url","ansdetail.do?seq="+seq);
 			return "Redirect";
 	  }
@@ -270,15 +270,27 @@ public class INController {
 	}
 	
 	@RequestMapping(value = "/ansreplyboard.do", method = RequestMethod.POST)
-	public String replyboard(Locale locale, Model model,AnswerBoardDto dto) {
-		logger.info("답변형게시판 답글추가하기{}.", locale);
+	public String replyboard(Locale locale, Model model,HttpSession session,AnswerBoardDto dto) {
+		logger.info("답변형게시판 댓글추가하기{}.", locale);
+		MemberDto memberDto	=(MemberDto)session.getAttribute("logInMember");	
+		int member_seq = memberDto.getMember_seq();//세션에 담긴 member_seq값 가져오기
+		int board_member_seq  = ansService.checkedMember(dto.getBoard_seq()); 	
+		if(member_seq==board_member_seq||member_seq==0) {//세션에 값과 DB에 저장된 seq값으로 검색한 MEMBER_SEQ값이 같거나 0(운영자)이면 실행하기			
+		dto.setBoard_member_seq(member_seq);//jsp에서 넘어오는 파라미터가 없기때문에 세션에 값을 넣어준다
 		boolean isS = ansService.replyBoard(dto);
 		if(isS) {	
-			return "redirect:boardlist.do";
+			return "redirect:ansboard.do";
 		}else {
 			model.addAttribute("msg", "글추가실패");
 			return "error";
 		}
+		}else {
+			  model.addAttribute("msg","댓글을 적을수 있는 권한이 없습니다.");
+				model.addAttribute("url","ansdetail.do?seq="+dto.getBoard_seq());//실패했을때 돌아갈 페이지
+				return "Redirect";
+		  }
+		
+		
 	}
 	
 	
