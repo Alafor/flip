@@ -49,10 +49,11 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String department, String classType) {
+	public String searchlist(Locale locale, Model model,String search, String category, String classType) {
 		logger.info("search list 시작{}.", locale);
-		System.out.println("search: "+search+", department: "+department+", classType: "+classType);
-		List<ClassDto> searchList = classService.searchList(search, department, classType);
+		System.out.println("search: "+search+", department: "+category+", classType: "+classType);
+		List<ClassDto> searchList = classService.searchList(search, category, classType);
+		System.out.println(searchList);
 		model.addAttribute("searchList",searchList);
 		return "all_list";
 	}

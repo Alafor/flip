@@ -181,10 +181,10 @@ WHERE
 		) ALLLIST
 		<where>
 			<if test="search != null">
-			ALLLIST.CLASS_CREATOR_NAME LIKE '%#{search}%'
-			OR ALLLIST.CLASS_NAME LIKE '%#{search}%'
-			OR ALLLIST.CLASS_INFO LIKE '%#{search}%'
-			OR ALLLIST.CLASS_AREA LIKE '%#{search}%'
+			ALLLIST.CLASS_CREATOR_NAME LIKE '%'||#{search}||'%'
+			OR ALLLIST.CLASS_NAME LIKE '%'||#{search}||'%'
+			OR ALLLIST.CLASS_INFO LIKE '%'||#{search}||'%'
+			OR ALLLIST.CLASS_AREA LIKE '%'||#{search}||'%'
 			</if>
 		</where>
 	</select>

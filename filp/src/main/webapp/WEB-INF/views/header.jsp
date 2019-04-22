@@ -25,14 +25,13 @@
 				role="navigation">
 				<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 					<li>
-						<form action="#" method="post">
+						<form action="searchlist.do" method="">
 							<div class="input-group mb-3 ">
 								<input type="text"
 									class="form-control text-black bg-transparent "
-									style="border-left-radius: 10px; min-width: 350px;" placeholder="검색어를 입력하세요.">
+									style="border-left-radius: 10px; min-width: 350px;" name="search" placeholder="검색어를 입력하세요.">
 								<div class="input-group-append">
-									<button class="btn btn-primary text-white rounded"
-										type="button">Search</button>
+									<button class="btn btn-primary text-white rounded">Search</button>
 								</div>
 							</div>
 						</form>
