@@ -4,7 +4,7 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>   
 <%response.setContentType("text/html;charset=utf-8"); %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE>
 <html>
 <head>
 	<title>회원가입</title>
@@ -183,12 +183,6 @@
                   </select>
                 </div>
               </div>
-              <div class="row form-group ">              
-                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드확인</label> 
-                  <input type="text" id="PwCheck" class="form-control" >
-                </div>
-              </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
                   <label class="text-black" for="email">이메일</label> 
@@ -198,11 +192,11 @@
 	                  <label class="text-black" for="birth">수업 시작시간</label>
               <div class="form-group">
 	              <div class="row">              
-	                <div class="col-3">
+	                <div class="col-xs-4 col-md-4 col-sm-3">
 	                  <select class="form-control .col-xs-6 .col-md-4" id ="class_starttime1">                
 	                  </select>
 	                </div>
-	                <div class="col-3">  	
+	                <div class="col-xs-4 col-md-4 col-sm-3">  	
 	                  <select class="form-control .col-xs-6 .col-md-4" id="class_starttime2">
 	                  </select>
 	                </div>
@@ -213,22 +207,26 @@
                  <button class="btn" type="button">수업 시간 추가</button>
                 </div>
               </div>
+              
           	<div class="row form-group">              
-                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
+                <div class="col-md-12 validate-input"  data-validate = "인원을 정해수세요">
                   <label class="text-black" for="phone">인원설정</label> 
-                  <input type="text" class="form-control" name="class_party" >
+                  <input type="number" class="form-control" name="class_participation" placeholder="최소 모집 인원" >
                 </div>
               </div>
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
-                  <label class="text-black" for="phone">전화번호</label> 
-                  <input type="text" class="form-control" name="class_participation" placeholder="">
+                  <label class="text-black" for="phone">금액 설정</label> 
+                  <input type="number" class="form-control" name="class_class_price">
                 </div>
               </div>
               
-              <div class="row form-group">
-                <div class="col-12">
-                  <p>Have an account? <a href="loginform.do">Log In</a></p>
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input"  data-validate = "">
+                  <label class="text-black" for="class_detail">수업 상세내용</label> 
+				  <textarea class="form-control" rows="" cols="" >
+수업 상세내용을 적어주세요.
+				  </textarea>
                 </div>
               </div>
               
