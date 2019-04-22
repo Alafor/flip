@@ -13,7 +13,7 @@ public class Util {
 			nbsp+="&nbsp;&nbsp;&nbsp;&nbsp;";
 		}
 		//조건?true:false--->3항연산자
-		this.arrowNbsp=(depthInt>0?nbsp+"<img src='images/arrow1.png' alt='답글'/>":"");
+		this.arrowNbsp=(depthInt>0?nbsp+"<img src='resources/images/arrow1.png' alt='답글'/>":"");
 	}
 	
 	public String getArrowNbsp() {

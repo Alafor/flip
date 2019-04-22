@@ -59,6 +59,7 @@ public class AnswerBoardDao implements IAnswerBoardDao {
 
 	@Override
 	public int replyBoardUpdate(int seq) {	
+		System.out.println("리플:"+seq);
 		return sqlSession.update(namespace+"replyupdate", seq);
 	}
 

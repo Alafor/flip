@@ -170,7 +170,7 @@ if( len == 7 ) oThis.value += "-";
         <div class="row justify-content-center">
           <div class="col-md-7 mb-5"  data-aos="fade">
           
-          	<form class="p-5 bg-white validate-form" action="t_signup.do" onsubmit="return checkpw()" method="post" enctype="multipart/form-data">
+          	<form class="p-5 bg-white validate-form" action="t_signup.do" onsubmit="return checkpw()" method="post" enctype="multipart/form-data" style="border: 2px solid #30e3ca; border-radius: 20px;">
           	<input type="hidden" name="member_type"  value="T">
              
  			<div class="row form-group">              

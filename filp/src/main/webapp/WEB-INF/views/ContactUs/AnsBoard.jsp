@@ -9,6 +9,29 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>문의게시판</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
+	
+	<link
+	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
+	rel="stylesheet">
+<link rel="stylesheet" href="resources/fonts/icomoon/style.css">
+
+<link rel="stylesheet" href="resources/css/bootstrap.min.css">
+<link rel="stylesheet" href="resources/css/magnific-popup.css">
+<link rel="stylesheet" href="resources/css/jquery-ui.css">
+<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
+<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
+
+<link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
+<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
+
+<link rel="stylesheet" href="resources/css/aos.css">
+<link rel="stylesheet" href="resources/css/rangeslider.css">
+
+<link rel="stylesheet" href="resources/css/style.css">
+
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
  <script type="text/javascript">
 function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는다
@@ -28,23 +51,69 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 </head>
 <body>
 <jsp:useBean id="util" class="com.hk.utils.Util"/>
-<h1>글목록보기</h1>
 
-<form action="ansmuldel.do" method="post">
-<table border="1">
+<div class="site-wrap">
+
+    <div class="site-mobile-menu">
+      <div class="site-mobile-menu-header">
+        <div class="site-mobile-menu-close mt-3">
+          <span class="icon-close2 js-menu-toggle"></span>
+        </div>
+      </div>
+      <div class="site-mobile-menu-body"></div>
+    </div>
+    </div>
+	<!-- header -->
+		<jsp:include page="../header.jsp"/>
+		<!-- header 종료 -->
+		
+	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+      <div class="container">
+        <div class="row align-items-center justify-content-center text-center">
+
+          <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
+            
+            
+            <div class="row justify-content-center mt-5">
+              <div class="col-md-8 text-center">
+                <h1>일상을 뒤집다.플립</h1>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div> 
+
+ <div class="site-section bg-light">
+<div id="container">
+
+<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center border-primary">
+					<h2 class="font-weight-light text-primary">
+						문의<span class="text-warning">게시판</span>
+					</h2>
+					<p class="color-black-opacity-5">CONTACT&amp;US</p>
+				</div>
+			</div>
+ <div class="row justify-content-center" >
+          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
+
+<form action="ansmuldel.do" method="post" style="margin: 20px;">
+<table class="table table-striped " >
 	<%-- <col width="20px"> --%>
-	<col width="50px"><col width="100px"><col width="300px"><col width="150px"><col width="60px">
-	<col width="60px"><col width="60px"><col width="60px"><col width="50px">
-	<tr style="background-color: yellow;">
+	<%-- <col width="50px"><col width="100px"><col width="300px"><col width="150px"><col width="60px"> --%>
+	<%-- <col width="60px"><col width="60px"><col width="60px"><col width="50px"> --%>
+	<tr>
 		<!-- <th><input type="checkbox" name="all" onclick="allSel(this)"/></th> --><!-- this.checked:체크여부를 판단하여 true,false 반환 -->
 		<th>번호</th>
 		<th>작성자</th>
 		<th>제목</th>
 		<th>작성일</th>
-		<th>refer</th>
+	<!-- 	<th>refer</th>
 		<th>step</th>
 		<th>depth</th>
-		<th>삭제</th>
+		<th>삭제</th> -->
 	</tr>
 	<c:choose>
 		<c:when test="${empty list}"><!-- empty  null인지 확인 -->
@@ -80,22 +149,52 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 						</c:otherwise>
 					</c:choose>
 					<td> <fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년MM월dd일"/> </td>
-					<td>${dto.board_refer}</td>
+					<%-- <td>${dto.board_refer}</td>
 					<td>${dto.board_step}</td>
 					<td>${dto.board_depth}</td>
-					<%-- <td>${dto.readcount}</td> --%>
-					<td>${dto.board_delflag}</td>
+					 <td>${dto.readcount}</td> 
+					<td>${dto.board_delflag}</td> --%>
 				</tr>
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>	
-	<tr>
+	 <tr>
 		<td colspan="10">
-			<input type="button" value="글추가" onclick="location.href='ansinsertform.do'"/>
-			
+			<div class="row form-group" style="text-align: center;">
+                <div class="col-md-12">
+                  <input type="button" value="글쓰기" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; float: right;" onclick="location.href='ansinsertform.do'">
+                </div>
+              </div>
 		</td>
 	</tr>
+	
+	
+	
 </table>
 </form>
+</div>
+</div>
+</div>
+</div>
+
+<div>
+	<jsp:include page="../footer.jsp" />
+	</div>
+	
+	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="resources/js/jquery-ui.js"></script>
+	<script src="resources/js/popper.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/jquery.stellar.min.js"></script>
+	<script src="resources/js/jquery.countdown.min.js"></script>
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="resources/js/bootstrap-datepicker.min.js"></script>
+	<script src="resources/js/aos.js"></script>
+	<script src="resources/js/rangeslider.min.js"></script>
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/signup.js"></script>
+
 </body>
 </html>

@@ -50,6 +50,7 @@ public class AnswerBoardService implements IAnswerBoardService {
 	@Override
 	public boolean replyBoard(AnswerBoardDto dto) {
 		ansDao.replyBoardUpdate(dto.getBoard_seq());
+		System.out.println("리플서비스:"+dto.getBoard_seq());
 		int cnt = ansDao.replyBoardInsert(dto);
 		return cnt>0?true:false;
 	}

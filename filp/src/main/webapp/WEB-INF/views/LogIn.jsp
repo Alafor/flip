@@ -83,7 +83,7 @@
 
            <!-------------------------------------------------------------------------------------------------->
 
-            <form action="login.do" class="p-5 bg-white" method="POST">
+            <form action="login.do" class="p-5 bg-white" method="POST" style="border: 2px solid #30e3ca; border-radius: 20px;">
              
               <div class="row form-group">
                 
