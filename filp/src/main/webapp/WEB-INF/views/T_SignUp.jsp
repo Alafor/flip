@@ -70,10 +70,11 @@
        success:function (data,textStatus){
     	   
           if(data=='usable'){
-        	  $('#message').text("사용할 수 있는 ID입니다.");
+        	 $('#message').text("사용할 수 있는 ID입니다.");
               $('#btnDuplicate').prop("disabled", true);
            }else{
              $('#message').text("사용할 수 없는 ID입니다.");
+             
           }
        },
        error:function(data,textStatus){
@@ -132,7 +133,7 @@ if( len == 7 ) oThis.value += "-";
       </div>
       <div class="site-mobile-menu-body"></div>
     </div>
-    
+    </div>
 	<!-- header -->
 		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->
@@ -169,8 +170,8 @@ if( len == 7 ) oThis.value += "-";
         <div class="row justify-content-center">
           <div class="col-md-7 mb-5"  data-aos="fade">
           
-          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
-          	<input type="hidden" name="member_type"  value="S">
+          	<form class="p-5 bg-white validate-form" action="t_signup.do" onsubmit="return checkpw()" method="post" enctype="multipart/form-data">
+          	<input type="hidden" name="member_type"  value="T">
              
  			<div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
@@ -189,13 +190,13 @@ if( len == 7 ) oThis.value += "-";
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
                   <label class="text-black" for="password">패스워드</label> 
-                  <input type="text" id="Pw" class="form-control" name="member_password" >
+                  <input type="password" id="Pw" class="form-control" name="member_password" >
                 </div>
               </div>
               <div class="row form-group ">              
                 <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요">
                   <label class="text-black" for="password">패스워드확인</label> 
-                  <input type="text" id="PwCheck" class="form-control" >
+                  <input type="password" id="PwCheck" class="form-control" >
                 </div>
               </div>
               <div class="row form-group">              
@@ -227,7 +228,7 @@ if( len == 7 ) oThis.value += "-";
         					<h6><b>프로필</b></h6></div></div>
         		       <div class="col-md-6 hidden_input" style="text-align:center;margin-top:15%"><p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
         					<label for="hidden_file">프로필등록</label>
-        						<input type="file" id="hidden_file" class="text-center center-block file-upload"  name=""></figure>
+        						<input type="file" id="hidden_file" class="text-center center-block file-upload"  name="member_profile"></figure>
      					</div><br>
               
               		</div>
@@ -237,7 +238,11 @@ if( len == 7 ) oThis.value += "-";
               	<div class="row form-group">
               		<div class="col-md-12" style="padding: 0;">
                  	 <label class="text-black" for="message">강사소개</label> 
-                 		 <textarea name="" id="message" cols="40" rows="7" class="form-control" placeholder="학력사항&#13;&#10;경력사항&#13;&#10;수상내역"></textarea>
+                 		 <textarea name="member_info" id="message" cols="40" rows="7" class="form-control" placeholder="">
+학력사항----------------------------------
+경력사항----------------------------------
+수상내역----------------------------------
+                 		 </textarea>
                		 </div>
               			
               		</div>

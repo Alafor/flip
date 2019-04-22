@@ -144,10 +144,10 @@ if( len == 7 ) oThis.value += "-";
 					<p class="color-black-opacity-5">SIGN&amp;UP</p>
 				</div>
 			</div>
-        <div class="row justify-content-center" >
+        <div class="row justify-content-center">
           <div class="col-md-7 mb-5"  data-aos="fade">
           
-          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
+          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post">
           	<input type="hidden" name="member_type"  value="S">
              
  			<div class="row form-group">              
