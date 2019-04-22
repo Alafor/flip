@@ -23,6 +23,8 @@ import com.hk.flip.dtos.ReviewDto;
 import com.hk.flip.service.ClassService;
 import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IMemberService;
+import com.hk.flip.service.IReviewService;
+import com.hk.flip.service.ReviewService;
 
 /**
  * Handles requests for the application home page.
@@ -34,7 +36,9 @@ public class LeeController {
 	private IMemberService memberService;
 	@Autowired
 	private IClassService classService;
-
+	@Autowired
+	private IReviewService reviewService;
+	
 	private static final Logger logger = LoggerFactory.getLogger(LeeController.class);
 
 	//강사 상세보기
@@ -50,7 +54,7 @@ public class LeeController {
 		model.addAttribute("rDto", reviewlist);
 		return "tdetail";
 	}
-	
+
 	//강사들의 강의 상세보기
 	@RequestMapping(value = "/cdetail.do", method = RequestMethod.GET)
 	public String cdetail(HttpServletRequest request,Locale locale, Model model,int class_seq) {
@@ -60,6 +64,23 @@ public class LeeController {
 		model.addAttribute("cDto", getCdetail);
 		System.out.println(getCdetail.size());
 		return "cdetail";
+	}
+
+	//리뷰작성 페이지로 이동
+	@RequestMapping(value = "/review.do", method = RequestMethod.GET)
+	public String review(HttpServletRequest request,Locale locale, Model model,int seq) {
+		logger.info("후기작성하기{}.", locale);
+		model.addAttribute("rDto", seq);
+		return "review";
+	}
+	
+	//리뷰 남긴 후
+	@RequestMapping(value = "/reviewinsert.do", method = RequestMethod.GET)
+	public String reviewinsert(HttpServletRequest request,Locale locale, Model model,int seq, ReviewDto dto) {
+		logger.info("후기 남긴 후{}.", locale);
+		boolean isS=reviewService.cReview(dto);
+		
+		return "mypage";
 	}
 
 }

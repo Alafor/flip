@@ -87,7 +87,7 @@
 <!-- 강사의 강의 이름-->
 ${cDto[0].class_name}
 ${cDto[0].class_info}
-${cDto[0].regdate}
+<fmt:formatDate value="${cDto[0].regdate}" pattern="yyyyMMdd"/>
 ${cDto[0].class_area}
 ${cDto[0].class_depa}
 <fmt:formatDate value="${cDto[0].class_sd}" pattern="yyyyMMdd"/> 
