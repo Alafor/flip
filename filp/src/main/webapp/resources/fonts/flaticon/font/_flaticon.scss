@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 09/04/2019 08:21
+    Creation date: 23/04/2019 01:49
     */
 
     @font-face {
@@ -37,34 +37,20 @@
   font-smoothing: antialiased;
     }
 
-    .flaticon-meeting:before { content: "\f100"; }
-.flaticon-running:before { content: "\f101"; }
-.flaticon-video-player:before { content: "\f102"; }
-.flaticon-microphone:before { content: "\f103"; }
-.flaticon-coffee-cup:before { content: "\f104"; }
-.flaticon-cameras:before { content: "\f105"; }
-.flaticon-coffee-cup-1:before { content: "\f106"; }
-.flaticon-presenter:before { content: "\f107"; }
-.flaticon-dance:before { content: "\f108"; }
-.flaticon-wine:before { content: "\f109"; }
-.flaticon-money:before { content: "\f10a"; }
-.flaticon-workstation:before { content: "\f10b"; }
-.flaticon-book:before { content: "\f10c"; }
-.flaticon-soap:before { content: "\f10d"; }
-.flaticon-airplane:before { content: "\f10e"; }
+    .flaticon-car:before { content: "\f100"; }
+.flaticon-bunk-bed:before { content: "\f101"; }
+.flaticon-clothes:before { content: "\f102"; }
+.flaticon-books:before { content: "\f103"; }
+.flaticon-house:before { content: "\f104"; }
+.flaticon-pizza:before { content: "\f105"; }
+.flaticon-innovation:before { content: "\f106"; }
+.flaticon-close:before { content: "\f107"; }
     
-    $font-Flaticon-meeting: "\f100";
-    $font-Flaticon-running: "\f101";
-    $font-Flaticon-video-player: "\f102";
-    $font-Flaticon-microphone: "\f103";
-    $font-Flaticon-coffee-cup: "\f104";
-    $font-Flaticon-cameras: "\f105";
-    $font-Flaticon-coffee-cup-1: "\f106";
-    $font-Flaticon-presenter: "\f107";
-    $font-Flaticon-dance: "\f108";
-    $font-Flaticon-wine: "\f109";
-    $font-Flaticon-money: "\f10a";
-    $font-Flaticon-workstation: "\f10b";
-    $font-Flaticon-book: "\f10c";
-    $font-Flaticon-soap: "\f10d";
-    $font-Flaticon-airplane: "\f10e";
+    $font-Flaticon-car: "\f100";
+    $font-Flaticon-bunk-bed: "\f101";
+    $font-Flaticon-clothes: "\f102";
+    $font-Flaticon-books: "\f103";
+    $font-Flaticon-house: "\f104";
+    $font-Flaticon-pizza: "\f105";
+    $font-Flaticon-innovation: "\f106";
+    $font-Flaticon-close: "\f107";

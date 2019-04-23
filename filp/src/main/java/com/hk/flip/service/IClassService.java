@@ -14,4 +14,5 @@ public interface IClassService {
 	//강의 등록하기
 	public String addClass(ClassDto dto);
 	public List<ClassDto> searchList(String search, String department, String classType);
+	public String addsClass(List<ClassDto> classList);
 }

@@ -25,7 +25,7 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 
 <link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
@@ -35,16 +35,43 @@
 
 <link rel="stylesheet" href="resources/css/style.css">
 
-<!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <style type="text/css">
 	#id {margin-left: 20px;}
 
+.hidden_input{margin: 0 auto;}
+.hidden_input label { padding: .5em .75em; color: #fff; font-size: inherit; line-height: normal; vertical-align: middle;
+					 background-color: #30e3ca; cursor: pointer; border: 1px solid #ebebeb; border-bottom-color: #e2e2e2; border-radius: .25em; }
+
+.hidden_input input[type="file"] {position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip:rect(0,0,0,0); border: 0; }
+	
 </style>
 <script type="text/javascript">
-    $(function(){
     	var time1 = "";
     	var time2 = "";
+   	$(document).ready(function() {
+   	    var readURL = function(input) {
+   	        if (input.files && input.files[0]) {
+   	            var reader = new FileReader();
+
+   	            reader.onload = function (e) {
+   	                $('.avatar').attr('src', e.target.result);
+   	            }
+   	    
+   	            reader.readAsDataURL(input.files[0]);
+   	        }
+   	    }
+   	    
+
+   	    $(".file-upload").on('change', function(){
+   	        readURL(this);
+   	    });
+   	});
+    $(function(){
     	for(var j=0;j<60;j++){
     		var min1 = "";
     		if(j<10){
@@ -66,11 +93,84 @@
     		time1 +="<option value='"+time+"'>"+time+" 시 </option>";
     	}
     	
-    	var starttime1 = $("#class_starttime1").html(time1);
-    	var starttime2 = $("#class_starttime2").html(time2);
+    	var starttime1 = $("#class_starthour1").html(time1);
+    	var starttime2 = $("#class_startmin1").html(time2);
     	
     });
-   
+    $(function() {
+    	var now = new Date();
+    	var after3 = new Date(now.getFullYear(),now.getMonth(),now.getDate()+3);
+    	var str = after3.getFullYear()+"/"+(after3.getMonth()+1)+"/"+after3.getDate();
+      $("#daterange").daterangepicker({
+    	  "startDate": str,
+    	  "endDate":str,
+    	  "minDate": str,
+    	  "locale": {
+    	        "format": "YYYY/MM/DD",
+    	        "separator": " - ",
+    	        "applyLabel": "적용",
+    	        "cancelLabel": "취소",
+    	        "fromLabel": "부터",
+    	        "toLabel": "까지",
+    	        "customRangeLabel": "Custom",
+    	        "weekLabel": "주",
+    	        "daysOfWeek": [
+    	        	'일', '월', '화', '수', '목', '금', '토'
+    	        ],
+    	        "monthNames": [
+    	        	'1월','2월','3월','4월','5월','6월', '7월','8월','9월','10월','11월','12월'
+    	        ],
+    	        "firstDay": 0
+    	    },
+    	  opens: 'left'
+      }, function(start, end, label) {
+      });
+    });							
+    function addClassTime() {
+    	var $div = $("<div class='form-group'> <div class='row'> <div class='col-xs-4 col-md-4 col-sm-4'> <select class='form-control .col-xs-6 .col-md-4' onchange='sumclasstime(this)'>"+time1
+    			+"</select> </div> <div class='col-xs-4 col-md-4 col-sm-4'> <select class='form-control .col-xs-6 .col-md-4' onchange='sumclasstime(this)'>"+time2
+	                 +" </select> </div>"
+	                 +"<input type='hidden' name='classtime'><a href='#' class='col-xs-2 col-md-2 col-sm-2' onclick='delClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='icon-remove-sign icon-2x'></i></a> </div> </div>");
+    	$('.time_container').append($div);
+	} 
+    function delClassTime(th) {
+    	alert(th.scrollTop);
+		$(th).parent().parent().remove();
+	}
+    function sumclasstime(selectone) {
+// 		var row = $(selectone).parent().parent();
+// 		var hour = row.children().eq(0).children().eq(0).val
+// 		var min = row.children().eq(1).children().eq(0).val
+// 		alert("hour:::"+hour+"   ----------------min"+min);
+		var row = $(selectone).parent().parent();
+		var hour = row.children().eq(0).children().eq(0).val();
+		var min = row.children().eq(1).children().eq(0).val();
+		var hidden = ""+hour+""+min;
+		row.children().eq(2).val(hidden);
+	}
+    function sumweek(selectweek) {
+// 		var row = $(selectone).parent().parent();
+// 		var hour = row.children().eq(0).children().eq(0).val
+// 		var min = row.children().eq(1).children().eq(0).val
+// 		alert("hour:::"+hour+"   ----------------min"+min);
+		if($(selectweek).hasClass('active')){
+			$(selectweek).removeClass('active');
+		}else{
+			$(selectweek).addClass('active');		
+		}		
+		var acti = $(selectweek).parent().children('.active');
+		$('#class_week').val("");
+		var weekhidden= "";
+		for(i=0;i<acti.length;i++){
+			if(i==0){
+			weekhidden+=""+$(acti[i]).val();
+			}else {
+			weekhidden+=","+$(acti[i]).val();				
+			}
+		}
+		alert(acti.length);
+		$('#class_week').val(weekhidden);
+	}
     
 </script>
 
@@ -127,11 +227,9 @@
 			</div>
         <div class="row justify-content-center" >
           <div class="col-md-7 mb-5"  data-aos="fade">
-          
-          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
-          	<input type="hidden" name="member_type"  value="${membertype}">
-             
-             <div class="row form-group">              
+          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return sumhiden()" method="post" enctype="multipart/form-data" style="border: 2px solid #30e3ca; border-radius: 20px;">
+          	<input type="hidden" name="class_type"  value="C">
+             <div class="row form-group">
                 <div class="col-md-12" >
                   <label class="text-black" for="class_depa">카테고리</label> 
                   <select class="form-control" name='class_depa'>
@@ -149,25 +247,23 @@
                   </select>
                 </div>
               </div>
-              	 
- 			  <div class="row form-group">              
+ 			  <div class="row form-group">
                 <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
                   <label class="text-black" for="class_name">이름</label> 
-                  <input type="text" class="form-control" name="member_name">
+                  <input type="text" class="form-control" name="class_name">
                 </div>
               </div>	            
-             
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "수업 요약을 입력해주세요">
                   <label class="text-black" for="class_info">수업 요약</label>
-                  <textarea rows="5" cols="" class='form-control'></textarea> 
+                  <textarea rows="5" cols="" class='form-control' name="class_info"></textarea> 
                 </div>
                 <div id="message" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12" >
-                  <label class="text-black" for="class_depa">지역 설정</label> 
-                  <select class="form-control" name='class_depa'>
+                  <label class="text-black" for="class_area">지역 설정</label> 
+                  <select class="form-control" name='class_area'>
                   	<option value="강남구">강남구</option>
                   	<option value="강동구">강동구</option>
                   	<option value="강북구">강북구</option>
@@ -197,57 +293,87 @@
                 </div>
               </div>
               
-                  <input type="text"
-    data-range="true"
-    data-multiple-dates-separator=" - "
-    data-language="ko"
-    data-inline="true"
-    class="datepicker-here"/>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input " data-validate = "날자를 선택해 주세요">
-                  <label class="text-black" for="email">수업 날짜</label> 
+                  <label class="text-black" for="email">수업 날짜</label> 	
+                  <input type="text" id="daterange" class="form-control" value="" />
                 </div>
               </div>
-	                  <label class="text-black" for="birth">수업 시작시간</label>
-              <div class="form-group">
-	              <div class="row">              
-	                <div class="col-xs-4 col-md-4 col-sm-3">
-	                  <select class="form-control .col-xs-6 .col-md-4" id ="class_starttime1">                
-	                  </select>
-	                </div>
-	                <div class="col-xs-4 col-md-4 col-sm-3">  	
-	                  <select class="form-control .col-xs-6 .col-md-4" id="class_starttime2">
-	                  	
-	                  </select>
-	                </div>
+              
+                  <label class="text-black" for="email">수업 요일</label> 	
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input " data-validate = "날자를 선택해 주세요">
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="2">월</button>
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="3">화</button>
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="4">수</button>
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="5">목</button>
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="6">금</button>
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="7">토</button>
+                  <button type="button" class="btn btn-info" onclick="sumweek(this)" value="1">일</button>
+                  <input type="hidden" id="class_week" name="class_week">
+                </div>
+              </div>
+              
+               <label class="text-black" for="birth">수업 시작시간</label>
+              <div class="time_container">
+	              <div class="form-group">
+		              <div class="row">              
+		                <div class="col-xs-4 col-md-4 col-sm-4">
+		                  <select class="form-control .col-xs-6 .col-md-4" id ="class_starthour1" onchange='sumclasstime(this)'>                
+		                  </select>
+		                </div>
+		                <div class="col-xs-4 col-md-4 col-sm-4">  	
+		                  <select class="form-control .col-xs-6 .col-md-4" id="class_startmin1" onchange='sumclasstime(this)'>
+		                  </select>
+		                </div>
+		                <input type='hidden' name='classtime'>
+		              </div>
 	              </div>
               </div>
           	<div class="row form-group text-center">              
-                <div class="col-md-12 validate-input .center-block"  data-validate = "연락처를 입력해주세요">
-                 <button class="btn" type="button">수업 시간 추가</button>
+                <div class="col-md-12 validate-input .center-block" >
+                 <button class="btn" type="button" onclick="addClassTime()">수업 시간 추가</button>
                 </div>
               </div>
               
           	<div class="row form-group">              
+                <div class="col-md-12 validate-input"  data-validate = "수업시간을 정해수세요">
+                  <label class="text-black" for="class_time">수업 시간(분)</label> 
+                  <input type="number" class="form-control" name="class_time" placeholder="수업 진행 시간(분)" >
+                </div>
+              </div>
+          	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "인원을 정해수세요">
-                  <label class="text-black" for="phone">인원 설정</label> 
+                  <label class="text-black" for="class_participation">인원 설정</label> 
                   <input type="number" class="form-control" name="class_participation" placeholder="최소 모집 인원" >
                 </div>
               </div>
           	<div class="row form-group">              
-                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
-                  <label class="text-black" for="phone">금액 설정</label> 
-                  <input type="number" class="form-control" name="class_class_price">
+                <div class="col-md-12 validate-input"  data-validate = "수업료를 입력해주세요">
+                  <label class="text-black" for="class_price">금액 설정</label> 
+                  <input type="number" class="form-control" name="class_price">
                 </div>
               </div>
               
               <div class="row form-group">              
-                <div class="col-md-12 validate-input"  data-validate = "">
+                <div class="col-md-12 validate-input"  data-validate = "수업 상세내용을 적어주세요.">
                   <label class="text-black" for="class_detail">수업 상세내용</label> 
-				  <textarea class="form-control" rows="" cols="" >
-수업 상세내용을 적어주세요.
-				  </textarea>
+				  <textarea class="form-control" rows="" cols="" name="class_detail" placeholder="수업 상세내용을 적어주세요."></textarea>
                 </div>
+              </div>
+              
+              <div class="container">     
+    		<label class="text-black" >프로필등록</label>
+    			<div class="row form-group mb-6" style="border: 1px solid #ced4da; border-radius: 10px; ">
+  					<div class="col-md-6"><!--left col--><br>
+                       <div class="text-center testimonial"><figure class="mb-6"><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar"><br><br>
+        					<h6><b>프로필</b></h6></div></div>
+        		       <div class="col-md-6 hidden_input" style="text-align:center;margin-top:15%"><p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
+        					<label class="btn" for="hidden_file">프로필등록</label>
+        						<input type="file" id="hidden_file" class="text-center center-block file-upload"  name="member_profile"></figure>
+     					</div><br>
+              
+              		</div>
               </div>
               
               <div class="row form-group" style="text-align: center;">
