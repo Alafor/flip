@@ -121,14 +121,14 @@
 <%-- 										<c:when test="${(i %2) ==1 } }"> --%>
 											<div class="col-lg-6">
 												<div class="d-block d-md-flex listing">
-													<a href="review.do?seq=${inclass.seq}" class="img d-block"
+													<a href="review.do?class_seq=${inclass.seq}" class="img d-block"
 														style="background-image: url('resources/images/img_4.jpg')"></a>
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
 														<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
 														<h3>
-															<a href="review.do?seq=${inclass.seq}">${inclass.class_name}</a>
+															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
 														<!-- 별 -->
 														<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
