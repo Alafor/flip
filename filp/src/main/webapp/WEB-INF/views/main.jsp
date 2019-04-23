@@ -74,9 +74,8 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="site-section bg-light">
-			<div class="container">
+		<div class="bg-light" style="padding-bottom: 20px">
+			<div class="container" >
 			<!-- 카테고리 시작 -->
 				<div class="overlap-category mb-5">
 					<div class="row align-items-stretch no-gutters">
@@ -172,15 +171,68 @@
 						</div>
 					</div>
 				</div>
-			
+			</div>
+		</div>
+		
+		<div class="site-section bg-white" style="padding-top: 20px">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-7 text-left border-primary">
+						
+						<h2 class="font-weight-light text-primary">
+						<a href="searchlist.do?classType=W">
+							<b>선생님<span class="text-warning">찾기</span></b>
+						</a>
+						</h2>
+						
+						<p class="color-black-opacity-5">Find a Instructor</p>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12  block-13">
+						<div class="owl-carousel nonloop-block-13">
+					<!-- 학생 찾기  -->
+							<!-- EL FOR문 시작 부분  -->
+							
+								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
+								<div class="d-block d-md-flex listing vertical studentAjax">
+									<a href="cdetail.do?class_seq=${wantlist.seq}" class="img d-block"
+										style="background-image: url('resources/images/img_4.jpg')"></a>
+									<div class="lh-content">
+										<span class="category">${wantlist.class_creator_name}</span> 
+										<span class="instructor_img">등록자 사진</span>
+										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<h3>
+											<a href="cdetail.do?class_seq=${wantlist.seq}">${wantlist.class_name}</a>
+										</h3>
+										<!-- 별 -->
+										
+											<!-- <p class="teacherstar" style="float:left;"></p> -->
+											
+										<!-- 별 -->
+										<address>${wantlist.class_area}</address>
+									</div>
+								</div>
+								</c:forEach>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 				<!-- 카테고리 메뉴 종료 -->
 				<!-- 선생님 찾기 세션 -->
 		<!-- <div class="site-section" data-aos="fade"> -->
+		<div class="site-section bg-light">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
+						<a href="searchlist.do?classType=C">
 							<b>학생<span class="text-warning">찾기</span></b>
+						</a>
 						</h2>
 						<p class="color-black-opacity-5">Find a Student</p>
 					</div>
@@ -226,68 +278,20 @@
 							</c:otherwise>
 						</c:choose> --%>
 							<!-- 선생님 찾기 종료 -->
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- </div> -->
-
-
-		<div class="site-section" data-aos="fade">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-md-7 text-left border-primary">
-						<h2 class="font-weight-light text-primary">
-							<b>선생님<span class="text-warning">찾기</span></b>
-						</h2>
-						<p class="color-black-opacity-5">Find a Instructor</p>
-
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-12  block-13">
-						<div class="owl-carousel nonloop-block-13">
-					<!-- 학생 찾기  -->
-							<!-- EL FOR문 시작 부분  -->
-							
-								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
-								<div class="d-block d-md-flex listing vertical studentAjax">
-									<a href="#" class="img d-block"
-										style="background-image: url('resources/images/img_4.jpg')"></a>
-									<div class="lh-content">
-										<span class="category">${wantlist.class_creator_name}</span> 
-										<span class="instructor_img">등록자 사진</span>
-										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-										<h3>
-											<a href="#">${wantlist.class_name}</a>
-										</h3>
-										<!-- 별 -->
-										
-											<!-- <p class="teacherstar" style="float:left;"></p> -->
-											
-										<!-- 별 -->
-										<address>${wantlist.class_area}</address>
-									</div>
-								</div>
-								</c:forEach>
-						
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-
-
-	<div class="site-section bg-light">
+<!-- </div> -->
+	<div class="site-section bg-white">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md-7 text-left border-primary">
 					<h2 class="font-weight-light text-primary">
-						<b>스터디<span class="text-warning">찾기</span></b>
+						<a href="searchlist.do?classType=S">
+							<b>스터디<span class="text-warning">찾기</span></b>
+						</a>
 					</h2>
 					<p class="color-black-opacity-5">Find a Study</p>
 
@@ -299,14 +303,14 @@
 					<div class="owl-carousel nonloop-block-13">
 						<c:forEach var="studylist" items="${studylist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical studyAjax">
-									<a href="#" class="img d-block"
+									<a href="cdetail.do?class_seq=${studylist.seq}" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
 									<div class="lh-content">
 										<span class="category">${studylist.class_creator_name}</span> 
 										<span class="instructor_img">강사사진</span>
 										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
 										<h3>
-											<a href="#">${studylist.class_name}</a>
+											<a href="cdetail.do?class_seq=${studylist.seq}">${studylist.class_name}</a>
 										</h3>
 										<!-- 별 -->
 										
@@ -323,7 +327,7 @@
 		</div>
 	</div>
 
-	<div class="site-section bg-white">
+	<div class="site-section bg-light">
 		<!-- 배경색 인기 강사 세션 지정-->
 		<div class="container">
 
@@ -425,7 +429,7 @@
 
 
 
-	<div class="site-section bg-light">
+	<div class="site-section bg-white">
 		<!-- 배경색 스터디 룸 세션 지정 -->
 		<div class="container">
 			<div class="row justify-content-center mb-5">

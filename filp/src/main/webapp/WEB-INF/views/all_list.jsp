@@ -13,7 +13,6 @@
 <head>
 <title>Flip</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
@@ -72,6 +71,9 @@ ul.tabs li.current {
 .tab-content.current {
 	display: inherit;
 }
+.param{
+	display:none;
+}
 </style>
 </head>
 <body>
@@ -120,7 +122,6 @@ ul.tabs li.current {
 								class="number">219</span>
 							</a>
 						</div>
-
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
 							<a href="search.do?category=exercise"
 								class="popular-category h-100" data-category="exercise"> <span
@@ -216,109 +217,46 @@ ul.tabs li.current {
 						</div>
 					</div>
 				</div>
-
-
-
-				<div class="container">
-
-					<ul class="tabs">
-						<li class="tab-link current" data-tab="tab-1">
-							선생님 <span class="text-warning">찾기</span>
-						</li>
-						<li class="tab-link" data-tab="tab-2">
-							학생 <span class="text-warning">찾기</span>
-						</li>
-						<li class="tab-link" data-tab="tab-3">
-							클래스 <span class="text-warning">찾기</span>
-						</li>
-					</ul>
-					<p></p>
-					<div class="container">
-						<div class="row mb-5">
-							<div class="col-md-7 text-left border-primary">
-								<h2 class="font-weight-light text-primary">
-									<b>검색<span class="text-warning">결과</span></b>
-								</h2>
-								<p class="color-black-opacity-5">${fn:length(searchList)}개수업</p>
-							</div>
-						</div>
-					</div>
-					<div id="tab-1" class="tab-content current">
-						<!-- 검색결과 시작 -->
-						<div class="row">
-							<div class="col-12  block-13">
-								<div class="owl-carousel nonloop-block-13">
-
-									<!-- 선생님 찾기  -->
-									<!-- EL FOR문 시작 부분  -->
-
-									<c:forEach var="searchList" items="${searchList}"
-										varStatus="seq">
-										<div class="d-block d-md-flex listing vertical instructorAjax">
-											<a href="cdetail.do?class_seq=${searchList.seq}"
-												class="img d-block"
-												style="background-image: url('resources/images/img_4.jpg')"></a>
-											<div class="lh-content">
-												<a
-													href="tdetail.do?member_seq=${searchList.class_member_seq}">
-													<span class="category">${searchList.class_creator_name}</span>
-													<span class="instructor_img">강사사진</span>
-												</a> <a href="insertwhishlist.do" class="bookmark"><span
-													class="icon-heart"></span></a>
-												<h3>
-													<a href="cdetail.do?class_seq=${searchList.seq}">${searchList.class_name}</a>
-												</h3>
-												<!-- 별 -->
-												<div class="mb-0 teacherstar"
-													style="width: 90px; float: left;"
-													data-minority="${searchList.class_member_rating}"
-													onclick="gogostar(this)"></div>
-												<!-- <p class="teacherstar" style="float:left;"></p> -->
-												<span class="review">(${searchList.class_review_count}
-													Reviews)</span>
-												<!-- 별 -->
-												<address>${searchList.class_area}</address>
-											</div>
-										</div>
-									</c:forEach>
-
-									<%-- <c:choose>
-							<c:when test="${not empty classlist.length}">
-								</c:when>
-									<c:otherwise>
-								<h2 class="font-weight-light text-primary">
-									<b>강의가 <span class="text-warning">없어요 ㅠㅠ</span></b>
-								</h2>
-							</c:otherwise>
-						</c:choose> --%>
-									<!-- 선생님 찾기 종료 -->
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 검색결과 종료 -->
-				</div>
-				<div id="tab-2" class="tab-content">---- ---- ★------ ----
-					---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ----
-					-------- ---- ---- ---- ★-- ---- ---- ------★ ---- ---- ---- ----
-					---- ---- -------- ---- ---- ---- ---- ---- ---- ★------ ---- ----
-					---- ----</div>
-				<div id="tab-3" class="tab-content">---- ★-- -------- ----
-					---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ----
-					-------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ----
-					---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ----
-					---- --★</div>
 			</div>
-
-
-		</div>
+			
+			<div class="container">
+				<ul class="tabs">
+					<li class="tab-link current" data-tab="tab-1">선생님 <span
+						class="text-warning">찾기</span>
+					</li>
+					<li class="tab-link" data-tab="tab-2">학생 <span
+						class="text-warning">찾기</span>
+					</li>
+					<li class="tab-link" data-tab="tab-3">클래스 <span
+						class="text-warning">찾기</span>
+					</li>
+				</ul>
+			</div>
+		
+			
+			</div>
+			<div class="site-section">
+				<div class="container">
+					
+				
+				<div id="tab-1" class="tab-content current">a</div>
+				<div id="tab-2" class="tab-content">s</div>
+				<div id="tab-3" class="tab-content">d</div>
+				</div>
+			</div>
+			
+			<!-- 목록 container 종료 -->
 		<!-- 사이트 섹션 종료 -->
 		<div>
 			<jsp:include page="footer.jsp" />
 		</div>
 	</div>
+	<div class="param" id="search" data-param="${paramList.search}"></div>
+	<div class="param" id="category" data-param="${paramList.category}"></div>
+	<div class="param" id="classType" data-param="${paramList.classType}"></div>
 	<!-- site-wrap div 종료 -->
 	<!-- footer종료 -->
+	
 	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/jquery-ui.js"></script>
@@ -343,18 +281,79 @@ ul.tabs li.current {
 	<script src="resources/js/star.js" defer="defer"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			var i =0;
+			var search = $("#search").attr("data-param");
+			var category = $("#category").attr("data-param");
+			var classType = $("#classType").attr("data-param");
+			if(!search){
+				search=null;
+			}
+			if(!category){
+				category=null;
+			}
+			if(!classType){
+				classType=null;
+			}
+			alert(category);
+			//클래스 탭메뉴 
+			if(classType != null){
+				if(classType == 'W'){
+					var tab_id = $('ul.tabs li').eq(0).attr('data-tab');
+					
+					$('ul.tabs li').removeClass('current');
+					$('.tab-content').removeClass('current');
+					
+					$('ul.tabs li').eq(0).addClass('current');
+					$("#" + tab_id).addClass('current');
+					
+				}else if(classType == 'C'){
+					var tab_id = $('ul.tabs li').eq(1).attr('data-tab');
+					
+					$('ul.tabs li').removeClass('current');
+					$('.tab-content').removeClass('current');
+					
+					$('ul.tabs li').eq(1).addClass('current');
+					$("#" + tab_id).addClass('current');
+					
+				}else if(classType == 'S'){
+					var tab_id = $('ul.tabs li').eq(2).attr('data-tab');
+					
+					$('ul.tabs li').removeClass('current');
+					$('.tab-content').removeClass('current');
+					
+					$('ul.tabs li').eq(2).addClass('current');
+					$("#" + tab_id).addClass('current');
+					
+				}
+				pageLoad();
+				/* $("#classsize").load("listload.do?classType="+classType+" .color-black-opacity-5");
+				$("div.current").load("listload.do?classType="+classType+" .loadlist"); */
+			}
+			//클래스 탭메뉴 종료
+				$('ul.tabs li').click(function() {
+					var tab_id = $(this).attr('data-tab');//tab-1
+					
+					$('ul.tabs li').removeClass('current');
+					$('.tab-content').removeClass('current');
 
-			$('ul.tabs li').click(function() {
-				var tab_id = $(this).attr('data-tab');
-
-				$('ul.tabs li').removeClass('current');
-				$('.tab-content').removeClass('current');
-
-				$(this).addClass('current');
-				$("#" + tab_id).addClass('current');
-			})
-
-		})
+					$(this).addClass('current');
+					$("#" + tab_id).addClass('current');
+					if(tab_id == 'tab-1'){
+						classType='W'
+					}else if(tab_id == 'tab-2'){
+						classType='C'
+					}else if(tab_id == 'tab-3'){
+						classType='S'
+					}
+					pageLoad();
+				});
+			
+				function pageLoad(){
+					/* $("#classsize").load("listload.do?classType="+classType+"category="+category+"search="+search+" .color-black-opacity-5"); */
+					$("div.current").load("listload.do?classType="+classType+"&category="+category+"&search="+search);
+				};
+		});
+		
 	</script>
 </body>
 </html>
