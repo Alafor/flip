@@ -226,7 +226,7 @@
 							</c:otherwise>
 						</c:choose> --%>
 							<!-- 선생님 찾기 종료 -->
-							</div>
+						</div>
 					</div>
 				</div>
 			</div>
