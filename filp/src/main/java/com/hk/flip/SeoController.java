@@ -49,22 +49,22 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String category, String classType) {
+	public String searchlist(Locale locale, Model model,String search, String department, String classType) {
 		logger.info("search list 시작{}.", locale);
-		System.out.println("searchlist:"+search+", category:"+category+", classType:"+classType);
+		System.out.println("searchlist:"+search+", category:"+department+", classType:"+classType);
 		Map<String, String> paramList = new HashMap<String, String>();
 		paramList.put("search", search);
-		paramList.put("category", category);
+		paramList.put("category", department);
 		paramList.put("classType", classType);
 		model.addAttribute("paramList",paramList);
 		return "all_list";
 	}
 	//search list load()	
 	@RequestMapping(value = "/listload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String listload(Locale locale, Model model,String search, String category, String classType) {
+	public String listload(Locale locale, Model model,String search, String department, String classType) {
 		logger.info("Started main{}.", locale);
-		System.out.println("search: "+search+", category: "+category+", classType: "+classType);
-		List<ClassDto> searchList = classService.searchList(search, category, classType);
+		System.out.println("search: "+search+", category: "+department+", classType: "+classType);
+		List<ClassDto> searchList = classService.searchList(search, department, classType);
 		System.out.println(searchList);
 		model.addAttribute("searchList",searchList);
 		return "listload";

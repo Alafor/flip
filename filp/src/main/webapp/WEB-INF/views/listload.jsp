@@ -48,11 +48,10 @@
 					<h3>
 						<a href="cdetail.do?class_seq=${searchList.seq}">${searchList.class_name}</a>
 					</h3>
-					<!-- 별 -->
-
-					<!-- <p class="teacherstar" style="float:left;"></p> -->
-
-					<!-- 별 -->
+					<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_member_rating}" onclick="gogostar(this)">
+					</div>
+											<!-- <p class="teacherstar" style="float:left;"></p> -->
+					<span class="review" >(${classlist.class_review_count} Reviews)</span>
 					<address>${searchList.class_area}</address>
 				</div>
 			</div>
