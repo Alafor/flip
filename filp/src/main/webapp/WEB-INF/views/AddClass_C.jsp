@@ -10,12 +10,15 @@
 	<title>회원가입</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-	
+	<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 	<link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
 	rel="stylesheet">
 <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
-<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+ <link href="resources/dist/css/datepicker.min.css" rel="stylesheet" type="text/css">
+<script src="resources/dist/js/datepicker.min.js"></script>
+<script src="resources/dist/js/datepicker.ko.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
@@ -31,6 +34,7 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+
 <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" /> -->
 <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script> -->
 <style type="text/css">
@@ -41,6 +45,17 @@
     $(function(){
     	var time1 = "";
     	var time2 = "";
+    	for(var j=0;j<60;j++){
+    		var min1 = "";
+    		if(j<10){
+    			min1="0"+j;
+    		}
+    		else{
+    			min1=""+j;	    		
+    		}
+    		
+    		time2 +="<option value='"+min1+"'>"+min1+" 분 </option>";
+    	}
     	for(var i=0;i<24;i++){
     		var time = "";
     		if(i<10){
@@ -51,15 +66,6 @@
     		time1 +="<option value='"+time+"'>"+time+" 시 </option>";
     	}
     	
-    	for(var i=0;i<61;i++){
-    		var mim1 = "";
-    		if(i<10){
-    			mim1="0"+i;
-    		}else{
-    			min1=i+"";	    		
-    		}
-    		time2 +="<option value='"+mim1+"'>"+mim1+" 분 </option>";
-    	}
     	var starttime1 = $("#class_starttime1").html(time1);
     	var starttime2 = $("#class_starttime2").html(time2);
     	
@@ -67,10 +73,17 @@
    
     
 </script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
 
-</script>
+<script type="text/javascript">
+// 	$(function(){
+// 		$('#datepicker1').datepicker({
+// 			data-range:"true",
+// 			data-multiple-dates-separator:" - ",
+// 			language: ko
+// 		});
+		
+// 	});
+	</script>
 
 </head>
 <body>
@@ -183,10 +196,16 @@
                   </select>
                 </div>
               </div>
+              
+                  <input type="text"
+    data-range="true"
+    data-multiple-dates-separator=" - "
+    data-language="ko"
+    data-inline="true"
+    class="datepicker-here"/>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
-                  <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email">
+                <div class="col-md-12 validate-input " data-validate = "날자를 선택해 주세요">
+                  <label class="text-black" for="email">수업 날짜</label> 
                 </div>
               </div>
 	                  <label class="text-black" for="birth">수업 시작시간</label>
@@ -198,6 +217,7 @@
 	                </div>
 	                <div class="col-xs-4 col-md-4 col-sm-3">  	
 	                  <select class="form-control .col-xs-6 .col-md-4" id="class_starttime2">
+	                  	
 	                  </select>
 	                </div>
 	              </div>
@@ -210,7 +230,7 @@
               
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "인원을 정해수세요">
-                  <label class="text-black" for="phone">인원설정</label> 
+                  <label class="text-black" for="phone">인원 설정</label> 
                   <input type="number" class="form-control" name="class_participation" placeholder="최소 모집 인원" >
                 </div>
               </div>
@@ -252,7 +272,7 @@
 	</div>
 	
 	
-
+	
 	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
@@ -265,6 +285,6 @@
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	<script src="resources/js/signup.js"></script>
-
+	
 </body>
 </html>
