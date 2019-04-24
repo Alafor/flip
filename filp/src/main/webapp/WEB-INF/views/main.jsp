@@ -531,13 +531,6 @@
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	<script type="text/javascript">
-		$(function(){
-			$(".popular-category").on("click",function(){
-				var categorys = $(this).attr("data-category");
-				$(location).attr('href','searchlist.do?department='+categorys);
-			})
-		})
-	</script>
+	
 </body>
 </html>

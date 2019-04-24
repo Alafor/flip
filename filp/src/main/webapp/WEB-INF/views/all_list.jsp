@@ -112,51 +112,48 @@ ul.tabs li.current {
 			</div>
 		</div>
 		<div class="site-section bg-light">
-			<div class="container">
+						<div class="container" >
+			<!-- 카테고리 시작 -->
 				<div class="overlap-category mb-5">
 					<div class="row align-items-stretch no-gutters">
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-1 col-lg-1">
-							<a href="#" class="popular-category h-100"> <span
+							<a href="searchlist.do" class="popular-category h-100"> <span
 								class="icon"> <span class="flaticon-meeting"></span>
 							</span> <span class="caption mb-2 d-block"><b>전체수업</b></span> <span
 								class="number">219</span>
 							</a>
 						</div>
+						
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="exercise"> <span
-								class="icon"><span class="flaticon-running"></span></span> <span
+							<a href="searchlist.do?department=exercise" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
+									class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"
-								data-category="music"> <span class="icon"><span
-									class="flaticon-microphone"></span></span> <span
+							<a href="searchlist.do?department=music" class="popular-category h-100" data-category="music"> <span
+								class="icon"><span class="flaticon-microphone"></span></span> <span
 								class="caption mb-2 d-block"><b>음악</b></span> <span
 								class="number">398</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"
-								data-category="photo"> <span class="icon"><span
-									class="flaticon-cameras"></span></span> <span
+							<a href="searchlist.do?department=photo" class="popular-category h-100" data-category="photo"> <span
+								class="icon"><span class="flaticon-cameras"></span></span> <span
 								class="caption mb-2 d-block"><b>사진</b></span> <span
 								class="number">1,229</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="lifestyle"> <span
+							<a href="searchlist.do?department=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
 								class="icon"><span class="flaticon-dance"></span></span> <span
 								class="caption mb-2 d-block"><b>YOLO</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="investment"> <span
+							<a href="searchlist.do?department=investment" class="popular-category h-100" data-category="investment"> <span
 								class="icon"><span class="flaticon-money"></span></span> <span
 								class="caption mb-2 d-block"><b>재태크</b></span> <span
 								class="number">29,221</span>
@@ -165,32 +162,28 @@ ul.tabs li.current {
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="beauty"> <span
+							<a href="searchlist.do?department=beauty" class="popular-category h-100" data-category="beauty"> <span
 								class="icon"><span class="flaticon-soap"></span></span> <span
 								class="caption mb-2 d-block"><b>뷰티</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="language"> <span
+							<a href="searchlist.do?department=language" class="popular-category h-100" data-category="language"> <span
 								class="icon"><span class="flaticon-book"></span></span> <span
 								class="caption mb-2 d-block"><b>외국어</b></span> <span
 								class="number">29,221</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"
-								data-category="vedit"> <span class="icon"><span
-									class="flaticon-video-player"></span></span> <span
-								class="caption mb-2 d-block"><b>영상편집</b></span> <span
+							<a href="#" class="popular-category h-100" data-category="vedit"> <span
+								class="icon"><span class="flaticon-video-player"></span></span>
+								<span class="caption mb-2 d-block"><b>영상편집</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="travel"> <span
+							<a href="searchlist.do?department=travel" class="popular-category h-100" data-category="travel"> <span
 								class="icon"><span class="flaticon-airplane"></span></span> <span
 								class="caption mb-2 d-block"><b>요리</b></span> <span
 								class="number">29,221</span>
@@ -199,17 +192,15 @@ ul.tabs li.current {
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#" class="popular-category h-100"
-								data-category="it"> <span class="icon"><span
-									class="flaticon-workstation"></span></span> <span
+							<a href="searchlist.do?department=it" class="popular-category h-100" data-category="it"> <span
+								class="icon"><span class="flaticon-workstation"></span></span> <span
 								class="caption mb-2 d-block"><b>IT</b></span> <span
 								class="number">219</span>
 							</a>
 						</div>
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="#"
-								class="popular-category h-100" data-category="design"> <span
+							<a href="searchlist.do?department=design" class="popular-category h-100" data-category="design"> <span
 								class="icon"><span class="flaticon-presenter"></span></span> <span
 								class="caption mb-2 d-block"><b>디자인</b></span> <span
 								class="number">219</span>
@@ -218,7 +209,7 @@ ul.tabs li.current {
 					</div>
 				</div>
 			</div>
-			
+			<!-- 이까지 -->
 			<div class="container">
 				<ul class="tabs">
 					<li class="tab-link current" data-tab="tab-1">선생님 <span
@@ -239,9 +230,9 @@ ul.tabs li.current {
 				<div class="container">
 					
 				
-				<div id="tab-1" class="tab-content current">a</div>
-				<div id="tab-2" class="tab-content">s</div>
-				<div id="tab-3" class="tab-content">d</div>
+				<div id="tab-1" class="tab-content current"></div>
+				<div id="tab-2" class="tab-content"></div>
+				<div id="tab-3" class="tab-content"></div>
 				</div>
 			</div>
 			
@@ -279,92 +270,6 @@ ul.tabs li.current {
 		integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 		crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	<script type="text/javascript" defer="defer">
-		$(document).ready(function() {
-			
-			var search = $("#search").attr("data-param");
-			var category = $("#category").attr("data-param");
-			var classType = $("#classType").attr("data-param");
-			alert("search: "+search+"category: "+category+"classType: "+classType);
-			//클래스 탭메뉴 
-				if(classType == 'W'){
-					var tab_id = $('ul.tabs li').eq(0).attr('data-tab');
-					
-					$('ul.tabs li').removeClass('current');
-					$('.tab-content').removeClass('current');
-					
-					$('ul.tabs li').eq(0).addClass('current');
-					$("#" + tab_id).addClass('current');
-					
-				}else if(classType == 'C'){
-					var tab_id = $('ul.tabs li').eq(1).attr('data-tab');
-					
-					$('ul.tabs li').removeClass('current');
-					$('.tab-content').removeClass('current');
-					
-					$('ul.tabs li').eq(1).addClass('current');
-					$("#" + tab_id).addClass('current');
-					
-				}else if(classType == 'S'){
-					var tab_id = $('ul.tabs li').eq(2).attr('data-tab');
-					
-					$('ul.tabs li').removeClass('current');
-					$('.tab-content').removeClass('current');
-					
-					$('ul.tabs li').eq(2).addClass('current');
-					$("#" + tab_id).addClass('current');
-					
-				}
-			pageLoad();//페이지 로드 시 listload 로드
-			
-			//클래스 탭메뉴 종료
-				$('ul.tabs li').click(function() {
-					var tab_id = $(this).attr('data-tab');//tab-1
-					
-					$('ul.tabs li').removeClass('current');
-					$('.tab-content').removeClass('current');
-
-					$(this).addClass('current');
-					$("#" + tab_id).addClass('current');
-					if(tab_id == 'tab-1'){
-						classType='W'
-					}else if(tab_id == 'tab-2'){
-						classType='C'
-					}else if(tab_id == 'tab-3'){
-						classType='S'
-					}
-					alert(category+" "+classType);
-					pageLoad();
-				});
-			
-				function pageLoad(){
-					
-					if(!(!classType)&&!search&&!category){
-						//메인에서 클래스 타입만 클릭했을때
-						alert("메인에서 클래스 타입만 클릭했을때")
-						$("div.current").load("listload.do?classType="+classType);
-					}else if(!(!search) && !classType && !category){
-						//검색으로 들어왔을때
-						alert("검색으로 들어왔을때");
-						$("div.current").load("listload.do?classType=W&search="+search);
-					}else if(!(!search) && !(!classType) && !category){
-						//검색 후 클래스 클릭했을때
-						alert("검색 후 클래스 클릭했을때");
-						$("div.current").load("listload.do?classType="+classType+"&search="+search);
-					}else if(!(!category) && !classType && !search){
-						//카테고리 눌러서 들어왔을때
-						alert("카테고리 눌러서 들어왔을때");
-						$("div.current").load("listload.do?classType=W&department="+category);
-					}else if(!(!category) && !(!classType) && !search){
-						//카테고리 클릭 후 클래스 눌렀을때
-						alert("카테고리 클릭 후 클래스 눌렀을때");
-						$("div.current").load("listload.do?classType="+classType+"&department="+category);
-					}
-				};
-				
-				
-		});
-		
-	</script>
+	<script src="resources/js/searchlist.js" defer="defer"></script>
 </body>
 </html>

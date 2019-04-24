@@ -24,6 +24,7 @@ function gogostar(stars) {
 	stars.innerHTML = star
 }
 
+
 //메인 리스트 아작스 구현
 $(function(){
 	$(".popular-category").on("mouseover",function(){
