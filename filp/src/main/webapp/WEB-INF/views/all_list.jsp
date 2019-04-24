@@ -333,23 +333,33 @@ ul.tabs li.current {
 					}else if(tab_id == 'tab-3'){
 						classType='S'
 					}
+					alert(category+" "+classType);
 					pageLoad();
 				});
 			
 				function pageLoad(){
-					/* $("#classsize").load("listload.do?classType="+classType+"category="+category+"search="+search+" .color-black-opacity-5"); */
-					if(!(!classType) && !search && !category){
-						$("div.current").load("listload.do?classType="+classType);	
-					}else if(!(!search) && !category && !classType){
-						$("div.current").load("listload.do?search="+search);	
-					}else if(!(!category) && !search && !classType){
-						$("div.current").load("listload.do?department="+category);	
-					}else if(!(!search) && !(!category)){
-						$("div.current").load("listload.do?department="+category+"&search="+search+"&classType=W");
-					}else if(!(!search) && !(!classType)){
-						$("div.current").load("listload.do?search="+search+"&classType="+classType);
-					}
 					
+					if(!(!classType)&&!search&&!category){
+						//메인에서 클래스 타입만 클릭했을때
+						alert("메인에서 클래스 타입만 클릭했을때")
+						$("div.current").load("listload.do?classType="+classType);
+					}else if(!(!search) && !classType && !category){
+						//검색으로 들어왔을때
+						alert("검색으로 들어왔을때");
+						$("div.current").load("listload.do?classType=W&search="+search);
+					}else if(!(!search) && !(!classType) && !category){
+						//검색 후 클래스 클릭했을때
+						alert("검색 후 클래스 클릭했을때");
+						$("div.current").load("listload.do?classType="+classType+"&search="+search);
+					}else if(!(!category) && !classType && !search){
+						//카테고리 눌러서 들어왔을때
+						alert("카테고리 눌러서 들어왔을때");
+						$("div.current").load("listload.do?classType=W&department="+category);
+					}else if(!(!category) && !(!classType) && !search){
+						//카테고리 클릭 후 클래스 눌렀을때
+						alert("카테고리 클릭 후 클래스 눌렀을때");
+						$("div.current").load("listload.do?classType="+classType+"&department="+category);
+					}
 				};
 				
 				
