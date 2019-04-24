@@ -16,5 +16,6 @@ public interface IClassDao {
 
 	boolean addClass(ClassDto dto);
 	//검색 리스트
-	public List<ClassDto> searchList(String search, String department, String classType);
+	public List<ClassDto> searchList(String search, String department, String classType, int count);
+	public int pageCount(String search, String department, String classType);
 }

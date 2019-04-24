@@ -33,48 +33,7 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
-<style type="text/css">
-ul.tabs {
-	margin: 0px;
-	padding: 0px;
-	list-style: none;
-	background-color: white;
-}
-
-ul.tabs li {
-	background: none;
-	color: #222;
-	display: inline-block;
-	padding: 10px 15px;
-	cursor: pointer;
-	width: 340px;
-	text-align: center;
-}
-
-.tab-content.current {
-	display: inherit;
-}
-
-ul.tabs li.current {
-	background: #30E3CA;
-	color: white;
-	font-weight: bold;
-	border-radius: 8px;
-}
-
-.tab-content {
-	display: none;
-	background: #ededed;
-	padding: 15px;
-}
-
-.tab-content.current {
-	display: inherit;
-}
-.param{
-	display:none;
-}
-</style>
+<link rel="stylesheet" href="resources/css/searchlist.css">
 </head>
 <body>
 	<div class="site-wrap">
@@ -226,10 +185,8 @@ ul.tabs li.current {
 		
 			
 			</div>
-			<div class="site-section">
+			<div class="site-section bg-white">
 				<div class="container">
-					
-				
 				<div id="tab-1" class="tab-content current"></div>
 				<div id="tab-2" class="tab-content"></div>
 				<div id="tab-3" class="tab-content"></div>

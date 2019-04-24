@@ -48,15 +48,4 @@ public class AjaxController {
 		System.out.println("wantList:"+wantList);
 		return ajaxMap;
 	}
-	
-	//search list ajax controller
-	@ResponseBody
-	@RequestMapping(value = "/searchAjax.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public Map searchAjax(Locale locale, Model model, String search, String department, String classType) {
-		logger.info("Ajax main{}.", locale);
-		List<ClassDto> searchList = classService.searchList(search, department, classType);
-		Map<String, List<ClassDto>> searchMap = new HashMap<String, List<ClassDto>>();
-		searchMap.put("searchlist", searchList);
-		return searchMap;
-	}
 }

@@ -61,13 +61,21 @@ public class SeoController {
 	}
 	//search list load()	
 	@RequestMapping(value = "/listload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String listload(Locale locale, Model model,String search, String department, String classType) {
+	public String listload(Locale locale, Model model,String search, String department, String classType, String num) {
 		logger.info("Started main{}.", locale);
 		System.out.println("search: "+search+", category: "+department+", classType: "+classType);
-		List<ClassDto> searchList = classService.searchList(search, department, classType);
+		int pageCount = classService.pageCount(search, department, classType);
+		if(num==null || Integer.parseInt(num)<=0) {
+			num="1";
+		}else if(Integer.parseInt(num)>pageCount) {
+			num=String.valueOf(pageCount);
+		}
+		List<ClassDto> searchList = classService.searchList(search, department, classType, Integer.parseInt(num));
 		System.out.println(searchList);
 		model.addAttribute("searchList",searchList);
+		model.addAttribute("thisPage",num);
+		model.addAttribute("pageCount",pageCount);
 		return "listload";
-	}
+	}	
 }
 

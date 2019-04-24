@@ -36,11 +36,11 @@
 			<p class="color-black-opacity-5">${fn:length(searchList)}개수업</p>
 		</div>
 	</div>
-	<div class="loadlist">
+	
+		<div class="row">
 		<c:forEach var="searchList" items="${searchList}" varStatus="seq">
-	<div class="row col-lg-3">
-		
-			<div class="d-block d-md-flex listing vertical studentAjax">
+			<div class="loadlist col-3">	
+			<div class="d-block d-md-flex vertical listing studentAjax">
 				<a href="cdetail.do?class_seq=${searchList.seq}" class="img d-block"
 					style="background-image: url('resources/images/img_4.jpg')"></a>
 				<div class="lh-content">
@@ -56,10 +56,11 @@
 					<span class="review" >(${classlist.class_review_count} Reviews)</span>
 					<address>${searchList.class_area}</address>
 				</div>
-			</div>
-			
-	</div>
+		</div>
+		</div>
 		</c:forEach>
-	</div>
+		</div>
+		
+		
 </body>
 </html>

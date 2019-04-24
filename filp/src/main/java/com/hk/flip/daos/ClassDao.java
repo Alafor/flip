@@ -64,11 +64,21 @@ public class ClassDao implements IClassDao {
 	
 	//검색 리스트
 	@Override
-	public List<ClassDto> searchList(String search, String department, String classType){
+	public List<ClassDto> searchList(String search, String department, String classType, int count){
 		Map<String, String> searchFilter = new HashMap<String, String>();
 		searchFilter.put("search", search);
 		searchFilter.put("department",department);
 		searchFilter.put("classType", classType);
+		searchFilter.put("count", String.valueOf(count));
 		return sqlsession.selectList(nameSpace + "searchlist",searchFilter);
+	}
+
+	@Override
+	public int pageCount(String search, String department, String classType) {
+		Map<String, String> searchFilter = new HashMap<String, String>();
+		searchFilter.put("search", search);
+		searchFilter.put("department",department);
+		searchFilter.put("classType", classType);
+		return sqlsession.selectOne(nameSpace + "pageCount",searchFilter);
 	}
 }
