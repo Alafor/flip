@@ -42,6 +42,25 @@ public class ClassService implements IClassService {
 		// TODO Auto-generated method stub
 		return classDao.getCdetail(class_seq);
 	}
+	//강의 등록전 체크하기
+	@Override
+	public String chkInclassTime_Create(ClassDto dto) {
+		System.out.println("chkInclassTime_Created의 service dto = \n"+dto);
+		List<String> list = inclassDao.chkInclassTime_Create(dto);
+		System.out.println("겹치는 리스트 가져오기");
+		System.out.println(list);				
+		if(!(list.isEmpty())) {
+			String rst="";
+			for (String string : list) {
+				rst = rst+",\n"+string;
+			}
+			rst = rst+"\n 강의와 시간이 겹칩니다 ";
+			return rst;
+		}else {
+			return null;
+		}
+	}
+	
 	//강의 등록하기 null값일때 강의 등록 성공
 	@Override
 	public String addClass(ClassDto dto) {

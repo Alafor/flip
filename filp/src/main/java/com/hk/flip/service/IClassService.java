@@ -15,4 +15,5 @@ public interface IClassService {
 	public String addClass(ClassDto dto);
 	public List<ClassDto> searchList(String search, String department, String classType);
 	public String addsClass(List<ClassDto> classList);
+	public String chkInclassTime_Create(ClassDto dto);
 }

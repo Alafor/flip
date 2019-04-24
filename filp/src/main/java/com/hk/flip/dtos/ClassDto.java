@@ -11,8 +11,8 @@ public class ClassDto {
 	private String class_info;
 	private String class_area;
 	private String class_depa;
-	private Date class_sd;
-	private Date class_cd;
+	private String class_sd;
+	private String class_cd;
 	private String class_week;
 	private String class_starttime;
 	private int class_time;
@@ -78,16 +78,16 @@ public class ClassDto {
 	public void setClass_depa(String class_depa) {
 		this.class_depa = class_depa;
 	}
-	public Date getClass_sd() {
+	public String getClass_sd() {
 		return class_sd;
 	}
-	public void setClass_sd(Date class_sd) {
+	public void setClass_sd(String class_sd) {
 		this.class_sd = class_sd;
 	}
-	public Date getClass_cd() {
+	public String getClass_cd() {
 		return class_cd;
 	}
-	public void setClass_cd(Date class_cd) {
+	public void setClass_cd(String class_cd) {
 		this.class_cd = class_cd;
 	}
 	public String getClass_week() {
@@ -199,7 +199,7 @@ public class ClassDto {
 				+ ", class_creator_name=" + class_creator_name + ", class_review_count=" + class_review_count + "]";
 	}
 	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
-			String class_depa, Date class_sd, Date class_cd, String class_week, String class_starttime, int class_time,
+			String class_depa, String class_sd, String class_cd, String class_week, String class_starttime, int class_time,
 			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
 			int class_member_seq, int class_participation, int class_now_participation, int class_d_day,
 			float class_member_rating, String profile_img, String class_creator_name, int class_review_count) {
