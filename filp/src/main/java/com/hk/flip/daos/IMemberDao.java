@@ -32,5 +32,7 @@ public interface IMemberDao {
 
 	public boolean alter_userkey(String member_id, String member_key);//메일 인증하기
 
+	public String getSearchId(String board_name, String board_email);//id찾기
+
 	
 }

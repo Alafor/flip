@@ -64,5 +64,9 @@
 		UPDATE MEMBER SET MEMBER_KEY = 'Y' WHERE MEMBER_ID=#{member_id} AND MEMBER_KEY=#{member_key}
 	</update>
 	
+	<select id="searchid" parameterType="Map" resultType="String">
+		SELECT MEMBER_ID FROM MEMBER WHERE MEMBER_NAME=#{member_name} AND MEMBER_EMAIL=#{member_email}
+	</select>
+	
 	
 </mapper>

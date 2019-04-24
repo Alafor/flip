@@ -93,4 +93,12 @@ public class MemberDao implements IMemberDao {
 		int cnt = sqlsession.update(namespace+"alter_userkey",map);
 		return cnt>0?true:false;
 	}
+
+	@Override
+	public String getSearchId(String board_name, String board_email) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("member_name", board_name);
+		map.put("member_email", board_email);
+		return  sqlsession.selectOne(namespace+"searchid", map);	
+	}
 }

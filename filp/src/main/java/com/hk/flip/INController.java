@@ -34,6 +34,7 @@ import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IAnswerBoardService;
 import com.hk.flip.service.IMemberService;
 import com.hk.flip.service.UserMailSendService;
+import com.hk.flip.service.UserSearchService;
 
 
 
@@ -49,7 +50,8 @@ public class INController {
 	private IAnswerBoardService ansService;
 	@Autowired
 	private UserMailSendService mailsender;
-	
+	@Autowired
+	private UserSearchService  searchService;
 
 
 	@RequestMapping(value = "/loginform.do", method = RequestMethod.GET)//로그인폼 이동
@@ -326,6 +328,17 @@ public class INController {
 		}
 		
 	}
+
+	@RequestMapping(value = "/userSearch.do", method = RequestMethod.POST)
+	@ResponseBody
+	public String userIdSearch(@RequestParam("board_name") String board_name, @RequestParam("board_email") String board_email) {	
+		System.out.println(board_name);
+		System.out.println(board_email);
+		String result = searchService.getSearchId(board_name, board_email);
+		System.out.println(result);
+		return result;
+	}
+
 
 
 	

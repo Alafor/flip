@@ -30,6 +30,10 @@
 
 <link rel="stylesheet" href="resources/css/style.css">
 
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
 <script type="text/javascript">
 	
 	function search_check(num) {
@@ -43,9 +47,35 @@
 	}
 
 </script>
+<script type="text/javascript">
+// 아이디 & 스토어 값 저장하기 위한 변수
+	var idV = "";
+	// 아이디 값 받고 출력하는 ajax
+	var idSearch_click = function(){
+		$.ajax({
+			type:"POST",
+			url:"${pageContext.request.contextPath}/userSearch.do?board_name="
+					+$('#board_name').val()+"&board_email="+$('#board_email_1').val(),
+			success:function(data){
+				if(data == 0){
+					$('#id_value').text("일치하는 정보가 없습니다.!");	
+				} else {
+					$('#id_value').text(data);
+					// 아이디값 별도로 저장
+					idV = data;
+				}
+			}
+		});
+	}
+	</script>
+
+
+
 
 </head>
 <body>
+<jsp:include page="IdSearchModal.jsp"/> 
+<%-- <%@ include file="/WEB-INF/views/IdSearchModal.jsp" %> --%>
 
 <div class="site-wrap">
 
@@ -126,15 +156,15 @@
 
               <div class="row form-group">             
                 <div class="col-md-12 validate-input">
-                  <label class="text-black" for="board_email">이메일</label> 
-                  <input type="email" id="board_email" name="board_email" class="form-control">
+                  <label class="text-black" for="board_email_1">이메일</label> 
+                  <input type="email" id="board_email_1" name="board_email_1" class="form-control">
                 </div>
               </div>
 
 
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <button type="button" id="searchId" onclick="idSearch_click()" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">확인</button>
+                  <button type="button" onclick="idSearch_click()" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;" data-toggle="modal" data-target="#myModal">확인</button>
                 </div>
               </div>
 			</div>
