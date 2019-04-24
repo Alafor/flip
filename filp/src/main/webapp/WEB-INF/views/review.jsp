@@ -82,7 +82,7 @@ $(function(){
 		  return false;
 		});
 	$(".starR1,.starR2").mouseover(function(){
-		$("input[name=rating]").val(($(".on").length)/2); 		
+		$("input[name=review_rating]").val(($(".on").length)/2); 		
 	});
 });
 </script>
@@ -143,16 +143,17 @@ $(function(){
 
 					<!-------------------------------------------------------------------------------------------------->
 
-					<form action="reviewinsert.do" class="p-5 bg-white" method="get"
+					<form action="reviewinsert.do" class="p-5 bg-white" method="post"
 						style="border: 2px solid #30e3ca; border-radius: 20px;">
-
+					<input type="hidden" name="review_class_seq" value="${param.class_seq}">
+					<%-- <input type="hidden" name="review_member_seq" value="${param.member_seq}"> --%>
 						<div class="row form-group">
 
 							<div class="col-md-12 validate-input" data-validate="후기를 남겨주세요">
 								<textarea class="form-control animated" cols="50"
-									id="new-review" name="detail" placeholder="여기에 후기를 남겨주세요."
+									id="new-review" name="review_detail" placeholder="여기에 후기를 남겨주세요."
 									rows="5"></textarea>
-								<input id="ratings-hidden" name="rating"><!--  type="hidden" -->
+								<input id="ratings-hidden" name="review_rating" type="hidden">
 							</div>
 						</div>
 

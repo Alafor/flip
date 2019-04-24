@@ -5,8 +5,8 @@
 
 <!--강사 후기 남기기-->
 <insert id="cReview" parameterType="ReviewDto">
-INSERT INTO REVIEW(REVIEW_SEQ, REVIEW_MEMBER_SEQ, REVIEW_CLASS_SEQ, REVIEW_RATING, REVIEW_DETAIL, REVIEW_DELFLAG, REVIEW_REGDATE)
-VALUES(REVIEW_SEQ.nextval,{review_member_seq},{review_class_seq},{review_rating},'{review_detail}','Y',SYSDATE); 
+INSERT INTO REVIEW(REVIEW_SEQ, REVIEW_MEMBER_SEQ , REVIEW_CLASS_SEQ, REVIEW_RATING, REVIEW_DETAIL,REVIEW_DELFLAG, REVIEW_REGDATE) 
+ VALUES(REVIEW_SEQ.nextval,#{review_member_seq} , #{review_class_seq}, #{review_rating}, #{review_detail},'Y', SYSDATE) 
 </insert>
 
 </mapper>

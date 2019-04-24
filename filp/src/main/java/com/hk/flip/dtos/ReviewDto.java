@@ -6,18 +6,18 @@ public class ReviewDto {
 
 	private int review_seq;
 	private int review_member_seq;
-	private int class_seq; 
+	private int review_class_seq; 
 	private float review_rating;
 	private String review_detail;
 	private String review_delflag;
 	private Date review_regdate;
 	private int review_instructor_seq;
 	public int getClass_seq() {
-		return class_seq;
+		return review_class_seq;
 	}
 
 	public void setClass_seq(int class_seq) {
-		this.class_seq = class_seq;
+		this.review_class_seq = class_seq;
 	}
 
 	public String getComment() {
@@ -37,7 +37,7 @@ public class ReviewDto {
 	@Override
 	public String toString() {
 		return "ReviewDto [review_seq=" + review_seq + ", review_member_seq=" + review_member_seq + ", class_seq="
-				+ class_seq + ", review_rating=" + review_rating + ", review_detail=" + review_detail
+				+ review_class_seq + ", review_rating=" + review_rating + ", review_detail=" + review_detail
 				+ ", review_delflag=" + review_delflag + ", review_regdate=" + review_regdate
 				+ ", review_instructor_seq=" + review_instructor_seq + "]";
 	}
@@ -58,12 +58,14 @@ public class ReviewDto {
 		this.review_member_seq = review_member_seq;
 	}
 
-	public int getClass_classseq() {
-		return class_seq;
+	
+
+	public int getReview_class_seq() {
+		return review_class_seq;
 	}
 
-	public void setClass_classseq(int class_seq) {
-		this.class_seq = class_seq;
+	public void setReview_class_seq(int review_class_seq) {
+		this.review_class_seq = review_class_seq;
 	}
 
 	public float getReview_rating() {
@@ -111,7 +113,7 @@ public class ReviewDto {
 		super();
 		this.review_seq = review_seq;
 		this.review_member_seq = review_member_seq;
-		this.class_seq = seq;
+		this.review_class_seq = seq;
 		this.review_rating = review_rating;
 		this.review_detail = review_detail;
 		this.review_delflag = review_delflag;
