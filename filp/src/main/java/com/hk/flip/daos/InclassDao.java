@@ -61,17 +61,14 @@ public class InclassDao implements IInclassDao {
 		//수강신청전 시간이 겹치는지 검사
 		@Override
 		public List<String> chkInclassTime_Join(int member_seq, int class_seq) {
-			Map<String, ClassDto> map = new HashMap<String, ClassDto>();
-			map.put("ClassDto",getClassDto(member_seq, class_seq));
-			return sqlSession.selectList(nameSpace+"chkinclasstime_join", map);
+			return sqlSession.selectList(nameSpace+"chkinclasstime_join", getClassDto(member_seq, class_seq));
 		}
 		
 		//강의 개설전 시간이 겹치는지 검사
 		@Override
 		public List<String> chkInclassTime_Create(ClassDto dto) {
-			Map<String, ClassDto> map = new HashMap<String, ClassDto>();
-			map.put("ClassDto",dto);
-			return sqlSession.selectList(nameSpace+"chkinclasstime_create", map);
+			System.out.println("chkInclassTime_Created의 dao dto = \n"+dto);
+			return sqlSession.selectList(nameSpace+"chkinclasstime_create", dto);
 		}
 		
 		//내수강 보기

@@ -2,10 +2,14 @@ package com.hk.flip;
 
 import java.io.File;
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,6 +22,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -141,17 +146,42 @@ public class MooooonController {
 		return "main";
 	}
 	
-	@RequestMapping(value = "/test-login.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
-	public String login(HttpServletRequest request,Locale locale, Model model,String id,String password) {
-		logger.info("로그인 하기{}.", locale);
-		HttpSession session =request.getSession();
-		MemberDto dto = memberService.logCheck(id,password);
-		if(dto!=null) {	
-			session.setAttribute("logInMember", dto );		
-			return "redirect:main.do";
-		}else{
-			model.addAttribute("msg", "로그인실패" );
-			return "loginError";
+	@ResponseBody
+	@RequestMapping(value = "/chkclasstime.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public Map chkclasstime(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
+		logger.info("시간체크 에이작스.", locale);
+		Map map = new HashMap<String, String>();
+		ClassDto classdto = new ClassDto(); 
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+		System.out.println(memberDto);
+		int memberSeq = memberDto.getMember_seq();
+		SimpleDateFormat fomat = new SimpleDateFormat("yyyy/MM/dd");
+//		Date sd = new Date();
+//		Date cd =new Date();
+//		try {
+//			sd = fomat.parse(request.getParameter("class_sd"));
+//			cd = fomat.parse(request.getParameter("class_cd"));
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		classdto.setClass_member_seq(memberSeq);
+		classdto.setClass_starttime(request.getParameter("class_starttime"));
+		classdto.setClass_sd(request.getParameter("class_sd"));
+		classdto.setClass_cd(request.getParameter("class_cd"));
+		classdto.setClass_time(Integer.parseInt(request.getParameter("class_time")));
+		classdto.setClass_week(request.getParameter("class_week"));
+		System.out.println("아작스에서 넘기기전 classdto::\n"+classdto);
+		String rst = classService.chkInclassTime_Create(classdto);
+		if(rst==null) {
+			map.put("rst","개설가능");
+			return map;
+		}else {
+			map.put("rst",rst);
+			return map;
 		}
+		
+		
 	}
 }

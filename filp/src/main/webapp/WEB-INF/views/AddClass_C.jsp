@@ -102,7 +102,7 @@
     	var after3 = new Date(now.getFullYear(),now.getMonth(),now.getDate()+3);
     	var str = after3.getFullYear()+"/"+(after3.getMonth()+1)+"/"+after3.getDate();
       $("#daterange").daterangepicker({
-    	  "startDate": str,
+    	  "startDate":str,
     	  "endDate":str,
     	  "minDate": str,
     	  "locale": {
@@ -124,13 +124,19 @@
     	    },
     	  opens: 'left'
       }, function(start, end, label) {
+    	  $("#class_sd").val(start.format('YYYY/MM/DD')) ;
+    	  $("#class_cd").val(end.format('YYYY/MM/DD')) ;
       });
     });							
     function addClassTime() {
     	var $div = $("<div class='form-group'> <div class='row'> <div class='col-xs-4 col-md-4 col-sm-4'> <select class='form-control .col-xs-6 .col-md-4' onchange='sumclasstime(this)'>"+time1
     			+"</select> </div> <div class='col-xs-4 col-md-4 col-sm-4'> <select class='form-control .col-xs-6 .col-md-4' onchange='sumclasstime(this)'>"+time2
 	                 +" </select> </div>"
-	                 +"<input type='hidden' name='classtime'><a href='#' class='col-xs-2 col-md-2 col-sm-2' onclick='delClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='icon-remove-sign icon-2x'></i></a> </div> </div>");
+	                 +"<input type='hidden' name='classtime'>"
+	                 +"<a href='#' class='col-xs-1 col-md-1 col-sm-1' onclick='chkClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='flaticon-done icon-2x'></i></a>"
+	                 +"<span style='padding-left: 5px;'>시간체크</span>"
+	                 +"<a href='#' class='col-xs-1 col-md-1 col-sm-1' onclick='delClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='icon-remove-sign icon-2x'></i></a>"
+	                 +" </div> </div>");
     	$('.time_container').append($div);
 	} 
     function delClassTime(th) {
@@ -165,26 +171,107 @@
 			if(i==0){
 			weekhidden+=""+$(acti[i]).val();
 			}else {
-			weekhidden+=","+$(acti[i]).val();				
+			weekhidden+="|"+$(acti[i]).val();				
 			}
 		}
 		alert(acti.length);
 		$('#class_week').val(weekhidden);
 	}
-    
 </script>
-
 <script type="text/javascript">
-// 	$(function(){
-// 		$('#datepicker1').datepicker({
-// 			data-range:"true",
-// 			data-multiple-dates-separator:" - ",
-// 			language: ko
-// 		});
-		
-// 	});
-	</script>
+ 
+ function chkClassTime(chk){
+	var row = $(chk).parent().parent();
+	var class_starttime = row.children().eq(0).children().eq(2).val();
+	var class_sd = $("#class_sd").val();
+	var class_cd = $("#class_cd").val();
+	var class_time = $("#class_time").val();
+	var class_week = $("#class_week").val();
+	
+	
+	if(class_starttime==""){
+		alert("수업 시작시간을 선택해 주세요");
+		 $(row.children().eq(0).children().eq(2)).focus();
+		return;
+	}
+	if(class_sd==""|class_cd==""){
+		alert("수업 날짜를 선택해 주세요");
+		return;
+	}
+	if(class_week==""){
+		alert("수업 요일을 선택해 주세요");
+		$("#class_week").focus();
+		return;
+	}
+	
+	if(class_time==""){
+		alert("수업 시간을 정해주세요");
+		 $("#class_time").focus();
+		return;
+	}else{
+		alert("정상작동---class_sd:"+class_sd+"   class_cd:"+class_cd+"  class_time: "+class_time);
+	}
+	
+// 	var oktimes = $(".time_container input");
+// 	for(var i =0;i<oktimes.length;i++){
+// 		if(!(oktimes[i].hasClass("timeOk"))){
+// 			return false;
+// 		}
+// 	}
+	var oktimes = $(".time_container input.timeOk").val();
+	var arr = new Array();
+   	arr[0] = new Array();
+   	arr[1] = new Array();
+	
+    for(var i =0;i<oktimes.length;i++){
+    	var hour = Number(oktimes[i].substr(0, 2));
+    	var min = Number(oktimes[i].substr(2, 2));
+    	var date = new Date();
+    	date.setHours(hour);
+    	date.setMinutes(min);    	
+    	arr[0][i] = date;
+    	arr[0][i] = date.setMinutes(date.getMinutes(Number(class_time)));
+    }
 
+
+
+출처: https://javafactory.tistory.com/1418 [FreeLife의 저장소]
+
+	 
+	 
+	 
+	 
+	 
+//------------ajax------------
+	 $.ajax({
+
+		    url: "chkclasstime.do", // 클라이언트가 요청을 보낼 서버의 URL 주소
+
+		    data: { "class_starttime":class_starttime,"class_sd":class_sd,
+		    	"class_cd":class_cd,"class_time":class_time,"class_week":class_week},                // HTTP 요청과 함께 서버로 보낼 데이터
+
+		    method: "post",                             // HTTP 요청 방식(GET, POST)
+
+		    dataType: "json",                         // 서버에서 보내줄 데이터의 타입
+		    
+		    success : function(data) {
+		    	var rst =data["rst"];
+		    	if(rst=="개설가능"){
+		    		row.children().eq(0).children().eq(3).children().eq(0).css('color', '#3023CA');
+		    		row.children().eq(0).children().eq(2).addClass("timeOk");
+		    		alert("개설가능");
+		    	}else{
+		    		alert(rst);
+		    	}
+		    },
+		    error: function(data,status,xhr){
+			alert("통신실패");
+			}
+
+
+		})
+ }
+</script>
 </head>
 <body>
 	<div class="site-wrap">
@@ -229,6 +316,8 @@
           <div class="col-md-7 mb-5"  data-aos="fade">
           	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return sumhiden()" method="post" enctype="multipart/form-data" style="border: 2px solid #30e3ca; border-radius: 20px;">
           	<input type="hidden" name="class_type"  value="C">
+          	<input type="hidden" id="class_sd" name="class_sd"  value="">
+          	<input type="hidden" id="class_cd" name="class_cd"  value="">
              <div class="row form-group">
                 <div class="col-md-12" >
                   <label class="text-black" for="class_depa">카테고리</label> 
@@ -326,7 +415,9 @@
 		                  <select class="form-control .col-xs-6 .col-md-4" id="class_startmin1" onchange='sumclasstime(this)'>
 		                  </select>
 		                </div>
-		                <input type='hidden' name='classtime'>
+		                <input type='hidden' name='class_starttime'>
+		                <a href='#' class='col-xs-1 col-md-1 col-sm-1' onclick='chkClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='flaticon-done icon-2x'></i></a>
+		              	<span style="padding-left: 5px;">시간체크</span>
 		              </div>
 	              </div>
               </div>
@@ -339,7 +430,7 @@
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "수업시간을 정해수세요">
                   <label class="text-black" for="class_time">수업 시간(분)</label> 
-                  <input type="number" class="form-control" name="class_time" placeholder="수업 진행 시간(분)" >
+                  <input type="number" class="form-control" id="class_time" name="class_time" placeholder="수업 진행 시간(분)" >
                 </div>
               </div>
           	<div class="row form-group">              

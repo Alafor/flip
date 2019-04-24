@@ -16,7 +16,7 @@ public class InclassService implements IInclassService {
 	public InclassService() {
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	
 	///수강 신청 (null인경우 수강신청 성공) 
 	public String addInclass(int member_seq,int class_seq,String member_type) {
