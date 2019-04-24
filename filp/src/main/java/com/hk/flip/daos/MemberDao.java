@@ -75,4 +75,22 @@ public class MemberDao implements IMemberDao {
 		int cnt =  sqlsession.insert(namespace+"t_signupmember",dto);
 		return cnt>0?true:false;
 	}
+
+	@Override
+	public boolean GetKey(String member_id, String member_key) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("member_id", member_id);
+		map.put("member_key", member_key);
+		int cnt = sqlsession.update(namespace+"getkey",map);
+		return cnt>0?true:false;
+	}
+
+	@Override
+	public boolean alter_userkey(String member_id, String member_key) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("member_id", member_id);
+		map.put("member_key", member_key);
+		int cnt = sqlsession.update(namespace+"alter_userkey",map);
+		return cnt>0?true:false;
+	}
 }

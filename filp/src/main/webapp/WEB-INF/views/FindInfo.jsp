@@ -29,6 +29,21 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+
+<script type="text/javascript">
+	
+	function search_check(num) {
+		if(num == '1'){
+			document.getElementById("searchP").style.display = "none";
+			document.getElementById("searchI").style.display = "";
+		}else{
+			document.getElementById("searchI").style.display = "none";
+			document.getElementById("searchP").style.display = "";
+		}
+	}
+
+</script>
+
 </head>
 <body>
 
@@ -72,51 +87,82 @@
       	<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						로그<span class="text-warning">인</span>
+						아이디/비밀번호<span class="text-warning">찾기</span>
 					</h2>
-					<p class="color-black-opacity-5">LOG&amp;IN</p>
+					<p class="color-black-opacity-5">FIND ID&amp;FORGOT YOUR PASSWORD</p>
 				</div>
 			</div>
       
         <div class="row justify-content-center">
-          <div class="col-md-7 mb-5"  data-aos="fade">
+          <div class="col-md-6 mb-6"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
 
-           <!-------------------------------------------------------------------------------------------------->
 
-            <form action="login.do" class="p-5 bg-white" method="POST" style="border: 2px solid #30e3ca; border-radius: 20px;">
+
+           
              
-              <div class="row form-group">
+             
+             <div class="row text-center" style="margin: 20px;font-size: 20px;">
+             
+                <div class="col-md-12 category">
+                  <input type="radio" name="search" id="search_id"  onclick="search_check(1)" checked="checked" style="margin: 0px 10px 0px 10px;">
+                  <label class="text-black" for="search_id">아이디찾기</label>
+                 
+                   <input type="radio" name="search" id="search_pw"  onclick="search_check(2)" style="margin: 0px 10px 0px 10px;">
+                  <label class="text-black" for="search_pw">비밀번호찾기</label>
+                </div>
                 
+              </div>
+             
+             
+             
+             <div id="searchI">
+              <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
-                  <label class="text-black" for="id">아이디</label> 
-                  <input type="text" name="id" class="form-control">
+                  <label class="text-black" for="board_name">이름</label> 
+                  <input type="text" id="board_name" name="board_name" class="form-control">
+                </div>
+              </div>
+              
+
+              <div class="row form-group">             
+                <div class="col-md-12 validate-input">
+                  <label class="text-black" for="board_email">이메일</label> 
+                  <input type="email" id="board_email" name="board_email" class="form-control">
                 </div>
               </div>
 
-              <div class="row form-group">
-                
-                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드</label> 
-                  <input type="password" name="password" class="form-control">
-                </div>
-              </div>
 
-              <div class="row form-group">
-                <div class="col-12">
-                  <p>아직 가입 안하셨나요? <a href="signupform.do">회원가입</a></p>
-                  <p>기억이 안나십니까?<a href="findinfo.do">아이디/비밀번호찾기</a></p>
-                </div>
-              </div>
-
-            
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="submit" value="로그인" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
+                  <button type="button" id="searchId" onclick="idSearch_click()" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">확인</button>
+                </div>
+              </div>
+			</div>
+			
+			<div id="searchP" style="display: none;">
+              <div class="row form-group">              
+                <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
+                  <label class="text-black" for="board_id">아이디</label> 
+                  <input type="text" id="board_id" name="board_id" class="form-control">
                 </div>
               </div>
 
+              <div class="row form-group">             
+                <div class="col-md-12 validate-input" data-validate = "이메일을입력해주세요">
+                  <label class="text-black" for="board_email">이메일</label> 
+                  <input type="email" id="board_email" name="board_email" class="form-control">
+                </div>
+              </div>
+
+
+              <div class="row form-group" style="text-align: center;">
+                <div class="col-md-12">
+                  <button type="button" id="searchPw" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">확인</button>
+                </div>
+              </div>
+			</div>
   
-            </form>
+           
           </div>
           
         </div>
@@ -124,21 +170,7 @@
     </div>
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    	
-	<!-- <div id="dropDownSelect1"></div> -->
-	<div>
+    <div>
 	<jsp:include page="footer.jsp" />
 	</div>
 	
@@ -159,3 +191,4 @@
 
 </body>
 </html>
+    

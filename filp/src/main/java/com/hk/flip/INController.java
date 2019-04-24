@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.UUID;
 
+import javax.annotation.Resource;
+import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,10 +18,13 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -28,6 +33,7 @@ import com.hk.flip.dtos.AnswerBoardDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IAnswerBoardService;
 import com.hk.flip.service.IMemberService;
+import com.hk.flip.service.UserMailSendService;
 
 
 
@@ -41,7 +47,11 @@ public class INController {
 	private IMemberService memberService;
 	@Autowired
 	private IAnswerBoardService ansService;
+	@Autowired
+	private UserMailSendService mailsender;
 	
+
+
 	@RequestMapping(value = "/loginform.do", method = RequestMethod.GET)//로그인폼 이동
 	public String loginform(Locale locale, Model model) {
 		logger.info("로그인 폼 이동하기{}.", locale);	
@@ -54,12 +64,14 @@ public class INController {
 		HttpSession session =request.getSession();
 		MemberDto dto = memberService.logCheck(id,password);
 		System.out.println("dto:"+dto);
-		if(dto!=null) {	
+		System.out.println("dto.getMember_key:"+dto.getMember_key());
+		if(dto!=null&&(dto.getMember_key()).equals("Y")) {	
 			session.setAttribute("logInMember", dto );	
 			return "redirect:main.do";
 		}else{
-			model.addAttribute("msg", "로그인실패" );
-			return "loginError";
+			model.addAttribute("msg", "이메일인증을 하지 않으셨거나 없는 아이디 입니다." );
+			model.addAttribute("url","loginform.do");
+			return "Redirect";
 		}
 	}
 	
@@ -84,11 +96,13 @@ public class INController {
 	}
 	
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
-	public String signup(Locale locale, Model model,MemberDto dto) {
+	public String signup(Locale locale, Model model,MemberDto dto,HttpServletRequest request) {
 		logger.info("회원가입하기{}.", locale);
 		boolean isS = memberService.newMember(dto);
-		if(isS) {
-			model.addAttribute("msg","축하드립니다.가입에 성공하셨습니다.");
+		boolean isS2 = mailsender.mailSendWithUserKey(dto.getMember_email(),dto.getMember_id(),request);
+
+		if(isS&&isS2) {
+			model.addAttribute("msg","축하드립니다.가입에 성공하셨습니다.입력하신 이메일에서 인증확인을 하셔야 서비스 이용이 가능합니다.");		
 			model.addAttribute("url","loginform.do");
 			return "Redirect";
 		}else{
@@ -140,8 +154,9 @@ public class INController {
 			e.printStackTrace();
 		}
 		boolean isS = memberService.newT_member(dto);
-		if(isS) {
-			model.addAttribute("msg","축하드립니다.가입에 성공하셨습니다.");
+		boolean isS2 = mailsender.mailSendWithUserKey(dto.getMember_email(),dto.getMember_id(),request);
+		if(isS&&isS2) {
+			model.addAttribute("msg","축하드립니다.가입에 성공하셨습니다.입력하신 이메일에서 인증확인을 하셔야 서비스 이용이 가능합니다.");		
 			model.addAttribute("url","loginform.do");
 			return "Redirect";
 		}else{
@@ -292,6 +307,26 @@ public class INController {
 		
 		
 	}
+	@RequestMapping(value = "/findinfo.do", method = RequestMethod.GET)
+	public String findinfo(Locale locale, Model model) {
+		logger.info("아이디비밀번호 찾기 폼 이동하기 {}.", locale);	
+		return "FindInfo";
+	}
 	
+	
+	@RequestMapping(value = "/key_alter.do", method = RequestMethod.GET)
+	public String key_alterConfirm( Model model,@RequestParam("member_id") String member_id, @RequestParam("member_key") String member_key) {
+
+		boolean isS= mailsender.alter_userKeyService(member_id,member_key); 
+		if(isS) {			
+			return "LogSuccess";
+		}else {
+			model.addAttribute("msg","이미 인증을 하셨습니다");
+			return "error";
+		}
+		
+	}
+
+
 	
 }

@@ -167,13 +167,13 @@ if( len == 7 ) oThis.value += "-";
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
                   <label class="text-black" for="password">패스워드</label> 
-                  <input type="text" id="Pw" class="form-control" name="member_password" >
+                  <input type="password" id="Pw" class="form-control" name="member_password" >
                 </div>
               </div>
               <div class="row form-group ">              
                 <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요">
                   <label class="text-black" for="password">패스워드확인</label> 
-                  <input type="text" id="PwCheck" class="form-control" >
+                  <input type="password" id="PwCheck" class="form-control" >
                 </div>
               </div>
               <div class="row form-group">              

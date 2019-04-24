@@ -17,6 +17,7 @@ public class MemberDto {
 	private ClassDto classdto;
 	private String avg; //강사 상세정보 페이지에 강사 평균 평점 as avg
 	private int member_seq;
+	private String member_key;
 	public MemberDto() {
 	}
 	@Override
@@ -25,11 +26,11 @@ public class MemberDto {
 				+ member_password + ", member_name=" + member_name + ", member_birth=" + member_birth
 				+ ", member_phone=" + member_phone + ", member_email=" + member_email + ", member_profile="
 				+ member_profile + ", member_info=" + member_info + ", member_regdate=" + member_regdate + ", classdto="
-				+ classdto + ", avg=" + avg + ", member_seq=" + member_seq + "]";
+				+ classdto + ", avg=" + avg + ", member_seq=" + member_seq + " , member_key=" + member_key +"]";
 	}
 	public MemberDto(String member_type, String member_id, String member_password, String member_name,
 			String member_birth, String member_phone, String member_email, String member_profile, String member_info,
-			Date member_regdate, ClassDto classdto, String avg, int member_seq) {
+			Date member_regdate, ClassDto classdto, String avg, int member_seq ,String member_key) {
 		super();
 		this.member_type = member_type;
 		this.member_id = member_id;
@@ -44,6 +45,7 @@ public class MemberDto {
 		this.classdto = classdto;
 		this.avg = avg;
 		this.member_seq = member_seq;
+		this.member_key = member_key;
 	}
 	public String getMember_type() {
 		return member_type;
@@ -123,8 +125,14 @@ public class MemberDto {
 	public void setMember_seq(int member_seq) {
 		this.member_seq = member_seq;
 	}
+	public String getMember_key() {
+		return member_key;
+	}
+	public void setMember_key(String member_key) {
+		this.member_key = member_key;
+	}
 	
-
+	
 
 	
 

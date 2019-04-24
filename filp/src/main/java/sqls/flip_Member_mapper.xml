@@ -4,7 +4,7 @@
 <mapper namespace="com.hk.flip.Member">
 	
    <select id="login" resultType="MemberDto" parameterType="Map">
-   		SELECT MEMBER_SEQ ,MEMBER_NAME ,MEMBER_TYPE FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password}
+   		SELECT MEMBER_SEQ ,MEMBER_NAME ,MEMBER_TYPE ,MEMBER_KEY FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password}
    </select>
 
 	<insert id="signupmember" parameterType="MemberDto">
@@ -51,8 +51,18 @@
 		INSERT INTO MEMBER(MEMBER_TYPE,MEMBER_ID,MEMBER_PASSWORD,MEMBER_NAME,MEMBER_BIRTH,MEMBER_PHONE,MEMBER_EMAIL,MEMBER_REGDATE,MEMBER_SEQ,MEMBER_INFO,MEMBER_PROFILE)
     VALUES(#{member_type},#{member_id},#{member_password},#{member_name},#{member_birth},
 				#{member_phone},#{member_email},SYSDATE,MEMBER_SEQ.nextval,#{member_info},#{member_profile})
-
-		
+	
 	</insert>
+	
+	
+	<update id="getkey" parameterType="Map">
+		UPDATE MEMBER SET MEMBER_KEY = #{member_key} WHERE MEMBER_ID=#{member_id}
+	</update>
+	
+	
+	<update id="alter_userkey" parameterType="Map">
+		UPDATE MEMBER SET MEMBER_KEY = 'Y' WHERE MEMBER_ID=#{member_id} AND MEMBER_KEY=#{member_key}
+	</update>
+	
 	
 </mapper>

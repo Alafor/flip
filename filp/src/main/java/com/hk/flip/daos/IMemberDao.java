@@ -28,5 +28,9 @@ public interface IMemberDao {
 
 	public boolean newT_member(MemberDto dto);//강사회원가입
 
+	public boolean GetKey(String member_id, String member_key);//메일인증키 난수설정
+
+	public boolean alter_userkey(String member_id, String member_key);//메일 인증하기
+
 	
 }
