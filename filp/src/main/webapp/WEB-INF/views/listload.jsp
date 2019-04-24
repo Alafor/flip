@@ -37,8 +37,9 @@
 		</div>
 	</div>
 	<div class="loadlist">
-	
 		<c:forEach var="searchList" items="${searchList}" varStatus="seq">
+	<div class="row col-lg-3">
+		
 			<div class="d-block d-md-flex listing vertical studentAjax">
 				<a href="cdetail.do?class_seq=${searchList.seq}" class="img d-block"
 					style="background-image: url('resources/images/img_4.jpg')"></a>
@@ -56,8 +57,9 @@
 					<address>${searchList.class_area}</address>
 				</div>
 			</div>
+			
+	</div>
 		</c:forEach>
-	
 	</div>
 </body>
 </html>
