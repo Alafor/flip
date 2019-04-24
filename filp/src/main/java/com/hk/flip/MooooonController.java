@@ -1,8 +1,12 @@
 package com.hk.flip;
 
+import java.io.File;
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -14,9 +18,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IMemberService;
 import com.hk.flip.service.IMyPageService;
 
@@ -33,6 +40,8 @@ public class MooooonController {
 	
 	@Autowired
 	private IMyPageService myPageService;
+	@Autowired
+	private IClassService classService;
 	
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
@@ -65,14 +74,70 @@ public class MooooonController {
 	@RequestMapping(value = "/class_addform.do", method = RequestMethod.GET)
 	public String class_addform(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("강의등록폼이동{}.", locale);
-		return "AddClass_C";
+//		String class_type = (String)request.getAttribute("classType");
+//		if(class_type.equals("C")) {
+//			return "AddClass_C";
+//		}else if(class_type.equals("S")) {
+//			return "AddClass_S";
+//		}else {
+//			return "AddClass_W";
+//		}
+			return "AddClass_C";
 	}
 	
 	@RequestMapping(value = "/class_add.do", method = RequestMethod.POST)
-	public String class_add(Locale locale, Model model,HttpServletRequest request,ClassDto classdto) {
-		logger.info("강의등록폼이동{}.", locale);
+	public String class_add(Locale locale, Model model,HttpServletRequest request) {
+		logger.info("강의등록이동{}.", locale);
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+		ClassDto classdto = new ClassDto(); 
 		int memberSeq = ((MemberDto)request.getSession().getAttribute("LogInMember")).getMember_seq();
+		String[] classtime = multi.getParameterValues("classtime");
+		
 		classdto.setClass_member_seq(memberSeq);
+		classdto.setClass_type(multi.getParameter("class_type"));
+		classdto.setClass_depa(multi.getParameter("class_depa"));
+		classdto.setClass_name(multi.getParameter("class_name"));
+		classdto.setClass_info(multi.getParameter("class_info"));
+		classdto.setClass_area(multi.getParameter("class_area"));
+		classdto.setClass_week(multi.getParameter("class_week"));
+		classdto.setClass_time(Integer.parseInt(multi.getParameter("class_time")));
+		classdto.setClass_participation(Integer.parseInt(multi.getParameter("class_participation")));
+		classdto.setClass_price(Integer.parseInt(multi.getParameter("class_price")));
+		classdto.setClass_detail(multi.getParameter("class_detail"));
+		
+		MultipartFile multifile = multi.getFile("member_profile");
+		String origin_fname=multifile.getOriginalFilename();
+		String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
+		String stored_fname = creatUUID+origin_fname.substring(origin_fname.lastIndexOf("."));
+		classdto.setClass_img(stored_fname);
+		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
+		File f=new File(saveDirectory+"/class/"+stored_fname);
+		try {
+			multifile.transferTo(f);	
+		} catch (Exception e) {	
+			e.printStackTrace();
+		}
+		
+		
+		System.out.println("경로:"+f);
+		
+		
+		if(classtime.length==1) {
+			classdto.setClass_starttime(classtime[0]);
+			String rst = classService.addClass(classdto);
+			if(rst==null) {
+				System.out.println(classdto+"수강 성공");
+			}
+		}else {
+			List<ClassDto> list = new ArrayList<ClassDto>();
+			for(String s :classtime) {
+				classdto.setClass_starttime(s);
+				list.add(classdto);
+			}
+			
+			
+			
+		}
 		return "main";
 	}
 	

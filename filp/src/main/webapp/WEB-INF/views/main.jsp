@@ -74,9 +74,8 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="site-section bg-light">
-			<div class="container">
+		<div class="bg-light" style="padding-bottom: 20px">
+			<div class="container" >
 			<!-- 카테고리 시작 -->
 				<div class="overlap-category mb-5">
 					<div class="row align-items-stretch no-gutters">
@@ -89,35 +88,35 @@
 						</div>
 						
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=exercise" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
+							<a href="searchlist.do?department=exercise" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
 									class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=music" class="popular-category h-100" data-category="music"> <span
+							<a href="searchlist.do?department=music" class="popular-category h-100" data-category="music"> <span
 								class="icon"><span class="flaticon-microphone"></span></span> <span
 								class="caption mb-2 d-block"><b>음악</b></span> <span
 								class="number">398</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=photo" class="popular-category h-100" data-category="photo"> <span
+							<a href="searchlist.do?department=photo" class="popular-category h-100" data-category="photo"> <span
 								class="icon"><span class="flaticon-cameras"></span></span> <span
 								class="caption mb-2 d-block"><b>사진</b></span> <span
 								class="number">1,229</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
+							<a href="searchlist.do?department=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
 								class="icon"><span class="flaticon-dance"></span></span> <span
 								class="caption mb-2 d-block"><b>YOLO</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=investment" class="popular-category h-100" data-category="investment"> <span
+							<a href="searchlist.do?department=investment" class="popular-category h-100" data-category="investment"> <span
 								class="icon"><span class="flaticon-money"></span></span> <span
 								class="caption mb-2 d-block"><b>재태크</b></span> <span
 								class="number">29,221</span>
@@ -126,28 +125,28 @@
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=beauty" class="popular-category h-100" data-category="beauty"> <span
+							<a href="searchlist.do?department=beauty" class="popular-category h-100" data-category="beauty"> <span
 								class="icon"><span class="flaticon-soap"></span></span> <span
 								class="caption mb-2 d-block"><b>뷰티</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=language" class="popular-category h-100" data-category="language"> <span
+							<a href="searchlist.do?department=language" class="popular-category h-100" data-category="language"> <span
 								class="icon"><span class="flaticon-book"></span></span> <span
 								class="caption mb-2 d-block"><b>외국어</b></span> <span
 								class="number">29,221</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=vedit" class="popular-category h-100" data-category="vedit"> <span
+							<a href="searchlist.do?department=vedit" class="popular-category h-100" data-category="vedit"> <span
 								class="icon"><span class="flaticon-video-player"></span></span>
 								<span class="caption mb-2 d-block"><b>영상편집</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=travel" class="popular-category h-100" data-category="travel"> <span
+							<a href="searchlist.do?department=travel" class="popular-category h-100" data-category="travel"> <span
 								class="icon"><span class="flaticon-airplane"></span></span> <span
 								class="caption mb-2 d-block"><b>요리</b></span> <span
 								class="number">29,221</span>
@@ -156,7 +155,7 @@
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=it" class="popular-category h-100" data-category="it"> <span
+							<a href="searchlist.do?department=it" class="popular-category h-100" data-category="it"> <span
 								class="icon"><span class="flaticon-workstation"></span></span> <span
 								class="caption mb-2 d-block"><b>IT</b></span> <span
 								class="number">219</span>
@@ -164,7 +163,7 @@
 						</div>
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=design" class="popular-category h-100" data-category="design"> <span
+							<a href="searchlist.do?department=design" class="popular-category h-100" data-category="design"> <span
 								class="icon"><span class="flaticon-presenter"></span></span> <span
 								class="caption mb-2 d-block"><b>디자인</b></span> <span
 								class="number">219</span>
@@ -172,15 +171,68 @@
 						</div>
 					</div>
 				</div>
-			
+			</div>
+		</div>
+		
+		<div class="site-section bg-white" style="padding-top: 20px">
+			<div class="container">
+				<div class="row mb-5">
+					<div class="col-md-7 text-left border-primary">
+						
+						<h2 class="font-weight-light text-primary">
+						<a href="searchlist.do?classType=W">
+							<b>선생님<span class="text-warning">찾기</span></b>
+						</a>
+						</h2>
+						
+						<p class="color-black-opacity-5">Find a Instructor</p>
+
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-12  block-13">
+						<div class="owl-carousel nonloop-block-13">
+					<!-- 학생 찾기  -->
+							<!-- EL FOR문 시작 부분  -->
+							
+								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
+								<div class="d-block d-md-flex listing vertical studentAjax">
+									<a href="cdetail.do?class_seq=${wantlist.seq}" class="img d-block"
+										style="background-image: url('resources/images/img_4.jpg')"></a>
+									<div class="lh-content">
+										<span class="category">${wantlist.class_creator_name}</span> 
+										<span class="instructor_img">등록자 사진</span>
+										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<h3>
+											<a href="cdetail.do?class_seq=${wantlist.seq}">${wantlist.class_name}</a>
+										</h3>
+										<!-- 별 -->
+										
+											<!-- <p class="teacherstar" style="float:left;"></p> -->
+											
+										<!-- 별 -->
+										<address>${wantlist.class_area}</address>
+									</div>
+								</div>
+								</c:forEach>
+						
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
 				<!-- 카테고리 메뉴 종료 -->
 				<!-- 선생님 찾기 세션 -->
 		<!-- <div class="site-section" data-aos="fade"> -->
+		<div class="site-section bg-light">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
 						<h2 class="font-weight-light text-primary">
+						<a href="searchlist.do?classType=C">
 							<b>학생<span class="text-warning">찾기</span></b>
+						</a>
 						</h2>
 						<p class="color-black-opacity-5">Find a Student</p>
 					</div>
@@ -209,7 +261,7 @@
 										<!-- 별 -->
 										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_member_rating}" onclick="gogostar(this)">
 										</div>
-											<!-- <p class="teacherstar" style="float:left;"></p> -->
+											
 											<span class="review" >(${classlist.class_review_count} Reviews)</span>
 										<!-- 별 -->
 										<address>${classlist.class_area}</address>
@@ -226,68 +278,20 @@
 							</c:otherwise>
 						</c:choose> --%>
 							<!-- 선생님 찾기 종료 -->
-							</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-<!-- </div> -->
-
-
-		<div class="site-section" data-aos="fade">
-			<div class="container">
-				<div class="row mb-5">
-					<div class="col-md-7 text-left border-primary">
-						<h2 class="font-weight-light text-primary">
-							<b>선생님<span class="text-warning">찾기</span></b>
-						</h2>
-						<p class="color-black-opacity-5">Find a Instructor</p>
-
-					</div>
-				</div>
-
-				<div class="row">
-					<div class="col-12  block-13">
-						<div class="owl-carousel nonloop-block-13">
-					<!-- 학생 찾기  -->
-							<!-- EL FOR문 시작 부분  -->
-							
-								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
-								<div class="d-block d-md-flex listing vertical studentAjax">
-									<a href="#" class="img d-block"
-										style="background-image: url('resources/images/img_4.jpg')"></a>
-									<div class="lh-content">
-										<span class="category">${wantlist.class_creator_name}</span> 
-										<span class="instructor_img">등록자 사진</span>
-										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-										<h3>
-											<a href="#">${wantlist.class_name}</a>
-										</h3>
-										<!-- 별 -->
-										
-											<!-- <p class="teacherstar" style="float:left;"></p> -->
-											
-										<!-- 별 -->
-										<address>${wantlist.class_area}</address>
-									</div>
-								</div>
-								</c:forEach>
-						
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	
-
-
-	<div class="site-section bg-light">
+<!-- </div> -->
+	<div class="site-section bg-white">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md-7 text-left border-primary">
 					<h2 class="font-weight-light text-primary">
-						<b>스터디<span class="text-warning">찾기</span></b>
+						<a href="searchlist.do?classType=S">
+							<b>스터디<span class="text-warning">찾기</span></b>
+						</a>
 					</h2>
 					<p class="color-black-opacity-5">Find a Study</p>
 
@@ -299,14 +303,14 @@
 					<div class="owl-carousel nonloop-block-13">
 						<c:forEach var="studylist" items="${studylist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical studyAjax">
-									<a href="#" class="img d-block"
+									<a href="cdetail.do?class_seq=${studylist.seq}" class="img d-block"
 										style="background-image: url('resources/images/img_4.jpg')"></a>
 									<div class="lh-content">
 										<span class="category">${studylist.class_creator_name}</span> 
 										<span class="instructor_img">강사사진</span>
 										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
 										<h3>
-											<a href="#">${studylist.class_name}</a>
+											<a href="cdetail.do?class_seq=${studylist.seq}">${studylist.class_name}</a>
 										</h3>
 										<!-- 별 -->
 										
@@ -323,7 +327,7 @@
 		</div>
 	</div>
 
-	<div class="site-section bg-white">
+	<div class="site-section bg-light">
 		<!-- 배경색 인기 강사 세션 지정-->
 		<div class="container">
 
@@ -425,7 +429,7 @@
 
 
 
-	<div class="site-section bg-light">
+	<div class="site-section bg-white">
 		<!-- 배경색 스터디 룸 세션 지정 -->
 		<div class="container">
 			<div class="row justify-content-center mb-5">
@@ -527,5 +531,6 @@
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
+	
 </body>
 </html>

@@ -49,42 +49,25 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String category, String classType) {
+	public String searchlist(Locale locale, Model model,String search, String department, String classType) {
 		logger.info("search list 시작{}.", locale);
-		System.out.println("search: "+search+", department: "+category+", classType: "+classType);
-		List<ClassDto> searchList = classService.searchList(search, category, classType);
-		System.out.println(searchList);
-		model.addAttribute("searchList",searchList);
+		System.out.println("searchlist:"+search+", category:"+department+", classType:"+classType);
+		Map<String, String> paramList = new HashMap<String, String>();
+		paramList.put("search", search);
+		paramList.put("category", department);
+		paramList.put("classType", classType);
+		model.addAttribute("paramList",paramList);
 		return "all_list";
 	}
-	
-	//ajax controller
-//	@ResponseBody
-//	@RequestMapping(value = "/mainAjax.do", method = {RequestMethod.GET, RequestMethod.POST})
-//	public Map mainAjax(Locale locale, Model model, String department) {
-//		logger.info("Ajax main{}.", locale);
-//		System.out.println("department: "+department);
-//		List<ClassDto> classList = classService.mainClassList(department);
-//		List<ClassDto> studyList = classService.mainStudyList(department);
-//		List<ClassDto> wantList = classService.mainWantList(department);
-//		Map<String, List<ClassDto>> ajaxMap = new HashMap<String, List<ClassDto>>();
-//		ajaxMap.put("classList", classList);
-//		ajaxMap.put("studyList", studyList);
-//		ajaxMap.put("wantList", wantList);
-//		System.out.println("classList:"+classList);
-//		System.out.println("studyList:"+studyList);
-//		System.out.println("wantList:"+wantList);
-//		return ajaxMap;
-//	}
-	
-	
-//	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
-//	public String mainOpen(Locale locale, Model model, String department) {
-//		logger.info("Started main{}.", locale);
-//		List<ClassDto> classList = classService.mainClassList(department);
-//		System.out.println("classdto="+classList);
-//		model.addAttribute("classlist", classList);
-//		return "main_test";
-//	}
+	//search list load()	
+	@RequestMapping(value = "/listload.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String listload(Locale locale, Model model,String search, String department, String classType) {
+		logger.info("Started main{}.", locale);
+		System.out.println("search: "+search+", category: "+department+", classType: "+classType);
+		List<ClassDto> searchList = classService.searchList(search, department, classType);
+		System.out.println(searchList);
+		model.addAttribute("searchList",searchList);
+		return "listload";
+	}
 }
 

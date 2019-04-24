@@ -13,7 +13,6 @@
 <head>
 <title>Flip</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
@@ -72,6 +71,9 @@ ul.tabs li.current {
 .tab-content.current {
 	display: inherit;
 }
+.param{
+	display:none;
+}
 </style>
 </head>
 <body>
@@ -110,52 +112,48 @@ ul.tabs li.current {
 			</div>
 		</div>
 		<div class="site-section bg-light">
-			<div class="container">
+						<div class="container" >
+			<!-- 카테고리 시작 -->
 				<div class="overlap-category mb-5">
 					<div class="row align-items-stretch no-gutters">
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-1 col-lg-1">
-							<a href="search.do" class="popular-category h-100"> <span
+							<a href="searchlist.do" class="popular-category h-100"> <span
 								class="icon"> <span class="flaticon-meeting"></span>
 							</span> <span class="caption mb-2 d-block"><b>전체수업</b></span> <span
 								class="number">219</span>
 							</a>
 						</div>
-
+						
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=exercise"
-								class="popular-category h-100" data-category="exercise"> <span
-								class="icon"><span class="flaticon-running"></span></span> <span
+							<a href="searchlist.do?department=exercise" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
+									class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=music" class="popular-category h-100"
-								data-category="music"> <span class="icon"><span
-									class="flaticon-microphone"></span></span> <span
+							<a href="searchlist.do?department=music" class="popular-category h-100" data-category="music"> <span
+								class="icon"><span class="flaticon-microphone"></span></span> <span
 								class="caption mb-2 d-block"><b>음악</b></span> <span
 								class="number">398</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=photo" class="popular-category h-100"
-								data-category="photo"> <span class="icon"><span
-									class="flaticon-cameras"></span></span> <span
+							<a href="searchlist.do?department=photo" class="popular-category h-100" data-category="photo"> <span
+								class="icon"><span class="flaticon-cameras"></span></span> <span
 								class="caption mb-2 d-block"><b>사진</b></span> <span
 								class="number">1,229</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=lifestyle"
-								class="popular-category h-100" data-category="lifestyle"> <span
+							<a href="searchlist.do?department=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
 								class="icon"><span class="flaticon-dance"></span></span> <span
 								class="caption mb-2 d-block"><b>YOLO</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=investment"
-								class="popular-category h-100" data-category="investment"> <span
+							<a href="searchlist.do?department=investment" class="popular-category h-100" data-category="investment"> <span
 								class="icon"><span class="flaticon-money"></span></span> <span
 								class="caption mb-2 d-block"><b>재태크</b></span> <span
 								class="number">29,221</span>
@@ -164,32 +162,28 @@ ul.tabs li.current {
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=beauty"
-								class="popular-category h-100" data-category="beauty"> <span
+							<a href="searchlist.do?department=beauty" class="popular-category h-100" data-category="beauty"> <span
 								class="icon"><span class="flaticon-soap"></span></span> <span
 								class="caption mb-2 d-block"><b>뷰티</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=language"
-								class="popular-category h-100" data-category="language"> <span
+							<a href="searchlist.do?department=language" class="popular-category h-100" data-category="language"> <span
 								class="icon"><span class="flaticon-book"></span></span> <span
 								class="caption mb-2 d-block"><b>외국어</b></span> <span
 								class="number">29,221</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=vedit" class="popular-category h-100"
-								data-category="vedit"> <span class="icon"><span
-									class="flaticon-video-player"></span></span> <span
-								class="caption mb-2 d-block"><b>영상편집</b></span> <span
+							<a href="#" class="popular-category h-100" data-category="vedit"> <span
+								class="icon"><span class="flaticon-video-player"></span></span>
+								<span class="caption mb-2 d-block"><b>영상편집</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=travel"
-								class="popular-category h-100" data-category="travel"> <span
+							<a href="searchlist.do?department=travel" class="popular-category h-100" data-category="travel"> <span
 								class="icon"><span class="flaticon-airplane"></span></span> <span
 								class="caption mb-2 d-block"><b>요리</b></span> <span
 								class="number">29,221</span>
@@ -198,17 +192,15 @@ ul.tabs li.current {
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=it" class="popular-category h-100"
-								data-category="it"> <span class="icon"><span
-									class="flaticon-workstation"></span></span> <span
+							<a href="searchlist.do?department=it" class="popular-category h-100" data-category="it"> <span
+								class="icon"><span class="flaticon-workstation"></span></span> <span
 								class="caption mb-2 d-block"><b>IT</b></span> <span
 								class="number">219</span>
 							</a>
 						</div>
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="search.do?category=design"
-								class="popular-category h-100" data-category="design"> <span
+							<a href="searchlist.do?department=design" class="popular-category h-100" data-category="design"> <span
 								class="icon"><span class="flaticon-presenter"></span></span> <span
 								class="caption mb-2 d-block"><b>디자인</b></span> <span
 								class="number">219</span>
@@ -216,109 +208,46 @@ ul.tabs li.current {
 						</div>
 					</div>
 				</div>
-
-
-
-				<div class="container">
-
-					<ul class="tabs">
-						<li class="tab-link current" data-tab="tab-1">
-							선생님 <span class="text-warning">찾기</span>
-						</li>
-						<li class="tab-link" data-tab="tab-2">
-							학생 <span class="text-warning">찾기</span>
-						</li>
-						<li class="tab-link" data-tab="tab-3">
-							클래스 <span class="text-warning">찾기</span>
-						</li>
-					</ul>
-					<p></p>
-					<div class="container">
-						<div class="row mb-5">
-							<div class="col-md-7 text-left border-primary">
-								<h2 class="font-weight-light text-primary">
-									<b>검색<span class="text-warning">결과</span></b>
-								</h2>
-								<p class="color-black-opacity-5">${fn:length(searchList)}개수업</p>
-							</div>
-						</div>
-					</div>
-					<div id="tab-1" class="tab-content current">
-						<!-- 검색결과 시작 -->
-						<div class="row">
-							<div class="col-12  block-13">
-								<div class="owl-carousel nonloop-block-13">
-
-									<!-- 선생님 찾기  -->
-									<!-- EL FOR문 시작 부분  -->
-
-									<c:forEach var="searchList" items="${searchList}"
-										varStatus="seq">
-										<div class="d-block d-md-flex listing vertical instructorAjax">
-											<a href="cdetail.do?class_seq=${searchList.seq}"
-												class="img d-block"
-												style="background-image: url('resources/images/img_4.jpg')"></a>
-											<div class="lh-content">
-												<a
-													href="tdetail.do?member_seq=${searchList.class_member_seq}">
-													<span class="category">${searchList.class_creator_name}</span>
-													<span class="instructor_img">강사사진</span>
-												</a> <a href="insertwhishlist.do" class="bookmark"><span
-													class="icon-heart"></span></a>
-												<h3>
-													<a href="cdetail.do?class_seq=${searchList.seq}">${searchList.class_name}</a>
-												</h3>
-												<!-- 별 -->
-												<div class="mb-0 teacherstar"
-													style="width: 90px; float: left;"
-													data-minority="${searchList.class_member_rating}"
-													onclick="gogostar(this)"></div>
-												<!-- <p class="teacherstar" style="float:left;"></p> -->
-												<span class="review">(${searchList.class_review_count}
-													Reviews)</span>
-												<!-- 별 -->
-												<address>${searchList.class_area}</address>
-											</div>
-										</div>
-									</c:forEach>
-
-									<%-- <c:choose>
-							<c:when test="${not empty classlist.length}">
-								</c:when>
-									<c:otherwise>
-								<h2 class="font-weight-light text-primary">
-									<b>강의가 <span class="text-warning">없어요 ㅠㅠ</span></b>
-								</h2>
-							</c:otherwise>
-						</c:choose> --%>
-									<!-- 선생님 찾기 종료 -->
-								</div>
-							</div>
-						</div>
-					</div>
-					<!-- 검색결과 종료 -->
-				</div>
-				<div id="tab-2" class="tab-content">---- ---- ★------ ----
-					---- ---- ---- ---- ---- -------- ---- ---- ---- ---- ---- ----
-					-------- ---- ---- ---- ★-- ---- ---- ------★ ---- ---- ---- ----
-					---- ---- -------- ---- ---- ---- ---- ---- ---- ★------ ---- ----
-					---- ----</div>
-				<div id="tab-3" class="tab-content">---- ★-- -------- ----
-					---- ---- -★- ---- ---- -------- ---- -★- ---- ---- ---- ----
-					-------- ---- ---- ---- ---- ---- --★ -------- ★-- ---- ---- ----
-					---- ---- -------- ---- ---- --★ ---- ---- ---- -------- ---- ----
-					---- --★</div>
 			</div>
-
-
-		</div>
+			<!-- 이까지 -->
+			<div class="container">
+				<ul class="tabs">
+					<li class="tab-link current" data-tab="tab-1">선생님 <span
+						class="text-warning">찾기</span>
+					</li>
+					<li class="tab-link" data-tab="tab-2">학생 <span
+						class="text-warning">찾기</span>
+					</li>
+					<li class="tab-link" data-tab="tab-3">클래스 <span
+						class="text-warning">찾기</span>
+					</li>
+				</ul>
+			</div>
+		
+			
+			</div>
+			<div class="site-section">
+				<div class="container">
+					
+				
+				<div id="tab-1" class="tab-content current"></div>
+				<div id="tab-2" class="tab-content"></div>
+				<div id="tab-3" class="tab-content"></div>
+				</div>
+			</div>
+			
+			<!-- 목록 container 종료 -->
 		<!-- 사이트 섹션 종료 -->
 		<div>
 			<jsp:include page="footer.jsp" />
 		</div>
 	</div>
+	<div class="param" id="search" data-param="${paramList.search}"></div>
+	<div class="param" id="category" data-param="${paramList.category}"></div>
+	<div class="param" id="classType" data-param="${paramList.classType}"></div>
 	<!-- site-wrap div 종료 -->
 	<!-- footer종료 -->
+	
 	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="resources/js/jquery-ui.js"></script>
@@ -341,20 +270,6 @@ ul.tabs li.current {
 		integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 		crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	<script type="text/javascript">
-		$(document).ready(function() {
-
-			$('ul.tabs li').click(function() {
-				var tab_id = $(this).attr('data-tab');
-
-				$('ul.tabs li').removeClass('current');
-				$('.tab-content').removeClass('current');
-
-				$(this).addClass('current');
-				$("#" + tab_id).addClass('current');
-			})
-
-		})
-	</script>
+	<script src="resources/js/searchlist.js" defer="defer"></script>
 </body>
 </html>

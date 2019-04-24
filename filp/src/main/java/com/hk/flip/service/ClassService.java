@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.flip.daos.IClassDao;
 import com.hk.flip.daos.IInclassDao;
@@ -44,10 +45,6 @@ public class ClassService implements IClassService {
 	//강의 등록하기 null값일때 강의 등록 성공
 	@Override
 	public String addClass(ClassDto dto) {
-		int member_seq = dto.getClass_member_seq();
-		int class_seq = dto.getSeq();
-		String member_type = dto.getClass_type();
-	
 		List<String> list = inclassDao.chkInclassTime_Create(dto);
 		if(list!=null|!(list.isEmpty())) {
 			String rst="";
@@ -62,6 +59,31 @@ public class ClassService implements IClassService {
 			}
 			return null;
 		}
+	}
+	
+	@Override
+	public String addsClass(List<ClassDto> classList) {
+		String rst="";
+		for(ClassDto dto:classList) {		
+			List<String> list = inclassDao.chkInclassTime_Create(dto);
+			if(list!=null|!(list.isEmpty())) {
+				for (String string : list) {
+					rst = rst+",\n"+string;
+				}
+				rst = rst+"\n 강의와 시간이 겹칩니다 ";
+			}else {
+				
+				if(!classDao.addClass(dto)) {
+					return "수강신청에 실패하였습니다.";
+				}
+			}		
+		}
+		if(!rst.equals("")) {
+			return rst;
+		}else {
+			return null;
+		}
+		
 	}
 	@Override
 	public List<ClassDto> searchList(String search, String department, String classType){

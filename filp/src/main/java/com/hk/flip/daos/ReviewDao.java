@@ -12,7 +12,7 @@ public class ReviewDao implements IReviewDao {
 	@Autowired
 	private SqlSessionTemplate sqlsession;
 	
-	String nameSpace = "com.hk.flip.";
+	String nameSpace = "com.hk.flip.Review.";
 	
 	public ReviewDao() {
 		// TODO Auto-generated constructor stub

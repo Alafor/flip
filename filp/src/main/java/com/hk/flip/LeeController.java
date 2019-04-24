@@ -66,21 +66,25 @@ public class LeeController {
 		return "cdetail";
 	}
 
-	//리뷰작성 페이지로 이동
+	//리뷰작성 페이지로 이동 : 리뷰 등록한 사람, 수업 seq, 별점, 후기, 삭제여부(무조건 Y / 끝난 강의만), 등록일
 	@RequestMapping(value = "/review.do", method = RequestMethod.GET)
-	public String review(HttpServletRequest request,Locale locale, Model model,int seq) {
+	public String review(HttpServletRequest request,Locale locale, Model model,int class_seq) {
 		logger.info("후기작성하기{}.", locale);
-		model.addAttribute("rDto", seq);
+		MemberDto memberDto = (MemberDto) request.getSession().getAttribute("logInMember");
+		System.out.println(class_seq);
 		return "review";
 	}
 	
 	//리뷰 남긴 후
-	@RequestMapping(value = "/reviewinsert.do", method = RequestMethod.GET)
-	public String reviewinsert(HttpServletRequest request,Locale locale, Model model,int seq, ReviewDto dto) {
+	@RequestMapping(value = "/reviewinsert.do", method = RequestMethod.POST)
+	public String reviewinsert(HttpServletRequest request,Locale locale, Model model, ReviewDto dto) {
 		logger.info("후기 남긴 후{}.", locale);
-		boolean isS=reviewService.cReview(dto);
+		System.out.println(dto);
+		MemberDto mDto=(MemberDto) request.getSession().getAttribute("logInMember");
 		
-		return "mypage";
+		dto.setReview_member_seq(mDto.getMember_seq());
+		System.out.println(dto);
+		boolean isS=reviewService.cReview(dto);
+		return "redirect:mypage.do";		
 	}
-
 }

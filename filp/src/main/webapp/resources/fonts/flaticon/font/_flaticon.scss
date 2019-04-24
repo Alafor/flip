@@ -1,6 +1,6 @@
     /*
     Flaticon icon font: Flaticon
-    Creation date: 09/04/2019 08:21
+    Creation date: 24/04/2019 00:24
     */
 
     @font-face {
@@ -39,7 +39,7 @@
 
     .flaticon-meeting:before { content: "\f100"; }
 .flaticon-running:before { content: "\f101"; }
-.flaticon-video-player:before { content: "\f102"; }
+.flaticon-ui:before { content: "\f102"; }
 .flaticon-microphone:before { content: "\f103"; }
 .flaticon-coffee-cup:before { content: "\f104"; }
 .flaticon-cameras:before { content: "\f105"; }
@@ -47,15 +47,16 @@
 .flaticon-presenter:before { content: "\f107"; }
 .flaticon-dance:before { content: "\f108"; }
 .flaticon-wine:before { content: "\f109"; }
-.flaticon-money:before { content: "\f10a"; }
+.flaticon-cash:before { content: "\f10a"; }
 .flaticon-workstation:before { content: "\f10b"; }
 .flaticon-book:before { content: "\f10c"; }
 .flaticon-soap:before { content: "\f10d"; }
-.flaticon-airplane:before { content: "\f10e"; }
+.flaticon-cooking:before { content: "\f10e"; }
+.flaticon-done:before { content: "\f10f"; }
     
     $font-Flaticon-meeting: "\f100";
     $font-Flaticon-running: "\f101";
-    $font-Flaticon-video-player: "\f102";
+    $font-Flaticon-ui: "\f102";
     $font-Flaticon-microphone: "\f103";
     $font-Flaticon-coffee-cup: "\f104";
     $font-Flaticon-cameras: "\f105";
@@ -63,8 +64,9 @@
     $font-Flaticon-presenter: "\f107";
     $font-Flaticon-dance: "\f108";
     $font-Flaticon-wine: "\f109";
-    $font-Flaticon-money: "\f10a";
+    $font-Flaticon-cash: "\f10a";
     $font-Flaticon-workstation: "\f10b";
     $font-Flaticon-book: "\f10c";
     $font-Flaticon-soap: "\f10d";
-    $font-Flaticon-airplane: "\f10e";
+    $font-Flaticon-cooking: "\f10e";
+    $font-Flaticon-done: "\f10f";
