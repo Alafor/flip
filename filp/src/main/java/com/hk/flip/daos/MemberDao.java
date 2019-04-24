@@ -101,4 +101,22 @@ public class MemberDao implements IMemberDao {
 		map.put("member_email", board_email);
 		return  sqlsession.selectOne(namespace+"searchid", map);	
 	}
+
+	@Override
+	public boolean alter_userPassword(String board_id, String board_email, String password_key) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("member_id", board_id);
+		map.put("member_email", board_email);
+		map.put("member_password", password_key);
+		int cnt= sqlsession.update(namespace+"alter_userpassword", map);
+		return cnt>0?true:false;
+	}
+
+	@Override
+	public MemberDto getInfo(String board_id, String board_email) {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("member_id", board_id);
+		map.put("member_email", board_email);
+		return sqlsession.selectOne(namespace+"getinfo", map);
+	}
 }

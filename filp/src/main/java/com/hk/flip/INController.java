@@ -338,6 +338,25 @@ public class INController {
 		System.out.println(result);
 		return result;
 	}
+	
+	@RequestMapping(value = "searchPassword.do", method = RequestMethod.GET)
+	@ResponseBody
+	public String passwordSearch(Model model,@RequestParam("board_id")String board_id,@RequestParam("board_email")String board_email,HttpServletRequest request) {
+
+		boolean isS= mailsender.mailSendWithPassword(board_id, board_email, request);
+		if(isS) {
+			model.addAttribute("msg","임시비밀번호가발송되었습니다.마이페이지에서변경하실수 있습니다");		
+			model.addAttribute("url","loginform.do");
+			return "Redirect";
+		}else {
+			model.addAttribute("msg","실패");
+			return "error";
+		}
+		
+	}
+
+
+
 
 
 

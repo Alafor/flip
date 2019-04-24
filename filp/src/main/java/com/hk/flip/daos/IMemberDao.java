@@ -34,5 +34,9 @@ public interface IMemberDao {
 
 	public String getSearchId(String board_name, String board_email);//id찾기
 
+	public boolean alter_userPassword(String board_id, String board_email, String password_key);//임시비밀번호로 바꾸기 
+
+	public MemberDto getInfo(String board_id, String board_email);//회원정보 가져오기
+
 	
 }

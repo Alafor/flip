@@ -169,6 +169,7 @@
               </div>
 			</div>
 			
+			
 			<div id="searchP" style="display: none;">
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
@@ -187,11 +188,11 @@
 
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <button type="button" id="searchPw" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">확인</button>
+                  <button type="button" id="searchPw" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;" onclick="location.href='searchPassword.do'">확인</button>
                 </div>
               </div>
 			</div>
-  
+  		
            
           </div>
           
