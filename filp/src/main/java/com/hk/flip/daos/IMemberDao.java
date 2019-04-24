@@ -36,7 +36,7 @@ public interface IMemberDao {
 
 	public boolean alter_userPassword(String board_id, String board_email, String password_key);//임시비밀번호로 바꾸기 
 
-	public MemberDto getInfo(String board_id, String board_email);//회원정보 가져오기
+	public MemberDto getInfo(String member_id, String member_email);//회원정보 가져오기
 
 	
 }

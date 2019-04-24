@@ -8,8 +8,6 @@
 </head>
 <body>
 
-
-
 <div style="margin: 100px;">
 		
 		<br>
@@ -17,10 +15,10 @@
 		<br>
 		<p>환영합니다!</p>
 		<br>
-		<p>회원가입이 정상적으로 이루어 졌습니다.</p>
+		<p>임시비밀번호가 정상적으로 전송되었습니다.가입시에 기재하셨던 메일로 전송되었습니다.</p>
 		<br>
-		<p>로그인 하시면 홈페이지 내의 모든 서비스를 이용하실 수 있습니다.</p>
-		<br> <a href="${pageContext.request.contextPath}/loginform.do">로그인 페이지로 이동하기</a>
+		<p>비밀번호는 마이페이지에서 수정이 가능합니다.많은 이용 바랍니다.</p>
+		<br> <a href="${pageContext.request.contextPath}/main.do">메인 페이지로 이동하기</a>
 	</div>
 
 </body>
