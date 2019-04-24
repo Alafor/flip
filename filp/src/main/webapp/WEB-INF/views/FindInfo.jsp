@@ -169,30 +169,30 @@
               </div>
 			</div>
 			
-			
+			<form action="searchPassword.do" method="GET" >
 			<div id="searchP" style="display: none;">
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
-                  <label class="text-black" for="board_id">아이디</label> 
-                  <input type="text" id="board_id" name="board_id" class="form-control">
+                  <label class="text-black" for="member_id">아이디</label> 
+                  <input type="text" id="member_id" name="member_id" class="form-control">
                 </div>
               </div>
 
               <div class="row form-group">             
                 <div class="col-md-12 validate-input" data-validate = "이메일을입력해주세요">
-                  <label class="text-black" for="board_email">이메일</label> 
-                  <input type="email" id="board_email" name="board_email" class="form-control">
+                  <label class="text-black" for="member_email">이메일</label> 
+                  <input type="email" id="member_email" name="member_email" class="form-control">
                 </div>
               </div>
 
 
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <button type="button" id="searchPw" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;" onclick="location.href='searchPassword.do'">확인</button>
+                  <button type="submit" id="searchPw" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;" >확인</button>
                 </div>
               </div>
 			</div>
-  		
+  		</form>
            
           </div>
           
