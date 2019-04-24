@@ -143,7 +143,7 @@
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
 							<a href="searchlist.do?department=travel" class="popular-category h-100" data-category="travel"> <span
-								class="icon"><span class="flaticon-airplane"></span></span> <span
+								class="icon"><span class="flaticon-cooking"></span></span> <span
 								class="caption mb-2 d-block"><b>요리</b></span> <span
 								class="number">29,221</span>
 							</a>
