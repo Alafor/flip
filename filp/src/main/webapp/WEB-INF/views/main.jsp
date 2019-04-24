@@ -88,35 +88,35 @@
 						</div>
 						
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=exercise" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
+							<a href="searchlist.do?department=exercise" class="popular-category h-100" data-category="exercise"> <span class="icon"><span
 									class="flaticon-running"></span></span> <span
 								class="caption mb-2 d-block"><b>운동</b></span> <span
 								class="number">3,921</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=music" class="popular-category h-100" data-category="music"> <span
+							<a href="searchlist.do?department=music" class="popular-category h-100" data-category="music"> <span
 								class="icon"><span class="flaticon-microphone"></span></span> <span
 								class="caption mb-2 d-block"><b>음악</b></span> <span
 								class="number">398</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=photo" class="popular-category h-100" data-category="photo"> <span
+							<a href="searchlist.do?department=photo" class="popular-category h-100" data-category="photo"> <span
 								class="icon"><span class="flaticon-cameras"></span></span> <span
 								class="caption mb-2 d-block"><b>사진</b></span> <span
 								class="number">1,229</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
+							<a href="searchlist.do?department=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
 								class="icon"><span class="flaticon-dance"></span></span> <span
 								class="caption mb-2 d-block"><b>YOLO</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=investment" class="popular-category h-100" data-category="investment"> <span
+							<a href="searchlist.do?department=investment" class="popular-category h-100" data-category="investment"> <span
 								class="icon"><span class="flaticon-money"></span></span> <span
 								class="caption mb-2 d-block"><b>재태크</b></span> <span
 								class="number">29,221</span>
@@ -125,28 +125,28 @@
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=beauty" class="popular-category h-100" data-category="beauty"> <span
+							<a href="searchlist.do?department=beauty" class="popular-category h-100" data-category="beauty"> <span
 								class="icon"><span class="flaticon-soap"></span></span> <span
 								class="caption mb-2 d-block"><b>뷰티</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=language" class="popular-category h-100" data-category="language"> <span
+							<a href="searchlist.do?department=language" class="popular-category h-100" data-category="language"> <span
 								class="icon"><span class="flaticon-book"></span></span> <span
 								class="caption mb-2 d-block"><b>외국어</b></span> <span
 								class="number">29,221</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=vedit" class="popular-category h-100" data-category="vedit"> <span
+							<a href="searchlist.do?department=vedit" class="popular-category h-100" data-category="vedit"> <span
 								class="icon"><span class="flaticon-video-player"></span></span>
 								<span class="caption mb-2 d-block"><b>영상편집</b></span> <span
 								class="number">32,891</span>
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=travel" class="popular-category h-100" data-category="travel"> <span
+							<a href="searchlist.do?department=travel" class="popular-category h-100" data-category="travel"> <span
 								class="icon"><span class="flaticon-airplane"></span></span> <span
 								class="caption mb-2 d-block"><b>요리</b></span> <span
 								class="number">29,221</span>
@@ -155,7 +155,7 @@
 
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=it" class="popular-category h-100" data-category="it"> <span
+							<a href="searchlist.do?department=it" class="popular-category h-100" data-category="it"> <span
 								class="icon"><span class="flaticon-workstation"></span></span> <span
 								class="caption mb-2 d-block"><b>IT</b></span> <span
 								class="number">219</span>
@@ -163,7 +163,7 @@
 						</div>
 
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?category=design" class="popular-category h-100" data-category="design"> <span
+							<a href="searchlist.do?department=design" class="popular-category h-100" data-category="design"> <span
 								class="icon"><span class="flaticon-presenter"></span></span> <span
 								class="caption mb-2 d-block"><b>디자인</b></span> <span
 								class="number">219</span>
@@ -261,7 +261,7 @@
 										<!-- 별 -->
 										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_member_rating}" onclick="gogostar(this)">
 										</div>
-											<!-- <p class="teacherstar" style="float:left;"></p> -->
+											
 											<span class="review" >(${classlist.class_review_count} Reviews)</span>
 										<!-- 별 -->
 										<address>${classlist.class_area}</address>
@@ -531,5 +531,13 @@
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".popular-category").on("click",function(){
+				var categorys = $(this).attr("data-category");
+				$(location).attr('href','searchlist.do?department='+categorys);
+			})
+		})
+	</script>
 </body>
 </html>
