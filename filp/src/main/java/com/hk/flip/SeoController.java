@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.flip.dtos.ClassDto;
@@ -64,6 +65,7 @@ public class SeoController {
 	public String listload(Locale locale, Model model,String search, String department, String classType, String num) {
 		logger.info("Started main{}.", locale);
 		System.out.println("search: "+search+", category: "+department+", classType: "+classType);
+		List<ClassDto> areaList = classService.areaCount(search, department, classType);
 		int pageCount = classService.pageCount(search, department, classType);
 		if(num==null || Integer.parseInt(num)<=0) {
 			num="1";
@@ -75,6 +77,7 @@ public class SeoController {
 		model.addAttribute("searchList",searchList);
 		model.addAttribute("thisPage",num);
 		model.addAttribute("pageCount",pageCount);
+		model.addAttribute("areaList",areaList);
 		return "listload";
 	}	
 }

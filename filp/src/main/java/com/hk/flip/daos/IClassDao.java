@@ -18,4 +18,6 @@ public interface IClassDao {
 	//검색 리스트
 	public List<ClassDto> searchList(String search, String department, String classType, int count);
 	public int pageCount(String search, String department, String classType);
+	//지역검색
+	public List<ClassDto> areaCount(String search, String department, String classType);
 }

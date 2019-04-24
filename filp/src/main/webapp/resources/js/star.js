@@ -4,7 +4,7 @@ $(function(){
 });
 //별점 출력 
 function gogostar(stars) {
-	var star1 = stars.getAttribute('data-minority');
+	var star1 = $(stars).attr('data-minority');
 	var mino = star1;
 	//소수점 뒷자리 -->
 	var transmino = mino.substr(2, 1);

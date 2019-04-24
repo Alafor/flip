@@ -17,4 +17,5 @@ public interface IClassService {
 	public String addsClass(List<ClassDto> classList);
 	public int pageCount(String search, String department, String classType);
 	public String chkInclassTime_Create(ClassDto dto);
+	public List<ClassDto> areaCount(String search, String department, String classType);
 }

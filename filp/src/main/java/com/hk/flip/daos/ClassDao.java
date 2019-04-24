@@ -72,7 +72,7 @@ public class ClassDao implements IClassDao {
 		searchFilter.put("count", String.valueOf(count));
 		return sqlsession.selectList(nameSpace + "searchlist",searchFilter);
 	}
-
+	//페이징 페이지 카운트
 	@Override
 	public int pageCount(String search, String department, String classType) {
 		Map<String, String> searchFilter = new HashMap<String, String>();
@@ -80,5 +80,13 @@ public class ClassDao implements IClassDao {
 		searchFilter.put("department",department);
 		searchFilter.put("classType", classType);
 		return sqlsession.selectOne(nameSpace + "pageCount",searchFilter);
+	}
+	@Override
+	public List<ClassDto> areaCount(String search, String department, String classType) {
+		Map<String, String> searchFilter = new HashMap<String, String>();
+		searchFilter.put("search", search);
+		searchFilter.put("department",department);
+		searchFilter.put("classType", classType);
+		return sqlsession.selectList(nameSpace + "areaCount",searchFilter);
 	}
 }

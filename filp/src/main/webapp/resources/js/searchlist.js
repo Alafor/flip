@@ -27,16 +27,10 @@ $(document).ready(function() {
 					}else if(tab_id == 'tab-3'){
 						classType='S'
 					}
-//					alert(category+" "+classType);
+
 					pageLoad();
 				});
-//				$('.popular-category').click(function(){
-//					classType=null;
-//					search=null;
-//					category=$(this).attr('data-category');
-//					classReset();
-//					pageLoad();
-//				});
+				
 				
 				//펑션 모음
 				function pageLoad(){

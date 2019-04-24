@@ -33,6 +33,8 @@ public class ClassDto {
 	private String class_creator_name;
 	// 강의 리뷰 개수
 	private int class_review_count;
+	//강의 지역별 개수
+	private int class_area_count;
 	public ClassDto() {
 		// TODO Auto-generated constructor stub
 	}
@@ -186,6 +188,12 @@ public class ClassDto {
 	public void setClass_review_count(int class_review_count) {
 		this.class_review_count = class_review_count;
 	}
+	public int getClass_area_count() {
+		return class_area_count;
+	}
+	public void setClass_area_count(int class_area_count) {
+		this.class_area_count = class_area_count;
+	}
 	@Override
 	public String toString() {
 		return "ClassDto [class_type=" + class_type + ", seq=" + seq + ", class_name=" + class_name + ", regdate="
@@ -196,13 +204,15 @@ public class ClassDto {
 				+ ", class_termin=" + class_termin + ", class_member_seq=" + class_member_seq + ", class_participation="
 				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
 				+ class_d_day + ", class_member_rating=" + class_member_rating + ", profile_img=" + profile_img
-				+ ", class_creator_name=" + class_creator_name + ", class_review_count=" + class_review_count + "]";
+				+ ", class_creator_name=" + class_creator_name + ", class_review_count=" + class_review_count
+				+ ", class_area_count=" + class_area_count + "]";
 	}
 	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
-			String class_depa, String class_sd, String class_cd, String class_week, String class_starttime, int class_time,
-			int class_price, String class_detail, String class_img, String class_hashtag, String class_termin,
-			int class_member_seq, int class_participation, int class_now_participation, int class_d_day,
-			float class_member_rating, String profile_img, String class_creator_name, int class_review_count) {
+			String class_depa, String class_sd, String class_cd, String class_week, String class_starttime,
+			int class_time, int class_price, String class_detail, String class_img, String class_hashtag,
+			String class_termin, int class_member_seq, int class_participation, int class_now_participation,
+			int class_d_day, float class_member_rating, String profile_img, String class_creator_name,
+			int class_review_count, int class_area_count) {
 		super();
 		this.class_type = class_type;
 		this.seq = seq;
@@ -229,7 +239,9 @@ public class ClassDto {
 		this.profile_img = profile_img;
 		this.class_creator_name = class_creator_name;
 		this.class_review_count = class_review_count;
+		this.class_area_count = class_area_count;
 	}
+	
 
 
 	}

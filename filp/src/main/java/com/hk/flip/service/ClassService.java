@@ -112,4 +112,8 @@ public class ClassService implements IClassService {
 	public int pageCount(String search, String department, String classType) {
 		return classDao.pageCount(search, department, classType);
 	}
+	@Override
+	public List<ClassDto> areaCount(String search, String department, String classType){
+		return classDao.areaCount(search, department, classType);
+	}
 }

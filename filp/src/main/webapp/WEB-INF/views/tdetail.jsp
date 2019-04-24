@@ -9,7 +9,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -157,8 +157,8 @@ nav > div a.nav-item.nav-link:focus
 						</div>
 
 						<!-- 강사 별 // 홍민씨가 하기로 함-->
-						<div class="teacherstar" data-minority="${tDto.avg}"
-							onclick="gogostar(this)"></div>
+						<div class="mb-0 teacherstar" data-minority="${tDto.avg}" onclick="gogostar(this)">
+						</div>
 
 
 						<!-- 탭 이동 메뉴 -->
@@ -240,20 +240,29 @@ nav > div a.nav-item.nav-link:focus
 						<jsp:include page="footer.jsp" />
 					</div>
 
-					<script type="text/javascript"
-						src="resources/js/jquery-3.3.1.min.js"></script>
-					<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-					<script src="resources/js/jquery-ui.js"></script>
-					<script src="resources/js/popper.min.js"></script>
-					<script src="resources/js/bootstrap.min.js"></script>
-					<script src="resources/js/owl.carousel.min.js"></script>
-					<script src="resources/js/jquery.stellar.min.js"></script>
-					<script src="resources/js/jquery.countdown.min.js"></script>
-					<script src="resources/js/jquery.magnific-popup.min.js"></script>
-					<script src="resources/js/bootstrap-datepicker.min.js"></script>
-					<script src="resources/js/aos.js"></script>
-					<script src="resources/js/rangeslider.min.js"></script>
-					<script src="resources/js/main.js"></script>
-					<script src="resources/js/signup.js"></script>
+	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	<script src="resources/js/jquery-ui.js"></script>
+	<script src="resources/js/popper.min.js"></script>
+	<script src="resources/js/bootstrap.min.js"></script>
+	<script src="resources/js/owl.carousel.min.js"></script>
+	<script src="resources/js/jquery.stellar.min.js"></script>
+	<script src="resources/js/jquery.countdown.min.js"></script>
+	<script src="resources/js/jquery.magnific-popup.min.js"></script>
+	<script src="resources/js/bootstrap-datepicker.min.js"></script>
+	<script src="resources/js/aos.js"></script>
+	<script src="resources/js/rangeslider.min.js"></script>
+	<script src="resources/js/main.js"></script>
+	<script src="resources/js/signup.js"></script>
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+		crossorigin="anonymous"></script>
+	<script defer
+		src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+		integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+		crossorigin="anonymous"></script>
+	<script src="resources/js/star.js" defer="defer"></script>
+	<script src="resources/js/star.js" defer="defer"></script>
 </body>
 </html>

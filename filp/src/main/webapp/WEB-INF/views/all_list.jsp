@@ -218,15 +218,7 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
-	<script defer
-		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
-		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
-		crossorigin="anonymous"></script>
-	<script defer
-		src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
-		integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
-		crossorigin="anonymous"></script>
-	<script src="resources/js/star.js" defer="defer"></script>
+	
 	<script src="resources/js/searchlist.js" defer="defer"></script>
 </body>
 </html>
