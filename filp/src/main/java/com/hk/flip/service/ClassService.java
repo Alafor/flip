@@ -105,7 +105,11 @@ public class ClassService implements IClassService {
 		
 	}
 	@Override
-	public List<ClassDto> searchList(String search, String department, String classType){
-		return classDao.searchList(search, department, classType);
+	public List<ClassDto> searchList(String search, String department, String classType, int count){
+		return classDao.searchList(search, department, classType, count);
+	}
+	@Override
+	public int pageCount(String search, String department, String classType) {
+		return classDao.pageCount(search, department, classType);
 	}
 }

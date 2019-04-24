@@ -13,7 +13,8 @@ public interface IClassService {
 	public List<ClassDto> getCdetail(int member_seq);
 	//강의 등록하기
 	public String addClass(ClassDto dto);
-	public List<ClassDto> searchList(String search, String department, String classType);
+	public List<ClassDto> searchList(String search, String department, String classType, int count);
 	public String addsClass(List<ClassDto> classList);
+	public int pageCount(String search, String department, String classType);
 	public String chkInclassTime_Create(ClassDto dto);
 }
