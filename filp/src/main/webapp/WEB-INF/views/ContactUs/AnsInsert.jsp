@@ -29,6 +29,9 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<style type="text/css">
+	/* table tr th{width:13px;height: 13px;} */
+</style>
 </head>
 <body>
 <div class="site-wrap">
@@ -76,34 +79,34 @@
 				</div>
 			</div>
  <div class="row justify-content-center" >
-          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
+          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;padding: 30px;">
 
 
 
-	<form action="ansinsert.do" method="post" style="margin: 50px;">
-	<table class="table table-striped " >
+	<form action="ansinsert.do" method="post" style="margin: 0 auto;">
+	<table class="table" >
 	<!-- 	<tr>
 			<th>이름</th>
 			<td><input type="text" name="member_name"></td>
 		</tr> -->
 		<tr>
-			<th>제목</th>
+			<td>제목</td>
 			<td><input type="text" name="board_title"></td>
 		</tr>
 		<tr>
-			<th>내용</th>
+			<td>내용</td>
 			<td><textarea rows="10" cols="60"  name="board_content"></textarea></td>
 		</tr>
 		<tr>
-			<th>비밀글</th>
+			<td>비밀글</td>
 			<td><input type="radio" name="board_secret" value="N" checked="checked"> 공개 <input type="radio" name="board_secret" value="Y"> 비공개 </td>
 		</tr>
 		<tr>
 			<td colspan="2">
-				<div class="row form-group" style="text-align: center;">
+				<div class="row form-group" style="text-align:right; ;">
                 <div class="col-md-12">
-                  <input type="submit" value="글등록" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; float: right;" > 
-                  <input type="button" value="목록가기" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; float: right;" onclick="location.href='ansboard.do'">
+                  <input type="submit" value="글등록" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; " > 
+                  <input type="button" value="목록가기" class="btn btn-primary py-2 px-4 text-white" style="width: 20%;" onclick="location.href='ansboard.do'">
                 </div>
               </div>
 			</td>

@@ -100,10 +100,10 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
           <div class="col-md-7 mb-5"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
 
 <form action="ansmuldel.do" method="post" style="margin: 20px;">
-<table class="table table-striped " >
+<table class="table  " >
 	<%-- <col width="20px"> --%>
 	<%-- <col width="50px"><col width="100px"><col width="300px"><col width="150px"><col width="60px"> --%>
-	<%-- <col width="60px"><col width="60px"><col width="60px"><col width="50px"> --%>
+	 <col width="15%"><col width="20%"><col width="40%"><col width="25%"> 
 	<tr>
 		<!-- <th><input type="checkbox" name="all" onclick="allSel(this)"/></th> --><!-- this.checked:체크여부를 판단하여 true,false 반환 -->
 		<th>번호</th>

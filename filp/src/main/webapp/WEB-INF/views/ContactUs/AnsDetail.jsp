@@ -33,11 +33,12 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 <style type="text/css">
 	#ansreplyForm{display: none;}
-	#container{
+	
+	/* #container{
 		height: 336px;
 		width: 800px;
-		margin: 0 auto;
-		overflow: auto;
+		margin: 0 auto; 
+		overflow: auto; */
 	}
 </style>
 </head>
@@ -88,26 +89,26 @@
 				</div>
 			</div>
  <div class="row justify-content-center">
-          <div class="col-md-7 mb-5"  data-aos="fade">
-	<table border="1">
+          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 1px solid #30e3ca; border-radius: 20px;padding: 30px;"">
+	<table class="table  " style="margin: 0 auto;">
 		<tr>
-			<th>이름</th>
+			<td>이름</td>
 			<td>${dto.member_name}</td>
 		</tr>
 		<tr>
-			<th>제목</th>
+			<td>제목</td>
 			<td>${dto.board_title}</td>
 		</tr>
 		<tr>
-			<th>내용</th>
-			<td><textarea rows="10" cols="60"  name="board_content">${dto.board_content}</textarea></td>
+			<td>내용</td>
+			<td><textarea rows="10" cols="70"  name="board_content">${dto.board_content}</textarea></td>
 		</tr>
 		<tr>
-			<td colspan="2">
-				<input type="button" value="수정" onclick="ansupdateForm()"/>
-				<input type="button" value="삭제" onclick="ansdelboard()"/>
-				<input type="button" value="답글" onclick="ansreplyForm()"/>
-				<input type="button" value="글목록" onclick="location.href='ansboard.do'"/>
+			<td colspan="2" style="text-align:right; ;">
+				<input type="button" value="수정" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="ansupdateForm()"/>
+				<input type="button" value="삭제" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="ansdelboard()"/>
+				<input type="button" value="답글" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="ansreplyForm()"/>
+				<input type="button" value="글목록" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="location.href='ansboard.do'"/>
 			</td>
 		</tr>
 	</table>
