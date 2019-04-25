@@ -68,7 +68,7 @@ public class UserMailSendService {
 		MimeMessage mail = mailSender.createMimeMessage();
 		String htmlStr = "<h2>안녕하세요 FLIP~운영자 입니다!</h2><br><br>" 
 				+ "<h3>" + member_id + "님</h3>" + "<p>인증하기 버튼을 누르시면 로그인을 하실 수 있습니다 : " 
-				+ "<a href='http://localhost:8001" + request.getContextPath() + "/key_alter.do?member_id="+ member_id +"&member_key="+member_key+"'>인증하기</a></p>"
+				+ "<a href='http://localhost:8888" + request.getContextPath() + "/key_alter.do?member_id="+ member_id +"&member_key="+member_key+"'>인증하기</a></p>"
 				+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)";
 		try {
 			mail.setSubject("[본인인증] FLIP 인증메일입니다", "utf-8");
@@ -109,7 +109,7 @@ public class UserMailSendService {
 					+ "<p>비밀번호 찾기를 신청해주셔서 임시 비밀번호를 발급해드렸습니다.</p>"
 					+ "<p>임시로 발급 드린 비밀번호는 <h2 style='color : blue'>'" + member_password +"'</h2>이며 로그인 후 마이페이지에서 비밀번호를 변경해주시면 됩니다.</p><br>"
 					+ "(혹시 잘못 전달된 메일이라면 이 이메일을 무시하셔도 됩니다)<br>"
-					+ "<a href='http://localhost:8001" + request.getContextPath() +"/loginform.do"+"'>로그인 페이지로 이동하기</a>";
+					+ "<a href='http://localhost:8888" + request.getContextPath() +"/loginform.do"+"'>로그인 페이지로 이동하기</a>";
 			try {
 				mail.setSubject("[MS :p] 임시 비밀번호가 발급되었습니다", "utf-8");
 				mail.setText(htmlStr, "utf-8", "html");

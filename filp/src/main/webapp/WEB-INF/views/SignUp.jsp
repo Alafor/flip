@@ -198,7 +198,7 @@ if( len == 7 ) oThis.value += "-";
               
               <div class="row form-group">
                 <div class="col-12">
-                  <p>Have an account? <a href="loginform.do">Log In</a></p>
+                  <p>로그인하시겠습니까? <a href="loginform.do">Log In</a></p>
                 </div>
               </div>
               

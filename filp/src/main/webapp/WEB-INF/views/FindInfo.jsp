@@ -160,7 +160,12 @@
                   <input type="email" id="board_email_1" name="board_email_1" class="form-control">
                 </div>
               </div>
-
+			 
+			  <div class="row form-group">
+                <div class="col-12">
+                  <p>로그인하시겠습니까? <a href="loginform.do">Log In</a></p>
+                </div>
+              </div>
 
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
@@ -184,7 +189,12 @@
                   <input type="email" id="member_email" name="member_email" class="form-control">
                 </div>
               </div>
-
+				
+			  <div class="row form-group">
+                <div class="col-12">
+                  <p>로그인하시겠습니까? <a href="loginform.do">Log In</a></p>
+                </div>
+              </div>	
 
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
