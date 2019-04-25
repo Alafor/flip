@@ -79,7 +79,7 @@
 				</div>
 			</div>
  <div class="row justify-content-center" >
-          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;padding: 30px;">
+          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 1px solid #30e3ca; border-radius: 20px;padding: 30px;">
 
 
 
