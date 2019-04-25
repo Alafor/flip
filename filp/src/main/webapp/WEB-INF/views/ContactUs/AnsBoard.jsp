@@ -97,7 +97,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 				</div>
 			</div>
  <div class="row justify-content-center" >
-          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
+          <div class="col-md-5 mb-3"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
 
 <form action="ansmuldel.do" method="post" style="margin: 20px;">
 <table class="table  " >

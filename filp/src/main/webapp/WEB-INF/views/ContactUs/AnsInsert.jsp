@@ -79,23 +79,21 @@
 				</div>
 			</div>
  <div class="row justify-content-center" >
-          <div class="col-md-7 mb-5"  data-aos="fade" style="border: 1px solid #30e3ca; border-radius: 20px;padding: 30px;">
+          <div class="col-md-5 mb-6"  data-aos="fade" style="border: 1px solid #30e3ca; border-radius: 20px;padding: 30px;">
 
 
 
 	<form action="ansinsert.do" method="post" style="margin: 0 auto;">
 	<table class="table" >
-	<!-- 	<tr>
-			<th>이름</th>
-			<td><input type="text" name="member_name"></td>
-		</tr> -->
+	<col width="18%"><col width="82%">
+	
 		<tr>
 			<td>제목</td>
-			<td><input type="text" name="board_title"></td>
+			<td><input type="text" name="board_title" class="form-control"></td>
 		</tr>
 		<tr>
 			<td>내용</td>
-			<td><textarea rows="10" cols="60"  name="board_content"></textarea></td>
+			<td><textarea class="form-control col-mb-5 mb-5" rows="10"  cols="70" name="board_content"></textarea></td>
 		</tr>
 		<tr>
 			<td>비밀글</td>
