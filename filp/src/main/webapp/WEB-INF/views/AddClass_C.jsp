@@ -7,7 +7,7 @@
 <!DOCTYPE>
 <html>
 <head>
-<title>회원가입</title>
+<title>강사 강의 등록</title>
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1 shrink-to-fit=no">
@@ -81,250 +81,7 @@
 	border: 0;
 }
 </style>
-<script type="text/javascript">
-    	var time1 = "";
-    	var time2 = "";
-   	$(document).ready(function() {
-   	    var readURL = function(input) {
-   	        if (input.files && input.files[0]) {
-   	            var reader = new FileReader();
-
-   	            reader.onload = function (e) {
-   	                $('.avatar').attr('src', e.target.result);
-   	            }
-   	    
-   	            reader.readAsDataURL(input.files[0]);
-   	        }
-   	    }
-   	    
-
-   	    $(".file-upload").on('change', function(){
-   	        readURL(this);
-   	    });
-   	});
-    $(function(){
-    	for(var j=0;j<60;j++){
-    		var min1 = "";
-    		if(j<10){
-    			min1="0"+j;
-    		}
-    		else{
-    			min1=""+j;	    		
-    		}
-    		
-    		time2 +="<option value='"+min1+"'>"+min1+" 분 </option>";
-    	}
-    	for(var i=0;i<24;i++){
-    		var time = "";
-    		if(i<10){
-    			time="0"+i;
-    		}else{
-    			time=i+"";
-    		}
-    		time1 +="<option value='"+time+"'>"+time+" 시 </option>";
-    	}
-    	
-    	var starttime1 = $("#class_starthour1").html(time1);
-    	var starttime2 = $("#class_startmin1").html(time2);
-    	
-    });
-    $(function() {
-    	var now = new Date();
-    	var after3 = new Date(now.getFullYear(),now.getMonth(),now.getDate()+3);
-    	var str = after3.getFullYear()+"/"+(after3.getMonth()+1)+"/"+after3.getDate();
-      $("#daterange").daterangepicker({
-    	  "startDate":str,
-    	  "endDate":str,
-    	  "minDate": str,
-    	  "locale": {
-    	        "format": "YYYY/MM/DD",
-    	        "separator": " - ",
-    	        "applyLabel": "적용",
-    	        "cancelLabel": "취소",
-    	        "fromLabel": "부터",
-    	        "toLabel": "까지",
-    	        "customRangeLabel": "Custom",
-    	        "weekLabel": "주",
-    	        "daysOfWeek": [
-    	        	'일', '월', '화', '수', '목', '금', '토'
-    	        ],
-    	        "monthNames": [
-    	        	'1월','2월','3월','4월','5월','6월', '7월','8월','9월','10월','11월','12월'
-    	        ],
-    	        "firstDay": 0
-    	    },
-    	  opens: 'left'
-      }, function(start, end, label) {
-    	  $("#class_sd").val(start.format('YYYY/MM/DD')) ;
-    	  $("#class_cd").val(end.format('YYYY/MM/DD')) ;
-      });
-    });							
-    function addClassTime() {
-    	var $div = $("<div class='form-group'> <div class='row'> <div class='col-xs-4 col-md-4 col-sm-4'> <select class='form-control .col-xs-6 .col-md-4' onchange='sumclasstime(this)'>"+time1
-    			+"</select> </div> <div class='col-xs-4 col-md-4 col-sm-4'> <select class='form-control .col-xs-6 .col-md-4' onchange='sumclasstime(this)'>"+time2
-	                 +" </select> </div>"
-	                 +"<input type='hidden' name='classtime'>"
-	                 +"<a href='#' class='col-xs-1 col-md-1 col-sm-1' onclick='chkClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='flaticon-done icon-2x'></i></a>"
-	                 +"<span style='padding-left: 5px;'>시간체크</span>"
-	                 +"<a href='#' class='col-xs-1 col-md-1 col-sm-1' onclick='delClassTime(this)'> <i style='display:inline-block; margin-top:10%;' class='icon-remove-sign icon-2x'></i></a>"
-	                 +" </div> </div>");
-    	$('.time_container').append($div);
-	} 
-    function delClassTime(th) {
-    	alert(th.scrollTop);
-		$(th).parent().parent().remove();
-	}
-    function sumclasstime(selectone) {
-// 		var row = $(selectone).parent().parent();
-// 		var hour = row.children().eq(0).children().eq(0).val
-// 		var min = row.children().eq(1).children().eq(0).val
-// 		alert("hour:::"+hour+"   ----------------min"+min);
-		var row = $(selectone).parent().parent();
-		var hour = row.children().eq(0).children().eq(0).val();
-		var min = row.children().eq(1).children().eq(0).val();
-		var hidden = ""+hour+""+min;
-		row.children().eq(2).val(hidden);
-	}
-    function sumweek(selectweek) {
-// 		var row = $(selectone).parent().parent();
-// 		var hour = row.children().eq(0).children().eq(0).val
-// 		var min = row.children().eq(1).children().eq(0).val
-// 		alert("hour:::"+hour+"   ----------------min"+min);
-		if($(selectweek).hasClass('active')){
-			$(selectweek).removeClass('active');
-		}else{
-			$(selectweek).addClass('active');		
-		}		
-		var acti = $(selectweek).parent().children('.active');
-		$('#class_week').val("");
-		var weekhidden= "";
-		for(i=0;i<acti.length;i++){
-			if(i==0){
-			weekhidden+=""+$(acti[i]).val();
-			}else {
-			weekhidden+="|"+$(acti[i]).val();				
-			}
-		}
-		alert(acti.length);
-		$('#class_week').val(weekhidden);
-	}
-</script>
-<script type="text/javascript">
- 
- function chkClassTime(chk){
-	var row = $(chk).parent().parent();
-	var class_starttime = row.children().eq(0).children().eq(2).val();
-	var class_sd = $("#class_sd").val();
-	var class_cd = $("#class_cd").val();
-	var class_time = $("#class_time").val();
-	var class_week = $("#class_week").val();
-	
-	
-	if(class_starttime==""){
-		alert("수업 시작시간을 선택해 주세요");
-		 $(row.children().eq(0).children().eq(2)).focus();
-		return;
-	}
-	if(class_sd==""|class_cd==""){
-		alert("수업 날짜를 선택해 주세요");
-		return;
-	}
-	if(class_week==""){
-		alert("수업 요일을 선택해 주세요");
-		$("#class_week").focus();
-		return;
-	}
-	
-	if(class_time==""){
-		alert("수업 시간을 정해주세요");
-		 $("#class_time").focus();
-		return;
-	}else{
-		alert("정상작동---class_sd:"+class_sd+"   class_cd:"+class_cd+"  class_time: "+class_time);
-	}
-	
-// 	var oktimes = $(".time_container input");
-// 	for(var i =0;i<oktimes.length;i++){
-// 		if(!(oktimes[i].hasClass("timeOk"))){
-// 			return false;
-// 		}
-// 	}
-	var aaa = $("input.timeOk");
-	if(aaa.length>1){
-		alert(aaa.length);
-	for(var i=0 ;i<aaa.length;i++){
-		aaa[i].addClass("rrkskek");
-	}
-	}
-// 	var oktimes = $("input.timeOk");
-// 	if(!(oktimes.length==0)){
-// 		var oriarr = new Array();
-// 		var oridate = new Date();
-// 		oridate.setHours(class_starttime.substr(0, 2));
-// 		oridate.setMinutes(class_starttime.substr(2, 2));  
-// 		oriarr[0] = oridate;
-// 		oriarr[1] = oridate.setMinutes(oridate.getMinutes(Number(class_time)));
-// 		class_starttime
-// 		var arr = new Array();
-// 	   	arr[0] = new Array();
-// 	   	arr[1] = new Array();
-// 		alert("oktimes:"+typeof(oktimes));
-// 		alert("oktimes[0]:"+oktimes[0].val);
-// 	    for(var i =0;i<oktimes.length;i++){
-// 	    	var hour = Number(oktimes[i].val().substr(0, 2));
-// 	    	var min = Number(oktimes[i].val().substr(2, 2));
-// 	    	var date = new Date();
-// 	    	date.setHours(hour);
-// 	    	date.setMinutes(min);    	
-// 	    	arr[0][i] = date;
-// 	    	arr[1][i] = date.setMinutes(date.getMinutes(Number(class_time)));
-// 	    }
-// 	    for(var i =0;i<oktimes.length;i++){
-	    	
-// 	    	if(arr[0][i]<=oriarr[1] & arr[1][i]>=oriarr[0]){
-// 	    		alert(arr[0][i].getHours()+arr[0][i].getMinutes()+"시간대가 겹칩니다.");
-// 	    		return;
-// 	    	}
-	    		
-// 	    }
-// 	}
-
-
-	 
-	 
-	 
-	 
-	 
-//------------ajax------------
-	 $.ajax({
-
-		    url: "chkclasstime.do", // 클라이언트가 요청을 보낼 서버의 URL 주소
-
-		    data: { "class_starttime":class_starttime,"class_sd":class_sd,
-		    	"class_cd":class_cd,"class_time":class_time,"class_week":class_week},                // HTTP 요청과 함께 서버로 보낼 데이터
-
-		    method: "post",                             // HTTP 요청 방식(GET, POST)
-
-		    dataType: "json",                         // 서버에서 보내줄 데이터의 타입
-		    
-		    success : function(data) {
-		    	var rst =data["rst"];
-		    	if(rst=="개설가능"){
-		    		row.children().eq(0).children().eq(3).children().eq(0).css('color', '#3023CA');
-		    		row.children().eq(0).children().eq(2).addClass("timeOk");
-		    		alert("개설가능");
-		    	}else{
-		    		alert(rst);
-		    	}
-		    },
-		    error: function(data,status,xhr){
-			alert("통신실패");
-			}
-
-
-		})
- }
-</script>
+<script src="resources/js/AddClass_C.js"></script>
 </head>
 <body>
 	<div class="site-wrap">
@@ -370,8 +127,8 @@
 			</div>
 			<div class="row justify-content-center">
 				<div class="col-md-7 mb-5" data-aos="fade">
-					<form class="p-5 bg-white validate-form" action="signup.do"
-						onsubmit="return sumhiden()" method="post"
+					<form class="p-5 bg-white validate-form" action="class_add_C.do"
+						onsubmit="return chkOkTimes()" method="post"
 						enctype="multipart/form-data"
 						style="border: 2px solid #30e3ca; border-radius: 20px;">
 						<input type="hidden" name="class_type" value="C"> <input
@@ -456,7 +213,7 @@
 							<div class="col-md-12 validate-input "
 								data-validate="날자를 선택해 주세요">
 								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="2">월</button>
+									onclick="sumweek(this);" value="2">월</button>
 								<button type="button" class="btn btn-info"
 									onclick="sumweek(this)" value="3">화</button>
 								<button type="button" class="btn btn-info"
@@ -487,12 +244,12 @@
 											id="class_startmin1" onchange='sumclasstime(this)'>
 										</select>
 									</div>
-									<input type='hidden' name='class_starttime'> <a
-										href='#' class='col-xs-1 col-md-1 col-sm-1'
-										onclick='chkClassTime(this)'> <i
+									<input type='hidden' name='class_starttime'> 
+									<a href='#' class='col-xs-1 col-md-1 col-sm-1'
+										onclick='chkClassTime(this); return false'> <i
 										style='display: inline-block; margin-top: 10%;'
-										class='flaticon-done icon-2x'></i></a> <span
-										style="padding-left: 5px;">시간체크</span>
+										class='flaticon-done icon-2x'></i></a>
+									<span style="padding-left: 5px;">시간체크</span>
 								</div>
 							</div>
 						</div>
@@ -507,7 +264,7 @@
 							<div class="col-md-12 validate-input" data-validate="수업시간을 정해수세요">
 								<label class="text-black" for="class_time">수업 시간(분)</label> <input
 									type="number" class="form-control" id="class_time"
-									name="class_time" placeholder="수업 진행 시간(분)">
+									name="class_time" placeholder="수업 진행 시간(분)" onchange="changeOkTimes()">
 							</div>
 						</div>
 						<div class="row form-group">
@@ -567,7 +324,7 @@
 
 						<div class="row form-group" style="text-align: center;">
 							<div class="col-md-12">
-								<input type="submit" value=" 회원가입 "
+								<input type="submit" value="강의등록 "
 									class="btn btn-primary py-2 px-4 text-white"
 									style="width: 100%;">
 							</div>

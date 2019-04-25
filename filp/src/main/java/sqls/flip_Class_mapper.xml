@@ -2,7 +2,54 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Class">
-
+	
+	
+	<!-- 강의 추가 하기 -->
+	<insert id="c_classinsert" parameterType="ClassDto">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			SELECT class_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO CLASS(
+		seq,regdate,class_member_seq,class_type,class_name ,class_area,class_depa,class_participation,
+		class_starttime,class_img,class_sd ,class_cd,class_detail,class_week,class_time,class_info ,
+		class_price,class_termin)
+		VALUES(
+		#{seq},sysdate,#{class_member_seq},#{class_type},#{class_name },#{class_area},
+		#{class_depa},#{class_participation},#{class_starttime},#{class_img},#{class_sd },
+		#{class_cd},#{class_detail},#{class_week},#{class_time},#{class_info },#{class_price},
+		'N'
+		)
+	</insert>
+	<insert id="w_classinsert" parameterType="ClassDto">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			SELECT class_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO CLASS(
+		seq,regdate,class_member_seq,class_type,class_name ,class_area,class_depa,class_participation,
+		class_starttime,class_img,class_sd ,class_cd,class_detail,class_week,class_time,
+		class_price,class_termin)
+		VALUES(
+		#{seq},sysdate,#{class_member_seq},#{class_type},#{class_name },#{class_area},
+		#{class_depa},#{class_participation},#{class_starttime},#{class_img},#{class_sd },
+		#{class_cd},#{class_detail},#{class_week},#{class_time},#{class_price},
+		'N'
+		)
+	</insert>
+	<insert id="s_classinsert" parameterType="ClassDto">
+		<selectKey keyProperty="seq" resultType="int" order="BEFORE">
+			SELECT class_seq.nextval FROM DUAL
+		</selectKey>
+		INSERT INTO CLASS(
+		seq,regdate,class_member_seq,class_type,class_name ,class_area,class_depa,class_participation,
+		class_starttime,class_img,class_sd ,class_detail,
+		class_termin)
+		VALUES(
+		#{seq},sysdate,#{class_member_seq},#{class_type},#{class_name },#{class_area},#{class_depa},#{class_participation},#{
+		class_starttime},#{class_img},#{class_sd },#{class_detail},
+		'N'
+		)
+	</insert>
+	
 	<!-- 강사들의 강의 10개만 불러오기 -->
 	<select id="mainclasslist" parameterType="Map"
 		resultType="ClassDto">

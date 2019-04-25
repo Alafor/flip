@@ -55,11 +55,15 @@ public class ClassDao implements IClassDao {
 	
 	//강의 등록
 	@Override
-	public boolean addClass(ClassDto dto) {
-		Map<String, ClassDto> map = new HashMap<String, ClassDto>();
-		map.put("dto", dto);
-		
-		return sqlsession.insert(nameSpace+"insertclass", map)>0?true:false;
+	public int insertClass(ClassDto classDto) {
+		String class_type = classDto.getClass_type();
+		if(class_type.equals("C")) {
+			return sqlsession.insert(nameSpace + "c_classinsert",classDto);
+		}else if(class_type.equals("W")) {
+			return sqlsession.insert(nameSpace + "w_classinsert",classDto);
+		}else {
+			return sqlsession.insert(nameSpace + "s_classinsert",classDto);
+		}
 	}
 	
 	//검색 리스트
@@ -89,4 +93,5 @@ public class ClassDao implements IClassDao {
 		searchFilter.put("classType", classType);
 		return sqlsession.selectList(nameSpace + "areaCount",searchFilter);
 	}
+	
 }

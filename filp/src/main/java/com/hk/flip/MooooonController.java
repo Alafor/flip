@@ -90,14 +90,17 @@ public class MooooonController {
 			return "AddClass_C";
 	}
 	
-	@RequestMapping(value = "/class_add.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/class_add_C.do", method = RequestMethod.POST)
 	public String class_add(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("강의등록이동{}.", locale);
 		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
 		ClassDto classdto = new ClassDto(); 
-		int memberSeq = ((MemberDto)request.getSession().getAttribute("LogInMember")).getMember_seq();
-		String[] classtime = multi.getParameterValues("classtime");
+		int memberSeq = ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_seq();
 		
+		String[] class_starttime = multi.getParameterValues("class_starttime");
+		for(String s :class_starttime) {
+			System.out.println("수업 시작 시간:"+s);
+		}
 		classdto.setClass_member_seq(memberSeq);
 		classdto.setClass_type(multi.getParameter("class_type"));
 		classdto.setClass_depa(multi.getParameter("class_depa"));
@@ -109,6 +112,9 @@ public class MooooonController {
 		classdto.setClass_participation(Integer.parseInt(multi.getParameter("class_participation")));
 		classdto.setClass_price(Integer.parseInt(multi.getParameter("class_price")));
 		classdto.setClass_detail(multi.getParameter("class_detail"));
+		classdto.setClass_sd(request.getParameter("class_sd"));
+		classdto.setClass_cd(request.getParameter("class_cd"));
+		
 		
 		MultipartFile multifile = multi.getFile("member_profile");
 		String origin_fname=multifile.getOriginalFilename();
@@ -122,28 +128,65 @@ public class MooooonController {
 		} catch (Exception e) {	
 			e.printStackTrace();
 		}
-		
-		
 		System.out.println("경로:"+f);
-		
-		
-		if(classtime.length==1) {
-			classdto.setClass_starttime(classtime[0]);
+		if(class_starttime.length==1) {
+			classdto.setClass_starttime(class_starttime[0]);
 			String rst = classService.addClass(classdto);
 			if(rst==null) {
 				System.out.println(classdto+"수강 성공");
 			}
 		}else {
 			List<ClassDto> list = new ArrayList<ClassDto>();
-			for(String s :classtime) {
+			for(String s :class_starttime) {
 				classdto.setClass_starttime(s);
 				list.add(classdto);
 			}
-			
-			
-			
+			for(ClassDto dto :list) {
+				String rst=classService.addClass(dto);
+				if(rst	!=null) {
+					System.out.println(dto+"강의 등록 실패 "+rst);
+					model.addAttribute("msg","강의 등록에 실패했습니다.");		
+					model.addAttribute("url","main.do");
+					return "Redirect";
+				};
+			}
 		}
-		return "main";
+		model.addAttribute("msg","강의가 등록 되었습니다.");		
+		model.addAttribute("url","main.do");
+		return "Redirect";
+	}
+	
+	@RequestMapping(value = "/class_add.do", method = RequestMethod.POST)
+	public String class_add(Locale locale, Model model,HttpServletRequest request,ClassDto classDto) {
+		logger.info("강의등록이동(W,S){}.", locale);
+		
+		int memberSeq = ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_seq();
+		classDto.setClass_member_seq(memberSeq);
+		String rst="";
+		if(classDto.getClass_type().equals("W")){
+			rst = classService.addClass(classDto);
+			if(rst==null) {
+				System.out.println(classDto+"원해요 수강 성공");
+			}else {
+				System.out.println(memberSeq+"수강 실패 "+rst);
+				model.addAttribute("msg","강의 등록에 실패했습니다.");		
+				model.addAttribute("url","main.do");
+				return "Redirect";
+			}
+		}else {
+			rst = classService.addClass(classDto);
+			if(rst==null) {
+				System.out.println(classDto+"스터디 수강 성공");
+			}else {
+				System.out.println(memberSeq+"수강 실패 "+rst);
+				model.addAttribute("msg","강의 등록에 실패했습니다.");		
+				model.addAttribute("url","main.do");
+				return "Redirect";
+			}
+		}
+		model.addAttribute("msg","강의가 등록 되었습니다.");		
+		model.addAttribute("url","main.do");
+		return "Redirect";
 	}
 	
 	@ResponseBody

@@ -1,25 +1,35 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("utf-8"); %>   
-<%response.setContentType("text/html;charset=utf-8"); %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+	pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("utf-8"); %>
+<%response.setContentType("text/html;charset=utf-8"); %>
+<!DOCTYPE>
 <html>
 <head>
-	<title>회원가입</title>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1 shrink-to-fit=no">
-	
-	<link
+<title>스터디 등록</title>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1 shrink-to-fit=no">
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
 	rel="stylesheet">
 <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
-
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<link href="resources/dist/css/datepicker.min.css" rel="stylesheet"
+	type="text/css">
+<script src="resources/dist/js/datepicker.min.js"></script>
+<script src="resources/dist/js/datepicker.ko.js"></script>
+<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
 <link rel="stylesheet" href="resources/css/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<link rel="stylesheet" href="resources/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<link
+	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
+	rel="stylesheet">
 <link rel="stylesheet" href="resources/css/bootstrap-datepicker.css">
 
 <link rel="stylesheet" href="resources/fonts/flaticon/font/flaticon.css">
@@ -28,203 +38,223 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css"
+	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
 <style type="text/css">
-	#id {margin-left: 20px;}
+#id {
+	margin-left: 20px;
+}
+
+.hidden_input {
+	margin: 0 auto;
+}
+
+.hidden_input label {
+	padding: .5em .75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #30e3ca;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
 
 </style>
-<script type="text/javascript">
-    function checkpw() {
-        var pw = document.getElementById("Pw").value;
-        var pwck = document.getElementById("PwCheck").value;
- 
-        if (pw != pwck) {
-            alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
-            return false;
-        }
-    }
-</script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script type="text/javascript">
- function fn_process(){
-    var _id=$("#t_id").val();
-    if(_id==''){
-       alert("ID를 입력하세요");
-       return;
-    }
-    $.ajax({
-       type:"post",
-       async:false,  
-       url:"handler.do",
-       dataType:"text",
-       data: {id:_id},
-       success:function (data,textStatus){
-    	   
-          if(data=='usable'){
-        	  $('#message').text("사용할 수 있는 ID입니다.");
-              $('#btnDuplicate').prop("disabled", true);
-           }else{
-             $('#message').text("사용할 수 없는 ID입니다.");
-          }
-       },
-       error:function(data,textStatus){
-          alert("에러가 발생했습니다.");
-       },
-       complete:function(data,textStatus){
-          //alert("작업을완료 했습니다");
-       }
-    });  //end ajax    
- }      
-</script>
-<script type="text/javascript">
-
-function auto_date( e, oThis ){
-
-var num_arr = [ 
-97, 98, 99, 100, 101, 102, 103, 104, 105, 96,
-48, 49, 50, 51, 52, 53, 54, 55, 56, 57
-]
-
-var key_code = ( e.which ) ? e.which : e.keyCode;
-if( num_arr.indexOf( Number( key_code ) ) != -1 ){
-
-var len = oThis.value.length;
-if( len == 4 ) oThis.value += "-";
-if( len == 7 ) oThis.value += "-";
-
-}
-
-}
-
-</script>
-
+<script src="resources/js/AddClass.js"></script>
 </head>
 <body>
-	  <div class="site-wrap">
-
-    <div class="site-mobile-menu">
-      <div class="site-mobile-menu-header">
-        <div class="site-mobile-menu-close mt-3">
-          <span class="icon-close2 js-menu-toggle"></span>
-        </div>
-      </div>
-      <div class="site-mobile-menu-body"></div>
-    </div>
-    </div>
-	<!-- header -->
-		<jsp:include page="header.jsp"/>
-		<!-- header 종료 -->
-	
-	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
-      <div class="container">
-        <div class="row align-items-center justify-content-center text-center">
-
-          <div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
-            
-            
-            <div class="row justify-content-center mt-5">
-              <div class="col-md-8 text-center">
-                <h1>일상을 뒤집다.플립</h1>
-              </div>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </div>  
-	
-	
-
-	<div class="site-section bg-light">
-      <div class="container">
-      	<div class="row justify-content-center mb-5">
-				<div class="col-md-7 text-center border-primary">
-					<h2 class="font-weight-light text-primary">
-						회원<span class="text-warning">가입</span>
-					</h2>
-					<p class="color-black-opacity-5">SIGN&amp;UP</p>
+	<div class="site-wrap">
+		<div class="site-mobile-menu">
+			<div class="site-mobile-menu-header">
+				<div class="site-mobile-menu-close mt-3">
+					<span class="icon-close2 js-menu-toggle"></span>
 				</div>
 			</div>
-        <div class="row justify-content-center" >
-          <div class="col-md-7 mb-5"  data-aos="fade">
-          
-          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
-          	<input type="hidden" name="member_type"  value="S">
-             
- 			<div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
-                  <label class="text-black" for="name">이름</label> 
-                  <input type="text" class="form-control" name="member_name">
-                </div>
-              </div>	            
-             
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
-                  <label class="text-black" for="id">아이디</label> 
-                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()">
-                </div>
-                <div id="message" style="margin-left: 20px; color: red;"></div>
-              </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드</label> 
-                  <input type="text" id="Pw" class="form-control" name="member_password" >
-                </div>
-              </div>
-              <div class="row form-group ">              
-                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드확인</label> 
-                  <input type="text" id="PwCheck" class="form-control" >
-                </div>
-              </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
-                  <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email">
-                </div>
-              </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
-                  <label class="text-black" for="birth">생년월일</label> 
-                  <input type="text"  class="form-control" name="member_birth" 
-                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
-                </div>
-              </div>
-          	<div class="row form-group">              
-                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
-                  <label class="text-black" for="phone">전화번호</label> 
-                  <input type="text" class="form-control" name="member_phone" >
-                </div>
-              </div>
-              
-              <div class="row form-group">
-                <div class="col-12">
-                  <p>Have an account? <a href="loginform.do">Log In</a></p>
-                </div>
-              </div>
-              
-              <div class="row form-group" style="text-align: center;">
-                <div class="col-md-12">
-                  <input type="submit" value=" 회원가입 " class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
-                </div>
-              </div>
-              </form>
-          </div>
-          </div>
-          </div>
-          </div>
-	
-	
-	
-	
-	
+			<div class="site-mobile-menu-body"></div>
+		</div>
+	</div>
+	<!-- header -->
+	<jsp:include page="header.jsp" />
+	<!-- header 종료 -->
+
+	<div class="site-blocks-cover inner-page-cover overlay"
+		style="background-image: url(resources/images/아이.jpg);"
+		data-aos="fade" data-stellar-background-ratio="0.5">
+		<div class="container">
+			<div
+				class="row align-items-center justify-content-center text-center">
+				<div class="col-md-10" data-aos="fade-up" data-aos-delay="400">
+					<div class="row justify-content-center mt-5">
+						<div class="col-md-8 text-center">
+							<h1>일상을 뒤집다.플립</h1>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="site-section bg-light">
+		<div class="container">
+			<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center border-primary">
+					<h2 class="font-weight-light text-primary">
+						스터디<span class="text-warning">등록</span>
+					</h2>
+					<p class="color-black-opacity-5">Register&amp;Class</p>
+				</div>
+			</div>
+			<div class="row justify-content-center">
+				<div class="col-md-7 mb-5" data-aos="fade">
+					<form class="p-5 bg-white validate-form" action="class_add.do"
+						 method="post"
+						style="border: 2px solid #30e3ca; border-radius: 20px;">
+						<input type="hidden" name="class_type" value="S"> 
+						<input type="hidden" id="class_sd" name="class_sd" value=""> 
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label class="text-black" for="class_depa">카테고리</label> <select
+									class="form-control" name='class_depa'>
+									<option value="exercise">운동</option>
+									<option value="music">음악</option>
+									<option value="photo">사진</option>
+									<option value="yolo">yolo</option>
+									<option value="investment">재테크</option>
+									<option value="beauty">뷰티</option>
+									<option value="language">외국어</option>
+									<option value="videoedit">영상편집</option>
+									<option value="it">IT</option>
+									<option value="design">디자인</option>
+									<option value="cook">요리</option>
+								</select>
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 validate-input" data-validate="이름을 입력해주세요">
+								<label class="text-black" for="class_name">이름</label> <input
+									type="text" class="form-control" name="class_name">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12">
+								<label class="text-black" for="class_area">지역 설정</label> <select
+									class="form-control" name='class_area'>
+									<option value="강남구">강남구</option>
+									<option value="강동구">강동구</option>
+									<option value="강북구">강북구</option>
+									<option value="강서구">강서구</option>
+									<option value="관악구">관악구</option>
+									<option value="광진구">광진구</option>
+									<option value="구로구">구로구</option>
+									<option value="금천구">금천구</option>
+									<option value="노원구">노원구</option>
+									<option value="도봉구">도봉구</option>
+									<option value="동대문구">동대문구</option>
+									<option value="동작구">동작구</option>
+									<option value="마포구">마포구</option>
+									<option value="서대문구">서대문구</option>
+									<option value="서초구">서초구</option>
+									<option value="성동구">성동구</option>
+									<option value="성북구">성북구</option>
+									<option value="송파구">송파구</option>
+									<option value="양천구">양천구</option>
+									<option value="영등포구">영등포구</option>
+									<option value="용산구">용산구</option>
+									<option value="은평구">은평구</option>
+									<option value="종로구">종로구</option>
+									<option value="중구">중구</option>
+									<option value="중랑구">중랑구</option>
+								</select>
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12 validate-input "
+								data-validate="날자를 선택해 주세요">
+								<label class="text-black" for="email">수업 날짜</label> <input
+									type="text" id="daterange" class="form-control" value="" />
+							</div>
+						</div>
+
+						<label class="text-black" for="birth">희망 만남 시간</label>
+						<div class="time_container">
+							<div class="form-group">
+								<div class="row">
+									<div class="col-xs-4 col-md-4 col-sm-4">
+										<select class="form-control .col-xs-6 .col-md-4"
+											id="class_starthour1" onchange='sumclasstime(this)'>
+										</select>
+									</div>
+									<div class="col-xs-4 col-md-4 col-sm-4">
+										<select class="form-control .col-xs-6 .col-md-4"
+											id="class_startmin1" onchange='sumclasstime(this)'>
+										</select>
+									</div>
+									<input type='hidden' name='class_starttime'> 
+								</div>
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12 validate-input" data-validate="수업시간을 정해수세요">
+								<label class="text-black" for="class_time">수업 시간(분)</label> <input
+									type="number" class="form-control" id="class_time"
+									name="class_time" placeholder="수업 진행 시간(분)"">
+							</div>
+						</div>
+						<div class="row form-group">
+							<div class="col-md-12 validate-input" data-validate="인원을 정해수세요">
+								<label class="text-black" for="class_participation">인원
+									설정</label> <input type="number" class="form-control"
+									name="class_participation" placeholder="최소 모집 인원">
+							</div>
+						</div>
+
+						<div class="row form-group">
+							<div class="col-md-12 validate-input"
+								data-validate="수업 상세내용을 적어주세요.">
+								<label class="text-black" for="class_detail">수업 상세내용</label>
+								<textarea class="form-control" rows="" cols=""
+									name="class_detail" placeholder="수업 상세내용을 적어주세요."></textarea>
+							</div>
+						</div>
+
+						<div class="row form-group" style="text-align: center;">
+							<div class="col-md-12">
+								<input type="submit" value="스터디 등록 "
+									class="btn btn-primary py-2 px-4 text-white"
+									style="width: 100%;">
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+
+
 
 	<!-- <div id="dropDownSelect1"></div> -->
 	<div>
-	<jsp:include page="footer.jsp" />
+		<jsp:include page="footer.jsp" />
 	</div>
-	
-	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+
+
+
 	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>

@@ -65,7 +65,11 @@ public class ClassService implements IClassService {
 	@Override
 	public String addClass(ClassDto dto) {
 		List<String> list = inclassDao.chkInclassTime_Create(dto);
-		if(list!=null|!(list.isEmpty())) {
+		
+		if(!(list.isEmpty())) {
+			for(String cdto:list) {
+				System.out.println("시간 겹치는 강의 "+cdto);
+			}
 			String rst="";
 			for (String string : list) {
 				rst = rst+",\n"+string;
@@ -73,36 +77,26 @@ public class ClassService implements IClassService {
 			rst = rst+"\n 강의와 시간이 겹칩니다 ";
 			return rst;
 		}else {
-			if(!classDao.addClass(dto)) {
+			int insertRst=classDao.insertClass(dto);
+			if(insertRst<0) {
 				return "수강신청에 실패하였습니다.";
 			}
+			System.out.println("-------------------------insert된 강의 seq 값:"+dto.getSeq());
+			inclassDao.addInclass(dto.getClass_member_seq(), dto.getSeq());
 			return null;
 		}
 	}
 	
 	@Override
 	public String addsClass(List<ClassDto> classList) {
-		String rst="";
 		for(ClassDto dto:classList) {		
-			List<String> list = inclassDao.chkInclassTime_Create(dto);
-			if(list!=null|!(list.isEmpty())) {
-				for (String string : list) {
-					rst = rst+",\n"+string;
-				}
-				rst = rst+"\n 강의와 시간이 겹칩니다 ";
-			}else {
-				
-				if(!classDao.addClass(dto)) {
-					return "수강신청에 실패하였습니다.";
-				}
-			}		
+			int insertRst=classDao.insertClass(dto);
+			if(insertRst<0) {
+				return "수강신청에 실패하였습니다.";
+			}
+			inclassDao.addInclass(dto.getClass_member_seq(), insertRst);
 		}
-		if(!rst.equals("")) {
-			return rst;
-		}else {
-			return null;
-		}
-		
+		return null;
 	}
 	@Override
 	public List<ClassDto> searchList(String search, String department, String classType, int count){
