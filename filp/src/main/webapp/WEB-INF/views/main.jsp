@@ -191,8 +191,8 @@
 				</div>
 
 				<div class="row">
-					<div class="col-12  block-13">
-						<div class="owl-carousel nonloop-block-13">
+					<div class="col-12  block-13 w-refresh"> 
+						<div class="owl-carousel nonloop-block-13 w-remove">
 					<!-- 학생 찾기  -->
 							<!-- EL FOR문 시작 부분  -->
 							
@@ -239,9 +239,9 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-12  block-13">
+					<div class="col-12  block-13 c-refresh">
 					
-							<div class="owl-carousel nonloop-block-13">
+							<div class="owl-carousel nonloop-block-13 c-remove">
 							
 							<!-- 선생님 찾기  -->
 							<!-- EL FOR문 시작 부분  -->
@@ -299,8 +299,8 @@
 			</div>
 
 			<div class="row">
-				<div class="col-12  block-13">
-					<div class="owl-carousel nonloop-block-13">
+				<div class="col-12  block-13 s-refresh">
+					<div class="owl-carousel nonloop-block-13 s-remove">
 						<c:forEach var="studylist" items="${studylist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical studyAjax">
 									<a href="cdetail.do?class_seq=${studylist.seq}" class="img d-block"
@@ -497,7 +497,6 @@
 			</div>
 		</div>
 	</div>
-
 	<!-- 광고 이미지 세션 -->
 	<jsp:include page="advertisor.jsp" />
 	<!-- 광고 이미지 세션 종료 -->
@@ -530,6 +529,7 @@
 	src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
+	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
 	
 </body>

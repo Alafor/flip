@@ -202,6 +202,7 @@
 	<div class="param" id="search" data-param="${paramList.search}"></div>
 	<div class="param" id="category" data-param="${paramList.category}"></div>
 	<div class="param" id="classType" data-param="${paramList.classType}"></div>
+	
 	<!-- site-wrap div 종료 -->
 	<!-- footer종료 -->
 	
@@ -218,7 +219,6 @@
 	<script src="resources/js/aos.js"></script>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
-	
 	<script src="resources/js/searchlist.js" defer="defer"></script>
 </body>
 </html>

@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +39,6 @@ public class SeoController {
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
-		
 		System.out.println(department);
 		List<ClassDto> classList = classService.mainClassList(department);
 		List<ClassDto> studyList = classService.mainStudyList(department);
@@ -50,23 +52,35 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String department, String classType) {
+	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request, HttpSession session) {
 		logger.info("search list 시작{}.", locale);
+		
 		System.out.println("searchlist:"+search+", category:"+department+", classType:"+classType);
 		Map<String, String> paramList = new HashMap<String, String>();
+		List<ClassDto> areaList = classService.areaCount(search, department, classType);
+		String[] areas = request.getParameterValues("selectedarea");
 		paramList.put("search", search);
 		paramList.put("category", department);
 		paramList.put("classType", classType);
 		model.addAttribute("paramList",paramList);
+		model.addAttribute("areaList",areaList);
+		session.setAttribute("areas", areas);
 		return "all_list";
 	}
+	
 	//search list load()	
 	@RequestMapping(value = "/listload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String listload(Locale locale, Model model,String search, String department, String classType, String num) {
+	public String listload(Locale locale, Model model,String search, String department, String classType, String num, HttpSession session) {
 		logger.info("Started main{}.", locale);
 		System.out.println("search: "+search+", category: "+department+", classType: "+classType);
-		List<ClassDto> areaList = classService.areaCount(search, department, classType);
+		String[] areas = (String[])session.getAttribute("areas");
+		if(areas!=null) {
+			for(int i=0;i<areas.length;i++) {
+				System.out.println(areas[i]);
+			}
+		}
 		int pageCount = classService.pageCount(search, department, classType);
+		List<ClassDto> areaList = classService.areaCount(search, department, classType);
 		if(num==null || Integer.parseInt(num)<=0) {
 			num="1";
 		}else if(Integer.parseInt(num)>pageCount) {

@@ -25,19 +25,58 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<style type="text/css">
+	.areachk{
+		display:none;
+	}
+	label{
+		width:100px;
+		height:40px;
+		background-color: gray;
+	}
+</style>
 </head>
 <body>
 	<div class="row mb-5">
 		<div class="search-area" data-search>
-			<form action="searchList.do">
-			<c:forEach var="areaList" items="${areaList}"  varStatus="seq">
-				
-				<!-- jquery value 추가 -->
-				<label for="area-${seq.count}">
-					<input type="checkbox" id="area-${seq.count}" />
-					<span class="area" data-area="${areaList.class_area}">${areaList.class_area} (${areaList.class_area_count})</span>
-				</label>	
-			</c:forEach>
+			<form action="searchlist.do">
+			<c:set value="${searchList[0].class_type}" var="class_type"></c:set>
+			<c:choose>
+				<c:when test="${class_type eq 'C'}">
+				<div id="areasize-c" data-areasize="${fn:length(areaList)}"></div>
+					<c:forEach var="areaList" items="${areaList}"  varStatus="seq">
+						<label for="carea-${seq.index}">
+							<input type="checkbox" class="areachk" name="selectedarea" id="carea-${seq.index}" value="${areaList.class_area}" />
+							<span class="carea" data-area="${areaList.class_area}"></span>
+							<span>(${areaList.class_area_count})</span>
+						</label>	
+					</c:forEach>
+				</c:when>
+				<c:when test="${class_type eq 'S'}">
+				<div id="areasize-s" data-areasize="${fn:length(areaList)}"></div>
+					<c:forEach var="areaList" items="${areaList}"  varStatus="seq">
+						<label for="sarea-${seq.index}">
+							<input type="checkbox" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
+							<span class="areabox">
+							<span class="sarea" data-area="${areaList.class_area}"></span>
+							<span>(${areaList.class_area_count})</span>
+							</span>
+						</label>	
+					</c:forEach>
+				</c:when>
+				<c:when test="${class_type eq 'W'}">
+				<div id="areasize-w" data-areasize="${fn:length(areaList)}"></div>
+					<c:forEach var="areaList" items="${areaList}"  varStatus="seq">
+						<label for="warea-${seq.index}">
+							<input type="checkbox" class="areachk" name="selectedarea" id="warea-${seq.index}" value="${areaList.class_area}" />
+							<span class="areabox">
+							<span class="warea" data-area="${areaList.class_area}"></span>
+							<span>(${areaList.class_area_count})</span>
+							</span>
+						</label>	
+					</c:forEach>
+				</c:when>
+			</c:choose> 
 			<input type="submit" value="선택지역 검색">
 			</form>
 		</div>
@@ -86,6 +125,7 @@
 		</div>
 		</c:forEach>
 		</div>
+		
 <script defer
 		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
 		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
@@ -95,5 +135,6 @@
 		integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 		crossorigin="anonymous"></script>	
 <script src="resources/js/star.js" defer="defer"></script>
+<script src="resources/js/areaSearch.js" defer="defer"></script>
 </body>
 </html>

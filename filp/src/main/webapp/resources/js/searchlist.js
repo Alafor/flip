@@ -1,15 +1,20 @@
 /**
  * 
  */
+//페이지 표시 기능
 $(document).ready(function() {
 			
 			var search = $("#search").attr("data-param");
 			var category = $("#category").attr("data-param");
 			var classType = $("#classType").attr("data-param");
+			
+			
 //			alert("search: "+search+"category: "+category+"classType: "+classType);
 			//클래스 탭메뉴 
 			classReset();
 			pageLoad();//페이지 로드 시 listload 로드
+			
+			
 			
 			//클래스 탭메뉴 종료
 				$('ul.tabs li').click(function() {
@@ -37,7 +42,6 @@ $(document).ready(function() {
 					
 					if(!(!classType)&&!search&&!category){
 						//메인에서 클래스 타입만 클릭했을때
-						
 						$("div.current").load("listload.do?classType="+classType);
 					}else if(!(!search) && !classType && !category){
 						//검색으로 들어왔을때
@@ -96,6 +100,4 @@ $(document).ready(function() {
 						$("#" + tab_id).addClass('current');
 					}
 				};
-				
-				
 		});
