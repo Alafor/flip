@@ -198,7 +198,7 @@ nav > div a.nav-item.nav-link:focus
 												<c:forEach items="${clist}" var="classdto">
 													<tr>
 														<td>
-														<td>${classdto.seq}</td>
+														<%-- <td>${classdto.seq}</td> --%>
 														<td>${classdto.class_name}</td>
 													</tr>
 												</c:forEach>
@@ -214,7 +214,7 @@ nav > div a.nav-item.nav-link:focus
 												<c:forEach items="${rDto}" var="reviewdto">
 													<tr>
 														<td>
-														<td>${reviewdto.review_seq}</td>
+														<%-- <td>${reviewdto.review_seq}</td> --%>
 														<td>${reviewdto.review_detail}</td>
 													</tr>
 												</c:forEach>
