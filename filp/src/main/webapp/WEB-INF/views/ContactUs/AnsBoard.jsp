@@ -48,6 +48,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 <style type="text/css">
 	table tr td img{width:13px;height: 13px;}
 </style>
+<script type="text/javascript" src="./resources/js/paging.js"></script>
 </head>
 <body>
 <jsp:useBean id="util" class="com.hk.utils.Util"/>
@@ -99,12 +100,12 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
  <div class="row justify-content-center" >
           <div class="col-md-5 mb-3"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
 
-<form action="ansmuldel.do" method="post" style="margin: 20px;">
+<!-- <form action="ansmuldel.do" method="post" style="margin: 20px;"> -->
 <table class="table  " >
 	<%-- <col width="20px"> --%>
 	<%-- <col width="50px"><col width="100px"><col width="300px"><col width="150px"><col width="60px"> --%>
-	 <col width="15%"><col width="20%"><col width="40%"><col width="25%"> 
-	<tr>
+	 <col width="15%"><col width="15%"><col width="40%"><col width="30%"> 
+	<tr style="text-align: center;">
 		<!-- <th><input type="checkbox" name="all" onclick="allSel(this)"/></th> --><!-- this.checked:체크여부를 판단하여 true,false 반환 -->
 		<th>번호</th>
 		<th>작성자</th>
@@ -117,35 +118,35 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 			<tr><td colspan = "10">---작성된 글이 없습니다.---</td></tr>
 		</c:when>
 		<c:otherwise>
-			<c:forEach items="${list}" var="dto">
+			<c:forEach items="${list}" var="ansdto">
 				<tr>
 					<%-- <td><input type="checkbox" name="chk" value="${dto.board_seq}"/></td> --%>
-					<td>${dto.board_seq}</td>
-					<td>${dto.member_name}</td>
+					<td  style="text-align: center;">${ansdto.board_seq}</td>
+					<td  style="text-align: center;">${ansdto.member_name}</td>
 					<c:choose>
-						<c:when test="${dto.board_delflag=='Y'}">
+						<c:when test="${ansdto.board_delflag=='Y'}">
 							<td>---삭제된 글입니다.---</td>
 						</c:when>
 						<c:otherwise>
 					       <c:choose>
-					        <c:when test="${dto.board_secret=='Y'}">
-					        	<td><jsp:setProperty property="arrowNbsp" name="util" value="${dto.board_depth}"/>
+					        <c:when test="${ansdto.board_secret=='Y'}">
+					        	<td  style="text-align: center;"><jsp:setProperty property="arrowNbsp" name="util" value="${ansdto.board_depth}"/>
 					        <jsp:getProperty property="arrowNbsp" name="util"/>
-					        <a href="anssecret.do?seq=${dto.board_seq}">${dto.board_title}</a>
+					        <a href="anssecret.do?seq=${ansdto.board_seq}">${ansdto.board_title}</a>
 					        <img alt="자물쇠" src="resources/images/자물쇠.png">
 					        </td>
 					        </c:when>
 					        
 					        <c:otherwise>
-					        <td><jsp:setProperty property="arrowNbsp" name="util" value="${dto.board_depth}"/>
+					        <td  style="text-align: center;"><jsp:setProperty property="arrowNbsp" name="util" value="${ansdto.board_depth}"/>
 					        <jsp:getProperty property="arrowNbsp" name="util"/>
-					        <a href="ansdetail.do?seq=${dto.board_seq}">${dto.board_title}</a>
+					        <a href="ansdetail.do?seq=${ansdto.board_seq}">${ansdto.board_title}</a>
 					        </td>
 					        </c:otherwise>
 					       </c:choose> 	        									
 						</c:otherwise>
 					</c:choose>
-					<td> <fmt:formatDate value="${dto.board_regdate}" pattern="yyyy년MM월dd일"/> </td>
+					<td  style="text-align: center;"> <fmt:formatDate value="${ansdto.board_regdate}" pattern="yyyy년MM월dd일"/> </td>
 					<%-- <td>${dto.board_refer}</td>
 					<td>${dto.board_step}</td>
 					<td>${dto.board_depth}</td>
@@ -155,6 +156,44 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 			</c:forEach>
 		</c:otherwise>
 	</c:choose>	
+	
+	<tr>
+	<td colspan="4" style="text-align: center;">
+	
+	
+
+	 <div class="custom-pagination"  style="size: 12px;">
+            <c:if test="${p.pageStartNum ne 1}">
+                <!--맨 첫페이지 이동 -->
+                <span style="margin-right:15px;"><a onclick='pagePre(${p.pageCnt+1},${p.pageCnt});' style="color: white; font-weight: bold; border-radius: 10%; width: 40px;">prev</a></span>
+                <!--이전 페이지 이동 -->
+                <%-- <span><a onclick='pagePre(${p.pageStartNum},${p.pageCnt});' style="color: white; font-weight: bold;">‹</a></span> --%>
+            </c:if>
+            
+            <!--페이지번호 -->
+            <c:forEach var='i' begin="${p.pageStartNum}" end="${p.pageLastNum}" step="1">
+                <span class='pageIndex${i}'><a onclick='pageIndex(${i});' style="color: white; font-weight: bold;">${i}</a></span>
+            </c:forEach>
+            
+            <c:if test="${p.lastChk}">
+                <!--다음 페이지 이동 -->
+                <span><a onclick='pageNext(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});' style="color: white; font-weight: bold;  border-radius: 10%; width: 40px;">next</a></span>
+                <!--마지막 페이지 이동 -->
+               <%--  <span><a onclick='pageLast(${p.pageStartNum},${p.total},${p.listCnt},${p.pageCnt});' style="color: white; font-weight: bold; border-radius: 10%; width: 35px;">»</a></span> --%>
+            </c:if>
+        </div>
+        
+       
+        <form action="./ansboard.do" method="post" id='frmPaging'>
+            <!--출력할 페이지번호, 출력할 페이지 시작 번호, 출력할 리스트 갯수 -->
+            <input type='hidden' name='index' id='index' value='${p.index}'>
+            <input type='hidden' name='pageStartNum' id='pageStartNum' value='${p.pageStartNum}'>
+            <input type='hidden' name='listCnt' id='listCnt' value='${p.listCnt}'>    
+        </form>
+	 
+      
+        </td>
+	</tr>
 	 <tr>
 		<td colspan="10">
 			<div class="row form-group" style="text-align: center;">
@@ -164,12 +203,12 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
               </div>
 		</td>
 	</tr>
-	
-	
-	
+
 </table>
-</form>
+<!-- </form> -->
 </div>
+
+
 </div>
 </div>
 </div>

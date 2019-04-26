@@ -3,11 +3,22 @@
 
 <mapper namespace="com.hk.flip.AnswerBoard">
 
-	<select id="boardlist" resultType="AnswerBoardDto" >
+	<!-- <select id="boardlist" resultType="AnswerBoardDto" >
 		SELECT A.BOARD_SEQ,B.MEMBER_NAME,A.BOARD_TITLE,A.BOARD_CONTENT,A.BOARD_REGDATE,
-		A.BOARD_REFER,A.BOARD_STEP,A.BOARD_DEPTH,A.BOARD_SECRET,A.BOARD_DELFLAG
+		A.BOARD_DEPTH,A.BOARD_SECRET,A.BOARD_DELFLAG
 		FROM ANSWER_BOARD A INNER JOIN MEMBER B ON A.BOARD_MEMBER_SEQ = B.MEMBER_SEQ 
 		ORDER BY A.BOARD_REFER DESC,A.BOARD_STEP
+	</select> -->
+	
+	<select id="boardlist"  parameterType="Map" resultType="AnswerBoardDto" >
+		SELECT * FROM (SELECT ROWNUM RNUM, ANS.* FROM (SELECT A.BOARD_SEQ,B.MEMBER_NAME,A.BOARD_TITLE,A.BOARD_CONTENT,A.BOARD_REGDATE,
+		A.BOARD_DEPTH,A.BOARD_SECRET,A.BOARD_DELFLAG
+		FROM ANSWER_BOARD A INNER JOIN MEMBER B ON A.BOARD_MEMBER_SEQ = B.MEMBER_SEQ 
+		ORDER BY A.BOARD_REFER DESC,A.BOARD_STEP) ANS ) WHERE RNUM BETWEEN #{start} AND #{last}
+	</select>
+	
+	<select id="selectTotalPaging" resultType="int">
+		SELECT COUNT(*) FROM ANSWER_BOARD
 	</select>
 
 	<insert id="insertboard" parameterType="AnswerBoardDto">

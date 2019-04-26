@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.flip.dtos.AnswerBoardDto;
+import com.hk.flip.dtos.PagingDto;
 
 @Repository
 public class AnswerBoardDao implements IAnswerBoardDao {
@@ -19,8 +20,12 @@ public class AnswerBoardDao implements IAnswerBoardDao {
 
 
 	@Override
-	public List<AnswerBoardDto> getAllList() {	
-		return sqlSession.selectList(namespace+"boardlist");
+	public List<AnswerBoardDto> getAllList(PagingDto paging) {	
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("start",paging.getStart());
+		map.put("last",paging.getLast());	
+		return sqlSession.selectList(namespace+"boardlist",map);
+		/*return sqlSession.selectList(namespace+"boardlist"+paging);*/
 	}
 
 
@@ -67,6 +72,12 @@ public class AnswerBoardDao implements IAnswerBoardDao {
 	@Override
 	public int replyBoardInsert(AnswerBoardDto dto) {
 		return sqlSession.insert(namespace+"replyinsert", dto);
+	}
+
+
+	@Override
+	public int selectTotalPaging() {
+		return sqlSession.selectOne(namespace+"selectTotalPaging");
 	}
 
 
