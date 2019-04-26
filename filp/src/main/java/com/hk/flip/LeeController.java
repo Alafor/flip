@@ -60,9 +60,8 @@ public class LeeController {
 	public String cdetail(HttpServletRequest request,Locale locale, Model model,int class_seq) {
 		logger.info("강의상세보기{}.", locale);
 		System.out.println(class_seq);
-		List<ClassDto> getCdetail = classService.getCdetail(class_seq);
-		model.addAttribute("cDto", getCdetail);
-		System.out.println(getCdetail.size());
+		ClassDto getCdetail = classService.getCdetail(class_seq);
+		model.addAttribute("cDto", getCdetail);		
 		return "cdetail";
 	}
 
