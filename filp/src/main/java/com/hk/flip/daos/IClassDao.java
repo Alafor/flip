@@ -12,7 +12,7 @@ public interface IClassDao {
 	//메인 원해요 목록
 	public List<ClassDto> mainWantList(String department);
 	//강의 상세보기
-	public List<ClassDto> getCdetail(int class_seq);
+	public ClassDto getCdetail(int class_seq);
 
 	//검색 리스트
 	public List<ClassDto> searchList(String search, String department, String classType, int count);
