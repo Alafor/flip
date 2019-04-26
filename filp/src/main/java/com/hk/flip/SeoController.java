@@ -52,42 +52,49 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request, HttpSession session) {
+	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request) {
 		logger.info("search list 시작{}.", locale);
-		
-		System.out.println("searchlist:"+search+", category:"+department+", classType:"+classType);
+		String addArea = "";
 		Map<String, String> paramList = new HashMap<String, String>();
-		List<ClassDto> areaList = classService.areaCount(search, department, classType);
-		String[] areas = request.getParameterValues("selectedarea");
 		paramList.put("search", search);
 		paramList.put("category", department);
 		paramList.put("classType", classType);
 		model.addAttribute("paramList",paramList);
-		model.addAttribute("areaList",areaList);
-		session.setAttribute("areas", areas);
+		String[] areas = request.getParameterValues("selectedarea");
+		if(areas!=null) {
+			for(int i=0;i<areas.length;i++) {
+				if(i==areas.length-1) {
+					addArea+=areas[i];
+				}else {
+					addArea+=(areas[i]+"%7c");
+				}
+			}
+			System.out.println("addArea: "+addArea);
+			model.addAttribute("addArea",addArea);	
+		}
 		return "all_list";
 	}
 	
 	//search list load()	
 	@RequestMapping(value = "/listload.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String listload(Locale locale, Model model,String search, String department, String classType, String num, HttpSession session) {
+	public String listload(Locale locale, Model model,String search, String department, String classType, String num, String selArea) {
 		logger.info("Started main{}.", locale);
-		System.out.println("search: "+search+", category: "+department+", classType: "+classType);
-		String[] areas = (String[])session.getAttribute("areas");
-		if(areas!=null) {
-			for(int i=0;i<areas.length;i++) {
-				System.out.println(areas[i]);
-			}
-		}
-		int pageCount = classService.pageCount(search, department, classType);
-		List<ClassDto> areaList = classService.areaCount(search, department, classType);
+		int pageCount = classService.pageCount(search, department, classType,selArea);
+		List<ClassDto> areaList = classService.areaCount(search, department, classType,selArea);
 		if(num==null || Integer.parseInt(num)<=0) {
 			num="1";
 		}else if(Integer.parseInt(num)>pageCount) {
 			num=String.valueOf(pageCount);
 		}
-		List<ClassDto> searchList = classService.searchList(search, department, classType, Integer.parseInt(num));
-		System.out.println(searchList);
+		System.out.println("sel*********:"+selArea);
+		List<ClassDto> searchList = classService.searchList(search, department, classType, Integer.parseInt(num),selArea);
+		System.out.println("**검색 조건 파라미터 - searchlist:"+search+", category:"+department+", classType:"+classType+", selArea: "+selArea);
+		System.out.println("출력출력:"+searchList);
+		Map<String, String> paramList = new HashMap<String, String>();
+		paramList.put("search", search);
+		paramList.put("category", department);
+		paramList.put("classType", classType);
+		model.addAttribute("paramList",paramList);
 		model.addAttribute("searchList",searchList);
 		model.addAttribute("thisPage",num);
 		model.addAttribute("pageCount",pageCount);

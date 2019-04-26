@@ -15,9 +15,9 @@ public interface IClassDao {
 	public List<ClassDto> getCdetail(int class_seq);
 
 	//검색 리스트
-	public List<ClassDto> searchList(String search, String department, String classType, int count);
-	public int pageCount(String search, String department, String classType);
+	public List<ClassDto> searchList(String search, String department, String classType, int count, String selArea);
+	public int pageCount(String search, String department, String classType, String selArea);
 	//지역검색
-	public List<ClassDto> areaCount(String search, String department, String classType);
+	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	public int insertClass(ClassDto classDto);
 }

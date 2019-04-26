@@ -34,12 +34,21 @@
 		height:40px;
 		background-color: gray;
 	}
+	.dropdown{
+		font-size: 10px;
+		color:white;
+		border: none;
+		background-color: gray;
+	}
 </style>
 </head>
 <body>
-	<div class="row mb-5">
+	
 		<div class="search-area" data-search>
-			<form action="searchlist.do">
+			<form action="searchlist.do" method="post" >
+			<input type="hidden" name="search" value="${paramList.search}" />
+			<input type="hidden" name="department" value="${paramList.category}" />
+			<input type="hidden" name="classType" value="${paramList.classType}" />
 			<c:set value="${searchList[0].class_type}" var="class_type"></c:set>
 			<c:choose>
 				<c:when test="${class_type eq 'C'}">
@@ -77,10 +86,10 @@
 					</c:forEach>
 				</c:when>
 			</c:choose> 
-			<input type="submit" value="선택지역 검색">
+			<input id="subs" type="submit" value="선택지역 검색">
 			</form>
 		</div>
-	</div>
+		<button class="dropdown"><img alt="updown" src="resources/images/up.png">&nbsp;&nbsp;&nbsp;지역 검색</button>
 	<div class="row mb-5">
 		<div class="col-md-7 text-left border-primary">
 			<h2 class="font-weight-light text-primary">
@@ -136,5 +145,17 @@
 		crossorigin="anonymous"></script>	
 <script src="resources/js/star.js" defer="defer"></script>
 <script src="resources/js/areaSearch.js" defer="defer"></script>
+<script type="text/javascript">
+	$(function(){
+		$('.dropdown').on('click',function(){
+			
+			if($('.search-area').css('display')=='none'){
+				$('.search-area').slideDown(200);
+			}else if($('.search-area').css('display')!='none'){
+				$('.search-area').slideUp(200);
+			}
+		})
+	})
+</script>
 </body>
 </html>

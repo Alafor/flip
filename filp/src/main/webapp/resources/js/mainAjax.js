@@ -18,7 +18,7 @@ $(function(){
 				var instructorAjax=$(".active .instructorAjax");
 				var studentAjax=$(".active .studentAjax");
 				var studyAjax=$(".active .studyAjax");
-				alert("아작스실행")
+				
 				if(classList!=""){
 					for(var i=0;i<classList.length;i++){
 						instructorAjax.eq(i).find(".category").text(classList[i].class_creator_name);
@@ -27,14 +27,14 @@ $(function(){
 						instructorAjax.eq(i).find(".review").text("("+classList[i].class_review_count+" Review)");
 						instructorAjax.eq(i).find("address").text(classList[i].class_area);
 					};
-				}else{
+				}/*else{
 					$('.c-remove').remove();
-				}
+				}*/
 				if(wantList!=""){
-					alert("실행되라")
+					
 					for(var i=0;i<wantList.length;i++){
-						$('.w-refresh').html(
-								'<div class="owl-carousel nonloop-block-13 remove">'
+						/*$('.w-refresh').html(*/
+								/*'<div class="owl-carousel nonloop-block-13 remove">'
 								+'<div class="d-block d-md-flex listing vertical studentAjax">'
 								+ '<a href="cdetail.do?class_seq=' + wantList[i].seq 
 								+ '" class="img d-block"style="background-image: url("resources/images/img_4.jpg")"></a>'
@@ -42,23 +42,23 @@ $(function(){
 								+'<span class="category">'+ wantList[i].class_creator_name +'</span>'
 								+'<span class="instructor_img">등록자 사진</span> <a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>'
 								+'<h3><a href="cdetail.do?class_seq='+wantList[i].seq+'">'+wantList[i].class_name+'</a></h3>'
-								+'<address>'+wantList[i].class_area+'</address></div></div></div>')
-					/*	studentAjax.eq(i).find(".category").text(classList[i].class_creator_name);
+								+'<address>'+wantList[i].class_area+'</address></div></div></div>')*/
+						studentAjax.eq(i).find(".category").text(classList[i].class_creator_name);
 						studentAjax.eq(i).find("h3 > a").text(classList[i].class_name);
-						studentAjax.eq(i).find("address").text(classList[i].class_area);*/
+						studentAjax.eq(i).find("address").text(classList[i].class_area);
 					};
-				}else{
-					$('.w-remove').remove();
-				}
+				}//else{
+//					$('.w-remove').remove();
+//				}
 				if(studyList!=""){
 					for(var i=0;i<studyList.length;i++){
 						studyAjax.eq(i).find(".category").text(classList[i].class_creator_name);
 						studyAjax.eq(i).find("h3 > a").text(classList[i].class_name);
 						studyAjax.eq(i).find("address").text(classList[i].class_area);
 					}
-				}else{
+				}/*else{
 					$('.s-remove').remove();
-				}
+				}*/
 			},
 			error: function(data,status,xhr){
 				alert("통신실패");
