@@ -40,11 +40,14 @@
 		border: none;
 		background-color: gray;
 	}
+	.search-area{
+		background-color: gray;
+	}
 </style>
 </head>
 <body>
-	
-		<div class="search-area" data-search>
+		
+		<div class="container search-area" data-search>
 			<form action="searchlist.do" method="post" >
 			<input type="hidden" name="search" value="${paramList.search}" />
 			<input type="hidden" name="department" value="${paramList.category}" />
@@ -56,7 +59,7 @@
 					<c:forEach var="areaList" items="${areaList}"  varStatus="seq">
 						<label for="carea-${seq.index}">
 							<input type="checkbox" class="areachk" name="selectedarea" id="carea-${seq.index}" value="${areaList.class_area}" />
-							<span class="carea" data-area="${areaList.class_area}"></span>
+							<span class="carea" data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 						</label>	
 					</c:forEach>
@@ -67,7 +70,7 @@
 						<label for="sarea-${seq.index}">
 							<input type="checkbox" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
-							<span class="sarea" data-area="${areaList.class_area}"></span>
+							<span class="sarea" data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 							</span>
 						</label>	
@@ -79,7 +82,7 @@
 						<label for="warea-${seq.index}">
 							<input type="checkbox" class="areachk" name="selectedarea" id="warea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
-							<span class="warea" data-area="${areaList.class_area}"></span>
+							<span class="warea" data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 							</span>
 						</label>	
@@ -90,6 +93,7 @@
 			</form>
 		</div>
 		<button class="dropdown"><img alt="updown" src="resources/images/up.png">&nbsp;&nbsp;&nbsp;지역 검색</button>
+	<div class="container">
 	<div class="row mb-5">
 		<div class="col-md-7 text-left border-primary">
 			<h2 class="font-weight-light text-primary">
@@ -134,7 +138,7 @@
 		</div>
 		</c:forEach>
 		</div>
-		
+		</div>
 <script defer
 		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
 		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
@@ -145,17 +149,5 @@
 		crossorigin="anonymous"></script>	
 <script src="resources/js/star.js" defer="defer"></script>
 <script src="resources/js/areaSearch.js" defer="defer"></script>
-<script type="text/javascript">
-	$(function(){
-		$('.dropdown').on('click',function(){
-			
-			if($('.search-area').css('display')=='none'){
-				$('.search-area').slideDown(200);
-			}else if($('.search-area').css('display')!='none'){
-				$('.search-area').slideUp(200);
-			}
-		})
-	})
-</script>
 </body>
 </html>

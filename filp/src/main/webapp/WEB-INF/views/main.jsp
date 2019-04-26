@@ -34,34 +34,6 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
-
-
-<style type="text/css">
-	.list{
-		list-style: none;
-		display:none;
-		text-align: center;
-		position:absolute;
-		left:-40px;
-	}
-	.position-fix-box{
-		position:relative;
-	}
-	li.cta span{
-		width:100.16px;
-		font-size: 12px;
-		background-color: #f89d13;
-		margin:0 0;
-	}
-	.position-fix-box ul:first-child{
-		width:99.75px;
-	}
-	li.cta{
-		width: 101px;
-		
-		margin: 15px auto;
-	}
-</style>
 </head>
 <body>
 	<div class="site-wrap">
@@ -556,14 +528,6 @@
 	crossorigin="anonymous"></script>
 	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	<script type="text/javascript">
-		$('.student_add_class').on('click',function(){
-			if($('.list').css('display')=='none'){
-				$('.list').slideDown(100);
-			}else if($('.list').css('display')!='none'){
-				$('.list').slideUp(100);
-			}
-		})
-	</script>
+	
 </body>
 </html>
