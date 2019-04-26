@@ -38,7 +38,7 @@ public class ClassService implements IClassService {
 	}
 	//강의 상세보기
 	@Override
-	public List<ClassDto> getCdetail(int class_seq) {
+	public ClassDto getCdetail(int class_seq) {
 		// TODO Auto-generated method stub
 		return classDao.getCdetail(class_seq);
 	}

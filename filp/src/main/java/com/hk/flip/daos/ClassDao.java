@@ -49,8 +49,8 @@ public class ClassDao implements IClassDao {
 	
 	//강사들의 강의 상세보기 페이지
 	@Override
-	public List<ClassDto> getCdetail(int class_seq){
-		return sqlsession.selectList(nameSpace+"getCdetail", class_seq);
+	public ClassDto getCdetail(int class_seq){
+		return sqlsession.selectOne(nameSpace+"getCdetail", class_seq);
 	}
 	
 	//강의 등록
