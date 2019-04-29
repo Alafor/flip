@@ -25,7 +25,7 @@
 				role="navigation">
 				<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 					<li>
-						<form action="searchlist.do" method="">
+						<form action="searchlist.do" method="get">
 							<div class="input-group mb-3 ">
 								<input type="text"
 									class="form-control text-black bg-transparent "
@@ -49,7 +49,7 @@
 								class="border-left pl-xl-3" ></span><b>${logInMember.member_name}</b></a></li>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
-						<li><a href="class_addform_c.do" class="cta">
+						<li><a href="addclassform.do" class="cta">
 						<span class="bg-primary text-white rounded">강의등록</span></a></li>	
 					</c:if>
 				</ul>
