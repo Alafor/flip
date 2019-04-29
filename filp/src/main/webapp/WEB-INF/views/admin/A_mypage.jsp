@@ -27,6 +27,7 @@
   <div id="wrapper">
 
 	<jsp:include page="A_header2.jsp"/>
+	
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
 

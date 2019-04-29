@@ -26,8 +26,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.hk.flip.dtos.AdminDto;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.service.IAdminService;
 import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IMemberService;
 import com.hk.flip.service.IMyPageService;
@@ -47,6 +49,8 @@ public class MooooonController {
 	private IMyPageService myPageService;
 	@Autowired
 	private IClassService classService;
+	@Autowired
+	private IAdminService adminService;
 	
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
@@ -64,6 +68,10 @@ public class MooooonController {
 		}else if(type.equals("T")){
 			return "t_mypage";
 		}else {
+			AdminDto adminDto = adminService.getMemberList();
+			model.addAttribute("admindata",adminDto);			
+			
+			
 			return "admin/A_mypage";
 		}
 	}
@@ -226,7 +234,18 @@ public class MooooonController {
 			map.put("rst",rst);
 			return map;
 		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/memberMgt.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String memberMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
+		logger.info("관리자 회원 관리.", locale);
 		
+		
+		
+		return "memberMgt";
 		
 	}
+	
+	
 }

@@ -53,7 +53,7 @@
 
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link " href="#" >
+        <a class="nav-link " href="memberMgt.do">
           <i class="fas fa-user-cog"></i>
           <span>회원관리</span>
         </a>
