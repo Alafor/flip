@@ -103,8 +103,8 @@
 			<td colspan="2">
 				<div class="row form-group" style="text-align:right; ;">
                 <div class="col-md-12">
-                  <input type="submit" value="글등록" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; " > 
-                  <input type="button" value="목록가기" class="btn btn-primary py-2 px-4 text-white" style="width: 20%;" onclick="location.href='ansboard.do'">
+                  <input type="submit" value="글등록" class="btn btn-primary  text-white" style="width: 20%; " > 
+                  <input type="button" value="목록가기" class="btn btn-primary text-white" style="width: 20%;" onclick="location.href='ansboard.do'">
                 </div>
               </div>
 			</td>

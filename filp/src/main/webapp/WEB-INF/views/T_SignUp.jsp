@@ -106,6 +106,24 @@ if( len == 7 ) oThis.value += "-";
 
 }
 
+
+function auto_phone( e, oThis ){
+
+	var num_arr = [ 
+	97, 98, 99, 100, 101, 102, 103, 104, 105, 96,
+	48, 49, 50, 51, 52, 53, 54, 55, 56, 57
+	]
+
+	var key_code = ( e.which ) ? e.which : e.keyCode;
+	if( num_arr.indexOf( Number( key_code ) ) != -1 ){
+
+	var len = oThis.value.length;
+	if( len == 3 ) oThis.value += "-";
+	if( len == 8 ) oThis.value += "-";
+
+	}
+
+	}
 </script>
 
 <style type="text/css">
@@ -202,20 +220,21 @@ if( len == 7 ) oThis.value += "-";
               <div class="row form-group">              
                 <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
                   <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email">
+                  <input type="email" class="form-control" name="member_email" placeholder="ex)***@gmail.com">
                 </div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
                   <label class="text-black" for="birth">생년월일</label> 
                   <input type="text"  class="form-control" name="member_birth" 
-                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
+                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10" placeholder="ex)19900101">
                 </div>
               </div>
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
                   <label class="text-black" for="phone">전화번호</label> 
-                  <input type="text" class="form-control" name="member_phone" >
+                  <input type="text" class="form-control" name="member_phone" 
+                  onkeyup="auto_phone(event, this)" onkeypress="auto_phone(event, this)" maxlength="13" placeholder="ex)01012345678">
                 </div>
               </div>
               
