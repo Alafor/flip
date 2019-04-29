@@ -21,4 +21,6 @@ public interface IClassService {
 	public int pageCount(String search, String department, String classType, String selArea);
 	public String chkInclassTime_Create(ClassDto dto);
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
+	//스케줄
+	public List<ClassDto> scheduleList(int memberSeq);
 }

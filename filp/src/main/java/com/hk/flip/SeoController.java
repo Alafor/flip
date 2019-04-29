@@ -15,12 +15,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IClassService;
-import com.hk.flip.service.IClassWishlistService;
 
 /**
  * Handles requests for the application home page.
@@ -102,6 +100,17 @@ public class SeoController {
 		return "listload";
 	}	
 	
-	
+	//캘린더
+	@RequestMapping(value = "/scheduleCalendar.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String mySchedule(Locale locale, Model model, HttpServletRequest request) {
+		logger.info("Schedual select{}.", locale);
+		HttpSession session = request.getSession();
+		MemberDto memberDto = (MemberDto)session.getAttribute("logInMember");
+		System.out.println("세션확인"+memberDto);
+		int memberSeq = memberDto.getMember_seq();
+		List<ClassDto> myScheduleList = classService.scheduleList(memberSeq);
+		model.addAttribute("myschedule",myScheduleList);
+		return "mySchedule";
+	}
 }
 

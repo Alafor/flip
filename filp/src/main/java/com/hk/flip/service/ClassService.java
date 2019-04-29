@@ -1,10 +1,12 @@
 package com.hk.flip.service;
 
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.flip.daos.IClassDao;
 import com.hk.flip.daos.IInclassDao;
@@ -116,5 +118,11 @@ public class ClassService implements IClassService {
 	@Override
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea){
 		return classDao.areaCount(search, department, classType, selArea);
+	}
+	@Override
+	public List<ClassDto> scheduleList(int memberSeq){
+		List<ClassDto> schedulList = classDao.scheduleList(memberSeq);
+		
+		return 
 	}
 }

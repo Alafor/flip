@@ -453,4 +453,18 @@
 		</where>
 		GROUP BY ALLLIST.CLASS_AREA
 	</select>
+	<select id="myschedule" parameterType="int" resultType="ClassDto">
+		SELECT
+			C.SEQ,
+			C.CLASS_SD,
+			C.CLASS_CD,
+			C.CLASS_STARTTIME,
+			C.CLASS_WEEK
+		FROM
+			INCLASS INC, CLASS C
+		WHERE
+			INC.INCLASS_CLASS_SEQ = C.SEQ
+		AND
+			INC.INCLASS_MEMBER_SEQ = #{memberSeq};
+	</select>
 </mapper>
