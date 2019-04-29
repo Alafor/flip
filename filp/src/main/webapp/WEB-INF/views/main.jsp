@@ -71,7 +71,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-light" style="padding-bottom: 20px">
+		<div class="bg-white" style="padding-bottom: 20px">
 			<div class="container" >
 			<!-- 카테고리 시작 -->
 				<div class="overlap-category mb-5">

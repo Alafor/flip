@@ -391,8 +391,5 @@ public class INController {
 		return "AddClassForm";
 	}
 
-
-
-
 	
 }
