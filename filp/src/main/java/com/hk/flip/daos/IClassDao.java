@@ -23,5 +23,6 @@ public interface IClassDao {
 	//지역검색
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	public int insertClass(ClassDto classDto);
-	
+	//칼린다
+	public List<ClassDto> scheduleList(int memberSeq);
 }

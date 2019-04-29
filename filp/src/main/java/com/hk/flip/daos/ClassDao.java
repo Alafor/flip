@@ -104,5 +104,8 @@ public class ClassDao implements IClassDao {
 		searchFilter.put("selArea", selArea);
 		return sqlsession.selectList(nameSpace + "areaCount",searchFilter);
 	}
-	
+	@Override
+	public List<ClassDto> scheduleList(int memberSeq){
+		return sqlsession.selectList(nameSpace+"myschedule",memberSeq);
+	}
 }

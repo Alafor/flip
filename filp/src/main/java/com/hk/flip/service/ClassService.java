@@ -117,4 +117,8 @@ public class ClassService implements IClassService {
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea){
 		return classDao.areaCount(search, department, classType, selArea);
 	}
+	@Override
+	public List<ClassDto> scheduleList(int memberSeq){
+		return classDao.scheduleList(memberSeq);
+	}
 }
