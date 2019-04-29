@@ -168,7 +168,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- 이까지 -->
+			<!-- 카테고리 종료-->
 			<div class="container">
 				<ul class="tabs">
 					<li class="tab-link current" data-tab="tab-1">선생님 <span
@@ -182,8 +182,6 @@
 					</li>
 				</ul>
 			</div>
-		
-			
 			</div>
 			<div class="site-section bg-white">
 				<div class="container">
@@ -202,6 +200,7 @@
 	<div class="param" id="search" data-param="${paramList.search}"></div>
 	<div class="param" id="category" data-param="${paramList.category}"></div>
 	<div class="param" id="classType" data-param="${paramList.classType}"></div>
+	<div class="param" id="addArea" data-param="${addArea}"></div>
 	
 	<!-- site-wrap div 종료 -->
 	<!-- footer종료 -->

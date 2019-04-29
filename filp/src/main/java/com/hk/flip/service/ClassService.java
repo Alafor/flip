@@ -38,7 +38,7 @@ public class ClassService implements IClassService {
 	}
 	//강의 상세보기
 	@Override
-	public List<ClassDto> getCdetail(int class_seq) {
+	public ClassDto getCdetail(int class_seq) {
 		// TODO Auto-generated method stub
 		return classDao.getCdetail(class_seq);
 	}
@@ -99,15 +99,15 @@ public class ClassService implements IClassService {
 		return null;
 	}
 	@Override
-	public List<ClassDto> searchList(String search, String department, String classType, int count){
-		return classDao.searchList(search, department, classType, count);
+	public List<ClassDto> searchList(String search, String department, String classType, int count, String selArea){
+		return classDao.searchList(search, department, classType, count, selArea);
 	}
 	@Override
-	public int pageCount(String search, String department, String classType) {
-		return classDao.pageCount(search, department, classType);
+	public int pageCount(String search, String department, String classType, String selArea) {
+		return classDao.pageCount(search, department, classType, selArea);
 	}
 	@Override
-	public List<ClassDto> areaCount(String search, String department, String classType){
-		return classDao.areaCount(search, department, classType);
+	public List<ClassDto> areaCount(String search, String department, String classType, String selArea){
+		return classDao.areaCount(search, department, classType, selArea);
 	}
 }

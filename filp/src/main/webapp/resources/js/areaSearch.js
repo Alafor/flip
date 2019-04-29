@@ -1,5 +1,5 @@
 $(function(){	
-	var arealength_c = $('#areasize-c').attr('data-areasize');
+	/*var arealength_c = $('#areasize-c').attr('data-areasize');
 	for(i=0;i<arealength_c;i++){
 			var areas1 = $('.carea').eq(i).attr('data-area');
 			$('.carea').eq(i).text(areas1);
@@ -16,7 +16,16 @@ $(function(){
 			var areas3 = $('.sarea').eq(i).attr('data-area');
 			$('.sarea').eq(i).text(areas3);
 			$('#sarea-'+i).val(areas3);
-	}
+	}*/
+	$('.dropdown').on('click',function(){
+		
+		if($('.search-area').css('display')=='none'){
+			$('.search-area').slideDown(200);
+		}else if($('.search-area').css('display')!='none'){
+			$('.search-area').slideUp(200);
+		}
+	});
+	
 	$('label').on('click',function(){
 		if($(this).find('.areachk').is(':checked')){
 			$(this).css('background-color','#30E3CA');

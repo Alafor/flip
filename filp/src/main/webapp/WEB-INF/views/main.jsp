@@ -34,9 +34,6 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
-
-
-
 </head>
 <body>
 	<div class="site-wrap">

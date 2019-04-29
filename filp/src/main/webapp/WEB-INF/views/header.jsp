@@ -41,16 +41,16 @@
 								class="border-left pl-xl-4"></span><b>로그인</b></a></li>
 						<li><a href="signupform.do"><b>회원가입</b></a></li>
 						<li><a href="t_signupform.do"><b>강사가입</b></a></li>
-						<li><a href="class_addform.do" class="cta"><span
-								class="bg-primary text-white rounded">강의등록</span></a></li>
+						<!-- <li><a href="#" class="cta"><span
+								class="bg-primary text-white rounded">강의등록</span></a></li> -->
 					</c:if>
 					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login" ><a href="mypage.do"><span
-								class="border-left pl-xl-3" ></span><b>${logInMember.member_name }</b></a></li>
+								class="border-left pl-xl-3" ></span><b>${logInMember.member_name}</b></a></li>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
-						<li><a href="class_addform_c.do" class="cta"><span
-								class="bg-primary text-white rounded">강의등록</span></a></li>
+						<li><a href="class_addform_c.do" class="cta">
+						<span class="bg-primary text-white rounded">강의등록</span></a></li>	
 					</c:if>
 				</ul>
 			</nav>

@@ -303,6 +303,9 @@
 		<if test="classType != null">
 			AND C.CLASS_TYPE = #{classType}
 		</if>
+		<if test="selArea != null">
+			AND REGEXP_LIKE (C.CLASS_AREA,#{selArea})
+		</if>
 		) ALLLIST
 		<where>
 			<if test="search != null">
@@ -367,6 +370,9 @@
 		<if test="classType != null">
 			AND C.CLASS_TYPE = #{classType}
 		</if>
+		<if test="selArea != null">
+			AND REGEXP_LIKE (C.CLASS_AREA,#{selArea})
+		</if>
 		) ALLLIST
 		<where>
 			<if test="search != null">
@@ -426,6 +432,9 @@
 		</if>
 		<if test="classType != null">
 			AND C.CLASS_TYPE = #{classType}
+		</if>
+		<if test="selArea != null">
+			AND REGEXP_LIKE (C.CLASS_AREA,#{selArea})
 		</if>
 		) ALLLIST
 		<where>

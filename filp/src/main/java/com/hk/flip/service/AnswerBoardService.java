@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.flip.daos.IAnswerBoardDao;
 import com.hk.flip.dtos.AnswerBoardDto;
+import com.hk.flip.dtos.PagingDto;
 
 @Service
 public class AnswerBoardService implements IAnswerBoardService {
@@ -16,8 +17,8 @@ public class AnswerBoardService implements IAnswerBoardService {
 	private IAnswerBoardDao ansDao;
 
 	@Override
-	public List<AnswerBoardDto> getAllList() {	
-		return ansDao.getAllList();
+	public List<AnswerBoardDto> getAllList(PagingDto paging) {	
+		return ansDao.getAllList(paging);
 	}
 
 	@Override
@@ -53,6 +54,11 @@ public class AnswerBoardService implements IAnswerBoardService {
 		System.out.println("리플서비스:"+dto.getBoard_seq());
 		int cnt = ansDao.replyBoardInsert(dto);
 		return cnt>0?true:false;
+	}
+
+	@Override
+	public int selectTotalPaging() {
+		return ansDao.selectTotalPaging();
 	}
 
 }

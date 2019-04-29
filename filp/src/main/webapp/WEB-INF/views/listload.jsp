@@ -34,12 +34,24 @@
 		height:40px;
 		background-color: gray;
 	}
+	.dropdown{
+		font-size: 10px;
+		color:white;
+		border: none;
+		background-color: gray;
+	}
+	.search-area{
+		background-color: gray;
+	}
 </style>
 </head>
 <body>
-	<div class="row mb-5">
-		<div class="search-area" data-search>
-			<form action="searchlist.do">
+		
+		<div class="container search-area" data-search>
+			<form action="searchlist.do" method="post" >
+			<input type="hidden" name="search" value="${paramList.search}" />
+			<input type="hidden" name="department" value="${paramList.category}" />
+			<input type="hidden" name="classType" value="${paramList.classType}" />
 			<c:set value="${searchList[0].class_type}" var="class_type"></c:set>
 			<c:choose>
 				<c:when test="${class_type eq 'C'}">
@@ -47,7 +59,7 @@
 					<c:forEach var="areaList" items="${areaList}"  varStatus="seq">
 						<label for="carea-${seq.index}">
 							<input type="checkbox" class="areachk" name="selectedarea" id="carea-${seq.index}" value="${areaList.class_area}" />
-							<span class="carea" data-area="${areaList.class_area}"></span>
+							<span class="carea" data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 						</label>	
 					</c:forEach>
@@ -58,7 +70,7 @@
 						<label for="sarea-${seq.index}">
 							<input type="checkbox" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
-							<span class="sarea" data-area="${areaList.class_area}"></span>
+							<span class="sarea" data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 							</span>
 						</label>	
@@ -70,17 +82,18 @@
 						<label for="warea-${seq.index}">
 							<input type="checkbox" class="areachk" name="selectedarea" id="warea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
-							<span class="warea" data-area="${areaList.class_area}"></span>
+							<span class="warea" data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 							</span>
 						</label>	
 					</c:forEach>
 				</c:when>
 			</c:choose> 
-			<input type="submit" value="선택지역 검색">
+			<input id="subs" type="submit" value="선택지역 검색">
 			</form>
 		</div>
-	</div>
+		<button class="dropdown"><img alt="updown" src="resources/images/up.png">&nbsp;&nbsp;&nbsp;지역 검색</button>
+	<div class="container">
 	<div class="row mb-5">
 		<div class="col-md-7 text-left border-primary">
 			<h2 class="font-weight-light text-primary">
@@ -125,7 +138,7 @@
 		</div>
 		</c:forEach>
 		</div>
-		
+		</div>
 <script defer
 		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
 		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"

@@ -7,9 +7,8 @@ $(document).ready(function() {
 			var search = $("#search").attr("data-param");
 			var category = $("#category").attr("data-param");
 			var classType = $("#classType").attr("data-param");
+			var addArea = $("#addArea").attr("data-param")
 			
-			
-//			alert("search: "+search+"category: "+category+"classType: "+classType);
 			//클래스 탭메뉴 
 			classReset();
 			pageLoad();//페이지 로드 시 listload 로드
@@ -39,25 +38,21 @@ $(document).ready(function() {
 				
 				//펑션 모음
 				function pageLoad(){
-					
-					if(!(!classType)&&!search&&!category){
-						//메인에서 클래스 타입만 클릭했을때
+					//alert("지역: "+addArea+", 카테고리: "+category+", classType: "+classType+" search: "+search);
+					if(!search && !category && !addArea){
+						//클래스 타입 선택해서 들어왔을 경우
 						$("div.current").load("listload.do?classType="+classType);
-					}else if(!(!search) && !classType && !category){
-						//검색으로 들어왔을때
-						
-						$("div.current").load("listload.do?classType=W&search="+search);
-					}else if(!(!search) && !(!classType) && !category){
-						//검색 후 클래스 클릭했을때
-						
-						$("div.current").load("listload.do?classType="+classType+"&search="+search);
-					}else if(!(!category) && !classType && !search){
-						//카테고리 눌러서 들어왔을때
-						
-						$("div.current").load("listload.do?classType=W&department="+category);
-					}else if(!(!category) && !(!classType) && !search){
-						//카테고리 클릭 후 클래스 눌렀을때
+					}else if(!(!addArea) && !search && !category){
+						//지역 선택 했을 경우
+						$("div.current").load("listload.do?classType="+classType+"&selArea="+addArea);
+					}else if(!(!category) && !search && !addArea){
 						$("div.current").load("listload.do?classType="+classType+"&department="+category);
+					}else if(!(!category) && !(!addArea) && !search){
+						$("div.current").load("listload.do?classType="+classType+"&department="+category+"&selArea="+addArea);
+					}else if(!(!search) && !category && !addArea){
+						$("div.current").load("listload.do?classType="+classType+"&search="+search);
+					}else if(!(!search) && !(!addArea) && !category){
+						$("div.current").load("listload.do?classType="+classType+"&search="+search+"&selArea="+addArea);
 					}
 				};
 				
@@ -99,5 +94,7 @@ $(document).ready(function() {
 						$('ul.tabs li').eq(0).addClass('current');
 						$("#" + tab_id).addClass('current');
 					}
+					
+					$()
 				};
 		});

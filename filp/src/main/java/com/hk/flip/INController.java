@@ -31,6 +31,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.flip.dtos.AnswerBoardDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.dtos.PagingDto;
 import com.hk.flip.service.IAnswerBoardService;
 import com.hk.flip.service.IMemberService;
 import com.hk.flip.service.UserMailSendService;
@@ -66,15 +67,32 @@ public class INController {
 		HttpSession session =request.getSession();
 		MemberDto dto = memberService.logCheck(id,password);
 		System.out.println("dto:"+dto);
-		System.out.println("dto.getMember_key:"+dto.getMember_key());
+
 		if(dto!=null&&(dto.getMember_key()).equals("Y")) {	
 			session.setAttribute("logInMember", dto );	
 			return "redirect:main.do";
-		}else{
-			model.addAttribute("msg", "이메일인증을 하지 않으셨거나 없는 아이디 입니다." );
+		}else if(dto==null){
+			model.addAttribute("msg", " 아이디와패스워드가 다릅니다." );
+			model.addAttribute("url","loginform.do");
+			return "Redirect";
+		}else {
+		model.addAttribute("msg", "이메일인증을 하지 않으셨습니다.메일 인증 하신후에 서비스 이용바랍니다." );
 			model.addAttribute("url","loginform.do");
 			return "Redirect";
 		}
+		
+	/*	if(dto==null){
+			model.addAttribute("msg", " 아이디 없습니다." );
+			model.addAttribute("url","loginform.do");
+			return "Redirect";
+		}else if((dto.getMember_key()).equals("Y")) {	
+			session.setAttribute("logInMember", dto );	
+			return "redirect:main.do";
+		}else {
+			model.addAttribute("msg", " 인증을 해라 ." );
+			model.addAttribute("url","loginform.do");
+			return "Redirect";
+		}*/
 	}
 	
 	@RequestMapping(value = "/logout.do", method = RequestMethod.GET)//로그아웃
@@ -167,14 +185,25 @@ public class INController {
 		}
 	}
 	
-	@RequestMapping(value = "/ansboard.do", method = RequestMethod.GET)
-	public String ansboard(Locale locale, Model model) {
+	
+	
+	//문의게시판 페이징 처리
+	@RequestMapping(value = "/ansboard.do", method = {RequestMethod.POST,RequestMethod.GET})
+	public String ansboard(Locale locale, Model model,PagingDto paging) {
 		logger.info("문의게시판 이동 {}.", locale);	
-		List<AnswerBoardDto> list = ansService.getAllList();
-		System.out.println("list:"+list);
+		List<AnswerBoardDto> list = ansService.getAllList(paging);
+		System.out.println("페이징list:"+list);
+		paging.setTotal(ansService.selectTotalPaging());
+		System.out.println("토탈갯수:"+paging.getTotal());
 		model.addAttribute("list", list);
+		model.addAttribute("p", paging);
+		
 		return "ContactUs/AnsBoard";
 	}
+	
+	
+	
+	
 	
 	@RequestMapping(value = "/ansinsertform.do", method = RequestMethod.GET)
 	public String ansinsertform(Locale locale, Model model) {

@@ -10,6 +10,7 @@
 		<typeAlias type="com.hk.flip.dtos.InclassDto" alias="InclassDto"/>
 		<typeAlias type="com.hk.flip.dtos.MemberDto" alias="MemberDto"/>
 		<typeAlias type="com.hk.flip.dtos.ReviewDto" alias="ReviewDto"/>
+		<typeAlias type="com.hk.flip.dtos.PagingDto" alias="PagingDto"/>
 	</typeAliases>
 	
 	<mappers>

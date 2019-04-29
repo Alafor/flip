@@ -49,8 +49,8 @@ public class ClassDao implements IClassDao {
 	
 	//강사들의 강의 상세보기 페이지
 	@Override
-	public List<ClassDto> getCdetail(int class_seq){
-		return sqlsession.selectList(nameSpace+"getCdetail", class_seq);
+	public ClassDto getCdetail(int class_seq){
+		return sqlsession.selectOne(nameSpace+"getCdetail", class_seq);
 	}
 	
 	//강의 등록
@@ -68,29 +68,32 @@ public class ClassDao implements IClassDao {
 	
 	//검색 리스트
 	@Override
-	public List<ClassDto> searchList(String search, String department, String classType, int count){
+	public List<ClassDto> searchList(String search, String department, String classType, int count, String selArea){
 		Map<String, String> searchFilter = new HashMap<String, String>();
 		searchFilter.put("search", search);
 		searchFilter.put("department",department);
 		searchFilter.put("classType", classType);
 		searchFilter.put("count", String.valueOf(count));
+		searchFilter.put("selArea", selArea);
 		return sqlsession.selectList(nameSpace + "searchlist",searchFilter);
 	}
 	//페이징 페이지 카운트
 	@Override
-	public int pageCount(String search, String department, String classType) {
+	public int pageCount(String search, String department, String classType, String selArea) {
 		Map<String, String> searchFilter = new HashMap<String, String>();
 		searchFilter.put("search", search);
 		searchFilter.put("department",department);
 		searchFilter.put("classType", classType);
+		searchFilter.put("selArea", selArea);
 		return sqlsession.selectOne(nameSpace + "pageCount",searchFilter);
 	}
 	@Override
-	public List<ClassDto> areaCount(String search, String department, String classType) {
+	public List<ClassDto> areaCount(String search, String department, String classType, String selArea) {
 		Map<String, String> searchFilter = new HashMap<String, String>();
 		searchFilter.put("search", search);
 		searchFilter.put("department",department);
 		searchFilter.put("classType", classType);
+		searchFilter.put("selArea", selArea);
 		return sqlsession.selectList(nameSpace + "areaCount",searchFilter);
 	}
 	
