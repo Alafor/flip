@@ -80,29 +80,6 @@ nav > div a.nav-item.nav-link:focus
     border-radius:0;
     transition:background 0.20s linear;
 }
-/* .info{
-	border:2px solid #000;
-	position: fixed; 
-	right: 50%; 
-	top: 180px; 
-	margin-right: -615px;
-	text-align:center;
-	width:70px;
-	border-radius: 8px;
-	-webkit-border-radius: 8px;
- }
-.floating div:nth-child(1){
-   border:2px solid #ff3535;
-   border-radius: 8px;
-}
-.floating div:nth-child(2){
-   border:2px solid #ff3535;
-   border-radius: 8px;
-}
-.floating  div:nth-child(3){
-   border:2px solid #ff3535;
-   border-radius: 8px;
-} */
 </style>
 <!-------------------------------------->
 </head>
@@ -159,192 +136,95 @@ nav > div a.nav-item.nav-link:focus
 
 
 					<!-- 강의 이미지 -->
-				
-				<div class="container">
-						<div class="user-image">
-							<img src="resources/images/3.jpg" alt="Image"
-								class="img-fluid mb-3"> ${clist.class_img}
-						</div>
-					
-					<!-- 강사 상세보기와 같은 부트스트랩 적용 -->
-					 <!-- 탭 이동 메뉴 -->
+
 					<div class="container">
+						<div class="class_image">
+							<img src="resources/images/3.jpg" alt="Image"
+								class="img-fluid mb-3"> ${cDto.class_img}
+						</div>
+
+						<!-- 강의 이름 -->
+						<div class="class_name">
+							<h3>${cDto.class_name}</h3>
+						</div>
+
+						<!-- 강사 별 --->
+						<div class="mb-0 teacherstar" data-minority="${tDto.avg}"
+							onclick="gogostar(this)"></div>
+
+						<!-- 강사 상세보기와 같은 부트스트랩 적용 -->
+						<!-- 탭 이동 메뉴 -->
+						<div class="container">
 							<div class="row">
 								<div class="col-xs-12 ">
 									<nav>
 									<div class="nav nav-tabs nav-fill" id="nav-tab" role="tablist">
 										<a class="nav-item nav-link active" id="nav-home-tab"
 											data-toggle="tab" href="#nav-home" role="tab"
-											aria-controls="nav-home" aria-selected="true">TOP</a> <a
+											aria-controls="nav-home" aria-selected="	true">TOP</a> <a
 											class="nav-item nav-link" id="nav-profile-tab"
 											data-toggle="tab" href="#nav-profile" role="tab"
-											aria-controls="nav-profile" aria-selected="false">Introduction</a>
-										<a class="nav-item nav-link" id="nav-contact-tab"
-											data-toggle="tab" href="#nav-contact" role="tab"
-											aria-controls="nav-contact" aria-selected="false">Class
-											Information</a>
-										<!-- <a class="nav-item nav-link" id="nav-about-tab"
-										data-toggle="tab" href="#nav-about" role="tab"
-										aria-controls="nav-about" aria-selected="false">Review</a> 
-										
-										#강의 상세보기 쿼리에 리뷰 디테일 없음 -->
+											aria-controls="nav-profile" aria-selected="false">Teacher
+											Introduction</a> <a class="nav-item nav-link"
+											id="nav-contact-tab" data-toggle="tab" href="#nav-contact"
+											role="tab" aria-controls="nav-contact" aria-selected="false">Class
+											Information </a> <a class="nav-item nav-link" id="nav-about-tab"
+											data-toggle="tab" href="#nav-about" role="tab"
+											aria-controls="nav-about" aria-selected="false">Review</a>
 									</div>
 									</nav>
 									<!-- top 탭의 내용 -->
 									<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 										<div class="tab-pane fade show active" id="nav-home"
 											role="tabpanel" aria-labelledby="nav-home-tab">
-											${cDto.class_name}</div>
-										<!-- introduction 탭의 내용 -->
+											<span>강의명 : ${cDto.class_name}</span></br> <span>강의 소개
+												:${cDto.class_info} </span></br> <span>강사님 :
+												${cDto.class_creator_name}</span></br> <span>지역 :
+												${cDto.class_area}</span></br> <span>가격 : ${cDto.class_price}원</span>
+										</div>
+										<!-- Teacher 탭의 내용 -->
 										<div class="tab-pane fade" id="nav-profile" role="tabpanel"
-											aria-labelledby="nav-profile-tab">${cDto.class_info}</div>
+											aria-labelledby="nav-profile-tab">
+											<span>강사님 소개 </br> ${cDto.class_creator_name}
+											</span> <span></span>
+										</div>
+
+
 										<!-- class information 탭의 내용 -->
 										<div class="tab-pane fade" id="nav-contact" role="tabpanel"
 											aria-labelledby="nav-contact-tab">
-											<%-- 테스트 값 나오나 하나만 받아보기 ${clist[0].class_name} --%>
-											<!-- 강의 상세보기 가져오기 -->
+											<span>강의 소개 : ${cDto.class_detail}</span></br>
+											<span>강의 지역 : ${cDto.class_area}</span></br> 
+											<span>강의 가격 : ${cDto.class_price}원 </span></br>
+											<span>강의 시작일 : ${cDto.class_sd}</span></br> 
+											<span>강의 종료일 : ${cDto.class_cd}</span></br> 
+											<span>강의 시작시간 : ${cDto.class_starttime}</span></br> 
+											<span>강의 시간 :${cDto.class_time}분</span></br>
+											<span>현재 강의 참가중인 인원 :${cDto.class_now_participation}명</span></br>
+											<span>시작까지 남은 디데이 :${cDto.class_d_day}일</span>
+										</div>
+
+										<!-- review 탭의 내용 -->
+										<div class="tab-pane fade" id="nav-about" role="tabpanel"
+											aria-labelledby="nav-about-tab">
+											<!-- 후기 목록 가져오기 -->
 											<table>
-												<tr>
-													<td>${cDto.class_name}</td>
-												</tr>
+												<c:forEach items="${rDto}" var="reviewdto">
+													<tr>
+														<td>${reviewdto.review_detail}</td>
+													</tr>
+												</c:forEach>
 											</table>
-										</div>
-										<!-- floating메뉴 -->
-										<div class="info">
-											<ul>
-												<li class="area">${cDto.class_area}</li>
-												<li class="hour">${cDto.class_time}</li>
-												<li class="price">${cDto.class_price}</li>
-												<li class="participation">${cDto.class_now_participation}</li>
-												<li class="d-day">${cDto.class_d_day}</li>
-											</ul>
-										</div>
-
-										<div class="class_detail detail_sec_bor" id="tutorinfo">
-											<div class="select01" id="tutor">
-												<div class="cert">
-													<ul>
-														<li class="com">${cDto.class_detail}</li>
-													</ul>
-												</div>
-											</div>
 
 
-											<!-- 탈잉 메뉴 -->
 
-
-											<%-- <div class="class_price" id="class_price" style="position : relative; top:0px; left:0px;">
-					
-					
-					
-					<div id="class_navi" class="class_navi" style="left: 0px">
-					<ul>
-						<li>
-							<a href="#top" class="on" id="top">Top</a>
-						</li>
-						<li>
-							<a href="#Introduction" class="on" id="Introduction">Introduction</a>
-						</li>
-						<li>
-							<a href="#Class Information" class="on" id="Class Information">Class Information</a>
-						</li>
-					</ul>
-					</div>
-					
-					<div class="class_detail" id="top">
-					<div class="class_name">
-					<div class="tutor_img">
-						<a href="resources/images/3.jpg" target="blank"></a>
-					</div>
-					
-					<div class="class_title">
-						<div class="title">${cDto.class_name}</div>
-						</div>
-					</div>
-					
-						
-						<!-- 별점 -->
-						
-						
-						<div class="info">
-						<ul>
-							<li class="area">${cDto.class_area}</li>
-							<li class="hour">${cDto.class_time}</li>
-							<li class="participation">${cDto.class_participation}</li>
-							<li class="d-day">${cDto.class_d_day}</li>
-						</ul>
-						</div>
-						
-						<div class="class_detail detail_sec_bor" id="tutorinfo">
-							<div class="select01" id="tutor">
-							<h1>강사정보</h1>
-							<div class="cert">
-								<ul>
-									<li class="com">${cDto.class_info}</li>
-								</ul>
-							</div>
-							</div>
-						<script>
-							function display(id, val) {
-								if(val == 1){
-								document.getElementById(id).style.display="none"
-								document.getElementById(id+'Full').style.display="block";
-								document.getElementById(id+'Open').style.display="none";
-								document.getElementById(id+'Close').style.display="block";
-							
-								}else{
-									document.getElementById(id).style.display="block"
-									document.getElementById(id+'Full').style.display="block";
-									document.getElementById(id+'Open').style.display="none";
-									document.getElementById(id+'Close').style.display="block";
-								}
-							}
-						
-						</script> --%>
-
-											<!-- ---------------------------------------------------------------------------------------- -->
-
-
-											<%-- <!-- review 탭의 내용 -->
-									<div class="tab-pane fade" id="nav-about" role="tabpanel"
-										aria-labelledby="nav-about-tab">
-										값 나오나 하나만 받아보기 ${rDto[0].review_detail}
-										<!-- 후기 목록 가져오기 -->
-										<table>
-											
-												<tr>
-													<td>${rDto.review_detail}</td>
-												</tr>
-										
-										</table>
-									</div> --%>
 										</div>
 									</div>
 								</div>
 							</div>
-
-
-							<!-- 임시로 값 받아오기--> <%-- ${cDto[0].class_name}
-${cDto[0].class_info}
-<fmt:formatDate value="${cDto[0].regdate}" pattern="yyyyMMdd"/>
-${cDto[0].class_area}
-${cDto[0].class_depa}
-<fmt:formatDate value="${cDto[0].class_sd}" pattern="yyyyMMdd"/> 
-<fmt:formatDate value="${cDto[0].class_cd}" pattern="yyyyMMdd"/>
-${cDto[0].class_week}
-${cDto[0].class_starttime}
-${cDto[0].class_time}
-${cDto[0].class_price}
-${cDto[0].class_participation}
-${cDto[0].class_detail}
-${cDto[0].class_img}
-${cDto[0].class_hashtag}
-${cDto[0].class_member_rating}
-${cDto[0].class_now_participation}
-${cDto[0].class_d_day} --%>
-
-
-
+						</div>
+					</div>
+	
 
 			<!-- footer시작 -->
 				

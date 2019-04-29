@@ -191,10 +191,11 @@
 	<select id="getCdetail" parameterType="int"
 		resultType="ClassDto">
 		  SELECT
-		d.member_name,
+		d.member_name as class_creator_name,
 		A.CLASS_TYPE, A.SEQ, A.CLASS_NAME, A.REGDATE, A.CLASS_INFO,
 		A.CLASS_AREA,
-		A.CLASS_DEPA , A.CLASS_SD , A.CLASS_CD, A.CLASS_WEEK,
+		A.CLASS_DEPA , TO_CHAR(A.CLASS_SD,'YYYY-MM-DD') as CLASS_SD,
+		 TO_CHAR(A.CLASS_CD,'YYYY-MM-DD') as CLASS_CD, A.CLASS_WEEK,
 		A.CLASS_STARTTIME
 		, A.CLASS_TIME
 		, A.CLASS_PRICE, A.CLASS_PARTICIPATION,
@@ -230,10 +231,10 @@
 	</select>
 	
 	<!-- 강의 상세보기 페이지-강사가 진행했던 강의의 후기 리스트 -->
-	<select id="getTreview" parameterType="int" resultType="ReviewDto">
-		SELECT REVIEW.REVIEW_CLASS_SEQ,REVIEW.REVIEW_DETAIL, CLASS.CLASS_MEMBER_SEQ, REVIEW.REVIEW_RATING, CLASS.CLASS_NAME, REVIEW.REVIEW_MEMBER_SEQ FROM REVIEW, CLASS WHERE REVIEW.REVIEW_Class_SEQ = CLASS.SEQ AND CLASS.CLASS_MEMBER_SEQ = #{member_seq}
+	<select id="getCreview" parameterType="int" resultType="ReviewDto">
+		SELECT CLASS.SEQ, REVIEW.REVIEW_SEQ, REVIEW.REVIEW_MEMBER_SEQ, REVIEW.REVIEW_RATING, REVIEW.REVIEW_DETAIL, REVIEW.REVIEW_DELFLAG, REVIEW.REVIEW_REGDATE FROM REVIEW, CLASS WHERE REVIEW.REVIEW_Class_SEQ = CLASS.SEQ AND CLASS.SEQ = #{class_seq}
 	</select>
-
+	
 	<!-- 검색리스트 -->
 	<select id="searchlist" parameterType="Map"
 		resultType="ClassDto">

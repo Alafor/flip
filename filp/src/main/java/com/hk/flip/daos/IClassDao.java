@@ -3,6 +3,7 @@ package com.hk.flip.daos;
 import java.util.List;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.ReviewDto;
 //메인 강의목록
 public interface IClassDao {
 	//메인 강의 목록
@@ -13,6 +14,8 @@ public interface IClassDao {
 	public List<ClassDto> mainWantList(String department);
 	//강의 상세보기
 	public ClassDto getCdetail(int class_seq);
+	//강의 상세보기-후기 리스트
+	public List<ReviewDto> getCreview(int class_seq);
 
 	//검색 리스트
 	public List<ClassDto> searchList(String search, String department, String classType, int count, String selArea);
@@ -20,4 +23,5 @@ public interface IClassDao {
 	//지역검색
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	public int insertClass(ClassDto classDto);
+	
 }

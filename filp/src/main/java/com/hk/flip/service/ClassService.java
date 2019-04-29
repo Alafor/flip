@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.hk.flip.daos.IClassDao;
 import com.hk.flip.daos.IInclassDao;
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.ReviewDto;
 
 @Service
 public class ClassService implements IClassService {
@@ -41,6 +42,12 @@ public class ClassService implements IClassService {
 	public ClassDto getCdetail(int class_seq) {
 		// TODO Auto-generated method stub
 		return classDao.getCdetail(class_seq);
+	}
+	
+	//강의 상세보기-후기리스트
+	@Override
+	public List<ReviewDto> getCReview(int class_seq) {
+		return classDao.getCreview(class_seq);
 	}
 	//강의 등록전 체크하기
 	@Override

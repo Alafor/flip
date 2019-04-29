@@ -156,7 +156,7 @@ nav > div a.nav-item.nav-link:focus
 							<h3>${tDto.member_name}</h3>
 						</div>
 
-						<!-- 강사 별 // 홍민씨가 하기로 함-->
+						<!-- 강사 별 --->
 						<div class="mb-0 teacherstar" data-minority="${tDto.avg}" onclick="gogostar(this)">
 						</div>
 

@@ -3,6 +3,7 @@ package com.hk.flip.service;
 import java.util.List;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.ReviewDto;
 
 public interface IClassService {
 	//메인 강의목록
@@ -11,6 +12,8 @@ public interface IClassService {
 	public List<ClassDto> mainWantList(String department);
 	//강의 상세보기
 	public ClassDto getCdetail(int member_seq);
+	//강의 상세보기-강의 후기 가져오기
+	public List<ReviewDto> getCReview(int class_seq);
 	//강의 등록하기
 	public String addClass(ClassDto dto);
 	public List<ClassDto> searchList(String search, String department, String classType, int count,String selArea);

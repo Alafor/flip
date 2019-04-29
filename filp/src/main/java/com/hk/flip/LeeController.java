@@ -61,7 +61,11 @@ public class LeeController {
 		logger.info("강의상세보기{}.", locale);
 		System.out.println(class_seq);
 		ClassDto getCdetail = classService.getCdetail(class_seq);
-		model.addAttribute("cDto", getCdetail);		
+		List<ReviewDto> getCreview = classService.getCReview(class_seq);
+		System.out.println(getCdetail);
+		System.out.println(getCreview);
+		model.addAttribute("cDto", getCdetail);
+		model.addAttribute("rDto", getCreview);
 		return "cdetail";
 	}
 

@@ -25,6 +25,7 @@ public class ClassDto {
 	private int class_participation;
 	private int class_now_participation;
 	private int class_d_day;
+	
 	//별점 평균
 	private float class_member_rating;
 	//강사, 수강생 프로필 이미지

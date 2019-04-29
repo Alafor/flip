@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.ReviewDto;
 
 @Repository
 public class ClassDao implements IClassDao {
@@ -52,6 +53,13 @@ public class ClassDao implements IClassDao {
 	public ClassDto getCdetail(int class_seq){
 		return sqlsession.selectOne(nameSpace+"getCdetail", class_seq);
 	}
+	
+	//강의 상세보기 페이지-강의 후기 목록
+	@Override
+	public List<ReviewDto> getCreview(int class_seq) {
+	return sqlsession.selectList(nameSpace+"getCreview", class_seq);
+	}
+	
 	
 	//강의 등록
 	@Override
