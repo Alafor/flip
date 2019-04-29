@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>   
 <%response.setContentType("text/html;charset=utf-8"); %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 <head>
 	<title>회원가입</title>
@@ -95,6 +95,24 @@ if( len == 7 ) oThis.value += "-";
 
 }
 
+function auto_phone( e, oThis ){
+
+	var num_arr = [ 
+	97, 98, 99, 100, 101, 102, 103, 104, 105, 96,
+	48, 49, 50, 51, 52, 53, 54, 55, 56, 57
+	]
+
+	var key_code = ( e.which ) ? e.which : e.keyCode;
+	if( num_arr.indexOf( Number( key_code ) ) != -1 ){
+
+	var len = oThis.value.length;
+	if( len == 3 ) oThis.value += "-";
+	if( len == 8 ) oThis.value += "-";
+
+	}
+
+	}
+
 </script>
 
 </head>
@@ -171,28 +189,29 @@ if( len == 7 ) oThis.value += "-";
                 </div>
               </div>
               <div class="row form-group ">              
-                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드확인</label> 
+                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요" >
+                  <label class="text-black" for="password">패스워드확인</label>  
                   <input type="password" id="PwCheck" class="form-control" >
                 </div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
                   <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email">
+                  <input type="email" class="form-control" name="member_email" placeholder="ex)***@gmail.com">
                 </div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
                   <label class="text-black" for="birth">생년월일</label> 
                   <input type="text"  class="form-control" name="member_birth" 
-                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10">
+                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10" placeholder="ex)19900101">
                 </div>
               </div>
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
                   <label class="text-black" for="phone">전화번호</label> 
-                  <input type="text" class="form-control" name="member_phone" >
+                  <input type="text" class="form-control" name="member_phone" 
+                  onkeyup="auto_phone(event, this)" onkeypress="auto_phone(event, this)" maxlength="13" placeholder="ex)01012345678">
                 </div>
               </div>
               

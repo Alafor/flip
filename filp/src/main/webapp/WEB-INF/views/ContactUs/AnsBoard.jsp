@@ -198,7 +198,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 		<td colspan="10">
 			<div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="button" value="글쓰기" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; float: right;" onclick="location.href='ansinsertform.do'">
+                  <input type="button" value="글쓰기" class="btn btn-primary text-white" style="width: 20%; float: right;" onclick="location.href='ansinsertform.do'">
                 </div>
               </div>
 		</td>

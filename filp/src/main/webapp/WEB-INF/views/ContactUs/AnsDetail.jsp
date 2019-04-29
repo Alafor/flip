@@ -106,10 +106,10 @@
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align:right; ;">
-				<input type="button" value="수정" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="ansupdateForm()"/>
-				<input type="button" value="삭제" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="ansdelboard()"/>
-				<input type="button" value="답글" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="ansreplyForm()"/>
-				<input type="button" value="글목록" class="btn btn-primary py-2 px-4 text-white" style="width: 12%; text-align: center;" onclick="location.href='ansboard.do'"/>
+				<input type="button" value="수정" class="btn btn-primary  text-white" style="width: 12%; text-align: center;" onclick="ansupdateForm()"/>
+				<input type="button" value="삭제" class="btn btn-primary text-white" style="width: 12%; text-align: center;" onclick="ansdelboard()"/>
+				<input type="button" value="답글" class="btn btn-primary  text-white" style="width: 12%; text-align: center;" onclick="ansreplyForm()"/>
+				<input type="button" value="글목록" class="btn btn-primary  text-white" style="width: 15%; text-align: center;" onclick="location.href='ansboard.do'"/>
 			</td>
 		</tr>
 	</table>
@@ -142,10 +142,10 @@
 		</tr>
 				<tr>
 					<td colspan="2">
-					<div class="row form-group" style="text-align:right; ;">
+					<div class="row form-group" style="text-align:right; ">
                 <div class="col-md-12">
-						<input type="submit" value="답글등록" class="btn btn-primary py-2 px-4 text-white" style="width: 20%; "> 
-						<input type="button" value="목록가기" class="btn btn-primary py-2 px-4 text-white" style="width: 20%;"
+						<input type="submit" value="답글등록" class="btn btn-primary  text-white" style="width: 20%;"> 
+						<input type="button" value="목록가기" class="btn btn-primary  text-white" style="width: 20%;"
 						onclick="location.href='ansboard.do'" />
 						</div>
 						</div>
