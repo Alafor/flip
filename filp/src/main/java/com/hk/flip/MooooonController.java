@@ -58,15 +58,13 @@ public class MooooonController {
 		String member_name = memberDto.getMember_name();
 		
 		System.out.println("로그인 타입:"+type);
-		
+		model.addAttribute("inclassList", myPageService.getAllInclassList(member_seq));
 		if(type.equals("S")) {
-			model.addAttribute("inclassList", myPageService.getAllInclassList(member_seq));
 			return "s_mypage";
 		}else if(type.equals("T")){
-			
 			return "t_mypage";
 		}else {
-			return "A_mypage";
+			return "admin/A_mypage";
 		}
 	}
 	
@@ -79,15 +77,30 @@ public class MooooonController {
 	@RequestMapping(value = "/class_addform.do", method = RequestMethod.GET)
 	public String class_addform(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("강의등록폼이동{}.", locale);
-//		String class_type = (String)request.getAttribute("classType");
-//		if(class_type.equals("C")) {
-//			return "AddClass_C";
-//		}else if(class_type.equals("S")) {
-//			return "AddClass_S";
-//		}else {
-//			return "AddClass_W";
-//		}
+		String member_type= ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_type();
+		String class_type = (String)request.getAttribute("classType");
+		if(class_type.equals("C")) {
+			if(member_type.equals("S")) {
+				model.addAttribute("msg","강의 등록 권한이 없습니다.");		
+				model.addAttribute("url","addclassform.do");
+				return "Redirect";
+			}
 			return "AddClass_C";
+		}else if(class_type.equals("S")) {
+			if(member_type.equals("T")) {
+				model.addAttribute("msg","스터디 등록 권한이 없습니다.");		
+				model.addAttribute("url","addclassform.do");
+				return "Redirect";
+			}
+			return "AddClass_S";
+		}else {
+			if(member_type.equals("T")) {
+				model.addAttribute("msg","강사 초빙 강의 등록 권한이 없습니다.");		
+				model.addAttribute("url","addclassform.do");
+				return "Redirect";
+			}
+			return "AddClass_W";
+		}
 	}
 	
 	@RequestMapping(value = "/class_add_C.do", method = RequestMethod.POST)
@@ -98,9 +111,6 @@ public class MooooonController {
 		int memberSeq = ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_seq();
 		
 		String[] class_starttime = multi.getParameterValues("class_starttime");
-		for(String s :class_starttime) {
-			System.out.println("수업 시작 시간:"+s);
-		}
 		classdto.setClass_member_seq(memberSeq);
 		classdto.setClass_type(multi.getParameter("class_type"));
 		classdto.setClass_depa(multi.getParameter("class_depa"));
@@ -118,8 +128,9 @@ public class MooooonController {
 		
 		MultipartFile multifile = multi.getFile("member_profile");
 		String origin_fname=multifile.getOriginalFilename();
+		String origin_fextends=origin_fname.substring(origin_fname.lastIndexOf("."));
 		String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
-		String stored_fname = creatUUID+origin_fname.substring(origin_fname.lastIndexOf("."));
+		String stored_fname = creatUUID+origin_fextends;
 		classdto.setClass_img(stored_fname);
 		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
 		File f=new File(saveDirectory+"/class/"+stored_fname);
@@ -129,29 +140,20 @@ public class MooooonController {
 			e.printStackTrace();
 		}
 		System.out.println("경로:"+f);
-		if(class_starttime.length==1) {
-			classdto.setClass_starttime(class_starttime[0]);
-			String rst = classService.addClass(classdto);
-			if(rst==null) {
-				System.out.println(classdto+"수강 성공");
-			}
-		}else {
-			List<ClassDto> list = new ArrayList<ClassDto>();
-			for(String s :class_starttime) {
-				classdto.setClass_starttime(s);
-				list.add(classdto);
-			}
-			for(ClassDto dto :list) {
-				String rst=classService.addClass(dto);
-				if(rst	!=null) {
-					System.out.println(dto+"강의 등록 실패 "+rst);
-					model.addAttribute("msg","강의 등록에 실패했습니다.");		
-					model.addAttribute("url","main.do");
-					return "Redirect";
-				};
-			}
+		
+		List<ClassDto> list = new ArrayList<ClassDto>();
+		for(String s :class_starttime) {
+			System.out.println("리스트에 담길 수업 시작 시간:"+s);
+			classdto.setClass_starttime(s);			
+			String rst=classService.addClass(classdto);
+			if(rst	!=null) {
+				System.out.println(classdto+"강의 등록 실패 "+rst);
+				model.addAttribute("msg","강의 등록에 실패했습니다.");		
+				model.addAttribute("url","main.do");
+				return "Redirect";
+			};
 		}
-		model.addAttribute("msg","강의가 등록 되었습니다.");		
+		model.addAttribute("msg",class_starttime.length+"개의 강의가 등록 되었습니다.");		
 		model.addAttribute("url","main.do");
 		return "Redirect";
 	}
