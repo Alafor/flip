@@ -455,7 +455,6 @@
 	</select>
 	<select id="myschedule" parameterType="int" resultType="ClassDto">
 		SELECT
-			INC.INCLASS_MEMBER_SEQ CLASS_CREATOR_NAME,
 			C.SEQ,
 			C.CLASS_SD,
 			C.CLASS_CD,

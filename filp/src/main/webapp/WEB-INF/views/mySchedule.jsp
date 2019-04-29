@@ -8,7 +8,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Flip - My Schedule</title>
 </head>
-<%! %>
 <body>
 	
 </body>
