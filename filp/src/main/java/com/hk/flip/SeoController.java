@@ -102,10 +102,6 @@ public class SeoController {
 		return "listload";
 	}	
 	
-	@RequestMapping(value = "/addclassform.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String addClassForm(Locale locale, Model model, String department) {
-		logger.info("Started main{}.", locale);
-		return "addClassForm";
-	}
+	
 }
 
