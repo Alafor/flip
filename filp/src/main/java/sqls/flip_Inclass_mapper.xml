@@ -75,4 +75,13 @@
 			#{class_seq}
 		
 	</delete>
+	
+	<select id="myClass" parameterType="int" resultType="InClassDto">
+		SELECT
+			INCLASS_CLASS_SEQ AS SEQ
+		FROM
+			INCLASS
+		WHERE
+			INCLASS_MEMBER_SEQ = #{memberSeq}
+	</select>
 </mapper>

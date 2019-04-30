@@ -2,6 +2,7 @@ package com.hk.flip.daos;
 
 import java.util.List;
 
+import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.ReviewDto;
 //메인 강의목록
@@ -24,5 +25,5 @@ public interface IClassDao {
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	public int insertClass(ClassDto classDto);
 	//칼린다
-	public List<ClassDto> scheduleList(int memberSeq);
+	public List<CalendarDto> scheduleList(int memberSeq);
 }

@@ -414,6 +414,7 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 </script>
 
 <div>
+
 <jsp:include page="footer.jsp" />
 
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
@@ -430,6 +431,6 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 <script src="resources/js/rangeslider.min.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="resources/js/signup.js"></script>
-
+<div><a href="scheduleCalendar.do">캘린더 링크</a></div>
 </body>
 </html>

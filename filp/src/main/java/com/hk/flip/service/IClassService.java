@@ -2,7 +2,9 @@ package com.hk.flip.service;
 
 import java.util.List;
 
+import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.InclassDto;
 import com.hk.flip.dtos.ReviewDto;
 
 public interface IClassService {
@@ -22,5 +24,5 @@ public interface IClassService {
 	public String chkInclassTime_Create(ClassDto dto);
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	//스케줄
-	public List<ClassDto> scheduleList(int memberSeq);
+	public List<List<CalendarDto>> scheduleList(List<InclassDto> myClass);
 }

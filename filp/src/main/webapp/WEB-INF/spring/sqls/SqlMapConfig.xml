@@ -12,6 +12,7 @@
 		<typeAlias type="com.hk.flip.dtos.ReviewDto" alias="ReviewDto"/>
 		<typeAlias type="com.hk.flip.dtos.PagingDto" alias="PagingDto"/>
 		<typeAlias type="com.hk.flip.dtos.AdminDto" alias="AdminDto"/>
+		<typeAlias type="com.hk.flip.dtos.CalendarDto" alias="CalendarDto"/>
 	</typeAliases>
 	
 	<mappers>

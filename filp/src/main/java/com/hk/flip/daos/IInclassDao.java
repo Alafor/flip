@@ -3,6 +3,7 @@ package com.hk.flip.daos;
 import java.util.List;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.InclassDto;
 
 public interface IInclassDao {
 
@@ -19,7 +20,8 @@ public interface IInclassDao {
 	public List<ClassDto> getAllMyInclass(int member_seq);
 
 	public boolean cancelInclass(int member_seq, int class_seq);
-
+	
+	public List<InclassDto> myClass(int memberSeq);
 
 
 

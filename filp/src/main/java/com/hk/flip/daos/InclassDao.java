@@ -1,5 +1,6 @@
 package com.hk.flip.daos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.InclassDto;
 @Repository
 public class InclassDao implements IInclassDao {
 
@@ -101,6 +103,11 @@ public class InclassDao implements IInclassDao {
 		ClassDto dto = sqlSession.selectOne(nameSpace+"getinclasslist", class_seq);
 		dto.setClass_member_seq(member_seq);
 		return dto;
+	}
+	//-------------------------------내가 수강중인 강의보기
+	@Override
+	public List<InclassDto> myClass(int memberSeq) {
+		return sqlSession.selectList(nameSpace+"myClass",memberSeq);
 	}
 	
 }

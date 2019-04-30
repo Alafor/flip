@@ -1,16 +1,18 @@
 package com.hk.flip.service;
 
+import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
+import com.hk.utils.Util;
 import com.hk.flip.daos.IClassDao;
 import com.hk.flip.daos.IInclassDao;
+import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.InclassDto;
 import com.hk.flip.dtos.ReviewDto;
 
 @Service
@@ -120,9 +122,12 @@ public class ClassService implements IClassService {
 		return classDao.areaCount(search, department, classType, selArea);
 	}
 	@Override
-	public List<ClassDto> scheduleList(int memberSeq){
-		List<ClassDto> schedulList = classDao.scheduleList(memberSeq);
-		
-		return 
+	public List<List<CalendarDto>> scheduleList(List<InclassDto> myClass){
+		List<List<CalendarDto>> myScheduleList = new ArrayList<List<CalendarDto>>();
+		for(int i=0;i<myClass.size();i++) {
+			int classSeq = myClass.get(i).getSeq();
+			myScheduleList.add(classDao.scheduleList(classSeq));
+		}
+		return myScheduleList; 
 	}
 }

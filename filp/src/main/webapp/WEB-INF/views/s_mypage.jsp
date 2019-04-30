@@ -563,6 +563,6 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 			</c:forEach>
 		</div>
 	</div> --%>
-
+<div><a href="scheduleCalendar.do">캘린더 링크</a></div>
 </body>
 </html>

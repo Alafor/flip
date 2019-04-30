@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hk.flip.daos.IInclassDao;
+import com.hk.flip.dtos.InclassDto;
 
 @Service
 public class InclassService implements IInclassService {
@@ -53,5 +54,11 @@ public class InclassService implements IInclassService {
 		
 		return inclassDao.cancelInclass(member_seq, class_seq);
 		
+	}
+
+
+	@Override
+	public List<InclassDto> myClass(int memberSeq) {
+		return inclassDao.myClass(memberSeq);
 	}
 }

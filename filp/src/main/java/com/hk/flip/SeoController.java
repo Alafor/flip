@@ -16,9 +16,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.InclassDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IClassService;
+import com.hk.flip.service.IInclassService;
 
 /**
  * Handles requests for the application home page.
@@ -30,12 +33,14 @@ public class SeoController {
 
 	@Autowired
 	private IClassService classService;
+	@Autowired
+	private IInclassService inclassService;
 //	@Autowired
 //	private IClassWishlistService classwishlistService;
 	
 	//main list
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String mainOpen(Locale locale, Model model, String department) {
+	public String mainOpen(Locale locale, Model model, String department, HttpServletRequest request) {
 		logger.info("Started main{}.", locale);
 		System.out.println(department);
 		List<ClassDto> classList = classService.mainClassList(department);
@@ -108,8 +113,13 @@ public class SeoController {
 		MemberDto memberDto = (MemberDto)session.getAttribute("logInMember");
 		System.out.println("세션확인"+memberDto);
 		int memberSeq = memberDto.getMember_seq();
-		List<ClassDto> myScheduleList = classService.scheduleList(memberSeq);
-		model.addAttribute("myschedule",myScheduleList);
+		List<InclassDto> myClass = inclassService.myClass(memberSeq);
+		List<List<CalendarDto>> mySchedule = classService.scheduleList(myClass);
+		for(int i=0;i<mySchedule.size();i++) {
+			for(int j=0;j<mySchedule.get(i).size();j++) {
+				System.out.println("스케쥴표"+i+"안에"+j+":"+mySchedule.get(i).get(j));
+			}
+		}
 		return "mySchedule";
 	}
 }

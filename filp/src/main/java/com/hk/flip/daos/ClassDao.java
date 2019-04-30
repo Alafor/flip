@@ -1,6 +1,5 @@
 package com.hk.flip.daos;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.ReviewDto;
 
@@ -105,7 +105,7 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectList(nameSpace + "areaCount",searchFilter);
 	}
 	@Override
-	public List<ClassDto> scheduleList(int memberSeq){
+	public List<CalendarDto> scheduleList(int memberSeq){
 		return sqlsession.selectList(nameSpace+"myschedule",memberSeq);
 	}
 }
