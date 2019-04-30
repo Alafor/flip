@@ -9,6 +9,7 @@ public interface IAdminService {
 
 	public List<MemberDto> getMemberList(int rn);
 	public AdminDto getFlipStatus();
+	public MemberDto getMemberProfil(String email);
 
 
 }

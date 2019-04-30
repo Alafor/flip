@@ -89,7 +89,8 @@ public class MooooonController {
 	public String class_addform(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("강의등록폼이동{}.", locale);
 		String member_type= ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_type();
-		String class_type = (String)request.getAttribute("classType");
+		String class_type = (String)request.getParameter("classType");
+		System.out.println("classType"+class_type);
 		if(class_type.equals("C")) {
 			if(member_type.equals("S")) {
 				model.addAttribute("msg","강의 등록 권한이 없습니다.");		
@@ -239,15 +240,14 @@ public class MooooonController {
 		}
 	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/memberMgt.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	@RequestMapping(value = "/memberMgt.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
 	public String memberMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
 //		List<MemberDto> list = adminService.getMemberList(10);
 		
 		
 		
-		return "memberMgt";
+		return "admin/memberMgt";
 		
 	}
 	
@@ -261,6 +261,22 @@ public class MooooonController {
 		 ObjectMapper obm  = new ObjectMapper();
 		String userListJson = obm.writeValueAsString(wrapper);
 		return userListJson;
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,String email) {
+		logger.info("관리자 회원 정보 열람.", locale);
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+		if(!memberDto.getMember_type().equals("A")) {
+			model.addAttribute("msg","권한이 없습니다.");		
+			model.addAttribute("url","main.do");
+			return "Redirect";
+		}
+		MemberDto dto = adminService.getMemberProfil(email); 
+		model.addAttribute("member", dto);
+		return "admin/memberDetail";
 		
 	}
 	
