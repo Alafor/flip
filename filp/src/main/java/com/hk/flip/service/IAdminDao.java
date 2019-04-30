@@ -5,10 +5,10 @@ import java.util.List;
 import com.hk.flip.dtos.AdminDto;
 import com.hk.flip.dtos.MemberDto;
 
-public interface IAdminService {
+public interface IAdminDao {
 
-	public List<MemberDto> getMemberList(int rn);
 	public AdminDto getFlipStatus();
 
+	public List<MemberDto> getMemberList(int rn);
 
 }

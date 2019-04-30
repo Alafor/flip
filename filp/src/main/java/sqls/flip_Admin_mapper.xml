@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hk.flip.Admin">
+	
+	<select id="flipstatus" resultType="AdminDto">
+		SELECT a.count(*) as member_number,b.count(*) as class_number,c.count(*) as close_class_number
+		FROM member a,class b,(SELECT FROM class WHERE CLASS_TERMIN = 'C');
+	</select>
+	
+	<select id="memberlist" parameterType="int" resultType="MemberDto">
+		SELECT member_name, member_email, member_id, member_regdate from member
+	</select>
+	
+</mapper>

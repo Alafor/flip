@@ -26,8 +26,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hk.flip.dtos.AdminDto;
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.DataTableWrapperDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IAdminService;
 import com.hk.flip.service.IClassService;
@@ -68,7 +71,7 @@ public class MooooonController {
 		}else if(type.equals("T")){
 			return "t_mypage";
 		}else {
-			AdminDto adminDto = adminService.getMemberList();
+			AdminDto adminDto = adminService.getFlipStatus();
 			model.addAttribute("admindata",adminDto);			
 			
 			
@@ -240,10 +243,24 @@ public class MooooonController {
 	@RequestMapping(value = "/memberMgt.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
 	public String memberMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
+//		List<MemberDto> list = adminService.getMemberList(10);
 		
 		
 		
 		return "memberMgt";
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getUserListAjax.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String getUserListAjax(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) throws JsonProcessingException {
+		logger.info("관리자 회원 관리.", locale);
+		List<MemberDto> list = adminService.getMemberList(10);
+		DataTableWrapperDto wrapper = new DataTableWrapperDto();
+		wrapper.setAaData(list);
+		 ObjectMapper obm  = new ObjectMapper();
+		String userListJson = obm.writeValueAsString(wrapper);
+		return userListJson;
 		
 	}
 	

@@ -11,6 +11,7 @@
 		<typeAlias type="com.hk.flip.dtos.MemberDto" alias="MemberDto"/>
 		<typeAlias type="com.hk.flip.dtos.ReviewDto" alias="ReviewDto"/>
 		<typeAlias type="com.hk.flip.dtos.PagingDto" alias="PagingDto"/>
+		<typeAlias type="com.hk.flip.dtos.AdminDto" alias="AdminDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -21,5 +22,6 @@
 		<mapper resource="/sqls/flip_mapper.xml"/>
 		<mapper resource="/sqls/flip_Member_mapper.xml"/>
 		<mapper resource="/sqls/flip_Review_mapper.xml"/>
+		<mapper resource="/sqls/flip_Admin_mapper.xml"/>
 	</mappers>
 </configuration>
