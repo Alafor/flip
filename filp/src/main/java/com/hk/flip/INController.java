@@ -165,8 +165,11 @@ public class INController {
 		String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
 		String stored_fname = creatUUID+origin_fname.substring(origin_fname.lastIndexOf("."));
 		dto.setMember_profile(stored_fname);
-		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
-		File f=new File(saveDirectory+"/"+stored_fname);
+		/*String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
+		File f=new File(saveDirectory+"/"+stored_fname);*/
+		
+		String gonguFolder = "C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/member";
+		File f=new File(gonguFolder+"/"+stored_fname);
 		System.out.println("경로:"+f);
 		try {
 			multifile.transferTo(f);	
@@ -390,6 +393,14 @@ public class INController {
 		logger.info("Started main{}.", locale);
 		return "AddClassForm";
 	}
+	
+	
+	@RequestMapping(value = "/callback.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String callback(Locale locale, Model model, String department) {
+		logger.info("Started main{}.", locale);
+		return "CallBack";
+	}
+
 
 	
 }
