@@ -29,6 +29,7 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 </head>
 <body>
 
@@ -109,14 +110,36 @@
               </div>
 
             
-              <div class="row form-group" style="text-align: center;">
+              <div class="row form-group" style="display: inline ;">
                 <div class="col-md-12">
-                  <input type="submit" value="로그인" class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
+                  <input type="submit" value="로그인" class="btn btn-primary py-2 px-4 text-white" style="width: 50%; height: 50px;"><div id="naverIdLogin" style="float:right; "></div>
+                  
                 </div>
               </div>
-
+			
   
+            <!-- 네이버아이디로로그인 버튼 노출 영역 -->
+				
+			<!-- //네이버아이디로로그인 버튼 노출 영역 -->
+
+				<!-- 네이버아디디로로그인 초기화 Script -->
+			<script type="text/javascript">
+				var naverLogin = new naver.LoginWithNaverId(
+				{
+					clientId: "q6cMTLGnrqZXKiVTkOA3",
+					callbackUrl: "http://127.0.0.1:8888/flip/callback.do",
+					isPopup: false, /* 팝업을 통한 연동처리 여부 */
+					loginButton: {color: "green", type: 3, height: 50 } /* 로그인 버튼의 타입을 지정 */
+				}
+			);
+	
+			/* 설정정보를 초기화하고 연동을 준비 */
+			naverLogin.init();
+	
+			</script>
             </form>
+<!-- // 네이버아이디로로그인 초기화 Script -->
+            
           </div>
           
         </div>

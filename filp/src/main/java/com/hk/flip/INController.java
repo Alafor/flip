@@ -398,7 +398,7 @@ public class INController {
 	@RequestMapping(value = "/callback.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String callback(Locale locale, Model model, String department) {
 		logger.info("Started main{}.", locale);
-		return "CallBack";
+		return "Callback";
 	}
 
 
