@@ -53,9 +53,17 @@
     	    },
     	  opens: 'left'
       }, function(start, end, label) {
-    	  $("#class_sd").val(start.format('YYYY/MM/DD')) ;
+    	  $("#class_sd").val(start.format('YYYY/MM/DD'));
+    	  $("#class_cd").val(start.format('YYYY/MM/DD'));
+    	  $("#class_week").val(findWeek());
+    	  
+    	  
       });
-    });							
+    });		
+    function findWeek() {
+        var today = new Date($("#class_sd").val()).getDay();
+        return (today+1);
+	}
     function sumclasstime(selectone) {
 		var row = $(selectone).parent().parent();
 		var hour = row.children().eq(0).children().eq(0).val();

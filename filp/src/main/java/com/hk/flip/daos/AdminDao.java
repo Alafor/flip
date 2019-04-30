@@ -27,9 +27,16 @@ public class AdminDao implements IAdminDao {
 
 	@Override
 	public List<MemberDto> getMemberList(int rn) {
-		 List<MemberDto> list = new ArrayList();
-		 list = sqlSession.selectList(namespace+"memberlist");
+		 List<MemberDto> list = new ArrayList<MemberDto>();
+		 list = sqlSession.selectList(namespace+"getmemberlist");
 		return list;
+	}
+
+	@Override
+	public MemberDto getMemberProfil() {
+		MemberDto memberDto = new MemberDto();
+		memberDto = sqlSession.selectOne(namespace+"getmemberprofil");
+		return memberDto;
 	}
 
 }

@@ -11,4 +11,6 @@ public interface IAdminDao {
 
 	public List<MemberDto> getMemberList(int rn);
 
+	public MemberDto getMemberProfil();
+
 }

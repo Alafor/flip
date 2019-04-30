@@ -71,7 +71,7 @@
 }
 
 </style>
-<script src="resources/js/AddClass.js"></script>
+<script src="resources/js/AddClass_S.js"></script>
 </head>
 <body>
 	<div class="site-wrap">
@@ -122,6 +122,8 @@
 						style="border: 2px solid #30e3ca; border-radius: 20px;">
 						<input type="hidden" name="class_type" value="S"> 
 						<input type="hidden" id="class_sd" name="class_sd" value=""> 
+						<input type="hidden" id="class_cd" name="class_cd" value=""> 
+						<input type="hidden" id="class_week" name="class_week" value=""> 
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="text-black" for="class_depa">카테고리</label> <select
