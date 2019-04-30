@@ -54,6 +54,7 @@
     	  opens: 'left'
       }, function(start, end, label) {
     	  $("#class_sd").val(start.format('YYYY/MM/DD')) ;
+    	  $("#class_cd").val(start.format('YYYY/MM/DD')) ;
       });
     });							
     function sumclasstime(selectone) {

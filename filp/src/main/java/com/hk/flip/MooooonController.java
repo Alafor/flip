@@ -137,15 +137,16 @@ public class MooooonController {
 		classdto.setClass_sd(request.getParameter("class_sd"));
 		classdto.setClass_cd(request.getParameter("class_cd"));
 		
-		
 		MultipartFile multifile = multi.getFile("member_profile");
 		String origin_fname=multifile.getOriginalFilename();
 		String origin_fextends=origin_fname.substring(origin_fname.lastIndexOf("."));
 		String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
 		String stored_fname = creatUUID+origin_fextends;
 		classdto.setClass_img(stored_fname);
-		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
-		File f=new File(saveDirectory+"/class/"+stored_fname);
+//		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
+//		File f=new File(saveDirectory+"/class/"+stored_fname);
+		String gonguFolder = "C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class";
+		File f=new File(gonguFolder+"/"+stored_fname);
 		try {
 			multifile.transferTo(f);	
 		} catch (Exception e) {	
@@ -254,27 +255,31 @@ public class MooooonController {
 	@ResponseBody
 	@RequestMapping(value = "/getUserListAjax.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
 	public String getUserListAjax(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) throws JsonProcessingException {
-		logger.info("관리자 회원 관리.", locale);
+		logger.info("유저 목록 AJAX.", locale);
 		List<MemberDto> list = adminService.getMemberList(10);
+		for(MemberDto dto:list) {
+			System.out.println(list);
+		}
 		DataTableWrapperDto wrapper = new DataTableWrapperDto();
 		wrapper.setAaData(list);
 		 ObjectMapper obm  = new ObjectMapper();
 		String userListJson = obm.writeValueAsString(wrapper);
+		System.out.println(userListJson);
 		return userListJson;
 		
 	}
 	
-	@ResponseBody
 	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
 	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,String email) {
 		logger.info("관리자 회원 정보 열람.", locale);
 		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
 		if(!memberDto.getMember_type().equals("A")) {
-			model.addAttribute("msg","권한이 없습니다.");		
+			model.addAttribute("msg","권한이 없습니다.");
 			model.addAttribute("url","main.do");
 			return "Redirect";
 		}
-		MemberDto dto = adminService.getMemberProfil(email); 
+		
+		MemberDto dto = adminService.getMemberProfil(email);
 		model.addAttribute("member", dto);
 		return "admin/memberDetail";
 		

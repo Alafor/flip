@@ -17,6 +17,10 @@
 
   <!-- Custom styles for this template-->
   <link href="resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
+  
+  <!-- datatable-->
+<!--     <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"> -->
+<!--   <link href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"> -->
   <title>회원관리 페이지</title>
 
 </head>
@@ -302,6 +306,7 @@
   <script src="resources/admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
+
   <script src="resources/admin/vendor/datatables/jquery.dataTables.min.js"></script>
   <script src="resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 

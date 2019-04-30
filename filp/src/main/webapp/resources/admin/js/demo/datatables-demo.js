@@ -1,16 +1,16 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
   $('#dataTable').DataTable({
-      pageLength: 10,
-      bPaginate: true,
-      bLengthChange: true,
-      lengthMenu : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, "All" ] ],
-      bAutoWidth: false,
-      processing: true,
-      ordering: true,
-      serverSide: false,
-      searching: true,
-      ajax : {
+      "pageLength": "10",
+      "bPaginate": "true",
+      "bLengthChange": "true",
+      "lengthMenu" : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, "All" ] ],
+      "bAutoWidth": false,
+     "processing": true,
+     "ordering": true,
+     "serverSide": false,
+      "searching": true,
+      "ajax ": {
           "url":"/getUserListAjax.do",
           "type":"POST",
           "data": function (d) {
