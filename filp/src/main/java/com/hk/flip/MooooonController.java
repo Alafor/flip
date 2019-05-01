@@ -1,6 +1,8 @@
 package com.hk.flip;
 
 import java.io.File;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -13,6 +15,7 @@ import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
@@ -253,18 +256,37 @@ public class MooooonController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/getUserListAjax.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
-	public String getUserListAjax(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) throws JsonProcessingException {
+	@RequestMapping(value = "/getUserListAjax.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String getUserListAjax(HttpServletRequest request,Locale locale,HttpServletResponse response, Model model,HttpSession httpSession) throws JsonProcessingException, UnsupportedEncodingException {
 		logger.info("유저 목록 AJAX.", locale);
 		List<MemberDto> list = adminService.getMemberList(10);
-		for(MemberDto dto:list) {
-			System.out.println(list);
-		}
+//		for(MemberDto dto:list) {
+//			System.out.println(list);
+//		}
+		//인코딩 확인
+//		for(int i =0 ;i<list.size();i++) {
+//		String text = i+"+++"+list.get(i).getMember_name();
+//		  String encode = "";
+//		  String [] charsets = {"UTF-8","EUC-KR","ISO-8859-1", "CP1251", "KSC5601"};
+//
+//		  for ( String charset: charsets ) {
+//		    encode = URLEncoder.encode(text, charset);
+//		    System.out.println("origin["+text+"], "+"encoded["+encode+"], charset["+charset+"]");
+//		  }
+//		}
+
+		
+		
+		
+		
+		
+		
 		DataTableWrapperDto wrapper = new DataTableWrapperDto();
 		wrapper.setAaData(list);
 		 ObjectMapper obm  = new ObjectMapper();
+		 
 		String userListJson = obm.writeValueAsString(wrapper);
-		System.out.println(userListJson);
+		System.out.println("userListJson:::"+userListJson);
 		return userListJson;
 		
 	}

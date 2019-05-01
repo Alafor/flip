@@ -3,13 +3,10 @@ $(document).ready(function() {
   $('#dataTable').DataTable({
       pageLength: '10',
       lengthMenu : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, 'All' ] ],
-     processing: true,
-     serverSide: true,
-      searching: true,
       "ajax": {
           "url": "getUserListAjax.do",
           "type": "POST",
-          contentType: "charset=utf-8"
+          "dataType": "json"	
       },
       columns : [
           {"data": 'member_name'},

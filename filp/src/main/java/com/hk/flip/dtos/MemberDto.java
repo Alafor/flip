@@ -13,7 +13,7 @@ public class MemberDto {
 	private String member_email;
 	private String member_profile;
 	private String member_info;
-	private Date member_regdate;
+	private String member_regdate;
 	private ClassDto classdto;
 	private String avg; //강사 상세정보 페이지에 강사 평균 평점 as avg
 	private int member_seq;
@@ -30,7 +30,7 @@ public class MemberDto {
 	}
 	public MemberDto(String member_type, String member_id, String member_password, String member_name,
 			String member_birth, String member_phone, String member_email, String member_profile, String member_info,
-			Date member_regdate, ClassDto classdto, String avg, int member_seq ,String member_key) {
+			String member_regdate, ClassDto classdto, String avg, int member_seq ,String member_key) {
 		super();
 		this.member_type = member_type;
 		this.member_id = member_id;
@@ -101,10 +101,10 @@ public class MemberDto {
 	public void setMember_info(String member_info) {
 		this.member_info = member_info;
 	}
-	public Date getMember_regdate() {
+	public String getMember_regdate() {
 		return member_regdate;
 	}
-	public void setMember_regdate(Date member_regdate) {
+	public void setMember_regdate(String member_regdate) {
 		this.member_regdate = member_regdate;
 	}
 	public ClassDto getClassdto() {

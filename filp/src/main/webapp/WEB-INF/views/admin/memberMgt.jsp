@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<% request.setCharacterEncoding("utf-8"); %>
+<% response.setContentType("text/html; charset=utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -230,7 +232,7 @@
             </div>
             <div class="card-body">
               <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
                       <th>member_name</th>
@@ -302,13 +304,42 @@
   <script src="resources/admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-  <link href="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js">
 <!--   <script src="resources/admin/vendor/datatables/jquery.dataTables.min.js"></script> -->
 <!--   <script src="resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <script src="resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="resources/admin/js/demo/datatables-demo.js"></script>
+<!--   <script src="resources/admin/js/demo/datatables-demo.js" charset='utf-8'></script> -->
+<script type="text/javascript">
+$(document).ready(function() {
+	  $('#dataTable').DataTable({
+	      pageLength: '10',
+	      lengthMenu : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, 'All' ] ],
+	     processing: true,
+	     serverSide: true,
+	      searching: true,
+	      "ajax": {
+	          "url": "getUserListAjax.do",
+	          "type": "POST",
+	          "dataType": "json"	
+	      },
+	      columns : [
+	          {"data": 'member_name'},
+	          {"data": 'member_email',
+//	        	render: function (data, type,meta) {      
+//	        		if ( type === 'display' ) {
+//	                 data = '<a href="memberDetail.do?email=' + data + '" class="table_link">' + data + '</a>';
+//	        		}
+//	        	}
+	          },
+	          {"data": 'member_id'},
+	          {"data": 'member_regdate'}
+	      ]
+
+	  });
+	});
+</script>
 
 </body>
 
