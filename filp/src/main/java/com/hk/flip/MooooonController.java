@@ -291,11 +291,11 @@ public class MooooonController {
 		
 	}
 	
-	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
 	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,String email) {
 		logger.info("관리자 회원 정보 열람.", locale);
 		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
-		if(!memberDto.getMember_type().equals("A")) {
+		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
 			model.addAttribute("msg","권한이 없습니다.");
 			model.addAttribute("url","main.do");
 			return "Redirect";

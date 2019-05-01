@@ -32,7 +32,7 @@ public class AdminService implements IAdminService {
 	@Override
 	public MemberDto getMemberProfil(String email) {
 		// TODO Auto-generated method stub
-		return adminDao.getMemberProfil();
+		return adminDao.getMemberProfil(email);
 	}
 
 }

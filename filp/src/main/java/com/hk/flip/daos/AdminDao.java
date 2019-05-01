@@ -33,9 +33,9 @@ public class AdminDao implements IAdminDao {
 	}
 
 	@Override
-	public MemberDto getMemberProfil() {
+	public MemberDto getMemberProfil(String email) {
 		MemberDto memberDto = new MemberDto();
-		memberDto = sqlSession.selectOne(namespace+"getmemberprofil");
+		memberDto = sqlSession.selectOne(namespace+"getmemberprofil", email);
 		return memberDto;
 	}
 

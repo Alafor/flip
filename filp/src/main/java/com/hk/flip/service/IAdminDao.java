@@ -11,6 +11,6 @@ public interface IAdminDao {
 
 	public List<MemberDto> getMemberList(int rn);
 
-	public MemberDto getMemberProfil();
+	public MemberDto getMemberProfil(String email);
 
 }
