@@ -127,7 +127,7 @@
 				var naverLogin = new naver.LoginWithNaverId(
 				{
 					clientId: "q6cMTLGnrqZXKiVTkOA3",
-					callbackUrl: "http://127.0.0.1:8888/flip/callback.do",
+					callbackUrl: "http://localhost:8888/flip/callback.do",
 					isPopup: false, /* 팝업을 통한 연동처리 여부 */
 					loginButton: {color: "green", type: 3, height: 50 } /* 로그인 버튼의 타입을 지정 */
 				}

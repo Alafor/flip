@@ -24,8 +24,8 @@
 	<script>
 		var naverLogin = new naver.LoginWithNaverId(
 			{
-				clientId: "{YOUR_CLIENT_ID}",
-				callbackUrl: "{YOUR_REDIRECT_URL}",
+				clientId: "{q6cMTLGnrqZXKiVTkOA3}",
+				callbackUrl: "{http://localhost:8888/flip/callback.do}",
 				isPopup: false,
 				callbackHandle: true
 				/* callback 페이지가 분리되었을 경우에 callback 페이지에서는 callback처리를 해줄수 있도록 설정합니다. */
@@ -40,6 +40,9 @@
 			naverLogin.getLoginStatus(function (status) {
 				if (status) {
 					/* (5) 필수적으로 받아야하는 프로필 정보가 있다면 callback처리 시점에 체크 */
+					var name = naverLogin.user.getName();
+					var profileImage = naverLogin.user.getProfileImage();
+					var birthday = naverLogin.user.getBirthday();
 					var email = naverLogin.user.getEmail();
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
@@ -47,8 +50,12 @@
 						naverLogin.reprompt();
 						return;
 					}
-
-					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) + "/sample/main.html");
+					alert(email);
+					alert(profileImage);
+					alert(birthday);
+					alert(name);
+					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) +
+							"/flip/naverLog.do?name=naverLogin.user.getName()&email=naverLogin.user.getEmail()");
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}
