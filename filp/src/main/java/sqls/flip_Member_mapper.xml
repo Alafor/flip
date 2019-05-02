@@ -75,4 +75,13 @@
 	<select id="getinfo" parameterType="Map" resultType="MemberDto">
 		SELECT MEMBER_NAME , MEMBER_PASSWORD FROM MEMBER WHERE MEMBER_ID=#{member_id} AND MEMBER_EMAIL=#{member_email}
 	</select>
+	
+	<select id="naverEmail" parameterType="String" resultType="MemberDto">
+		SELECT MEMBER_SEQ ,MEMBER_NAME ,MEMBER_TYPE ,MEMBER_KEY FROM MEMBER WHERE MEMBER_EMAIL=#{member_email}
+	</select>
+	
+	<insert id="naverSignUp" parameterType="Map" >
+			INSERT INTO MEMBER(MEMBER_TYPE,MEMBER_ID,MEMBER_NAME,MEMBER_BIRTH,MEMBER_EMAIL,MEMBER_REGDATE,MEMBER_SEQ) 
+		VALUES(#{member_type},#{member_id},#{member_name},#{member_birth},#{member_email},SYSDATE,MEMBER_SEQ.nextval) 
+	</insert>
 </mapper>

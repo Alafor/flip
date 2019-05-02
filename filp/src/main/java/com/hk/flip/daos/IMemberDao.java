@@ -38,5 +38,10 @@ public interface IMemberDao {
 
 	public MemberDto getInfo(String member_id, String member_email);//회원정보 가져오기
 
+	public MemberDto NaverLogCheck(String member_email);//네이버 로그인시 이메일 체크
+
+	public boolean NaverSignUp(String member_email, String member_name, String member_id, String member_birth,//네이버 로그인시 회원가입하기
+			String member_type);
+
 	
 }

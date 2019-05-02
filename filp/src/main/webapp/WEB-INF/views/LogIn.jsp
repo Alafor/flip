@@ -103,18 +103,24 @@
               </div>
 
               <div class="row form-group">
-                <div class="col-12">
+                <div class="col-md-12">
                   <p>아직 가입 안하셨나요? <a href="signupform.do">회원가입</a></p>
                   <p>기억이 안나십니까?<a href="findinfo.do">아이디/비밀번호찾기</a></p>
                 </div>
               </div>
 
             
-              <div class="row form-group" style="display: inline ;">
-                <div class="col-md-12">
-                  <input type="submit" value="로그인" class="btn btn-primary py-2 px-4 text-white" style="width: 50%; height: 50px;"><div id="naverIdLogin" style="float:right; "></div>
+              <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-6">
+                  <input type="submit" value="로그인" class="btn btn-primary text-white" style="width: 232px; height: 50px;"></div>
+                  <div class="col-md-6 col-sm-6 col-xs-6" id="naverIdLogin"></div>
                   
+             <!--    <div id="naverIdLogin">
+                	<a id="naver-login-btn" href="#" role="button">
+                		<img alt="" src="https://static.nid.naver.com/oauth/big_g.PNG" width="50%" height="50px">
+                	</a>
                 </div>
+                 -->
               </div>
 			
   
