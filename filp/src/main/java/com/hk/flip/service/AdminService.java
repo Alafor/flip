@@ -37,9 +37,9 @@ public class AdminService implements IAdminService {
 	}
 
 	@Override
-	public List<ClassDto> getClassList(int rn) {
+	public List<ClassDto> getClassList(String class_termin) {
 		// TODO Auto-generated method stub
-		return adminDao.getClassList(rn);
+		return adminDao.getClassList(class_termin);
 	}
 
 	@Override
@@ -58,6 +58,24 @@ public class AdminService implements IAdminService {
 	public boolean aMemberDelete(String member_email) {
 		// TODO Auto-generated method stub
 		return adminDao.aMemberDelete(member_email);
+	}
+
+	@Override
+	public boolean updateClass(ClassDto dto) {
+		// TODO Auto-generated method stub
+		return adminDao.updateClass(dto);
+	}
+
+	@Override
+	public boolean aClassDelete(int seq) {
+		// TODO Auto-generated method stub
+		return adminDao.aClassDelete(seq);
+	}
+
+	@Override
+	public boolean aClassClose(int seq) {
+		// TODO Auto-generated method stub
+		return adminDao.aClassClose(seq);
 	}
 
 }

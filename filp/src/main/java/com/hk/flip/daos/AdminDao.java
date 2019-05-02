@@ -40,16 +40,16 @@ public class AdminDao implements IAdminDao {
 		return memberDto;
 	}
 	@Override
-	public List<ClassDto> getClassList(int rn) {
+	public List<ClassDto> getClassList(String class_termin) {
 		List<ClassDto> list = new ArrayList<ClassDto>();
-		list = sqlSession.selectList(namespace+"getclasslist");
+		list = sqlSession.selectList(namespace+"getclasslist",class_termin);
 		return list;
 	}
 	
 	@Override
-	public ClassDto getClassProfil(int email) {
+	public ClassDto getClassProfil(int seq) {
 		ClassDto classDto = new ClassDto();
-		classDto = sqlSession.selectOne(namespace+"getclassprofil", email);
+		classDto = sqlSession.selectOne(namespace+"getclassprofil", seq);
 		return classDto;
 	}
 
@@ -61,6 +61,23 @@ public class AdminDao implements IAdminDao {
 	@Override
 	public boolean aMemberDelete(String member_email) {
 		return sqlSession.delete(namespace+"deletemember", member_email)>0?true:false;
+	}
+
+	@Override
+	public boolean updateClass(ClassDto dto) {
+		System.out.println("업데이트 되는 강의 정보"+dto);
+		return sqlSession.update(namespace+"updateclass", dto)>0?true:false;
+	}
+
+	@Override
+	public boolean aClassDelete(int seq) {
+		return sqlSession.delete(namespace+"deleteclass", seq)>0?true:false;
+	}
+
+	@Override
+	public boolean aClassClose(int seq) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(namespace+"classclose", seq)>0?true:false;
 	}
 
 

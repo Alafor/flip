@@ -314,13 +314,13 @@
 <script type="text/javascript">
 $(document).ready(function() {
 	$.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { console.log(message)};
-	  $('#dataTable').DataTable({
+	$('#dataTable').DataTable({
 // 	      lengthMenu : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, 'All' ] ],
 	     serverSide: false,
 	      "ajax": {
 	          "url": "getUserListAjax.do",
 	          "type": "POST",
-	          "dataType": "json"	
+	          "dataType": "json"
 	      },
 	      columns : [
 	          {"data": 'member_name'},

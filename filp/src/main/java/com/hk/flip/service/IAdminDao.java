@@ -14,12 +14,19 @@ public interface IAdminDao {
 
 	public MemberDto getMemberProfil(String email);
 
-	public List<ClassDto> getClassList(int rn);
+	public List<ClassDto> getClassList(String class_termin);
 
 	public ClassDto getClassProfil(int seq);
 
 	public boolean updateMember(MemberDto dto);
 
 	public boolean aMemberDelete(String member_email);
+
+	public boolean updateClass(ClassDto dto);
+
+	public boolean aClassDelete(int seq);
+
+	public boolean aClassClose(int seq);
+
 
 }

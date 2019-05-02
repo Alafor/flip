@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +15,7 @@
   <!-- Custom fonts for this template-->
   <link href="resources/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-
+  <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
   <!-- Custom styles for this template-->
   <link href="resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <title>강의 수정</title>
@@ -254,50 +255,56 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">관리자 페이지</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+          	<form action="aClassClose.do">
+          		<input type="hidden" name="seq" value="${dto.seq}">
+            	<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> 강의 폐쇠</button>
+         	</form>
+          	<form action="aClassDelete.do">
+          		<input type="hidden" name="seq" value="${dto.seq}">
+            	<button class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> 강의 삭제</button>
+         	</form>
           </div>
 
           <!-- Content Row -->
            	<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						회원<span class="text-warning">가입</span>
+						강의<span class="text-warning">수정</span>
 					</h2>
-					<p class="color-black-opacity-5">SIGN&amp;UP</p>
+					<p class="color-black-opacity-5">Class&amp;Modification</p>
 				</div>
 			</div>
         <div class="row justify-content-center">
 				<div class="col-md-7 mb-5" data-aos="fade">
-					<form class="p-5 bg-white validate-form" action="class_add_C.do"
-						onsubmit="return chkOkTimes()" method="post"
+					<form class="p-5 bg-white validate-form" action="AClassUpdate.do"
+						 method="post"
 						enctype="multipart/form-data"
 						style="border: 2px solid #30e3ca; border-radius: 20px;">
-						<input type="hidden" name="class_type" value="C"> <input
+						<input type="hidden" name="seq" value="${dto.seq}"> <input
 							type="hidden" id="class_sd" name="class_sd" value=""> <input
 							type="hidden" id="class_cd" name="class_cd" value="">
 						<div class="row form-group">
 							<div class="col-md-12">
 								<label class="text-black" for="class_depa">카테고리</label> <select
 									class="form-control" name='class_depa'>
-									<option value="exercise">운동</option>
-									<option value="music">음악</option>
-									<option value="photo">사진</option>
-									<option value="yolo">yolo</option>
-									<option value="investment">재테크</option>
-									<option value="beauty">뷰티</option>
-									<option value="language">외국어</option>
-									<option value="videoedit">영상편집</option>
-									<option value="it">IT</option>
-									<option value="design">디자인</option>
-									<option value="cook">요리</option>
+									<option value="exercise" <c:if test="${dto.class_depa == 'exercise'}">selected</c:if>>운동</option>
+									<option value="music" <c:if test="${dto.class_depa == 'music'}">selected</c:if>>음악</option>
+									<option value="photo" <c:if test="${dto.class_depa == 'photo'}">selected</c:if>>사진</option>
+									<option value="yolo" <c:if test="${dto.class_depa == 'yolo'}">selected</c:if>>yolo</option>
+									<option value="investment" <c:if test="${dto.class_depa == 'investment'}">selected</c:if>>재테크</option>
+									<option value="beauty" <c:if test="${dto.class_depa == 'beauty'}">selected</c:if>>뷰티</option>
+									<option value="language" <c:if test="${dto.class_depa == 'language'}">selected</c:if>>외국어</option>
+									<option value="videoedit" <c:if test="${dto.class_depa == 'videoedit'}">selected</c:if>>영상편집</option>
+									<option value="it" <c:if test="${dto.class_depa == 'it'}">selected</c:if>>IT</option>
+									<option value="design" <c:if test="${dto.class_depa == 'design'}">selected</c:if>>디자인</option>
+									<option value="cook" <c:if test="${dto.class_depa == 'cook'}">selected</c:if>>요리</option>
 								</select>
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 validate-input" data-validate="이름을 입력해주세요">
 								<label class="text-black" for="class_name">이름</label> <input
-									type="text" class="form-control" name="class_name">
+									type="text" class="form-control" name="class_name" value="${dto.class_name}">
 							</div>
 						</div>
 						<div class="row form-group">
@@ -305,7 +312,7 @@
 								data-validate="수업 요약을 입력해주세요">
 								<label class="text-black" for="class_info">수업 요약</label>
 								<textarea rows="5" cols="" class='form-control'
-									name="class_info"></textarea>
+									name="class_info" value="">${dto.class_info}</textarea>
 							</div>
 							<div id="message" style="margin-left: 20px; color: red;"></div>
 						</div>
@@ -313,31 +320,31 @@
 							<div class="col-md-12">
 								<label class="text-black" for="class_area">지역 설정</label> <select
 									class="form-control" name='class_area'>
-									<option value="강남구">강남구</option>
-									<option value="강동구">강동구</option>
-									<option value="강북구">강북구</option>
-									<option value="강서구">강서구</option>
-									<option value="관악구">관악구</option>
-									<option value="광진구">광진구</option>
-									<option value="구로구">구로구</option>
-									<option value="금천구">금천구</option>
-									<option value="노원구">노원구</option>
-									<option value="도봉구">도봉구</option>
-									<option value="동대문구">동대문구</option>
-									<option value="동작구">동작구</option>
-									<option value="마포구">마포구</option>
-									<option value="서대문구">서대문구</option>
-									<option value="서초구">서초구</option>
-									<option value="성동구">성동구</option>
-									<option value="성북구">성북구</option>
-									<option value="송파구">송파구</option>
-									<option value="양천구">양천구</option>
-									<option value="영등포구">영등포구</option>
-									<option value="용산구">용산구</option>
-									<option value="은평구">은평구</option>
-									<option value="종로구">종로구</option>
-									<option value="중구">중구</option>
-									<option value="중랑구">중랑구</option>
+									<option value="강남구" <c:if test="${dto.class_area == '강남구'}">selected</c:if>>강남구</option>
+									<option value="강동구" <c:if test="${dto.class_area == '강동구'}">selected</c:if>>강동구</option>
+									<option value="강북구" <c:if test="${dto.class_area == '강북구'}">selected</c:if>>강북구</option>
+									<option value="강서구" <c:if test="${dto.class_area == '강서구'}">selected</c:if>>강서구</option>
+									<option value="관악구" <c:if test="${dto.class_area == '관악구'}">selected</c:if>>관악구</option>
+									<option value="광진구" <c:if test="${dto.class_area == '광진구'}">selected</c:if>>광진구</option>
+									<option value="구로구" <c:if test="${dto.class_area == '구로구'}">selected</c:if>>구로구</option>
+									<option value="금천구" <c:if test="${dto.class_area == '금천구'}">selected</c:if>>금천구</option>
+									<option value="노원구" <c:if test="${dto.class_area == '노원구'}">selected</c:if>>노원구</option>
+									<option value="도봉구" <c:if test="${dto.class_area == '도봉구'}">selected</c:if>>도봉구</option>
+									<option value="동대문구" <c:if test="${dto.class_area == '동대문구'}">selected</c:if>>동대문구</option>
+									<option value="동작구" <c:if test="${dto.class_area == '동작구'}">selected</c:if>>동작구</option>
+									<option value="마포구" <c:if test="${dto.class_area == '마포구'}">selected</c:if>>마포구</option>
+									<option value="서대문구" <c:if test="${dto.class_area == '서대문구'}">selected</c:if>>서대문구</option>
+									<option value="서초구" <c:if test="${dto.class_area == '서초구'}">selected</c:if>>서초구</option>
+									<option value="성동구" <c:if test="${dto.class_area == '성동구'}">selected</c:if>>성동구</option>
+									<option value="성북구" <c:if test="${dto.class_area == '성북구'}">selected</c:if>>성북구</option>
+									<option value="송파구" <c:if test="${dto.class_area == '송파구'}">selected</c:if>>송파구</option>
+									<option value="양천구" <c:if test="${dto.class_area == '양천구'}">selected</c:if>>양천구</option>
+									<option value="영등포구" <c:if test="${dto.class_area == '영등포구'}">selected</c:if>>영등포구</option>
+									<option value="용산구" <c:if test="${dto.class_area == '용산구'}">selected</c:if>>용산구</option>
+									<option value="은평구" <c:if test="${dto.class_area == '은평구'}">selected</c:if>>은평구</option>
+									<option value="종로구" <c:if test="${dto.class_area == '종로구'}">selected</c:if>>종로구</option>
+									<option value="중구" <c:if test="${dto.class_area == '중구'}">selected</c:if>>중구</option>
+									<option value="중랑구" <c:if test="${dto.class_area == '중랑구'}">selected</c:if>>중랑구</option>
 								</select>
 							</div>
 						</div>
@@ -345,8 +352,10 @@
 						<div class="row form-group">
 							<div class="col-md-12 validate-input "
 								data-validate="날자를 선택해 주세요">
-								<label class="text-black" for="email">수업 날짜</label> <input
-									type="text" id="daterange" class="form-control" value="" />
+								<label class="text-black" for="email">수업 날짜</label>
+								<c:set var="class_sd" value="${dto.class_sd}"/>
+								<c:set var="class_cd" value="${dto.class_cd}"/>
+								 <input type="text" id="" class="form-control" value="${fn:substring(class_sd,0,10)} - ${fn:substring(class_cd,0,10)}" readonly="readonly"/>
 							</div>
 						</div>
 
@@ -354,21 +363,22 @@
 						<div class="row form-group">
 							<div class="col-md-12 validate-input "
 								data-validate="날자를 선택해 주세요">
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this);" value="2">월</button>
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="3">화</button>
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="4">수</button>
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="5">목</button>
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="6">금</button>
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="7">토</button>
-								<button type="button" class="btn btn-info"
-									onclick="sumweek(this)" value="1">일</button>
-								<input type="hidden" id="class_week" name="class_week">
+								<c:set var="class_week" value="${dto.class_week}"/>
+
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'2')}"> active</c:if>"
+									 value="2">월</button>
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'3')}"> active</c:if>"
+									 value="3">화</button>
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'4')}"> active</c:if>"
+									 value="4">수</button>
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'5')}"> active</c:if>"
+									 value="5">목</button>
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'6')}"> active</c:if>"
+									 value="6">금</button>
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'7')}"> active</c:if>"
+									 value="7">토</button>
+								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'1')}"> active</c:if>"
+									 value="1">일</button>
 							</div>
 						</div>
 
@@ -377,28 +387,19 @@
 							<div class="form-group">
 								<div class="row">
 									<div class="col-xs-4 col-md-4 col-sm-4">
+										<c:set var="class_starttime" value="${dto.class_starttime}"/>
 										<select class="form-control .col-xs-6 .col-md-4"
-											id="class_starthour1" onchange='sumclasstime(this)'>
+											id="">
+											<option selected="selected">${fn:substring(class_starttime, 0, 2)}시</option>
 										</select>
 									</div>
 									<div class="col-xs-4 col-md-4 col-sm-4">
 										<select class="form-control .col-xs-6 .col-md-4"
-											id="class_startmin1" onchange='sumclasstime(this)'>
+											id="">
+											<option selected="selected">${fn:substring(class_starttime, 2, 4)}분</option>
 										</select>
 									</div>
-									<input type='hidden' name='class_starttime'> 
-									<a href='#' class='col-xs-1 col-md-1 col-sm-1'
-										onclick='chkClassTime(this); return false'> <i
-										style='display: inline-block; margin-top: 10%;'
-										class='flaticon-done icon-2x'></i></a>
-									<span style="padding-left: 5px;">시간체크</span>
 								</div>
-							</div>
-						</div>
-						<div class="row form-group text-center">
-							<div class="col-md-12 validate-input .center-block">
-								<button class="btn" type="button" onclick="addClassTime()">수업
-									시간 추가</button>
 							</div>
 						</div>
 
@@ -406,20 +407,20 @@
 							<div class="col-md-12 validate-input" data-validate="수업시간을 정해수세요">
 								<label class="text-black" for="class_time">수업 시간(분)</label> <input
 									type="number" class="form-control" id="class_time"
-									name="class_time" placeholder="수업 진행 시간(분)" onchange="changeOkTimes()">
+									name="class_time" value="${dto.class_time}" readonly="readonly">
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 validate-input" data-validate="인원을 정해수세요">
 								<label class="text-black" for="class_participation">인원
 									설정</label> <input type="number" class="form-control"
-									name="class_participation" placeholder="최소 모집 인원">
+									name="class_participation" value="${dto.class_participation}" readonly="readonly">
 							</div>
 						</div>
 						<div class="row form-group">
 							<div class="col-md-12 validate-input" data-validate="수업료를 입력해주세요">
 								<label class="text-black" for="class_price">금액 설정</label> <input
-									type="number" class="form-control" name="class_price">
+									type="number" class="form-control" name="class_price" value="${dto.class_price}" readonly="readonly">
 							</div>
 						</div>
 
@@ -428,7 +429,7 @@
 								data-validate="수업 상세내용을 적어주세요.">
 								<label class="text-black" for="class_detail">수업 상세내용</label>
 								<textarea class="form-control" rows="" cols=""
-									name="class_detail" placeholder="수업 상세내용을 적어주세요."></textarea>
+									name="class_detail" value="" >${dto.class_detail}</textarea>
 							</div>
 						</div>
 
@@ -441,8 +442,8 @@
 									<br>
 									<div class="text-center testimonial">
 										<figure class="mb-6">
-											<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-												class=" avatar img-fluid mb-6" " alt="avatar">
+											<img src="resources/img/class/${dto.class_img}"
+												class=" avatar img-fluid mb-6" alt="avatar">
 											<br>
 											<br>
 											<h6>
@@ -450,6 +451,7 @@
 											</h6>
 									</div>
 								</div>
+								<input type="hidden" name="old_file" value="${dto.class_img}">
 								<div class="col-md-6 hidden_input"
 									style="text-align: center; margin-top: 15%">
 									<p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
@@ -466,7 +468,7 @@
 
 						<div class="row form-group" style="text-align: center;">
 							<div class="col-md-12">
-								<input type="submit" value="강의등록 "
+								<input type="submit" value="강의수정 "
 									class="btn btn-primary py-2 px-4 text-white"
 									style="width: 100%;">
 							</div>
@@ -538,8 +540,7 @@
   <script src="resources/admin/js/demo/chart-pie-demo.js"></script>
   <script type="text/javascript"
 		src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
-  <link rel="stylesheet" type="text/css"
-		href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+  
   <script src="resources/js/AddClass_C.js"></script>
 </body>
 

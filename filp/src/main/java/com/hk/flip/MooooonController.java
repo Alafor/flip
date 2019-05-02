@@ -25,6 +25,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -248,12 +249,15 @@ public class MooooonController {
 	public String memberMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
 //		List<MemberDto> list = adminService.getMemberList(10);
+		
 		return "admin/memberMgt";
 		
 	}
 	@RequestMapping(value = "/classMgt.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
 	public String classMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
+		String class_termin = request.getParameter("class_termin");
+		model.addAttribute("class_termin", class_termin);
 		return "admin/classMgt";
 		
 	}
@@ -261,7 +265,7 @@ public class MooooonController {
 	@ResponseBody
 	@RequestMapping(value = "/getUserListAjax.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
 	public String getUserListAjax(HttpServletRequest request,Locale locale,HttpServletResponse response, Model model,HttpSession httpSession) throws JsonProcessingException, UnsupportedEncodingException {
-		logger.info("유저 목록 AJAX.", locale);
+		logger.info("유저 목록 AJAX.", locale);		
 		List<MemberDto> list = adminService.getMemberList(10);
 //		for(MemberDto dto:list) {
 //			System.out.println(list);
@@ -299,6 +303,62 @@ public class MooooonController {
 		return "admin/memberMgt";
 		}
 	}
+	//관리자 강의 정보 수정
+	@RequestMapping(value = "/AClassUpdate.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String AClassUpdate(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
+		logger.info("관리자 강의 정보 수정.", locale);
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+		ClassDto classdto = new ClassDto(); 
+		classdto.setSeq(Integer.parseInt(multi.getParameter("seq")));
+		classdto.setClass_depa(multi.getParameter("class_depa"));
+		classdto.setClass_name(multi.getParameter("class_name"));
+		classdto.setClass_info(multi.getParameter("class_info"));
+		classdto.setClass_area(multi.getParameter("class_area"));
+		classdto.setClass_detail(multi.getParameter("class_detail"));
+		String old_fileName = multi.getParameter("old_file");
+		
+		File old_file = new File("C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class/"+old_fileName);
+        
+        if( old_file.exists() ){
+            if(old_file.delete()){
+                System.out.println("파일삭제 성공");
+            }else{
+                System.out.println("파일삭제 실패");
+            }
+        }else{
+            System.out.println("파일이 존재하지 않습니다.");
+        }
+		
+		MultipartFile multifile = multi.getFile("member_profile");
+		String origin_fname=multifile.getOriginalFilename();
+		String origin_fextends=origin_fname.substring(origin_fname.lastIndexOf("."));
+		String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
+		String stored_fname = creatUUID+origin_fextends;
+		classdto.setClass_img(stored_fname);
+//		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
+//		File f=new File(saveDirectory+"/class/"+stored_fname);
+		String gonguFolder = "C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class";
+		File f=new File(gonguFolder+"/"+stored_fname);
+		try {
+			multifile.transferTo(f);	
+		} catch (Exception e) {	
+			e.printStackTrace();
+		}
+		System.out.println("경로:"+f);
+		
+		if(!(adminService.updateClass(classdto))) {
+			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
+			model.addAttribute("url","classMgt.do");
+			return "Redirect";
+		}else {
+			System.out.println("회원정보 변경 성공");
+			model.addAttribute("msg","회원정보 변경에 성공했습니다.");		
+			model.addAttribute("url","classMgt.do");
+			return "Redirect";
+		}
+		
+		
+	}
 	
 	//관리자 회원 정보 삭제
 	@RequestMapping(value = "/aMemberDelete.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
@@ -315,11 +375,42 @@ public class MooooonController {
 		}
 	}
 	
+	//관리자 강의 정보 삭제
+	@RequestMapping(value = "/aClassDelete.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
+	public String aClassDelete(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, int seq) {
+		logger.info("관리자 강의 정보 삭제 요청.", locale);
+		if(!(adminService.aClassDelete(seq))) {
+			model.addAttribute("msg","강의 삭제에 실패했습니다.");		
+			model.addAttribute("url","classMgt.do");
+			return "Redirect";
+		}else {
+			model.addAttribute("msg","강의 삭제 성공");
+			model.addAttribute("url","classMgt.do");
+			return "Redirect";
+		}
+	}
+		
+	//관리자 폐강
+	@RequestMapping(value = "/aClassClose.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
+	public String aClassClose(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, int seq) {
+		logger.info("관리자 폐강 요청.", locale);
+		if(!(adminService.aClassClose(seq))) {
+			model.addAttribute("msg","폐강 실패했습니다.");		
+			model.addAttribute("url","classMgt.do");
+			return "Redirect";
+		}else {
+			model.addAttribute("msg","폐강 성공");
+			model.addAttribute("url","classMgt.do");
+			return "Redirect";
+		}
+	}
+	
 	@ResponseBody
 	@RequestMapping(value = "/getClassListAjax.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
-	public String getClassListAjax(HttpServletRequest request,Locale locale,HttpServletResponse response, Model model,HttpSession httpSession) throws JsonProcessingException, UnsupportedEncodingException {
+	public String getClassListAjax(@RequestParam String class_termin,HttpServletRequest request,Locale locale,HttpServletResponse response, Model model,HttpSession httpSession) throws JsonProcessingException, UnsupportedEncodingException {
 		logger.info("유저 목록 AJAX.", locale);
-		List<ClassDto> list = adminService.getClassList(10);
+		System.out.println("class_termin::"+class_termin);
+		List<ClassDto> list = adminService.getClassList(class_termin);
 		DataTableWrapperDto wrapper = new DataTableWrapperDto();
 		wrapper.setAaData(list);
 		ObjectMapper obm  = new ObjectMapper();
@@ -347,14 +438,14 @@ public class MooooonController {
 	@RequestMapping(value = "/classDetail.do", method = RequestMethod.GET)//
 	public String classDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,int seq) {
 		logger.info("관리자 회원 정보 열람.", locale);
-		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+//		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
 //		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
 //			model.addAttribute("msg","권한이 없습니다.");
 //			model.addAttribute("url","main.do");
 //			return "Redirect";
 //		}
 		ClassDto dto = adminService.getClassProfil(seq);
-		model.addAttribute("member", dto);
+		model.addAttribute("dto", dto);
 		System.out.println(dto);
 		return "admin/memberDetail_T2";
 		

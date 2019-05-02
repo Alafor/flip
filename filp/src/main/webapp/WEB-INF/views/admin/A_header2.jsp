@@ -60,14 +60,18 @@
       </li>
 
       <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link " href="classMgt.do" >
-          <i class="fas fa-chalkboard-teacher"></i>
+	  <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages1" aria-expanded="true" aria-controls="collapsePages">
+          <i class="fas fa-fw fa-folder"></i>
           <span>강의 관리</span>
         </a>
-        
+        <div id="collapsePages1" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <a class="collapse-item" href="classMgt.do?class_termin=N">진행중인 강의</a>
+            <a class="collapse-item" href="classMgt.do?class_termin=Y">폐강된 강의</a>
+          </div>
+        </div>
       </li>
-
       <!-- Divider -->
       <hr class="sidebar-divider">
 

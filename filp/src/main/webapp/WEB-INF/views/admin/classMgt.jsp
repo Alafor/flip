@@ -4,6 +4,7 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <% request.setCharacterEncoding("utf-8"); %>
 <% response.setContentType("text/html; charset=utf-8"); %>
+<% String class_termin = request.getParameter("class_termin"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -317,6 +318,8 @@
 <!--   <script src="resources/admin/js/demo/datatables-demo.js" charset='utf-8'></script> -->
 <script type="text/javascript">
 $(document).ready(function() {
+	var class_termin = {class_termin:"<%=class_termin %>"};  
+// 	alert(class_termin);
 	$.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { console.log(message)};
 	  $('#dataTable').DataTable({
 // 	      lengthMenu : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, 'All' ] ],
@@ -324,8 +327,8 @@ $(document).ready(function() {
 	      "ajax": {
 	          "url": "getClassListAjax.do",
 	          "type": "POST",
-	          "dataType": "json"
-	          
+	          "dataType": "json",
+	          "data":class_termin
 	      },	      
 	      columns : [
 	          {"data": 'seq'},

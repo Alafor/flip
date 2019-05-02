@@ -255,9 +255,10 @@ jQuery(document).ready(function($) {
 		});
 
 	};
+
 	siteRangeSlider();
 	
 	var img = $(".img").attr("data-img");
-	$(".active .instructorAjax").(".img").css({"background":'url(resources/img/class/'+img+')'});
-
+//	$(".active .instructorAjax").(".img")//.css({"background":'url(resources/img/class/'+img+')'});
+//
 });

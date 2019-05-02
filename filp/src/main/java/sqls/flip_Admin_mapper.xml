@@ -27,7 +27,15 @@
 		DELETE FROM member WHERE MEMBER_EMAIL = #{member_email}
 	</delete>
 	
-	<select id="getclasslist" parameterType="int" resultType="ClassDto">
+	<update id="classclose" parameterType="int">
+		UPDATE class SET class_termin = 'Y' WHERE seq = #{seq}
+	</update>
+	
+	<delete id="deleteclass" parameterType="int">
+		DELETE FROM class WHERE seq = #{seq}
+	</delete>
+	
+	<select id="getclasslist" parameterType="String" resultType="ClassDto">
 		SELECT
         C.CLASS_TYPE,
 		C.SEQ,
@@ -68,52 +76,18 @@
 		M.MEMBER_SEQ(+)
 		AND C.SEQ = D_DAY.SEQ
 		AND C.SEQ = PARTI.SEQ (+)
-        and c.CLASS_TERMIN = 'N'
+        and c.CLASS_TERMIN = #{class_termin}
 	</select>
 	
 	<select id="getclassprofil" parameterType="int" resultType="ClassDto">
-		  SELECT
-		d.member_name as class_creator_name,
-		A.CLASS_TYPE, A.SEQ, A.CLASS_NAME, A.REGDATE, A.CLASS_INFO,
-		A.CLASS_AREA,
-		A.CLASS_DEPA , TO_CHAR(A.CLASS_SD,'YYYY-MM-DD') as CLASS_SD,
-		 TO_CHAR(A.CLASS_CD,'YYYY-MM-DD') as CLASS_CD, A.CLASS_WEEK,
-		A.CLASS_STARTTIME
-		, A.CLASS_TIME
-		, A.CLASS_PRICE, A.CLASS_PARTICIPATION,
-		A.CLASS_DETAIL, A.CLASS_IMG ,
-		A.CLASS_HASHTAG,
-		A.CLASS_TERMIN,A.CLASS_MEMBER_SEQ
-		, B.CLASS_MEMBER_RATING
-		,C.CLASS_NOW_PARTICIPATION , C.CLASS_D_DAY
-		FROM (SELECT CLASS_TYPE,
-		SEQ, CLASS_NAME, REGDATE, CLASS_INFO, CLASS_AREA,
-		CLASS_DEPA , CLASS_SD
-		, CLASS_CD, CLASS_WEEK, CLASS_STARTTIME ,
-		CLASS_TIME
-		, CLASS_PRICE,
-		CLASS_PARTICIPATION, CLASS_DETAIL, CLASS_IMG ,
-		CLASS_HASHTAG,
-		CLASS_TERMIN,CLASS_MEMBER_SEQ FROM CLASS WHERE SEQ = #{class_seq}) A, 
-		(SELECT B.CLASS_MEMBER_SEQ,ROUND(AVG(REVIEW_RATING),1) AS
-		CLASS_MEMBER_RATING
-		FROM REVIEW A,CLASS B WHERE A.REVIEW_CLASS_SEQ =
-		B.SEQ GROUP BY
-		CLASS_MEMBER_SEQ) B, 
-		(SELECT SEQ,(SELECT COUNT(INCLASS.INCLASS_CLASS_SEQ) FROM INCLASS
-		WHERE
-		INCLASS.INCLASS_CLASS_SEQ = #{class_seq}) AS
-		CLASS_NOW_PARTICIPATION,
-		(TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS
-		CLASS_D_DAY FROM CLASS) C,
-		(select a.member_name from member a,class b
-		 where b.SEQ = #{class_seq} and a.member_seq = b.class_member_seq) d
-		WHERE B.CLASS_MEMBER_SEQ = A.CLASS_MEMBER_SEQ
-		AND A.SEQ =C.SEQ ORDER BY REGDATE
+		  SELECT * FROM class WHERE seq = #{class_seq}
 	</select>
 	
-	<update id="updateclassprofil" parameterType="ClassDto">
-		
+	<update id="updateclass" parameterType="ClassDto">
+		UPDATE class SET class_depa = #{class_depa},class_name = #{class_name},
+		class_info = #{class_info},class_area = #{class_area},
+		class_detail = #{class_detail},class_img = #{class_img} 
+		WHERE seq = #{seq}
 	</update>
 	
 </mapper>
