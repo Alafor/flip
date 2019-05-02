@@ -126,5 +126,10 @@ public class SeoController {
 		model.addAttribute("calendars",calendars);
 		return "mySchedule";
 	}
+	@RequestMapping(value = "/test.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String test(Locale locale, Model model, HttpServletRequest request, String year, String month) {
+		
+		return "test";
+	}
 }
 

@@ -34,6 +34,14 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<style type="text/css">
+	.classnames{
+		width: 208px;
+		height:19px;
+		overflow:hidden;
+		text-overflow: clip;
+	}
+</style>
 </head>
 <body>
 	<div class="site-wrap">
@@ -196,20 +204,16 @@
 								<c:forEach var="wantlist" items="${wantlist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical studentAjax">
 									<a href="cdetail.do?class_seq=${wantlist.seq}" class="img d-block"
-										data-img="${wantlist.class_img}">
-										</a>
+									style="background-image: url('resources/img/class/${wantlist.class_img}')"
+										data-img="${wantlist.class_img}"></a>
+										
 									<div class="lh-content">
 										<span class="category">${wantlist.class_creator_name}</span> 
 										<span class="instructor_img">등록자 사진</span>
 										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-										<h3>
+										<h3 class="classnames">
 											<a href="cdetail.do?class_seq=${wantlist.seq}">${wantlist.class_name}</a>
 										</h3>
-										<!-- 별 -->
-										
-											<!-- <p class="teacherstar" style="float:left;"></p> -->
-											
-										<!-- 별 -->
 										<address>${wantlist.class_area}</address>
 									</div>
 								</div>
@@ -247,15 +251,14 @@
 								<c:forEach var="classlist" items="${classlist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical instructorAjax">
 									<a href="cdetail.do?class_seq=${classlist.seq}" class="img d-block"
-										style="background-image: url('resources/img/class/${classlist.class_img}')">
-										${classlist.class_img}
+										style="background-image: url('resources/img/class/${classList.class_img}')">
 										</a>
 									<div class="lh-content">
 										<a href="tdetail.do?member_seq=${classlist.class_member_seq}">
 										<span class="category">${classlist.class_creator_name}</span> 
 										<span class="instructor_img">강사사진</span></a>
 										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-										<h3>
+										<h3 class="classnames" >
 											<a href="cdetail.do?class_seq=${classlist.seq}">${classlist.class_name}</a>
 										</h3>
 										<!-- 별 -->
@@ -305,13 +308,12 @@
 								<div class="d-block d-md-flex listing vertical studyAjax">
 									<a href="cdetail.do?class_seq=${studylist.seq}" class="img d-block"
 										style="background-image: url('resources/img/class/${studylist.class_img}')">
-									${studylist.class_img}	
 									</a>
 									<div class="lh-content">
 										<span class="category">${studylist.class_creator_name}</span> 
 										<span class="instructor_img">강사사진</span>
 										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
-										<h3>
+										<h3 class="classnames">
 											<a href="cdetail.do?class_seq=${studylist.seq}">${studylist.class_name}</a>
 										</h3>
 										<!-- 별 -->

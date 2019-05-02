@@ -26,7 +26,11 @@ $(function(){
 						instructorAjax.eq(i).find(".teacherstar").attr("data-minority",classList[i].class_member_rating);
 						instructorAjax.eq(i).find(".review").text("("+classList[i].class_review_count+" Review)");
 						instructorAjax.eq(i).find("address").text(classList[i].class_area);
-						instructorAjax.eq(i).find(".img").css({"background":'url(resources/img/class/'+classList[i].class_img+')'});
+						var imgurl="url(resources/img/class/"+classList[i].class_img+")";
+						instructorAjax.eq(i).find(".img").css({
+							'background':imgurl,
+							'background-size':'cover'
+						});
 					};
 				}/*else{
 					$('.c-remove').remove();
@@ -47,7 +51,8 @@ $(function(){
 						studentAjax.eq(i).find(".category").text(wantList[i].class_creator_name);
 						studentAjax.eq(i).find("h3 > a").text(wantList[i].class_name);
 						studentAjax.eq(i).find("address").text(wantList[i].class_area);
-						instructorAjax.eq(i).find(".img").css({"background":'url(resources/img/class/'+wantList[i].class_img+')'});
+						var imgurl="url(resources/img/class/"+wantList[i].class_img+")";
+						studentAjax.eq(i).find(".img").css({"background":imgurl});
 					};
 				}//else{
 //					$('.w-remove').remove();
@@ -57,7 +62,8 @@ $(function(){
 						studyAjax.eq(i).find(".category").text(studyList[i].class_creator_name);
 						studyAjax.eq(i).find("h3 > a").text(studyList[i].class_name);
 						studyAjax.eq(i).find("address").text(studyList[i].class_area);
-						instructorAjax.eq(i).find(".img").css({"background":'url(resources/img/class/'+studyList[i].class_img+')'});
+						var imgurl="url(resources/img/class/"+studyList[i].class_img+")";
+						studyAjax.eq(i).find(".img").css({"background":imgurl});
 					}
 				}/*else{
 					$('.s-remove').remove();
