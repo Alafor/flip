@@ -19,7 +19,7 @@
 	
 	<select id="chkinclasstime_join" parameterType="ClassDto" resultType="String">
 		 SELECT class_name FROM (select CLASS_TYPE,CLASS_MEMBER_SEQ,CLASS_NAME,REGDATE,SEQ,CLASS_TERMIN,CLASS_PARTICIPATION,CLASS_SD,CLASS_DEPA,CLASS_STARTTIME,CLASS_WEEK,
-            CLASS_CD,CLASS_TIME from class where class_type in('W','C') and seq in(select inclass_class_seq from inclass where inclass_member_seq = #{class_member_seq} )) 
+            CLASS_CD,CLASS_TIME from class where class_type in('W','C') AND class_termin = 'N' and seq in(select inclass_class_seq from inclass where inclass_member_seq = #{class_member_seq} )) 
             WHERE 
             seq = #{seq}  
             and CLASS_SD<![CDATA[<=]]>to_date(#{class_cd},'yyyy-mm-dd') and (CLASS_CD<![CDATA[>=]]>to_date(#{class_sd},'yyyy-mm-dd'))
@@ -32,7 +32,7 @@
 		CLASS_TYPE,CLASS_MEMBER_SEQ,CLASS_NAME,REGDATE,SEQ,CLASS_TERMIN,
 		CLASS_IMG,CLASS_DETAIL,CLASS_PARTICIPATION,CLASS_SD,CLASS_DEPA,CLASS_AREA,CLASS_STARTTIME,CLASS_WEEK,
 		CLASS_CD,CLASS_HASHTAG,CLASS_PRICE,CLASS_TIME,CLASS_INFO
-		 from class where class_member_seq = #{class_member_seq} ) 
+		 from class where class_member_seq = #{class_member_seq} AND class_termin = 'N' ) 
         WHERE 
         CLASS_SD<![CDATA[<=]]>to_date(#{class_cd},'yyyy-mm-dd') and (CLASS_CD<![CDATA[>=]]>to_date(#{class_sd},'yyyy-mm-dd'))
         and (to_date(class_starttime, 'hh24mi') <![CDATA[<=]]> (to_date(#{class_starttime}, 'hh24mi')+#{class_time}/(24*60)) 
