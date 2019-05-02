@@ -390,17 +390,26 @@ public class INController {
 
 	@RequestMapping(value = "/addclassform.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String addClassForm(Locale locale, Model model, String department) {
-		logger.info("Started main{}.", locale);
+		logger.info("강의등록 선택페이지 이동{}.", locale);
 		return "AddClassForm";
 	}
 	
 	
 	@RequestMapping(value = "/callback.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String callback(Locale locale, Model model, String department) {
-		logger.info("Started main{}.", locale);
+	public String callback(Locale locale, Model model) {
+		logger.info("네이버 로그인{}.", locale);
 		return "Callback";
 	}
 
+	@RequestMapping(value = "/naverLog.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String naverLog(Locale locale, Model model,HttpServletRequest request,String email,String name) {
+		logger.info("네이버 로그인{}.", locale);
+		String member_name=name;
+		String member_email=email;
+		System.out.println(member_name);
+		System.out.println(member_email);
+		return "redirect:main.do";
+	}
 
 	
 }
