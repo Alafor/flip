@@ -1,0 +1,31 @@
+.calendar-wrap{
+	display:table;
+	width: 550px;
+	border:2px solid;
+	margin: auto auto;
+}
+.calendar-tr{
+	display: table-row;
+	
+}
+.calendar-td{
+	display: table-cell;
+	border:1px solid;
+	height:90px;
+}
+.calendar-caption{
+	display: table-caption;
+	text-align: center;
+	
+}
+.calendar-thead{
+	display:table-header-group;
+}
+.calendar-title{
+	font-size:30px;
+	text-align: center;
+}
+.weeks{
+	height: 20px;
+	border-bottom: 2px solid;
+}

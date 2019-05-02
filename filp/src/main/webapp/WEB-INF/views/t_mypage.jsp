@@ -431,6 +431,8 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 <script src="resources/js/rangeslider.min.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="resources/js/signup.js"></script>
-<div><a href="scheduleCalendar.do">캘린더 링크</a></div>
+<div><a href="scheduleCalendar.do"
+ onclick="window.open(this.href, 'calendar', 'width=700px,height=700px,toolbars=no,scrollbars=no'); return false;">캘린더바로가기</a>
+ </div>
 </body>
 </html>

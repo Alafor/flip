@@ -34,8 +34,8 @@ public class Util {
 //		int day = Integer.parseInt(mDate.substring(8, 10));
 //		Calendar cal1=Calendar.getInstance();
 //		Calendar cal2=Calendar.getInstance();
-//		cal1.ge
-//		cal.set(year,month,day);
+//		cal1.
+//		cal2.set(year,month,day);
 //		
 //		return changeDate;
 //	} 
