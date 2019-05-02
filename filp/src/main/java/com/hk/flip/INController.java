@@ -99,8 +99,9 @@ public class INController {
 	public String logout(Locale locale, Model model,HttpSession session) {
 		logger.info("로그아웃 하기{}.", locale);
 		session.invalidate();
+	
 		/*session.removeAttribute("logInMember");*/
-			return "redirect:main.do";
+		return "redirect:main.do";
 	}
 	
 	@RequestMapping(value = "/signupform.do", method = RequestMethod.GET)
@@ -402,13 +403,41 @@ public class INController {
 	}
 
 	@RequestMapping(value = "/naverLog.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String naverLog(Locale locale, Model model,HttpServletRequest request,String email,String name) {
-		logger.info("네이버 로그인{}.", locale);
+	public String naverLog(Locale locale, Model model,HttpServletRequest request,String email,String name,String id,String birthday) {
+		logger.info("네이버 로그인 회원체크{}.", locale);
+		String member_type="S";
 		String member_name=name;
 		String member_email=email;
-		System.out.println(member_name);
-		System.out.println(member_email);
-		return "redirect:main.do";
+		String member_id=id;
+		String member_birth=birthday;
+		System.out.println("member_name:"+member_name);
+		System.out.println("member_email:"+member_email);
+		System.out.println("member_id:"+member_id);
+		System.out.println("member_birth:"+member_birth);
+		
+		HttpSession session =request.getSession();
+		MemberDto dto = memberService.NaverLogCheck(member_email);
+		if(dto!=null&&(dto.getMember_key()).equals("Y")) {	
+			session.setAttribute("logInMember", dto );	
+			return "redirect:main.do";
+		}else if(dto==null){
+			boolean isS = memberService.NaverSignUp(member_email,member_name,member_id,member_birth,member_type);
+			boolean isS2 = mailsender.mailSendWithUserKey(member_email,member_id,request);
+			if(isS&&isS2) {
+				model.addAttribute("msg","입력하신 네이버메일에서 인증확인을 하셔야 서비스 이용이 가능합니다.");		
+				model.addAttribute("url","https://www.naver.com/");
+				return "Redirect";
+			}else{
+				model.addAttribute("msg","가입실패");
+				return "error";
+			}
+		}else {
+		model.addAttribute("msg", "이메일인증을 하지 않으셨습니다.메일 인증 하신후에 서비스 이용바랍니다." );
+			model.addAttribute("url","https://www.naver.com/");
+			return "Redirect";
+		}
+		
+		
 	}
 
 	

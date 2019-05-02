@@ -24,4 +24,9 @@ public interface IMemberService {
 	public List<ReviewDto> getTreview(int member_seq);
 	//강사 회원가입
 	public boolean newT_member(MemberDto dto);
+	//네이버로그인 이메일 체크
+	public MemberDto NaverLogCheck(String member_email);
+	//네이버로그인시 회원가입이 안되어있을경우 회원가입하기
+	public boolean NaverSignUp(String member_email, String member_name,
+			String member_id, String member_birth,String member_type);
 }

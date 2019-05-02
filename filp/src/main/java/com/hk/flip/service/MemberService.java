@@ -51,4 +51,15 @@ public class MemberService implements IMemberService {
 	public boolean newT_member(MemberDto dto) {
 		return memberDao.newT_member(dto);
 	}
+
+	@Override
+	public MemberDto NaverLogCheck(String member_email) {
+		return memberDao.NaverLogCheck(member_email);
+	}
+
+	@Override
+	public boolean NaverSignUp(String member_email, String member_name, String member_id, String member_birth,
+			String member_type) {
+		return memberDao.NaverSignUp(member_email,member_name,member_id,member_birth,member_type);
+	}
 }
