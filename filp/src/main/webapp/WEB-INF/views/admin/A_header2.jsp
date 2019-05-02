@@ -61,7 +61,7 @@
 
       <!-- Nav Item - Utilities Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link " href="#" >
+        <a class="nav-link " href="classMgt.do" >
           <i class="fas fa-chalkboard-teacher"></i>
           <span>강의 관리</span>
         </a>

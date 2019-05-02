@@ -248,10 +248,13 @@ public class MooooonController {
 	public String memberMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
 //		List<MemberDto> list = adminService.getMemberList(10);
-		
-		
-		
 		return "admin/memberMgt";
+		
+	}
+	@RequestMapping(value = "/classMgt.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
+	public String classMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
+		logger.info("관리자 회원 관리.", locale);
+		return "admin/classMgt";
 		
 	}
 	
@@ -274,13 +277,6 @@ public class MooooonController {
 //		    System.out.println("origin["+text+"], "+"encoded["+encode+"], charset["+charset+"]");
 //		  }
 //		}
-
-		
-		
-		
-		
-		
-		
 		DataTableWrapperDto wrapper = new DataTableWrapperDto();
 		wrapper.setAaData(list);
 		 ObjectMapper obm  = new ObjectMapper();
@@ -288,22 +284,79 @@ public class MooooonController {
 		String userListJson = obm.writeValueAsString(wrapper);
 		System.out.println("userListJson:::"+userListJson);
 		return userListJson;
-		
 	}
 	
-	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
+	//관리자 회원 정보 수정
+	@RequestMapping(value = "/AMemberUpdate.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String AMemberUpdate(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, MemberDto dto) {
+		logger.info("관리자 회원 정보 수정.", locale);
+		if(!(adminService.updateMember(dto))) {
+			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
+			model.addAttribute("url","memberMgt.do");
+			return "Redirect";
+		}else {
+			System.out.println("회원정보 변경 성공");
+		return "admin/memberMgt";
+		}
+	}
+	
+	//관리자 회원 정보 삭제
+	@RequestMapping(value = "/aMemberDelete.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
+	public String aMemberDelete(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, String member_email) {
+		logger.info("관리자 회원 삭제 요청.", locale);
+		if(!(adminService.aMemberDelete(member_email))) {
+			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
+			model.addAttribute("url","memberMgt.do");
+			return "Redirect";
+		}else {
+			model.addAttribute("msg","회원 삭제 성공");
+			model.addAttribute("url","memberMgt.do");
+			return "Redirect";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/getClassListAjax.do", method = RequestMethod.POST, produces="text/plain;charset=UTF-8")
+	public String getClassListAjax(HttpServletRequest request,Locale locale,HttpServletResponse response, Model model,HttpSession httpSession) throws JsonProcessingException, UnsupportedEncodingException {
+		logger.info("유저 목록 AJAX.", locale);
+		List<ClassDto> list = adminService.getClassList(10);
+		DataTableWrapperDto wrapper = new DataTableWrapperDto();
+		wrapper.setAaData(list);
+		ObjectMapper obm  = new ObjectMapper();
+		
+		String userListJson = obm.writeValueAsString(wrapper);
+		System.out.println("userListJson:::"+userListJson);
+		return userListJson;
+	}
+	
+	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.GET)//
 	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,String email) {
 		logger.info("관리자 회원 정보 열람.", locale);
 		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
-		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
-			model.addAttribute("msg","권한이 없습니다.");
-			model.addAttribute("url","main.do");
-			return "Redirect";
-		}
-		
+//		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
+//			model.addAttribute("msg","권한이 없습니다.");
+//			model.addAttribute("url","main.do");
+//			return "Redirect";
+//		}
 		MemberDto dto = adminService.getMemberProfil(email);
 		model.addAttribute("member", dto);
 		return "admin/memberDetail";
+		
+	}
+	
+	@RequestMapping(value = "/classDetail.do", method = RequestMethod.GET)//
+	public String classDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,int seq) {
+		logger.info("관리자 회원 정보 열람.", locale);
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+//		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
+//			model.addAttribute("msg","권한이 없습니다.");
+//			model.addAttribute("url","main.do");
+//			return "Redirect";
+//		}
+		ClassDto dto = adminService.getClassProfil(seq);
+		model.addAttribute("member", dto);
+		System.out.println(dto);
+		return "admin/memberDetail_T2";
 		
 	}
 	

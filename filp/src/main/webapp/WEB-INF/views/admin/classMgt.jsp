@@ -2,10 +2,12 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
+<% request.setCharacterEncoding("utf-8"); %>
+<% response.setContentType("text/html; charset=utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
@@ -17,10 +19,11 @@
 
   <!-- Custom styles for this template-->
   <link href="resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
-  <title>Flip 관리자 페이지</title>
-
+  <title>회원관리 페이지</title>
+<style type="text/css">
+	table tr td {min-width: 100px;} 
+</style>
 </head>
-
 <body id="page-top">
 
   <!-- Page Wrapper -->
@@ -221,86 +224,33 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm text-right" id="delmember"><i class="fas fa-download fa-sm text-white-50"></i> 회원 삭제</a>
+          <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+          <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
+
+          <!-- DataTales Example -->
+          <div class="card shadow mb-4">
+            <div class="card-header py-3">
+              <h6 class="m-0 font-weight-bold text-primary">회원 정보</h6>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                      <th>강의 seq</th>
+                      <th>타입</th>
+                      <th>강의명</th>
+                      <th>강의 정보</th>
+                      <th>시작시간</th>
+                      <th>개설자</th>
+                    </tr>
+                  </thead>
+                  
+                </table>
+              </div>
+            </div>
           </div>
 
-          <!-- Content Row -->
-           	<div class="row justify-content-center mb-5">
-				<div class="col-md-7 text-center border-primary">
-					<h2 class="font-weight-light text-primary">
-						회원정보<span class="text-warning"> 변경</span>
-					</h2>
-				</div>
-			</div>
-        <div class="row justify-content-center">
-          <div class="col-md-7 mb-5"  data-aos="fade">
-          
-          	<form class="p-5 bg-white validate-form" action="AMemberUpdate.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
-          	<input type="hidden" name="member_type"  value="S">
-             
- 			<div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
-                  <label class="text-black" for="name">이름</label> 
-                  <input type="text" class="form-control" name="member_name" value="${member.member_name}" readonly="readonly">
-                </div>
-              </div>	            
-             
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
-                  <label class="text-black" for="id">아이디</label> 
-                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()" value="${member.member_id}" readonly="readonly">
-                </div>
-                <div id="message" style="margin-left: 20px; color: red;"></div>
-              </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
-                  <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email"  value="${member.member_email}" readonly="readonly">
-                </div>
-              </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드</label> 
-                  <input type="password" id="Pw" class="form-control" name="member_password"  value="${member.member_password}">
-                </div>
-              </div>
-              <div class="row form-group ">              
-                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요"  value="${member.member_password}">
-                  <label class="text-black" for="password">패스워드확인</label>  
-                  <input type="password" id="PwCheck" class="form-control" >
-                </div>
-              </div>
-              <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
-                  <label class="text-black" for="birth">생년월일</label> 
-                  <input type="text"  class="form-control" name="member_birth" 
-                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10"  value="${member.member_birth}">
-                </div>
-              </div>
-          	<div class="row form-group">              
-                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
-                  <label class="text-black" for="phone">전화번호</label> 
-                  <input type="text" class="form-control" name="member_phone" 
-                  onkeyup="auto_phone(event, this)" onkeypress="auto_phone(event, this)" maxlength="13" value="${member.member_phone}">
-                </div>
-              </div>
-              
-              <div class="row form-group" style="text-align: center;">
-                <div class="col-md-12">
-                  <input type="submit" value=" 정보 변경 " class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
-                </div>
-              </div>
-              <div class="row form-group" style="text-align: center;">
-                <div class="col-md-12">
-                  <button type="button" class="btn btn-danger py-2 px-4 text-white" style="width: 100%;" onclick="location.href='memberMgt.do'" >
-                  	뒤로가기
-                  </button>
-                </div>
-              </div>
-              </form>
-          </div>
-          </div>
         </div>
         <!-- /.container-fluid -->
 
@@ -352,26 +302,58 @@
   <script src="resources/admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   <!-- Core plugin JavaScript-->
-  <script src="resources/adminvendor/jquery-easing/jquery.easing.min.js"></script>
+  <script src="resources/admin/vendor/jquery-easing/jquery.easing.min.js"></script>
 
   <!-- Custom scripts for all pages-->
   <script src="resources/admin/js/sb-admin-2.min.js"></script>
 
   <!-- Page level plugins -->
-  <script src="resources/admin/vendor/chart.js/Chart.min.js"></script>
+<!--   <script src="resources/admin/vendor/datatables/jquery.dataTables.min.js"></script> -->
+<!--   <script src="resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script> -->
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+  <script src="resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="resources/admin/js/demo/chart-area-demo.js"></script>
-  <script src="resources/admin/js/demo/chart-pie-demo.js"></script>
-	<script type="text/javascript">
-	
-	$('document').ready(function(){
-		$('#delmember').click(function(){
-			var str = "aMemberDelete.do?member_email="+$('input[name=member_email]').val();
-			location.replace(str);
-			});
+<!--   <script src="resources/admin/js/demo/datatables-demo.js" charset='utf-8'></script> -->
+<script type="text/javascript">
+$(document).ready(function() {
+	$.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) { console.log(message)};
+	  $('#dataTable').DataTable({
+// 	      lengthMenu : [ [ 10, 15, 20, 30, -1 ], [ 10, 15, 20, 30, 'All' ] ],
+	     serverSide: false,
+	      "ajax": {
+	          "url": "getClassListAjax.do",
+	          "type": "POST",
+	          "dataType": "json"
+	          
+	      },	      
+	      columns : [
+	          {"data": 'seq'},
+	          {"data": 'class_type'},
+	          {
+	        	  "data": 'class_name',
+	        	"render": function (data, type) {      
+	        		if ( type === 'display' ) {
+	                 return '<a href="#" class="table_link" onclick="classDetail(this)">' + data + '</a>';
+	        		}
+	        	}
+	          },
+	          {"data": 'class_info'},
+	          {"data": 'class_starttime'},
+	          {"data": 'class_creator_name'}
+	      ]
+	  });
+	  
+	  
 	});
-	</script>
+	function classDetail(aa){
+	var str = $(aa).parent().parent().children().eq(0).text();
+	location.href ='classDetail.do?seq='+str;
+	// 	memberDetail.do?seq=
+     }
+    
+</script>
+
 </body>
 
 </html>

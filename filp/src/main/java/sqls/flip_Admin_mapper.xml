@@ -18,5 +18,102 @@
 		SELECT * from member where member_email = #{email}
 	</select>
 	
+	<update id="updatemember" parameterType="MemberDto">
+		UPDATE member SET MEMBER_PASSWORD = #{member_password},MEMBER_BIRTH = #{member_birth},
+		MEMBER_PHONE = #{member_phone} WHERE MEMBER_EMAIL = #{member_email}
+	</update>
+	
+	<delete id="deletemember" parameterType="String">
+		DELETE FROM member WHERE MEMBER_EMAIL = #{member_email}
+	</delete>
+	
+	<select id="getclasslist" parameterType="int" resultType="ClassDto">
+		SELECT
+        C.CLASS_TYPE,
+		C.SEQ,
+		M.MEMBER_NAME AS
+		CLASS_CREATOR_NAME,
+		C.CLASS_NAME,
+		C.CLASS_INFO,
+		C.CLASS_AREA,
+        
+        REPLACE(TO_CHAR(c.class_starttime, '00,00'),',',':') as class_starttime
+
+
+		FROM
+		CLASS C,
+		MEMBER M,
+		(SELECT CLASS.SEQ, ROUND(AVG(REVIEW.REVIEW_RATING),1)
+		AS
+		CLASS_RATING,COUNT(REVIEW_CLASS_SEQ) AS CLASS_REVIEW_COUNT
+		FROM
+		REVIEW, CLASS
+		WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ
+		GROUP BY
+		CLASS.SEQ
+		ORDER BY CLASS_RATING DESC) R,
+		(SELECT
+		CLASS.SEQ,(TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD'))
+		AS CLASS_D_DAY FROM CLASS) D_DAY,
+		(SELECT
+		CL.SEQ,COUNT(INC.INCLASS_CLASS_SEQ) AS CLASS_NOW_PARTICIPATION
+		FROM
+		INCLASS INC, CLASS CL
+		WHERE INC.INCLASS_CLASS_SEQ = CL.SEQ
+		GROUP BY
+		CL.SEQ) PARTI
+		WHERE
+		C.SEQ = R.SEQ (+)
+		AND C.CLASS_MEMBER_SEQ =
+		M.MEMBER_SEQ(+)
+		AND C.SEQ = D_DAY.SEQ
+		AND C.SEQ = PARTI.SEQ (+)
+        and c.CLASS_TERMIN = 'N'
+	</select>
+	
+	<select id="getclassprofil" parameterType="int" resultType="ClassDto">
+		  SELECT
+		d.member_name as class_creator_name,
+		A.CLASS_TYPE, A.SEQ, A.CLASS_NAME, A.REGDATE, A.CLASS_INFO,
+		A.CLASS_AREA,
+		A.CLASS_DEPA , TO_CHAR(A.CLASS_SD,'YYYY-MM-DD') as CLASS_SD,
+		 TO_CHAR(A.CLASS_CD,'YYYY-MM-DD') as CLASS_CD, A.CLASS_WEEK,
+		A.CLASS_STARTTIME
+		, A.CLASS_TIME
+		, A.CLASS_PRICE, A.CLASS_PARTICIPATION,
+		A.CLASS_DETAIL, A.CLASS_IMG ,
+		A.CLASS_HASHTAG,
+		A.CLASS_TERMIN,A.CLASS_MEMBER_SEQ
+		, B.CLASS_MEMBER_RATING
+		,C.CLASS_NOW_PARTICIPATION , C.CLASS_D_DAY
+		FROM (SELECT CLASS_TYPE,
+		SEQ, CLASS_NAME, REGDATE, CLASS_INFO, CLASS_AREA,
+		CLASS_DEPA , CLASS_SD
+		, CLASS_CD, CLASS_WEEK, CLASS_STARTTIME ,
+		CLASS_TIME
+		, CLASS_PRICE,
+		CLASS_PARTICIPATION, CLASS_DETAIL, CLASS_IMG ,
+		CLASS_HASHTAG,
+		CLASS_TERMIN,CLASS_MEMBER_SEQ FROM CLASS WHERE SEQ = #{class_seq}) A, 
+		(SELECT B.CLASS_MEMBER_SEQ,ROUND(AVG(REVIEW_RATING),1) AS
+		CLASS_MEMBER_RATING
+		FROM REVIEW A,CLASS B WHERE A.REVIEW_CLASS_SEQ =
+		B.SEQ GROUP BY
+		CLASS_MEMBER_SEQ) B, 
+		(SELECT SEQ,(SELECT COUNT(INCLASS.INCLASS_CLASS_SEQ) FROM INCLASS
+		WHERE
+		INCLASS.INCLASS_CLASS_SEQ = #{class_seq}) AS
+		CLASS_NOW_PARTICIPATION,
+		(TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS
+		CLASS_D_DAY FROM CLASS) C,
+		(select a.member_name from member a,class b
+		 where b.SEQ = #{class_seq} and a.member_seq = b.class_member_seq) d
+		WHERE B.CLASS_MEMBER_SEQ = A.CLASS_MEMBER_SEQ
+		AND A.SEQ =C.SEQ ORDER BY REGDATE
+	</select>
+	
+	<update id="updateclassprofil" parameterType="ClassDto">
+		
+	</update>
 	
 </mapper>
