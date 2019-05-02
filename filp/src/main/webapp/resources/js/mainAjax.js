@@ -26,6 +26,7 @@ $(function(){
 						instructorAjax.eq(i).find(".teacherstar").attr("data-minority",classList[i].class_member_rating);
 						instructorAjax.eq(i).find(".review").text("("+classList[i].class_review_count+" Review)");
 						instructorAjax.eq(i).find("address").text(classList[i].class_area);
+						instructorAjax.eq(i).find(".img").css({"background":'url(resources/img/class/'+classList[i].class_img+')'});
 					};
 				}/*else{
 					$('.c-remove').remove();
@@ -43,18 +44,20 @@ $(function(){
 								+'<span class="instructor_img">등록자 사진</span> <a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>'
 								+'<h3><a href="cdetail.do?class_seq='+wantList[i].seq+'">'+wantList[i].class_name+'</a></h3>'
 								+'<address>'+wantList[i].class_area+'</address></div></div></div>')*/
-						studentAjax.eq(i).find(".category").text(classList[i].class_creator_name);
-						studentAjax.eq(i).find("h3 > a").text(classList[i].class_name);
-						studentAjax.eq(i).find("address").text(classList[i].class_area);
+						studentAjax.eq(i).find(".category").text(wantList[i].class_creator_name);
+						studentAjax.eq(i).find("h3 > a").text(wantList[i].class_name);
+						studentAjax.eq(i).find("address").text(wantList[i].class_area);
+						instructorAjax.eq(i).find(".img").css({"background":'url(resources/img/class/'+wantList[i].class_img+')'});
 					};
 				}//else{
 //					$('.w-remove').remove();
 //				}
 				if(studyList!=""){
 					for(var i=0;i<studyList.length;i++){
-						studyAjax.eq(i).find(".category").text(classList[i].class_creator_name);
-						studyAjax.eq(i).find("h3 > a").text(classList[i].class_name);
-						studyAjax.eq(i).find("address").text(classList[i].class_area);
+						studyAjax.eq(i).find(".category").text(studyList[i].class_creator_name);
+						studyAjax.eq(i).find("h3 > a").text(studyList[i].class_name);
+						studyAjax.eq(i).find("address").text(studyList[i].class_area);
+						instructorAjax.eq(i).find(".img").css({"background":'url(resources/img/class/'+studyList[i].class_img+')'});
 					}
 				}/*else{
 					$('.s-remove').remove();

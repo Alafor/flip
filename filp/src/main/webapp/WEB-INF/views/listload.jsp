@@ -108,7 +108,7 @@
 			<div class="loadlist col-3">	
 			<div class="d-block d-md-flex vertical listing studentAjax">
 				<a href="cdetail.do?class_seq=${searchList.seq}" class="img d-block"
-					style="background-image: url('resources/images/img_4.jpg')"></a>
+					style="background-image: url('resources/img/class/${searchList.class_img}')"></a>
 				<div class="lh-content">
 					<c:choose>
 					<c:when test="${searchList.class_type eq 'C'}">
