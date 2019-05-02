@@ -25,5 +25,5 @@ public interface IClassDao {
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	public int insertClass(ClassDto classDto);
 	//칼린다
-	public List<CalendarDto> scheduleList(int memberSeq);
+	public List<CalendarDto> scheduleList(int memberSeq, int month);
 }

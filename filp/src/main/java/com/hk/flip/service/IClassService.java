@@ -1,6 +1,7 @@
 package com.hk.flip.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
@@ -24,5 +25,5 @@ public interface IClassService {
 	public String chkInclassTime_Create(ClassDto dto);
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	//스케줄
-	public List<List<CalendarDto>> scheduleList(List<InclassDto> myClass);
+	public List<CalendarDto> scheduleList(List<InclassDto> myClass,Map<String, Object> month);
 }

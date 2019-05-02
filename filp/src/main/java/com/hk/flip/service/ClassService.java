@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -122,12 +123,22 @@ public class ClassService implements IClassService {
 		return classDao.areaCount(search, department, classType, selArea);
 	}
 	@Override
-	public List<List<CalendarDto>> scheduleList(List<InclassDto> myClass){
-		List<List<CalendarDto>> myScheduleList = new ArrayList<List<CalendarDto>>();
+	public List<CalendarDto> scheduleList(List<InclassDto> myClass,Map<String, Object> allDay){
+		List<CalendarDto> myScheduleList = new ArrayList<CalendarDto>();
+		int month = (Integer)allDay.get("month");
+		System.out.println("service:"+month);
 		for(int i=0;i<myClass.size();i++) {
 			int classSeq = myClass.get(i).getSeq();
-			myScheduleList.add(classDao.scheduleList(classSeq));
+			List<CalendarDto> testList=classDao.scheduleList(classSeq,month);
+			for(int j=0;j<testList.size();j++) {
+				myScheduleList.add(testList.get(j));
+			}
 		}
+		System.out.println("service 목록: "+ myScheduleList);
+//		List<CalendarDto> myRealSchedule = new ArrayList<CalendarDto>();
+//		for(int i=0;i<myScheduleList.size();i++) {
+//			for(int j=0;j<)
+//		}
 		return myScheduleList; 
 	}
 }

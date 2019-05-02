@@ -105,7 +105,12 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectList(nameSpace + "areaCount",searchFilter);
 	}
 	@Override
-	public List<CalendarDto> scheduleList(int memberSeq){
-		return sqlsession.selectList(nameSpace+"myschedule",memberSeq);
+	public List<CalendarDto> scheduleList(int classSeq, int month){
+		System.out.println("dao month: "+month);
+		System.out.println("dao classSeq: "+classSeq);
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("classSeq",classSeq);
+		map.put("month", month);
+		return sqlsession.selectList(nameSpace+"myschedule",map);
 	}
 }

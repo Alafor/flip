@@ -455,28 +455,31 @@
 	</select>
 	
 	<!-- 내 전체 일정보기 -->
-	<select id="myschedule" parameterType="int" resultType="CalendarDto">
+	<select id="myschedule" parameterType="Map" resultType="CalendarDto">
 	SELECT
-		C.CLASS_NAME,
-		ALLDAY.DAYS,
-		ALLDAY.SCHEDULEWEEK,
-		C.CLASS_STARTTIME
-	FROM
-		CLASS C,
-	(SELECT
-		C.CLASS_SD + LEVEL -1 AS DAYS, TO_CHAR(C.CLASS_SD + LEVEL -1,'D') AS SCHEDULEWEEK
-	FROM
-		(SELECT
-			CLASS_SD, CLASS_CD, CLASS_WEEK
-		FROM
-			CLASS
-		WHERE
-			CLASS.SEQ = #{classSeq}) C
-	<![CDATA[
-	CONNECT BY LEVEL <= C.CLASS_CD - C.CLASS_SD +1) ALLDAY
-	]]>
-	WHERE
-		C.SEQ = #{classSeq}
-	AND REGEXP_LIKE(ALLDAY.SCHEDULEWEEK, C.CLASS_WEEK)
+      C.CLASS_NAME,
+      EXTRACT(YEAR FROM ALLDAY.DAYS) YEARS,
+      EXTRACT(MONTH FROM ALLDAY.DAYS) MONTHS,
+      EXTRACT(DAY FROM ALLDAY.DAYS) DAYS,
+      ALLDAY.SCHEDULEWEEK,
+      C.CLASS_STARTTIME
+   FROM
+      CLASS C,
+   (SELECT
+      C.CLASS_SD + LEVEL -1 AS DAYS, TO_CHAR(C.CLASS_SD + LEVEL -1,'D') AS SCHEDULEWEEK
+   FROM
+      (SELECT
+         CLASS_SD, CLASS_CD, CLASS_WEEK
+      FROM
+         CLASS
+      WHERE
+         CLASS.SEQ = #{classSeq}) C
+   <![CDATA[
+   CONNECT BY LEVEL <= C.CLASS_CD - C.CLASS_SD +1) ALLDAY
+   ]]>
+   WHERE
+      C.SEQ = #{classSeq}
+   AND EXTRACT(MONTH FROM ALLDAY.DAYS) = #{month}
+   AND REGEXP_LIKE(ALLDAY.SCHEDULEWEEK, C.CLASS_WEEK)
 	</select>
 </mapper>

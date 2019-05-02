@@ -22,6 +22,7 @@ import com.hk.flip.dtos.InclassDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IInclassService;
+import com.hk.utils.Util;
 
 /**
  * Handles requests for the application home page.
@@ -107,19 +108,22 @@ public class SeoController {
 	
 	//캘린더
 	@RequestMapping(value = "/scheduleCalendar.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String mySchedule(Locale locale, Model model, HttpServletRequest request) {
+	public String mySchedule(Locale locale, Model model, HttpServletRequest request, String year, String month) {
 		logger.info("Schedual select{}.", locale);
 		HttpSession session = request.getSession();
 		MemberDto memberDto = (MemberDto)session.getAttribute("logInMember");
 		System.out.println("세션확인"+memberDto);
 		int memberSeq = memberDto.getMember_seq();
+		Map<String, Object> calendars=Util.getCalendar(year, month);
+		System.out.println("controller"+calendars);
 		List<InclassDto> myClass = inclassService.myClass(memberSeq);
-		List<List<CalendarDto>> mySchedule = classService.scheduleList(myClass);
+		List<CalendarDto> mySchedule = classService.scheduleList(myClass,calendars);
 		for(int i=0;i<mySchedule.size();i++) {
-			for(int j=0;j<mySchedule.get(i).size();j++) {
-				System.out.println("스케쥴표"+i+"안에"+j+":"+mySchedule.get(i).get(j));
-			}
+			System.out.println("스케쥴표"+i+":"+mySchedule.get(i));
 		}
+		
+		model.addAttribute("mySchedule",mySchedule);
+		model.addAttribute("calendars",calendars);
 		return "mySchedule";
 	}
 }
