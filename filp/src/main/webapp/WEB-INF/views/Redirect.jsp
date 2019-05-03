@@ -11,9 +11,19 @@
 <body>
 <script type="text/javascript">
 	var message = '${msg}'; 
-	var returnUrl = '${url}'; 
-	alert(message); 
-	document.location.href = returnUrl;
+	var returnUrl = '${url}';
+	if(!returnUrl){
+		var result=confirm(message);
+		if(result){
+			document.location.href = 'mypage.do';
+		}else{
+			document.location.href = 'main.do';
+		}
+	}else{
+		alert(message); 
+		document.location.href = returnUrl;	
+	}
+	
 	</script>
 </body> 
 </body>

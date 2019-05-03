@@ -21,6 +21,7 @@ import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.InclassDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IClassService;
+import com.hk.flip.service.IClassWishlistService;
 import com.hk.flip.service.IInclassService;
 import com.hk.utils.Util;
 
@@ -36,8 +37,8 @@ public class SeoController {
 	private IClassService classService;
 	@Autowired
 	private IInclassService inclassService;
-//	@Autowired
-//	private IClassWishlistService classwishlistService;
+	@Autowired
+	private IClassWishlistService classwishlistService;
 	
 	//main list
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
@@ -126,10 +127,33 @@ public class SeoController {
 		model.addAttribute("calendars",calendars);
 		return "mySchedule";
 	}
-	@RequestMapping(value = "/test.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String test(Locale locale, Model model, HttpServletRequest request, String year, String month) {
-		
-		return "test";
+	//메인에서 위시리스트 담기
+	@RequestMapping(value = "/insertwhishlist.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String insertwhishlist(Locale locale, Model model,HttpServletRequest request, String class_seq) {
+			HttpSession session = request.getSession();
+			MemberDto memberDto = (MemberDto)session.getAttribute("logInMember");
+			if(memberDto==null) {
+				model.addAttribute("msg","로그인이 필요합니다.");
+				model.addAttribute("url","main.do");
+				return "Redirect";
+			}else{
+				int member_seq = memberDto.getMember_seq();
+				if(memberDto.getMember_type().equals("T")) {
+					model.addAttribute("msg","강사는 강의에 참여할 수 없습니다.");
+					model.addAttribute("url","main.do");
+					return "Redirect";
+				}
+				boolean success =  classwishlistService.addWishlist(member_seq, Integer.parseInt(class_seq));
+				if(success) {
+					model.addAttribute("msg","위시리스트에 담았습니다. 확인하시겠습니까?");
+					return "Redirect";
+				}else{
+					model.addAttribute("msg","이미 위시리스트 있는 수업입니다.");
+					model.addAttribute("url","main.do");
+					return "Redirect";
+				}
+			}
+			
 	}
 }
 

@@ -17,7 +17,7 @@ public class ClassWishlistDao implements IClassWishlistDao {
 
 	@Autowired
 	private SqlSessionTemplate sqlsession;
-	String nameSpace = "com.hk.flip.ClassWishlist";
+	String nameSpace = "com.hk.flip.ClassWishlist.";
 	
 	public ClassWishlistDao() {
 	}
@@ -44,18 +44,18 @@ public class ClassWishlistDao implements IClassWishlistDao {
 	//위시리스트 추가 ++++++위시리스트 중복검사 필수
 	@Override
 	public boolean insertWishlist(int member_seq,int class_seq) {//아이디 , 수업 seq
-		Map<String,String> map = new HashMap();
-		map.put("id", Integer.toString(member_seq));
-		map.put("seq", Integer.toString(class_seq));
+		Map<String,Integer> map = new HashMap();
+		map.put("member_seq", member_seq);
+		map.put("class_seq", class_seq);
 		return sqlsession.insert(nameSpace+"insertwishlist", map)>0?true:false;
 	}
 	
 	//위시리스트 중복검사 중복시 true
 	@Override
 	public boolean checkWishlist(int member_seq,int class_seq) {//아이디 , 수업 seq
-		Map<String,String> map = new HashMap();
-		map.put("id", Integer.toString(member_seq));
-		map.put("seq", Integer.toString(class_seq));
+		Map<String,Integer> map = new HashMap();
+		map.put("member_seq", member_seq);
+		map.put("class_seq", class_seq);
 		int result = sqlsession.selectOne(nameSpace+"checkwishlist", map);
 		return result>0?true:false;
 	}

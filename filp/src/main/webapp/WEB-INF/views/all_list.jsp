@@ -177,7 +177,7 @@
 					<li class="tab-link" data-tab="tab-2">학생 <span
 						class="text-warning">찾기</span>
 					</li>
-					<li class="tab-link" data-tab="tab-3">클래스 <span
+					<li class="tab-link" data-tab="tab-3">스터디 <span
 						class="text-warning">찾기</span>
 					</li>
 				</ul>

@@ -1,31 +1,134 @@
+
 .calendar-wrap{
 	display:table;
-	width: 550px;
-	border:2px solid;
 	margin: auto auto;
 }
 .calendar-tr{
 	display: table-row;
-	
 }
 .calendar-td{
 	display: table-cell;
-	border:1px solid;
 	height:90px;
+	width: 80px;
+	border: 1px solid #b8b8b8;
+	border-right: none;
+	border-top:none;
 }
 .calendar-caption{
 	display: table-caption;
-	text-align: center;
-	
+	text-align: left;
+	margin-bottom: 15px;
 }
 .calendar-thead{
 	display:table-header-group;
 }
 .calendar-title{
+	margin-top:20px;
+	margin-bottom:15px;
 	font-size:30px;
 	text-align: center;
+	font-weight: bold;
 }
 .weeks{
-	height: 20px;
-	border-bottom: 2px solid;
+	height: 30px;
+	background-color: #30e3ca;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+	border:  2px solid #30e3ca;
+	border-bottom: none;
+	vertical-align: middle;
+}
+.schedulename{
+	width:75px;
+	height:15px;
+	font-size: 11px;
+	text-overflow: clip;
+	display:block;
+	text-align: center;
+	color:white;
+	margin: 0px;
+}
+.scheduletime{
+	font-size: 11px;
+}
+.mySchedules{
+	width:83px;
+	overflow:hidden;
+	text-overflow: clip;
+	background-color:#30e3ca;
+	text-align: center;
+}
+.top-left{
+	border-top-left-radius: 10px;
+}
+.top-right{
+	border-top-right-radius: 10px;
+}
+.countview{
+	padding:1px;
+	margin: 3px 1px;
+	text-align: right;
+	font-weight: bold;
+	font-size:
+}
+.lastbox{
+	border-right:  1px solid #b8b8b8;
+}
+.close-button{
+	margin-top: 30px;
+	text-align: center;
+}
+.calendarClose{
+	font-size: 20px;
+	background-color:#30e3ca;
+	color:white;
+	border: none;
+	border-radius: 10px;
+	width:80px;
+	height:40px;
+}
+.daytext{
+	font-size: 13px;
+}
+.alldays{
+	text-align: center;
+}
+.font_ant{
+	color:#30e3ca;
+}
+.font_pos{
+	color:#f89d13;
+}
+a:link{
+	text-decoration: none;
+}
+.arrowbox div{
+	display:inline;
+	border:1px solid;
+	text-align:center;
+}
+.arrowbox{
+	float:right;
+}
+.yearmonth{
+	font-size: 18px;
+	font-weight: bold;
+}
+.btn{
+	border: 1px solid;
+	border-color:#30e3ca;
+	background-color: white;
+}
+.backbtn{
+	border-top-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	width:35px; 
+	vertical-align: middle;
+}
+.nextbtn{
+	border-top-right-radius: 5px;
+	border-bottom-right-radius:5px;
+	width:35px;
+	vertical-align: middle;
 }

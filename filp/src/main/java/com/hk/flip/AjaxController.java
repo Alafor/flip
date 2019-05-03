@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.flip.dtos.ClassDto;
+import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IClassService;
+import com.hk.flip.service.IClassWishlistService;
 
 /**
  * Handles requests for the application home page.
@@ -29,6 +34,8 @@ public class AjaxController {
 	
 	@Autowired
 	private IClassService classService;
+	@Autowired
+	private IClassWishlistService classwishlistService;
 	
 	//main list ajax controller
 	@ResponseBody

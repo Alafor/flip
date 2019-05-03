@@ -65,6 +65,7 @@
 		C.CLASS_NAME,
 		C.CLASS_INFO,
 		C.CLASS_AREA,
+		C.CLASS_TYPE,
 		D_DAY.CLASS_D_DAY,
 		NVL(PARTI.CLASS_NOW_PARTICIPATION,0) AS CLASS_NOW_PARTICIPATION
 		FROM
@@ -102,6 +103,7 @@
 	<![CDATA[
 	AND ROWNUM <= 10
 	]]>
+		ORDER BY DBMS_RANDOM.RANDOM
 	</select>
 
 	<select id="mainwantlist" parameterType="Map"
@@ -117,6 +119,7 @@
 		C.CLASS_NAME,
 		C.CLASS_INFO,
 		C.CLASS_AREA,
+		C.CLASS_TYPE,
 		D_DAY.CLASS_D_DAY,
 		NVL(PARTI.CLASS_NOW_PARTICIPATION,0) AS CLASS_NOW_PARTICIPATION
 		FROM
@@ -144,6 +147,7 @@
 	<![CDATA[
 	AND ROWNUM <= 10
 	]]>
+		ORDER BY DBMS_RANDOM.RANDOM
 	</select>
 	<select id="mainstudylist" parameterType="Map"
 		resultType="ClassDto">
@@ -158,6 +162,7 @@
 		C.CLASS_NAME,
 		C.CLASS_INFO,
 		C.CLASS_AREA,
+		C.CLASS_TYPE,
 		D_DAY.CLASS_D_DAY,
 		NVL(PARTI.CLASS_NOW_PARTICIPATION,0) AS CLASS_NOW_PARTICIPATION
 		FROM
@@ -185,6 +190,7 @@
 	<![CDATA[
 	AND ROWNUM <= 10
 	]]>
+		ORDER BY DBMS_RANDOM.RANDOM
 	</select>
 
 	<!--강의 상세보기 페이지 -->

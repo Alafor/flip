@@ -52,7 +52,10 @@ $(function(){
 						studentAjax.eq(i).find("h3 > a").text(wantList[i].class_name);
 						studentAjax.eq(i).find("address").text(wantList[i].class_area);
 						var imgurl="url(resources/img/class/"+wantList[i].class_img+")";
-						studentAjax.eq(i).find(".img").css({"background":imgurl});
+						studentAjax.eq(i).find(".img").css({
+							'background':imgurl,
+							'background-size':'cover'
+						});
 					};
 				}//else{
 //					$('.w-remove').remove();
@@ -63,7 +66,10 @@ $(function(){
 						studyAjax.eq(i).find("h3 > a").text(studyList[i].class_name);
 						studyAjax.eq(i).find("address").text(studyList[i].class_area);
 						var imgurl="url(resources/img/class/"+studyList[i].class_img+")";
-						studyAjax.eq(i).find(".img").css({"background":imgurl});
+						studyAjax.eq(i).find(".img").css({
+							'background':imgurl,
+							'background-size':'cover'
+						});
 					}
 				}/*else{
 					$('.s-remove').remove();
@@ -76,5 +82,13 @@ $(function(){
 		$(".teacherstar").trigger("click");
 	});
 	
-	
+//	$(".bookmark[href='#']").click(function(e){
+//		window.location.href('insertwhishlist.do?class_seq='+classSeq);
+//		e.preventDefault();
+//		alert("sss");
+//		var classSeq=$(this).attr("data-classseq");
+//		alert(classSeq);
+//		
+//		alert(classSeq);
+//	})
 });

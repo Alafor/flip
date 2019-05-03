@@ -26,7 +26,7 @@
 	</select>
 	
 	<insert id="insertwishlist" parameterType="Map">
-		INSERT INTO class_wishlist (wishlist_member_seq, wishlist_class_seq)  VALUES( #{member_seq}, #{class_seq} )
+		INSERT INTO class_wishlist (wishlist_member_seq, wishlist_class_seq)  VALUES(#{member_seq},#{class_seq})
 	</insert>
 	
 	<select id="imminentWishlist" resultType="ClassDto">
@@ -34,7 +34,7 @@
  		class_wishlist b WHERE a.seq = b.wishlist_class_seq and d_day &lt;= 3 and d_day>=0 and b.wishlist_class_seq = #{class_seq}
 	</select>
 	
-	<select id="checkwishlist" resultType="int">
+	<select id="checkwishlist" resultType="int" parameterType="Map">
 		 SELECT COUNT(wishlist_class_seq) FROM class_wishlist where wishlist_class_seq = #{class_seq} and wishlist_member_seq= #{member_seq}
 	</select>
 	

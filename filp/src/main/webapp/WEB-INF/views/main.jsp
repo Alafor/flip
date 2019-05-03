@@ -210,7 +210,7 @@
 									<div class="lh-content">
 										<span class="category">${wantlist.class_creator_name}</span> 
 										<span class="instructor_img">등록자 사진</span>
-										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<a href="insertwhishlist.do?class_seq=${wantlist.seq}" class="bookmark" data-classseq="${wantlist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames">
 											<a href="cdetail.do?class_seq=${wantlist.seq}">${wantlist.class_name}</a>
 										</h3>
@@ -257,7 +257,7 @@
 										<a href="tdetail.do?member_seq=${classlist.class_member_seq}">
 										<span class="category">${classlist.class_creator_name}</span> 
 										<span class="instructor_img">강사사진</span></a>
-										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<a href="insertwhishlist.do?class_seq=${classlist.seq}" class="bookmark" data-classseq="${classlist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames" >
 											<a href="cdetail.do?class_seq=${classlist.seq}">${classlist.class_name}</a>
 										</h3>
@@ -265,7 +265,7 @@
 										<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${classlist.class_member_rating}" onclick="gogostar(this)">
 										</div>
 											
-											<span class="review" >(${classlist.class_review_count} Reviews)</span>
+											<span class="review">(${classlist.class_review_count} Reviews)</span>
 										<!-- 별 -->
 										<address>${classlist.class_area}</address>
 									</div>
@@ -312,7 +312,7 @@
 									<div class="lh-content">
 										<span class="category">${studylist.class_creator_name}</span> 
 										<span class="instructor_img">강사사진</span>
-										<a href="insertwhishlist.do" class="bookmark"><span class="icon-heart"></span></a>
+										<a href="insertwhishlist.do?class_seq=${studylist.seq}" class="bookmark" data-classseq="${studylist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames">
 											<a href="cdetail.do?class_seq=${studylist.seq}">${studylist.class_name}</a>
 										</h3>
@@ -533,7 +533,7 @@
 	src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
 	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
 	crossorigin="anonymous"></script>
-	<!-- <script src="resources/js/mainAjax.js"></script> -->
+	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
 	
 </body>
