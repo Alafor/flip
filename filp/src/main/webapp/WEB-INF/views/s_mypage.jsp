@@ -74,10 +74,10 @@
 </div>
 </div>
 
-
-
-
-
+	
+		<div class="row justify-content-center mt-5">
+		<div class="col-md-8 text-right "><input type="button" value=" 일정보기 " class="btn btn-primary text-white" style="width: 8%;"></div>
+		</div>
 		<div class="site-section bg-white">
 
 			<div class="container mb-5">

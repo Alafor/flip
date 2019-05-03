@@ -117,11 +117,34 @@ public class INController {
 	}
 	
 	@RequestMapping(value = "/signup.do", method = RequestMethod.POST)
-	public String signup(Locale locale, Model model,MemberDto dto,HttpServletRequest request) {
+	public String signup(Locale locale, Model model,HttpServletRequest request) {
 		logger.info("회원가입하기{}.", locale);
+		MemberDto dto = new  MemberDto();
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+		MultipartFile multifile = multi.getFile("member_profile");
+		dto.setMember_type(multi.getParameter("member_type"));
+		dto.setMember_id(multi.getParameter("member_id"));
+		dto.setMember_password(multi.getParameter("member_password"));
+		dto.setMember_name(multi.getParameter("member_name"));
+		dto.setMember_birth(multi.getParameter("member_birth"));
+		dto.setMember_phone(multi.getParameter("member_phone"));
+		dto.setMember_email(multi.getParameter("member_email"));
+		
+		if(!multifile.getOriginalFilename().equals("")) {
+		String origin_fname=multifile.getOriginalFilename();
+		String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");	
+		String stored_fname = creatUUID+origin_fname.substring(origin_fname.lastIndexOf("."));
+		dto.setMember_profile(stored_fname);
+		String gonguFolder = "C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/member";
+		File f=new File(gonguFolder+"/"+stored_fname);	
+		
 		boolean isS = memberService.newMember(dto);
 		boolean isS2 = mailsender.mailSendWithUserKey(dto.getMember_email(),dto.getMember_id(),request);
-
+		try {
+			multifile.transferTo(f);	
+		} catch (Exception e) {	
+			e.printStackTrace();
+		}
 		if(isS&&isS2) {
 			model.addAttribute("msg","축하드립니다.가입에 성공하셨습니다.입력하신 이메일에서 인증확인을 하셔야 서비스 이용이 가능합니다.");		
 			model.addAttribute("url","loginform.do");
@@ -129,6 +152,19 @@ public class INController {
 		}else{
 			model.addAttribute("msg","가입실패");
 			return "error";
+		}
+		}else {
+			dto.setMember_profile("null");
+			boolean isS = memberService.newMember(dto);
+			boolean isS2 = mailsender.mailSendWithUserKey(dto.getMember_email(),dto.getMember_id(),request);
+			if(isS&&isS2) {
+				model.addAttribute("msg","축하드립니다.가입에 성공하셨습니다.입력하신 이메일에서 인증확인을 하셔야 서비스 이용이 가능합니다.");		
+				model.addAttribute("url","loginform.do");
+				return "Redirect";
+			}else{
+				model.addAttribute("msg","가입실패");
+				return "error";
+			}
 		}
 	}
 	

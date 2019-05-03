@@ -49,6 +49,16 @@
         }
     }
 </script>
+<!-- <script type="text/javascript">
+	function checkProfile() {
+		var profile = document.getElementById("hidden_file").value;
+		if(profile == ""){
+		alert(profile);
+			return false;
+		}
+	}
+	
+</script> -->
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
  function fn_process(){
@@ -176,7 +186,7 @@ function auto_phone( e, oThis ){
       	<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						회원<span class="text-warning">가입</span>
+						강사<span class="text-warning">가입</span>
 					</h2>
 					<p class="color-black-opacity-5">SIGN&amp;UP</p>
 				</div>
@@ -188,21 +198,21 @@ function auto_phone( e, oThis ){
           	<input type="hidden" name="member_type"  value="T">
              
  			<div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
+                <div class="col-md-12 validate-input" data-validate = "한글과영문만 사용가능합니다">
                   <label class="text-black" for="name">이름</label> 
                   <input type="text" class="form-control" name="member_name">
                 </div>
               </div>	            
              
               <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
+                <div class="col-md-12 validate-input" data-validate = "5~10자의영문이나 숫자가 조합되어야합니다">
                   <label class="text-black" for="id">아이디</label> 
                   <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()">
                 </div>
                 <div id="message" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
+                <div class="col-md-12 validate-input" data-validate = "최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함되야합니다">
                   <label class="text-black" for="password">패스워드</label> 
                   <input type="password" id="Pw" class="form-control" name="member_password" >
                 </div>
@@ -227,7 +237,7 @@ function auto_phone( e, oThis ){
                 </div>
               </div>
           	<div class="row form-group">              
-                <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
+                <div class="col-md-12 validate-input"  data-validate = "'010','011','016','017','018'로 시작하는 번호만 사용 가능합니다.">
                   <label class="text-black" for="phone">전화번호</label> 
                   <input type="text" class="form-control" name="member_phone" 
                   onkeyup="auto_phone(event, this)" onkeypress="auto_phone(event, this)" maxlength="13" placeholder="ex)01012345678">
