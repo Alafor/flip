@@ -236,6 +236,7 @@
                   <thead>
                     <tr>
                       <th>member_name</th>
+                      <th>member_type</th>
                       <th>member_email</th>
                       <th>member_id</th>
                       <th>member_regdate</th>
@@ -324,11 +325,12 @@ $(document).ready(function() {
 	      },
 	      columns : [
 	          {"data": 'member_name'},
+	          {"data": 'member_type'},
 	          {
 	        	  "data": 'member_email',
 	        	"render": function (data, type) {      
 	        		if ( type === 'display' ) {
-	                 return '<a href="memberDetail.do?email=' + data + '" class="table_link">' + data + '</a>';
+	                 return '<a href="#" class="table_link" onclick="classDetail(this)">' + data + '</a>';
 	        		}
 	        	}
 	          },
@@ -339,6 +341,12 @@ $(document).ready(function() {
 	  });
 
 	});
+function classDetail(aa){
+	var emailStr = $(aa).parent().parent().children().eq(2).text();
+	var member_typeStr = $(aa).parent().parent().children().eq(1).text();
+	location.href ='memberDetail.do?email='+emailStr+"&member_type="+member_typeStr;
+	// 	memberDetail.do?seq=
+     }
 </script>
 
 </body>

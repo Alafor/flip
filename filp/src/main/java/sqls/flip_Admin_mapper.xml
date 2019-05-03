@@ -11,7 +11,7 @@
 	</select>
 	
 	<select id="getmemberlist" parameterType="int" resultType="MemberDto">
-		SELECT member_name, member_email, member_id, TO_CHAR(member_regdate,'YYYY/MM/DD') as member_regdate from member
+		SELECT member_name, member_email, member_id,member_type, TO_CHAR(member_regdate,'YYYY/MM/DD') as member_regdate from member
 	</select>
 	
 	<select id="getmemberprofil" parameterType="String" resultType="MemberDto">

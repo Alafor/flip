@@ -18,7 +18,39 @@
   <!-- Custom styles for this template-->
   <link href="resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <title>Flip 관리자 페이지</title>
+<style type="text/css">
+#id {
+	margin-left: 20px;
+}
 
+.hidden_input {
+	margin: 0 auto;
+}
+
+.hidden_input label {
+	padding: .5em .75em;
+	color: #fff;
+	font-size: inherit;
+	line-height: normal;
+	vertical-align: middle;
+	background-color: #30e3ca;
+	cursor: pointer;
+	border: 1px solid #ebebeb;
+	border-bottom-color: #e2e2e2;
+	border-radius: .25em;
+}
+
+.hidden_input input[type="file"] {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}
+</style>
 </head>
 
 <body id="page-top">
@@ -222,81 +254,113 @@
 
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">관리자 페이지</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm text-right" id="delmember"><i class="fas fa-download fa-sm text-white-50"></i> 회원 삭제</a>
           </div>
 
           <!-- Content Row -->
            	<div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						회원<span class="text-warning">가입</span>
+						회원정보<span class="text-warning"> 변경</span>
 					</h2>
-					<p class="color-black-opacity-5">SIGN&amp;UP</p>
 				</div>
 			</div>
         <div class="row justify-content-center">
           <div class="col-md-7 mb-5"  data-aos="fade">
           
-          	<form class="p-5 bg-white validate-form" action="signup.do" onsubmit="return checkpw()" method="post" style="border: 2px solid #30e3ca; border-radius: 20px;">
-          	<input type="hidden" name="member_type"  value="S">
+          	<form class="p-5 bg-white validate-form" action="AMemberUpdate.do" onsubmit="return checkpw()" method="post" enctype="multipart/form-data" style="border: 2px solid #30e3ca; border-radius: 20px;">
+          	<input type="hidden" name="member_type"  value="${dto.member_type}">
              
  			<div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
                   <label class="text-black" for="name">이름</label> 
-                  <input type="text" class="form-control" name="member_name">
+                  <input type="text" class="form-control" name="member_name" value="${member.member_name}" readonly="readonly">
                 </div>
               </div>	            
              
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
                   <label class="text-black" for="id">아이디</label> 
-                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()">
+                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()" value="${member.member_id}" readonly="readonly">
                 </div>
                 <div id="message" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
-                  <label class="text-black" for="password">패스워드</label> 
-                  <input type="password" id="Pw" class="form-control" name="member_password" >
-                </div>
-              </div>
-              <div class="row form-group ">              
-                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요" >
-                  <label class="text-black" for="password">패스워드확인</label>  
-                  <input type="password" id="PwCheck" class="form-control" >
+                <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
+                  <label class="text-black" for="email">이메일</label> 
+                  <input type="email" class="form-control" name="member_email"  value="${member.member_email}" readonly="readonly">
                 </div>
               </div>
               <div class="row form-group">              
-                <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
-                  <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email" placeholder="ex)***@gmail.com">
+                <div class="col-md-12 validate-input" data-validate = "패스워드를 입력해주세요">
+                  <label class="text-black" for="password">패스워드</label> 
+                  <input type="password" id="Pw" class="form-control" name="member_password"  value="${member.member_password}">
+                </div>
+              </div>
+              <div class="row form-group ">              
+                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요"  value="${member.member_password}">
+                  <label class="text-black" for="password">패스워드확인</label>  
+                  <input type="password" id="PwCheck" class="form-control" >
                 </div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
                   <label class="text-black" for="birth">생년월일</label> 
                   <input type="text"  class="form-control" name="member_birth" 
-                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10" placeholder="ex)19900101">
+                  onkeyup="auto_date(event, this)" onkeypress="auto_date(event, this)" maxlength="10"  value="${member.member_birth}">
                 </div>
               </div>
           	<div class="row form-group">              
                 <div class="col-md-12 validate-input"  data-validate = "연락처를 입력해주세요">
                   <label class="text-black" for="phone">전화번호</label> 
                   <input type="text" class="form-control" name="member_phone" 
-                  onkeyup="auto_phone(event, this)" onkeypress="auto_phone(event, this)" maxlength="13" placeholder="ex)01012345678">
+                  onkeyup="auto_phone(event, this)" onkeypress="auto_phone(event, this)" maxlength="13" value="${member.member_phone}">
                 </div>
               </div>
               
-              <div class="row form-group">
-                <div class="col-12">
-                  <p>로그인하시겠습니까? <a href="loginform.do">Log In</a></p>
-                </div>
-              </div>
+              <div class="container">
+					<label class="text-black">프로필등록</label>
+					<div class="row form-group mb-6"
+						style="border: 1px solid #ced4da; border-radius: 10px;">
+						<div class="col-md-6">
+							<!--left col-->
+							<br>
+							<div class="text-center testimonial">
+								<figure class="mb-6">
+									<img src="resources/img/class/${dto.class_img}"
+										class=" avatar img-fluid mb-6" alt="avatar">
+									<br>
+									<br>
+									<h6>
+										<b>프로필</b>
+									</h6>
+							</div>
+						</div>
+						<input type="hidden" name="old_file" value="${dto.class_img}">
+						<div class="col-md-6 hidden_input"
+							style="text-align: center; margin-top: 15%">
+							<p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
+							<label class="btn" for="hidden_file">프로필등록</label> <input
+								type="file" id="hidden_file"
+								class="text-center center-block file-upload"
+								name="member_profile">
+							</figure>
+						</div>
+						<br>
+
+					</div>
+				</div>
               
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="submit" value=" 회원가입 " class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
+                  <input type="submit" value=" 정보 변경 " class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
+                </div>
+              </div>
+              <div class="row form-group" style="text-align: center;">
+                <div class="col-md-12">
+                  <button type="button" class="btn btn-danger py-2 px-4 text-white" style="width: 100%;" onclick="location.href='memberMgt.do'" >
+                  	뒤로가기
+                  </button>
                 </div>
               </div>
               </form>
@@ -364,7 +428,15 @@
   <!-- Page level custom scripts -->
   <script src="resources/admin/js/demo/chart-area-demo.js"></script>
   <script src="resources/admin/js/demo/chart-pie-demo.js"></script>
-
+	<script type="text/javascript">
+	
+	$('document').ready(function(){
+		$('#delmember').click(function(){
+			var str = "aMemberDelete.do?member_email="+$('input[name=member_email]').val();
+			location.replace(str);
+			});
+	});
+	</script>
 </body>
 
 </html>

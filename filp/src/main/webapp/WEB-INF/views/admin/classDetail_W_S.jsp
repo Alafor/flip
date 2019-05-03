@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %> 
+<% String class_termin = request.getParameter("class_termin"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -257,10 +258,12 @@
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
           	<form action="aClassClose.do">
           		<input type="hidden" name="seq" value="${dto.seq}">
+          		<input type="hidden" name="termin" value="<%=class_termin%>">
             	<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> 강의 폐쇠</button>
          	</form>
           	<form action="aClassDelete.do">
           		<input type="hidden" name="seq" value="${dto.seq}">
+          		<input type="hidden" name="termin" value="<%=class_termin%>">
             	<button class="d-none d-sm-inline-block btn btn-sm btn-danger shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> 강의 삭제</button>
          	</form>
           </div>
@@ -354,31 +357,7 @@
 								data-validate="날자를 선택해 주세요">
 								<label class="text-black" for="email">수업 날짜</label>
 								<c:set var="class_sd" value="${dto.class_sd}"/>
-								<c:set var="class_cd" value="${dto.class_cd}"/>
-								 <input type="text" id="" class="form-control" value="${fn:substring(class_sd,0,10)} - ${fn:substring(class_cd,0,10)}" readonly="readonly"/>
-							</div>
-						</div>
-
-						<label class="text-black" for="email">수업 요일</label>
-						<div class="row form-group">
-							<div class="col-md-12 validate-input "
-								data-validate="날자를 선택해 주세요">
-								<c:set var="class_week" value="${dto.class_week}"/>
-
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'2')}"> active</c:if>"
-									 value="2">월</button>
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'3')}"> active</c:if>"
-									 value="3">화</button>
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'4')}"> active</c:if>"
-									 value="4">수</button>
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'5')}"> active</c:if>"
-									 value="5">목</button>
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'6')}"> active</c:if>"
-									 value="6">금</button>
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'7')}"> active</c:if>"
-									 value="7">토</button>
-								<button type="button" class="btn btn-info <c:if test="${fn:contains(class_week,'1')}"> active</c:if>"
-									 value="1">일</button>
+								 <input type="text" id="" class="form-control" value="${fn:substring(class_sd,0,10)}" readonly="readonly"/>
 							</div>
 						</div>
 
@@ -405,7 +384,7 @@
 
 						<div class="row form-group">
 							<div class="col-md-12 validate-input" data-validate="수업시간을 정해수세요">
-								<label class="text-black" for="class_time">수업 시간(분)</label> <input
+								<label class="text-black" for="class_time">희망 수업 시간(분)</label> <input
 									type="number" class="form-control" id="class_time"
 									name="class_time" value="${dto.class_time}" readonly="readonly">
 							</div>
@@ -430,39 +409,6 @@
 								<label class="text-black" for="class_detail">수업 상세내용</label>
 								<textarea class="form-control" rows="" cols=""
 									name="class_detail" value="" >${dto.class_detail}</textarea>
-							</div>
-						</div>
-
-						<div class="container">
-							<label class="text-black">프로필등록</label>
-							<div class="row form-group mb-6"
-								style="border: 1px solid #ced4da; border-radius: 10px;">
-								<div class="col-md-6">
-									<!--left col-->
-									<br>
-									<div class="text-center testimonial">
-										<figure class="mb-6">
-											<img src="resources/img/class/${dto.class_img}"
-												class=" avatar img-fluid mb-6" alt="avatar">
-											<br>
-											<br>
-											<h6>
-												<b>프로필</b>
-											</h6>
-									</div>
-								</div>
-								<input type="hidden" name="old_file" value="${dto.class_img}">
-								<div class="col-md-6 hidden_input"
-									style="text-align: center; margin-top: 15%">
-									<p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
-									<label class="btn" for="hidden_file">프로필등록</label> <input
-										type="file" id="hidden_file"
-										class="text-center center-block file-upload"
-										name="member_profile">
-									</figure>
-								</div>
-								<br>
-
 							</div>
 						</div>
 

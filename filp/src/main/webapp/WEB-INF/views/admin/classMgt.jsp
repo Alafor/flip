@@ -350,8 +350,9 @@ $(document).ready(function() {
 	  
 	});
 	function classDetail(aa){
-	var str = $(aa).parent().parent().children().eq(0).text();
-	location.href ='classDetail.do?seq='+str;
+	var seqStr = $(aa).parent().parent().children().eq(0).text();
+	var class_typeStr = $(aa).parent().parent().children().eq(1).text();
+	location.href ='classDetail.do?seq='+seqStr+"&class_type="+class_typeStr+"&class_termin=<%=class_termin%>";
 	// 	memberDetail.do?seq=
      }
     

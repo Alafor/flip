@@ -182,6 +182,9 @@ public class MooooonController {
 		int memberSeq = ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_seq();
 		classDto.setClass_member_seq(memberSeq);
 		String rst="";
+		String class_depa = classDto.getClass_depa();
+		int random = (int)(Math.random()*3)+1;
+		classDto.setClass_img(class_depa+"/"+random+".jpg");
 		if(classDto.getClass_type().equals("W")){
 			rst = classService.addClass(classDto);
 			if(rst==null) {
@@ -192,6 +195,7 @@ public class MooooonController {
 				model.addAttribute("url","main.do");
 				return "Redirect";
 			}
+			///S
 		}else {
 			rst = classService.addClass(classDto);
 			if(rst==null) {
@@ -249,7 +253,6 @@ public class MooooonController {
 	public String memberMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
 //		List<MemberDto> list = adminService.getMemberList(10);
-		
 		return "admin/memberMgt";
 		
 	}
@@ -257,9 +260,9 @@ public class MooooonController {
 	public String classMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
 		String class_termin = request.getParameter("class_termin");
+		String class_type = request.getParameter("class_type");
 		model.addAttribute("class_termin", class_termin);
 		return "admin/classMgt";
-		
 	}
 	
 	@ResponseBody
@@ -294,6 +297,56 @@ public class MooooonController {
 	@RequestMapping(value = "/AMemberUpdate.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
 	public String AMemberUpdate(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, MemberDto dto) {
 		logger.info("관리자 회원 정보 수정.", locale);
+		String member_type = request.getParameter("member_type");
+		if(member_type.length()>0) {
+			if(!(adminService.updateMember(dto))) {
+				model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
+				model.addAttribute("url","memberMgt.do");
+				return "Redirect";
+			}else {
+				System.out.println("회원정보 변경 성공");
+			return "admin/memberMgt";
+			}
+			////T인경우
+		}else {
+			MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+			dto.setMember_email(multi.getParameter("member_email"));
+			dto.setMember_password(multi.getParameter("member_password"));
+			dto.setMember_birth(multi.getParameter("member_birth"));
+			dto.setMember_phone(multi.getParameter("member_phone"));
+			dto.setMember_info(multi.getParameter("member_info"));
+			String old_fileName = multi.getParameter("old_file");
+			File old_file = new File("C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class/"+old_fileName);
+	        
+	        if( old_file.exists() ){
+	            if(old_file.delete()){
+	                System.out.println("파일삭제 성공");
+	            }else{
+	                System.out.println("파일삭제 실패");
+	            }
+	        }else{
+	            System.out.println("파일이 존재하지 않습니다.");
+	        }
+		
+			MultipartFile multifile = multi.getFile("member_profile");
+			if(!multifile.isEmpty()) {
+				String origin_fname=multifile.getOriginalFilename();
+				String origin_fextends=origin_fname.substring(origin_fname.lastIndexOf("."));
+				String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
+				String stored_fname = creatUUID+origin_fextends;
+				dto.setMember_profile(stored_fname);
+		//		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
+		//		File f=new File(saveDirectory+"/class/"+stored_fname);
+				String gonguFolder = "C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/member";
+				File f=new File(gonguFolder+"/"+stored_fname);
+				try {
+					multifile.transferTo(f);	
+				} catch (Exception e) {	
+					e.printStackTrace();
+				}
+				System.out.println("경로:"+f);
+			}
+		}
 		if(!(adminService.updateMember(dto))) {
 			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
 			model.addAttribute("url","memberMgt.do");
@@ -362,45 +415,45 @@ public class MooooonController {
 	
 	//관리자 회원 정보 삭제
 	@RequestMapping(value = "/aMemberDelete.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
-	public String aMemberDelete(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, String member_email) {
+	public String aMemberDelete(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, String member_email,String termin) {
 		logger.info("관리자 회원 삭제 요청.", locale);
 		if(!(adminService.aMemberDelete(member_email))) {
 			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
-			model.addAttribute("url","memberMgt.do");
+			model.addAttribute("url","memberMgt.do?class_termin="+termin);
 			return "Redirect";
 		}else {
 			model.addAttribute("msg","회원 삭제 성공");
-			model.addAttribute("url","memberMgt.do");
+			model.addAttribute("url","memberMgt.do?class_termin="+termin);
 			return "Redirect";
 		}
 	}
 	
 	//관리자 강의 정보 삭제
 	@RequestMapping(value = "/aClassDelete.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
-	public String aClassDelete(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, int seq) {
+	public String aClassDelete(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, int seq, String termin) {
 		logger.info("관리자 강의 정보 삭제 요청.", locale);
 		if(!(adminService.aClassDelete(seq))) {
 			model.addAttribute("msg","강의 삭제에 실패했습니다.");		
-			model.addAttribute("url","classMgt.do");
+			model.addAttribute("url","classMgt.do?class_termin="+termin);
 			return "Redirect";
 		}else {
 			model.addAttribute("msg","강의 삭제 성공");
-			model.addAttribute("url","classMgt.do");
+			model.addAttribute("url","classMgt.do?class_termin="+termin);
 			return "Redirect";
 		}
 	}
 		
 	//관리자 폐강
 	@RequestMapping(value = "/aClassClose.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
-	public String aClassClose(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, int seq) {
+	public String aClassClose(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, int seq, String termin) {
 		logger.info("관리자 폐강 요청.", locale);
 		if(!(adminService.aClassClose(seq))) {
 			model.addAttribute("msg","폐강 실패했습니다.");		
-			model.addAttribute("url","classMgt.do");
+			model.addAttribute("url","classMgt.do?class_termin="+termin);
 			return "Redirect";
 		}else {
 			model.addAttribute("msg","폐강 성공");
-			model.addAttribute("url","classMgt.do");
+			model.addAttribute("url","classMgt.do?class_termin="+termin);
 			return "Redirect";
 		}
 	}
@@ -421,9 +474,10 @@ public class MooooonController {
 	}
 	
 	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.GET)//
-	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,String email) {
+	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
+			,String email,String member_type) {
 		logger.info("관리자 회원 정보 열람.", locale);
-		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+//		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
 //		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
 //			model.addAttribute("msg","권한이 없습니다.");
 //			model.addAttribute("url","main.do");
@@ -431,7 +485,12 @@ public class MooooonController {
 //		}
 		MemberDto dto = adminService.getMemberProfil(email);
 		model.addAttribute("member", dto);
-		return "admin/memberDetail";
+		if(member_type.equals("T")) {
+			return "admin/memberDetail_T";
+			
+		}else {
+			return "admin/memberDetail_S";
+		}
 		
 	}
 	
@@ -444,10 +503,18 @@ public class MooooonController {
 //			model.addAttribute("url","main.do");
 //			return "Redirect";
 //		}
+		String class_type = request.getParameter("class_type");
 		ClassDto dto = adminService.getClassProfil(seq);
 		model.addAttribute("dto", dto);
 		System.out.println(dto);
-		return "admin/memberDetail_T2";
+		if(class_type.equals("C")) {
+			return "admin/classDetail_C";
+			
+		}else {
+			return "admin/classDetail_W_S";
+			
+		}
+		
 		
 	}
 	

@@ -130,7 +130,7 @@
 					<form class="p-5 bg-white validate-form" action="class_add.do"
 						method="post"
 						style="border: 2px solid #30e3ca; border-radius: 20px;">
-						<input type="hidden" name="class_type" value="C"> 
+						<input type="hidden" name="class_type" value="W"> 
 						<input type="hidden" id="class_sd" name="class_sd" value="">
 						<input type="hidden" id="class_cd" name="class_cd" value="">
 							<input type="hidden" id="class_week" name="class_week" value="">
