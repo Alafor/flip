@@ -251,7 +251,7 @@
 								<c:forEach var="classlist" items="${classlist}" varStatus="seq">
 								<div class="d-block d-md-flex listing vertical instructorAjax">
 									<a href="cdetail.do?class_seq=${classlist.seq}" class="img d-block"
-										style="background-image: url('resources/img/class/${classList.class_img}')">
+										style="background-image: url('resources/img/class/${classlist.class_img}')">
 										</a>
 									<div class="lh-content">
 										<a href="tdetail.do?member_seq=${classlist.class_member_seq}">
