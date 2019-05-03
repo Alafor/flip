@@ -10,10 +10,6 @@
 <!------ Include the above in your HEAD tag ---------->
 
 
-
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!------ Include the above in your HEAD tag ---------->
-
 <head>
 <title>강사회원가입</title>
 	<meta charset="UTF-8">
@@ -156,7 +152,7 @@ function auto_phone( e, oThis ){
 		<jsp:include page="header.jsp"/>
 		<!-- header 종료 -->
 	
-	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
+	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/wind.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-center text-center">
 

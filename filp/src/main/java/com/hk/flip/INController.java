@@ -397,8 +397,12 @@ public class INController {
 	
 	
 	@RequestMapping(value = "/callback.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String callback(Locale locale, Model model) {
+	public String callback(Locale locale, Model model,String access_token,String state,String token_type) {
 		logger.info("네이버 로그인{}.", locale);
+		String token = access_token;
+		System.out.println(state);
+		System.out.println(token);
+		System.out.println(token_type);
 		return "Callback";
 	}
 
@@ -410,6 +414,9 @@ public class INController {
 		String member_email=email;
 		String member_id=id;
 		String member_birth=birthday;
+	
+		
+
 		System.out.println("member_name:"+member_name);
 		System.out.println("member_email:"+member_email);
 		System.out.println("member_id:"+member_id);

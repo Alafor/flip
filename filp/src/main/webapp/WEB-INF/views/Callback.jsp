@@ -44,20 +44,25 @@
 					var id = naverLogin.user.getId();
 					var birthday = naverLogin.user.getBirthday();
 					var email = naverLogin.user.getEmail();
+
+
+
 					if( email == undefined || email == null) {
 						alert("이메일은 필수정보입니다. 정보제공을 동의해주세요.");
 						/* (5-1) 사용자 정보 재동의를 위하여 다시 네아로 동의페이지로 이동함 */
 						naverLogin.reprompt();
 						return;
 					}
-					
+
 					window.location.replace("http://" + window.location.hostname + ( (location.port==""||location.port==undefined)?"":":" + location.port) +
 							"/flip/naverLog.do?name="+name+"&email="+email+"&id="+id+"&birthday="+birthday);
+					
 				} else {
 					console.log("callback 처리에 실패하였습니다.");
 				}
 			});
 		});
+		
 	</script>
 </body>
 
