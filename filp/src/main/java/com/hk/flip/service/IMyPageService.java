@@ -16,7 +16,10 @@ public interface IMyPageService {
 
 	public boolean cancelInclass(int member_seq, int class_seq);
 
+	public boolean deleteInclass(int seq, String email);
 
+	public boolean deleteWishlist(int seq, String email);
 
+	public boolean setClassTermin(int seq, String termin);
 
 }

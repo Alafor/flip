@@ -23,6 +23,12 @@ public interface IInclassDao {
 	
 	public List<InclassDto> myClass(int memberSeq);
 
+	public boolean deleteInclass(int seq, String email);
+
+	public boolean deleteWishlist(int seq, String email);
+
+	public boolean setClassTermin(int seq, String termin);
+
 
 
 

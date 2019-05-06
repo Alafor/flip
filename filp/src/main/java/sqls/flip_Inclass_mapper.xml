@@ -69,13 +69,7 @@
          a.SEQ = c.SEQ
          and d.member_seq = a.CLASS_MEMBER_SEQ
 	</select>
-	
-	<delete id="cancelmyinclass" parameterType="Map">
-		DELETE FROM inclass WHERE inclass_member_seq = #{member_seq} AND inclass_class_seq =
-			#{class_seq}
-		
-	</delete>
-	
+			
 	<select id="myClass" parameterType="int" resultType="InClassDto">
 		SELECT
 			INCLASS_CLASS_SEQ AS SEQ
@@ -84,4 +78,18 @@
 		WHERE
 			INCLASS_MEMBER_SEQ = #{memberSeq}
 	</select>
+	
+	<delete id="deleteInclass" parameterType="Map">
+		DELETE FROM inclass WHERE inclass_class_seq = #{seq} and inclass_member_seq = 
+		(SELECT member_seq FROM member WHERE member_email = #{email}) 
+	</delete>
+	
+	<delete id="deleteWishlist" parameterType="Map">
+		DELETE FROM class_wishlist WHERE wishlist_class_seq = #{seq} and wishlist_member_seq = 
+		(SELECT member_seq FROM member WHERE member_email = #{email}) 
+	</delete>
+	
+	<update id="setClassTermin" parameterType="Map">
+		UPDATE class SET class_termin = #{termin} where seq = #{seq}
+	</update>
 </mapper>

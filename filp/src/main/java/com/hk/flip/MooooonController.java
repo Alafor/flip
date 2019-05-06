@@ -21,6 +21,7 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -59,6 +60,12 @@ public class MooooonController {
 	@Autowired
 	private IAdminService adminService;
 	
+	@Scheduled(cron="0 0 0 * * ? ")
+	public void doSchedule() {
+	   logger.info("Spring Schedule Start!");
+	   
+	}
+	
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
@@ -70,6 +77,7 @@ public class MooooonController {
 		
 		System.out.println("로그인 타입:"+type);
 		model.addAttribute("inclassList", myPageService.getAllInclassList(member_seq));
+		model.addAttribute("member", myPageService.viewMyMember(member_seq));
 		if(type.equals("S")) {
 			return "s_mypage";
 		}else if(type.equals("T")){
@@ -231,7 +239,6 @@ public class MooooonController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		
 		classdto.setClass_member_seq(memberSeq);
 		classdto.setClass_starttime(request.getParameter("class_starttime"));
 		classdto.setClass_sd(request.getParameter("class_sd"));
@@ -254,8 +261,8 @@ public class MooooonController {
 		logger.info("관리자 회원 관리.", locale);
 //		List<MemberDto> list = adminService.getMemberList(10);
 		return "admin/memberMgt";
-		
 	}
+	
 	@RequestMapping(value = "/classMgt.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로
 	public String classMgt(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
 		logger.info("관리자 회원 관리.", locale);
@@ -409,8 +416,6 @@ public class MooooonController {
 			model.addAttribute("url","classMgt.do");
 			return "Redirect";
 		}
-		
-		
 	}
 	
 	//관리자 회원 정보 삭제
@@ -467,14 +472,13 @@ public class MooooonController {
 		DataTableWrapperDto wrapper = new DataTableWrapperDto();
 		wrapper.setAaData(list);
 		ObjectMapper obm  = new ObjectMapper();
-		
 		String userListJson = obm.writeValueAsString(wrapper);
 		System.out.println("userListJson:::"+userListJson);
 		return userListJson;
 	}
 	
-	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.GET)//
-	public String memberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
+	@RequestMapping(value = "/AMemberDetail.do", method = RequestMethod.GET)//
+	public String AMemberDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
 			,String email,String member_type) {
 		logger.info("관리자 회원 정보 열람.", locale);
 //		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
@@ -487,15 +491,13 @@ public class MooooonController {
 		model.addAttribute("member", dto);
 		if(member_type.equals("T")) {
 			return "admin/memberDetail_T";
-			
 		}else {
 			return "admin/memberDetail_S";
 		}
-		
 	}
 	
-	@RequestMapping(value = "/classDetail.do", method = RequestMethod.GET)//
-	public String classDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,int seq) {
+	@RequestMapping(value = "/AClassDetail.do", method = RequestMethod.GET)//
+	public String AClassDetail(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession,int seq) {
 		logger.info("관리자 회원 정보 열람.", locale);
 //		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
 //		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
@@ -509,14 +511,125 @@ public class MooooonController {
 		System.out.println(dto);
 		if(class_type.equals("C")) {
 			return "admin/classDetail_C";
-			
 		}else {
 			return "admin/classDetail_W_S";
-			
 		}
-		
-		
 	}
 	
+	@RequestMapping(value = "/memberDetail.do", method = RequestMethod.GET)//
+	public String memberUpdate(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
+			,String email) {
+		logger.info("회원 정보 수정폼.", locale);
+//		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+//		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
+//			model.addAttribute("msg","권한이 없습니다.");
+//			model.addAttribute("url","main.do");
+//			return "Redirect";
+//		}
+		MemberDto dto = adminService.getMemberProfil(email);
+		model.addAttribute("member", dto);
+		return "memberDetail";
+	}
 	
+	//관리자 회원 정보 수정
+	@RequestMapping(value = "/memberUpdate.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String memberUpdate(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
+		logger.info("관리자 회원 정보 수정.", locale);
+		String member_type = request.getParameter("member_type");
+		MemberDto dto = new MemberDto();
+		MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+		dto.setMember_email(multi.getParameter("member_email"));
+		dto.setMember_password(multi.getParameter("member_password"));
+		dto.setMember_birth(multi.getParameter("member_birth"));
+		dto.setMember_phone(multi.getParameter("member_phone"));
+		dto.setMember_info(multi.getParameter("member_info"));
+		String old_fileName = multi.getParameter("old_file");
+		File old_file = new File("C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class/"+old_fileName);
+        if( old_file.exists() ){
+            if(old_file.delete()){
+                System.out.println("파일삭제 성공");
+            }else{
+                System.out.println("파일삭제 실패");
+            }
+        }else{
+            System.out.println("파일이 존재하지 않습니다.");
+        }
+	
+		MultipartFile multifile = multi.getFile("member_profile");
+		if(!multifile.isEmpty()) {
+			String origin_fname=multifile.getOriginalFilename();
+			String origin_fextends=origin_fname.substring(origin_fname.lastIndexOf("."));
+			String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
+			String stored_fname = creatUUID+origin_fextends;
+			dto.setMember_profile(stored_fname);
+	//		String saveDirectory = request.getSession().getServletContext().getRealPath("upload");
+	//		File f=new File(saveDirectory+"/class/"+stored_fname);
+			String gonguFolder = "C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/member";
+			File f=new File(gonguFolder+"/"+stored_fname);
+			try {
+				multifile.transferTo(f);	
+			} catch (Exception e) {	
+				e.printStackTrace();
+			}
+			System.out.println("경로:"+f);
+		}
+		if(member_type.equals("T")) {
+			dto.setMember_info(multi.getParameter("member_info"));			
+		}
+		if(!(adminService.updateMember(dto))) {
+			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
+			model.addAttribute("url","mypage.do");
+			return "Redirect";
+		}else {
+			System.out.println("회원정보 변경 성공");
+		return "redirect:mypage.do";
+		}
+	}
+	
+	@RequestMapping(value = "/cancelClass.do", method = RequestMethod.GET)//
+	public String cancelClass(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
+			,int seq,String email) {
+		logger.info("회원 정보 수정폼.", locale);
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+		if(memberDto.getMember_type()==null|!(memberDto.getMember_email().equals(email))) {
+			model.addAttribute("msg","권한이 없습니다.");
+			model.addAttribute("url","main.do");
+			return "Redirect";
+		}
+		if(!(myPageService.deleteInclass(seq,email))) {
+			model.addAttribute("msg","강의 삭제에 실패했습니다.");		
+			model.addAttribute("url","mypage.do");
+			return "Redirect";
+		}else {
+			System.out.println("강의 삭제 성공");
+			if(memberDto.getMember_type().equals("T")) {
+				myPageService.setClassTermin(seq,"Y");		
+			}
+			model.addAttribute("msg","강의 삭제에 성공했습니다.");		
+			model.addAttribute("url","mypage.do");
+			return "Redirect";
+		}
+	}
+	
+	@RequestMapping(value = "/cancelWishlist.do", method = RequestMethod.GET)//
+	public String cancelWishlist(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
+			,int seq,String email) {
+		logger.info("회원 정보 수정폼.", locale);
+//		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+//		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
+//			model.addAttribute("msg","권한이 없습니다.");
+//			model.addAttribute("url","main.do");
+//			return "Redirect";
+//		}
+		if(!(myPageService.deleteWishlist(seq,email))) {
+			model.addAttribute("msg","강의 삭제에 실패했습니다.");		
+			model.addAttribute("url","mypage.do");
+			return "Redirect";
+		}else {
+			System.out.println("강의 삭제 성공");
+			model.addAttribute("msg","강의 삭제에 성공했습니다.");		
+			model.addAttribute("url","mypage.do");
+			return "Redirect";
+		}
+	}
 }

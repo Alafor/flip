@@ -29,4 +29,5 @@ public interface IAdminDao {
 	public boolean aClassClose(int seq);
 
 
+
 }

@@ -13,7 +13,7 @@ $(document).ready(function() {
           {"data": 'member_email',
 //        	render: function (data, type,meta) {      
 //        		if ( type === 'display' ) {
-//                 data = '<a href="memberDetail.do?email=' + data + '" class="table_link">' + data + '</a>';
+//                 data = '<a href="AMemberDetail.do?email=' + data + '" class="table_link">' + data + '</a>';
 //        		}
 //        	}
           },

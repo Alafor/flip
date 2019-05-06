@@ -344,8 +344,8 @@ $(document).ready(function() {
 function classDetail(aa){
 	var emailStr = $(aa).parent().parent().children().eq(2).text();
 	var member_typeStr = $(aa).parent().parent().children().eq(1).text();
-	location.href ='memberDetail.do?email='+emailStr+"&member_type="+member_typeStr;
-	// 	memberDetail.do?seq=
+	location.href ='AMemberDetail.do?email='+emailStr+"&member_type="+member_typeStr;
+	// 	AMemberDetail.do?seq=
      }
 </script>
 

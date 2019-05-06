@@ -4,10 +4,10 @@
 <mapper namespace="com.hk.flip.Admin">
 	
 	<select id="getflipstatus" resultType="AdminDto">
-	SELECT (select count(*) from member) as member_number,    
-    (select count(*) from class) as class_number,
-    (select count(*) from (SELECT * FROM class WHERE CLASS_TERMIN = 'C')) as close_class_number
-    from dual
+		SELECT (select count(*) from member) as member_number,    
+	    (select count(*) from class) as class_number,
+	    (select count(*) from (SELECT * FROM class WHERE CLASS_TERMIN = 'C')) as close_class_number
+	    from dual
 	</select>
 	
 	<select id="getmemberlist" parameterType="int" resultType="MemberDto">
@@ -20,7 +20,11 @@
 	
 	<update id="updatemember" parameterType="MemberDto">
 		UPDATE member SET MEMBER_PASSWORD = #{member_password},MEMBER_BIRTH = #{member_birth},
-		MEMBER_PHONE = #{member_phone} WHERE MEMBER_EMAIL = #{member_email}
+		MEMBER_PHONE = #{member_phone}
+		<if test="member_profile != null">
+		 ,MEMBER_PROFILE = #{member_profile} 
+		</if>
+		 WHERE MEMBER_EMAIL = #{member_email}
 	</update>
 	
 	<delete id="deletemember" parameterType="String">
@@ -44,10 +48,7 @@
 		C.CLASS_NAME,
 		C.CLASS_INFO,
 		C.CLASS_AREA,
-        
         REPLACE(TO_CHAR(c.class_starttime, '00,00'),',',':') as class_starttime
-
-
 		FROM
 		CLASS C,
 		MEMBER M,

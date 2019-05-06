@@ -352,8 +352,8 @@ $(document).ready(function() {
 	function classDetail(aa){
 	var seqStr = $(aa).parent().parent().children().eq(0).text();
 	var class_typeStr = $(aa).parent().parent().children().eq(1).text();
-	location.href ='classDetail.do?seq='+seqStr+"&class_type="+class_typeStr+"&class_termin=<%=class_termin%>";
-	// 	memberDetail.do?seq=
+	location.href ='AClassDetail.do?seq='+seqStr+"&class_type="+class_typeStr+"&class_termin=<%=class_termin%>";
+	// 	AMemberDetail.do?seq=
      }
     
 </script>

@@ -109,5 +109,29 @@ public class InclassDao implements IInclassDao {
 	public List<InclassDto> myClass(int memberSeq) {
 		return sqlSession.selectList(nameSpace+"myClass",memberSeq);
 	}
+	@Override
+	public boolean deleteInclass(int seq, String email) {
+		Map<String,String> map = new HashMap();
+		map.put("email", email);
+		map.put("seq", Integer.toString(seq));
+		System.out.println("deleteInclass map::"+map);
+		return sqlSession.delete(nameSpace+"deleteInclass",map)>0?true:false;
+	}
+	@Override
+	public boolean deleteWishlist(int seq, String email) {
+		Map<String,String> map = new HashMap();
+		map.put("email", email);
+		map.put("seq", Integer.toString(seq));
+		System.out.println("deleteInclass map::"+map);
+		return sqlSession.delete(nameSpace+"deleteWishlist",map)>0?true:false;
+	}
+	@Override
+	public boolean setClassTermin(int seq, String termin) {
+		Map<String,String> map = new HashMap();
+		map.put("termin", termin);
+		map.put("seq", Integer.toString(seq));
+		System.out.println("deleteInclass map::"+map);
+		return sqlSession.delete(nameSpace+"setClassTermin",map)>0?true:false;
+	}
 	
 }

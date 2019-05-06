@@ -55,6 +55,7 @@ public class AdminDao implements IAdminDao {
 
 	@Override
 	public boolean updateMember(MemberDto dto) {
+		System.out.println("업데이트 되는 회원 정보"+dto);
 		return sqlSession.update(namespace+"updatemember", dto)>0?true:false;
 	}
 
@@ -76,9 +77,9 @@ public class AdminDao implements IAdminDao {
 
 	@Override
 	public boolean aClassClose(int seq) {
-		// TODO Auto-generated method stub
 		return sqlSession.update(namespace+"classclose", seq)>0?true:false;
 	}
+
 
 
 

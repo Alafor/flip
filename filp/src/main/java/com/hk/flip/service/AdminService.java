@@ -78,4 +78,5 @@ public class AdminService implements IAdminService {
 		return adminDao.aClassClose(seq);
 	}
 
+
 }

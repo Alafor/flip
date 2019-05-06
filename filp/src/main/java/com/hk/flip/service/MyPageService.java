@@ -51,4 +51,23 @@ public class MyPageService implements IMyPageService {
 	public boolean cancelInclass(int member_seq, int class_seq){
 		return dao.cancelInclass(member_seq, class_seq);
 	}
+
+
+	@Override
+	public boolean deleteInclass(int seq, String email) {
+		return dao.deleteInclass(seq,email);
+	}
+
+
+	@Override
+	public boolean deleteWishlist(int seq, String email) {
+		return dao.deleteWishlist(seq,email);
+	}
+
+
+	@Override
+	public boolean setClassTermin(int seq, String termin) {
+		return dao.setClassTermin(seq,termin);
+		
+	}
 }
