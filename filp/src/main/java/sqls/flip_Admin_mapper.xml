@@ -19,10 +19,17 @@
 	</select>
 	
 	<update id="updatemember" parameterType="MemberDto">
-		UPDATE member SET MEMBER_PASSWORD = #{member_password},MEMBER_BIRTH = #{member_birth},
-		MEMBER_PHONE = #{member_phone}
+		UPDATE member SET		
+		 	MEMBER_PASSWORD = #{member_password},
+		 	MEMBER_BIRTH = #{member_birth},
+			MEMBER_PHONE = #{member_phone}
+			
+		<if test="member_id != null">
+			,MEMBER_ID = #{member_id}
+			,MEMBER_NAME = #{member_name}
+		</if>
 		<if test="member_profile != null">
-		 ,MEMBER_PROFILE = #{member_profile} 
+		 	,MEMBER_PROFILE = #{member_profile} 
 		</if>
 		 WHERE MEMBER_EMAIL = #{member_email}
 	</update>

@@ -317,9 +317,9 @@ public class MooooonController {
 			////T인경우
 	
 			MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+			
 			dto.setMember_id(multi.getParameter("member_id"));
 			dto.setMember_name(multi.getParameter("member_name"));
-			dto.setMember_email(multi.getParameter("member_email"));
 			dto.setMember_password(multi.getParameter("member_password"));
 			dto.setMember_birth(multi.getParameter("member_birth"));
 			dto.setMember_phone(multi.getParameter("member_phone"));

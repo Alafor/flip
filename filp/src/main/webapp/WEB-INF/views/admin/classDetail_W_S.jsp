@@ -259,7 +259,7 @@
           	<form action="aClassClose.do">
           		<input type="hidden" name="seq" value="${dto.seq}">
           		<input type="hidden" name="termin" value="<%=class_termin%>">
-            	<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> 강의 폐쇠</button>
+            	<button class="d-none d-sm-inline-block btn btn-sm btn-warning shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> 강의 폐쇄</button>
          	</form>
           	<form action="aClassDelete.do">
           		<input type="hidden" name="seq" value="${dto.seq}">

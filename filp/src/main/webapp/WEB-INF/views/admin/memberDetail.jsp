@@ -18,6 +18,47 @@
   <!-- Custom styles for this template-->
   <link href="resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <title>Flip 관리자 페이지</title>
+ <script type="text/javascript">
+ function checkpw() {
+     var pw = document.getElementById("Pw").value;
+     var pwck = document.getElementById("PwCheck").value;
+
+     if (pw != pwck) {
+         alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
+         return false;
+     }
+ }
+ function fn_process(){
+	    var _id=$("#t_id").val();
+	    if(_id==''){
+	       alert("ID를 입력하세요");
+	       return;
+	    }
+	    $.ajax({
+	       type:"post",
+	       async:false,  
+	       url:"handler.do",
+	       dataType:"text",
+	       data: {id:_id},
+	       success:function (data,textStatus){
+	    	   
+	          if(data=='usable'){
+	        	 $('#message').text("사용할 수 있는 ID입니다.");
+	              $('#btnDuplicate').prop("disabled", true);
+	           }else{
+	             $('#message').text("사용할 수 없는 ID입니다.");
+	             
+	          }
+	       },
+	       error:function(data,textStatus){
+	          alert("에러가 발생했습니다.");
+	       },
+	       complete:function(data,textStatus){
+	          //alert("작업을완료 했습니다");
+	       }
+	    });  //end ajax    
+	 }      
+ </script>
 <style type="text/css">
 #id {
 	margin-left: 20px;
@@ -274,21 +315,21 @@
  			<div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "이름을 입력해주세요">
                   <label class="text-black" for="name">이름</label> 
-                  <input type="text" class="form-control" name="member_name" value="${member.member_name}" readonly="readonly">
+                  <input type="text" class="form-control" name="member_name" value="${member.member_name}" >
                 </div>
               </div>	            
              
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "아이디를 입력해주세요">
                   <label class="text-black" for="id">아이디</label> 
-                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()" value="${member.member_id}" readonly="readonly">
+                  <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()" value="${member.member_id}" >
                 </div>
                 <div id="message" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
                   <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email"  value="${member.member_email}" readonly="readonly">
+                  <input type="email" class="form-control" name="member_email"  value="${member.member_email}" readonly="readonly" >
                 </div>
               </div>
               <div class="row form-group">              
@@ -297,12 +338,14 @@
                   <input type="password" id="Pw" class="form-control" name="member_password"  value="${member.member_password}">
                 </div>
               </div>
+              
               <div class="row form-group ">              
-                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요"  value="${member.member_password}">
+                <div class="col-md-12 validate-input" data-validate ="패스워드를 입력해주세요" >
                   <label class="text-black" for="password">패스워드확인</label>  
-                  <input type="password" id="PwCheck" class="form-control" >
+                  <input type="password" id="PwCheck" class="form-control"  value="${member.member_password}">
                 </div>
               </div>
+              
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">
                   <label class="text-black" for="birth">생년월일</label> 
