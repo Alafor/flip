@@ -32,29 +32,7 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
-<script type="text/javascript">
-$('#nav nav a').on('click', function(event) {
-    $(this).parent().parent().find('li').removeClass('active');
-    $(this).parent().addClass('actived');
-});
 
-$(window).on('scroll', function() {
-    $('.target').each(function() {
-        if($(window).scrollTop() >= $(this).offset().top) {
-            var id = $(this).attr('id');
-            $('#nav nav li').removeClass('actived');
-            $('#nav nav li a[href=#'+ id +']').addClass('actived');
-        }
-    });
-});
-function moveNav(seq) {
-	var offset = $("#nav" + seq).offset();
-	$('html, body').animate({scrollTop : (offset.top-100)}, 100);
-// 	var navScroll = $("#nav" + seq);
-// 	navScroll.offset({top:400});
-// 	$('html, body').animate({scrollTop : offset.top}, 400);
-}
-</script>
 <!-- tab menu 부트스트랩 css -->
 <style type="text/css">
 nav > .nav.nav-tabs{
@@ -102,25 +80,31 @@ nav > div a.nav-item.nav-link:focus
     border-radius:0;
     transition:background 0.20s linear;
 }
-#nav {
+#nav a{
 	   width: 100%;
 	   margin: 0 15px;
-/*     position: relative; */
+	   color: gray;
+}
+.tapped{
+		position : sticky;
+ 	   	top: 0px; 
 }
 
-#nav nav {
-/*     position: fixed; */
+#nav {
+   background-color: #f8f9fa;
 }
 #nav ul li{
 		width: 24%;
 		display: inline-block; text-align: center; font-size: 20px; font-weight: bold;
+		background-color: #f8f9fa;
 /*     position: fixed; */
 }
 ol, ul {
     list-style: none;
     margin:0px; padding:0px;
 }
-.actived{background-color: gray;}
+.actived{background-color: gray;color: #30e3ca !important;}
+.actived a{color: #30e3ca !important;border-bottom: 3px solid black;}
 div[id^=nav]{padding: 0 25px;
 }
 </style>
@@ -190,16 +174,16 @@ div[id^=nav]{padding: 0 25px;
 						<!-- 탭 이동 메뉴 -->
 						<div class="container">
 							<div class="row">
+								<div class="col-md-12 col-xs-12 ">
 								<div id="nav">
 									<ul>
 										<li class="actived"><a href="#" onclick="moveNav('1')">TOP</a></li>
 										<li><a href="#" onclick="moveNav('2')">Teacher</a></li>
 <!-- 										<li><a href="#3">Introduction</a></li> -->
-										<li><a href="#" onclick="moveNav('4')">Information </a></li>
-										<li><a href="#" onclick="moveNav('5')">Review</a></li>
+										<li><a href="#" onclick="moveNav('3')">Information </a></li>
+										<li><a href="#" onclick="moveNav('4')">Review</a></li>
 									</ul>
 								</div>
-								<div class="col-md-12 col-xs-12 ">
 									<!-- top 탭의 내용 -->
 									<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 										<div class="target" id="nav1">
@@ -228,7 +212,7 @@ div[id^=nav]{padding: 0 25px;
 
 
 										<!-- class information 탭의 내용 -->
-										<div class="target" id="nav4">
+										<div class="target" id="nav3">
 											<span>강의 소개 : ${cDto.class_detail}</span></br>
 											<span>강의 지역 : ${cDto.class_area}</span></br> 
 											<span>강의 가격 : ${cDto.class_price}원 </span></br>
@@ -248,7 +232,7 @@ div[id^=nav]{padding: 0 25px;
 										<hr>
 
 										<!-- review 탭의 내용 -->
-										<div class="target" id="nav5">
+										<div class="target" id="nav4">
 											<!-- 후기 목록 가져오기 -->
 											<table>
 												<c:forEach items="${rDto}" var="reviewdto">
@@ -299,7 +283,36 @@ div[id^=nav]{padding: 0 25px;
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	<script src="resources/js/signup.js"></script>
+<script type="text/javascript">
+$('#nav > ul > li > a').on('click', function(event) {
+    $(this).parent().parent().find('li').removeClass('actived');
+    $(this).parent().addClass('actived');
+});
 
+$(window).on('scroll',function() {		
+       if($(window).scrollTop() >= $('#nav').offset().top) {
+         $('#nav').addClass('tapped');
+       }else{
+    	   $('#nav').removeClass('tapped');
+       }
+    $('.target').each(function() {
+        if(($(window).scrollTop()+51) >= $(this).offset().top) {
+            var id = $(this).attr('id')
+            var num = id.substring(3,4);
+            $('#nav > ul > li').removeClass('actived');
+            $('#nav ul li').eq(num-1).addClass('actived');
+//             $('#nav > ul > li > a[href=#'+ id +']').addClass('actived');
+        }
+    });
+});
+function moveNav(seq) {
+	var offset = $("#nav" + seq).offset();
+	$('html, body').animate({scrollTop : (offset.top-51)}, 100);
+// 	var navScroll = $("#nav" + seq);
+// 	navScroll.offset({top:400});
+// 	$('html, body').animate({scrollTop : offset.top}, 400);
+}
+</script>
 
 </body>
 </html>
