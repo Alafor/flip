@@ -305,38 +305,40 @@ public class MooooonController {
 	public String AMemberUpdate(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession, MemberDto dto) {
 		logger.info("관리자 회원 정보 수정.", locale);
 		String member_type = request.getParameter("member_type");
-		if(member_type.length()>0) {
-			if(!(adminService.updateMember(dto))) {
-				model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
-				model.addAttribute("url","memberMgt.do");
-				return "Redirect";
-			}else {
-				System.out.println("회원정보 변경 성공");
-			return "admin/memberMgt";
-			}
+//		if(member_type.length()>0) {
+//			if(!(adminService.updateMember(dto))) {
+//				model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
+//				model.addAttribute("url","memberMgt.do");
+//				return "Redirect";
+//			}else {
+//				System.out.println("회원정보 변경 성공");
+//			return "admin/memberMgt";
+//			}
 			////T인경우
-		}else {
+	
 			MultipartHttpServletRequest multi = (MultipartHttpServletRequest)request;
+			dto.setMember_id(multi.getParameter("member_id"));
+			dto.setMember_name(multi.getParameter("member_name"));
 			dto.setMember_email(multi.getParameter("member_email"));
 			dto.setMember_password(multi.getParameter("member_password"));
 			dto.setMember_birth(multi.getParameter("member_birth"));
 			dto.setMember_phone(multi.getParameter("member_phone"));
 			dto.setMember_info(multi.getParameter("member_info"));
 			String old_fileName = multi.getParameter("old_file");
-			File old_file = new File("C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class/"+old_fileName);
-	        
-	        if( old_file.exists() ){
-	            if(old_file.delete()){
-	                System.out.println("파일삭제 성공");
-	            }else{
-	                System.out.println("파일삭제 실패");
-	            }
-	        }else{
-	            System.out.println("파일이 존재하지 않습니다.");
-	        }
-		
 			MultipartFile multifile = multi.getFile("member_profile");
 			if(!multifile.isEmpty()) {
+				if(old_fileName!=null||old_fileName.length()!=0) {
+					File old_file = new File("C:/Users/hk-edu/git/FLIP/filp/src/main/webapp/resources/img/class/"+old_fileName);	        
+					if( old_file.exists() ){
+						if(old_file.delete()){
+							System.out.println("파일삭제 성공");
+						}else{
+							System.out.println("파일삭제 실패");
+						}
+					}else{
+						System.out.println("파일이 존재하지 않습니다.");
+					}
+				}
 				String origin_fname=multifile.getOriginalFilename();
 				String origin_fextends=origin_fname.substring(origin_fname.lastIndexOf("."));
 				String creatUUID=UUID.randomUUID().toString().replaceAll("-", "");
@@ -353,7 +355,7 @@ public class MooooonController {
 				}
 				System.out.println("경로:"+f);
 			}
-		}
+		
 		if(!(adminService.updateMember(dto))) {
 			model.addAttribute("msg","회원정보 변경에 실패했습니다.");		
 			model.addAttribute("url","memberMgt.do");
@@ -489,11 +491,12 @@ public class MooooonController {
 //		}
 		MemberDto dto = adminService.getMemberProfil(email);
 		model.addAttribute("member", dto);
-		if(member_type.equals("T")) {
-			return "admin/memberDetail_T";
-		}else {
-			return "admin/memberDetail_S";
-		}
+//		if(member_type.equals("T")) {
+//			return "admin/memberDetail_T";
+//		}else {
+//			return "admin/memberDetail_S";
+//		}
+			return "admin/memberDetail";
 	}
 	
 	@RequestMapping(value = "/AClassDetail.do", method = RequestMethod.GET)//

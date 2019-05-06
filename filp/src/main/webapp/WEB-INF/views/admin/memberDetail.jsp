@@ -347,10 +347,23 @@
 							</figure>
 						</div>
 						<br>
-
 					</div>
 				</div>
-              
+              <c:if test="${member.member_type eq 'T'}">
+	              <div class="container">
+	              	<div class="row form-group">
+	              		<div class="col-md-12" style="padding: 0;">
+	                 	 <label class="text-black" for="message">강사소개</label> 
+	                 		 <textarea name="member_info" id="message" cols="40" rows="7" class="form-control" placeholder=""
+	                 		  data-validate = "상세정보를 입력해 주세요">
+학력사항----------------------------------
+경력사항----------------------------------
+수상내역----------------------------------
+	                 		 </textarea>
+	               		</div>
+	              	</div>
+	             </div>
+              </c:if>
               <div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
                   <input type="submit" value=" 정보 변경 " class="btn btn-primary py-2 px-4 text-white" style="width: 100%;">
