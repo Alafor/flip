@@ -50,6 +50,7 @@
             alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
             return false;
         }
+        //강사 사진 체크
 //         var id = $('#member_type').val();
 //         var isImg = $('.avatar').attr('data-isOn');
 //         if((id =='T')&(isImg != "")){
