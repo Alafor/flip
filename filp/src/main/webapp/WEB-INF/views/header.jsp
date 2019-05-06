@@ -10,8 +10,8 @@
 
 <!DOCTYPE html>
 <header class="site-navbar container py-0 bg-white navbar-fixed-top"
-	style="position: fixed;" role="banner">
-
+	 role="banner">
+<!-- style="position: fixed;" -->
 	<!-- <div class="container"> -->
 	<div class="row align-items-center">
 		<div class="col-6 col-xl-2">
