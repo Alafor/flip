@@ -4,6 +4,7 @@
 <%response.setContentType("text/html;charset=utf-8"); %>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -90,13 +91,14 @@ nav > div a.nav-item.nav-link:focus
  	   	top: 0px; 
 }
 
-#nav {
-   background-color: #f8f9fa;
+
+
+#nav > ul{background-color: white;
 }
 #nav ul li{
 		width: 24%;
 		display: inline-block; text-align: center; font-size: 20px; font-weight: bold;
-		background-color: #f8f9fa;
+		background-color: white;
 /*     position: fixed; */
 }
 ol, ul {
@@ -107,11 +109,21 @@ ol, ul {
 .actived a{color: #30e3ca !important;border-bottom: 3px solid black;}
 div[id^=nav]{padding: 0 25px;
 }
+.inside_container{background-color: white; padding: 0;}
+.side_container{
+ 	display:inline-block; 
+ 	background-color: #bbd8e9;
+/* /* 	position: fixed; */ */
+/* 	top: 50px; */
+/* 	left:30%; */
+/* 	float:right; */
+}
+.side_container hr{margin: 2px;}
 </style>
 <!-------------------------------------->
 </head>
 <body>
-
+<!-- #f8f9fa -->
 <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -147,22 +159,19 @@ div[id^=nav]{padding: 0 25px;
 
 
 	<div class="site-section bg-light">
-		<div class="container">
-			<div class="row justify-content-center mb-5">
-			</div>
-
+		
+		<div class="container-fluid" style="display: inline-block;">
+<!-- 			<div class="row justify-content-center mb-5"> -->
+<!-- 			</div> -->
+			<div class="row-fluid">
 			<div class="row justify-content-center">
-				<div class="col-md-10 mb-10" data-aos="fade">
+				<div class="col-md-7 mb-7" data-aos="fade">
 					<!-------------------------------------------------------------------------------------------------->
 
 
 					<!-- 강의 이미지 -->
 
 					<div class="container">
-						<div class="class_image row justify-content-center">
-							<img src="resources/img/class/${cDto.class_img}" alt="Image"
-								class="img-fluid mb-3">
-						</div>
 
 						<!-- 강의 이름 -->
 
@@ -174,7 +183,11 @@ div[id^=nav]{padding: 0 25px;
 						<!-- 탭 이동 메뉴 -->
 						<div class="container">
 							<div class="row">
-								<div class="col-md-12 col-xs-12 ">
+								<div class="col-md-12 col-xs-12 inside_container">
+								<div class="class_image row justify-content-center">
+									<img src="resources/img/class/${cDto.class_img}" alt="Image"
+										class="img-fluid mb-3">
+								</div>
 								<div id="nav">
 									<ul>
 										<li class="actived"><a href="#" onclick="moveNav('1')">TOP</a></li>
@@ -260,6 +273,33 @@ div[id^=nav]{padding: 0 25px;
 			<!-- footer시작 -->
 				
 				</div>
+				<div class="side_container col-md-2 mb-2">
+					위치 : ${cDto.class_area}<hr>
+					<c:set value="${cDto.class_week}" var="class_week"/><br>
+					요일:<c:forEach items="${fn:split(class_week,'|')}" var="week">
+						<button class="btn btn-danger">
+						<c:if test="${week==1}">일</c:if>
+						<c:if test="${week==2}">월</c:if>
+						<c:if test="${week==3}">화</c:if>
+						<c:if test="${week==4}">수</c:if>
+						<c:if test="${week==5}">목</c:if>
+						<c:if test="${week==6}">금</c:if>
+						<c:if test="${week==7}">토</c:if>
+						</button>
+					</c:forEach><hr>
+					<c:set value="${cDto.class_sd}" var="class_sd"/>
+					<c:set value="${cDto.class_cd}" var="class_cd"/>
+					일자:${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"> ~ ${fn:substring(class_cd,0,10)}</c:if><hr>
+					${cDto.class_time}<hr>
+					${cDto.class_starttime}<hr>
+					${cDto.class_participation}<hr>
+					${cDto.class_price}<hr>
+					<div class="col-md-12">
+						<button class="btn center-block py-2 px-4"  style="margin-top: 5px;width: 100%;"
+						onclick="">gogogo</button>
+               		</div>
+				</div>
+			</div>
 			</div>
 		</div>
 	</div>
