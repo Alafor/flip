@@ -7,7 +7,7 @@ $(document).ready(function() {
 			var search = $("#search").attr("data-param");
 			var category = $("#category").attr("data-param");
 			var classType = $("#classType").attr("data-param");
-			var addArea = $("#addArea").attr("data-param")
+			var addArea = $("#addArea").attr("data-param");
 			
 			//클래스 탭메뉴 
 			classReset();

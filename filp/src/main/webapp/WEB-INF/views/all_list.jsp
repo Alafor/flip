@@ -182,14 +182,15 @@
 					</li>
 				</ul>
 			</div>
+			
 			</div>
-			<div class="site-section bg-white">
+			
 				<div class="container">
-				<div id="tab-1" class="tab-content current"></div>
-				<div id="tab-2" class="tab-content"></div>
-				<div id="tab-3" class="tab-content"></div>
+				<div id="tab-1" class="tab-content current" style="padding-top:0px;"></div>
+				<div id="tab-2" class="tab-content" style="padding-top:0px;"></div>
+				<div id="tab-3" class="tab-content" style="padding-top:0px;"></div>
 				</div>
-			</div>
+			
 			
 			<!-- 목록 container 종료 -->
 		<!-- 사이트 섹션 종료 -->
