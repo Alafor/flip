@@ -67,13 +67,13 @@
     }
     .member_infomation_head{font-size: 20px;border-bottom: 1px solid #ced4da;margin-bottom: 5px;}
     .member_image {
-    width: 150px;
+    width: 250px;
     height: auto;
     object-fit: cover;
     border-radius: 50%;
     float: left;
     }
-    .member_img{display: inline-block;} 
+    .member_img{display: inline-block;padding-left: 30px;} 
     .mySchedule{
     	display: inline-block;
     }
@@ -118,6 +118,14 @@
 			<div class="container mb-5" >
 <!-- 				<div style="display: inline-block;text-align: center;"> -->
 					<div class="member_container col-md-7 mb-5">
+						<div class="col-md-7 text-left border-primary">
+							<h2 class="font-weight-light text-primary">
+								<a href="searchlist.do?classType=C">
+									<b>회원<span class="text-warning">정보</span></b>
+								</a>
+							</h2>
+							<p class="color-black-opacity-5">User Infomation</p>
+						</div>
 						<div class="member_img">
 						<c:choose>
 							<c:when test="${member.member_profile eq null}">
@@ -134,10 +142,10 @@
 							<h2 class="font-weight-light text-primary">
 										<b>회원 <span class="text-warning">정보</span></b>
 									</h2>
-							<div class="member_infomation_head">이름 : <div class="member_infomation_detail">${member.member_name}</div> </div>
-							<div class="member_infomation_head">아이디 : <div class="member_infomation_detail">${member.member_id}</div></div>
-							<div class="member_infomation_head">이메일 : <div class="member_infomation_detail">${member.member_email}</div> </div>
-							<div class="member_infomation_head" >가입일 : <div class="member_infomation_detail"></div>${fn:substring(member_regdate,0,10)} </div>
+							<div class="member_infomation_head">이름 : <div class="member_infomation_detail">            ${member.member_name}</div> </div>
+							<div class="member_infomation_head">아이디 : <div class="member_infomation_detail">           ${member.member_id}</div></div>
+							<div class="member_infomation_head">이메일 : <div class="member_infomation_detail">           ${member.member_email}</div> </div>
+							<div class="member_infomation_head" >가입일 : <div class="member_infomation_detail">           ${fn:substring(member_regdate,0,10)} </div></div>
 						</div>
 						
 						<div class=" text-right mySchedule">

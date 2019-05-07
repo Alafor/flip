@@ -93,12 +93,14 @@ nav > div a.nav-item.nav-link:focus
 
 
 
-#nav > ul{background-color: white;
+#nav > ul{background-color: white;border-bottom: gray;
 }
 #nav ul li{
 		width: 24%;
 		display: inline-block; text-align: center; font-size: 20px; font-weight: bold;
 		background-color: white;
+		padding-top: 10px;
+		
 /*     position: fixed; */
 }
 ol, ul {
