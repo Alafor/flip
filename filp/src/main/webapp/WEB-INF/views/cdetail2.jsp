@@ -113,7 +113,7 @@ div[id^=nav]{padding: 0 25px;
 .side_container{
  	display:inline-block; 
  	background-color: #bbd8e9;
-/* /* 	position: fixed; */ */
+/*  	position: fixed; */
 /* 	top: 50px; */
 /* 	left:30%; */
 /* 	float:right; */
@@ -131,6 +131,8 @@ background-color : #30E3CA;
 color : #30E3CA;
 
 }
+.site-section{padding-top: 32px;}
+.side_container_tapped{position: fixed; right: 20%;}
 </style>
 <!-------------------------------------->
 </head>
@@ -171,7 +173,14 @@ color : #30E3CA;
 
 
 	<div class="site-section bg-light">
-		
+		<div class="row justify-content-center mb-5">
+				<div class="col-md-7 text-center border-primary">
+					<h2 class="font-weight-light text-primary">
+						강의<span class="text-warning">등록</span>
+					</h2>
+					<p class="color-black-opacity-5">Lecture&amp;Registration</p>
+				</div>
+			</div>
 		<div class="container-fluid" style="display: inline-block;">
 <!-- 			<div class="row justify-content-center mb-5"> -->
 <!-- 			</div> -->
@@ -345,7 +354,7 @@ $('#nav > ul > li > a').on('click', function(event) {
     $(this).parent().addClass('actived');
 });
 
-$(window).on('scroll',function() {		
+$(window).on('scroll',function() {
        if($(window).scrollTop() >= $('#nav').offset().top) {
          $('#nav').addClass('tapped');
        }else{
@@ -361,6 +370,22 @@ $(window).on('scroll',function() {
         }
     });
 });
+
+$(window).on('scroll',function() {
+       if($(window).scrollTop() >= $('.side_container').offset().top) {
+         $('.side_container').addClass('side_container_tapped');
+       }else{
+    	   $('.side_container').removeClass('side_container_tapped');
+       }
+});
+// function moveSite-section(section) {
+// 	var offset = section.offset();
+// 	$(section).css
+// 	$('html, body').animate({scrollTop : (offset.top),scrollLeft :(offset.left)},0);
+// // 	var navScroll = $("#nav" + seq);
+// // 	navScroll.offset({top:400});
+// // 	$('html, body').animate({scrollTop : offset.top}, 400);
+// }
 function moveNav(seq) {
 	var offset = $("#nav" + seq).offset();
 	$('html, body').animate({scrollTop : (offset.top-51)}, 100);
