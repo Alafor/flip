@@ -46,10 +46,4 @@
 		</beans:property>
 	</beans:bean>
 	
-	<beans:bean id="echoHandler" class="com.hk.utils.EchoHandler" />
-	<websocket:handlers>
-		<websocket:mapping handler="echoHandler" path="/echo"/>
-		<websocket:sockjs />
-	</websocket:handlers>
-	
 </beans:beans>
