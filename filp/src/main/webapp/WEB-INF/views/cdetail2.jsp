@@ -118,7 +118,19 @@ div[id^=nav]{padding: 0 25px;
 /* 	left:30%; */
 /* 	float:right; */
 }
-.side_container hr{margin: 2px;}
+.side_container hr{
+margin: 2px;
+}
+/* 강의 제목 */
+.title{ 
+font-size : 25px; font-weight : bold; text-align: center; 
+}
+/*수평선*/
+hr{
+background-color : #30E3CA;
+color : #30E3CA;
+
+}
 </style>
 <!-------------------------------------->
 </head>
@@ -200,16 +212,20 @@ div[id^=nav]{padding: 0 25px;
 									<!-- top 탭의 내용 -->
 									<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 										<div class="target" id="nav1">
-											<span>강의명 : ${cDto.class_name}</span></br> <span>강의 소개
-												:${cDto.class_info} </span></br> <span>강사님 :
-												${cDto.class_creator_name}</span></br> <span>지역 :
-												${cDto.class_area}</span></br> <span>가격 : ${cDto.class_price}원</span>
-												<!-- <p>보내는 고동을 같은 풀밭에 것이다. 무엇을 가지에 얼마나 인류의 봄바람이다. 맺어, 원질이 구하지 예가 유소년에게서 새가 어디 풍부하게 광야에서 것이다. 소담스러운 인간에 들어 봄바람을 있으며, 유소년에게서 것이다. 얼음 기쁘며, 웅대한 그림자는 아름다우냐? 가슴에 꽃이 이것을 반짝이는 봄바람이다. 얼마나 관현악이며, 열락의 뼈 보이는 옷을 가치를 때문이다. 소담스러운 피고, 끝에 뿐이다. 가는 우리는 위하여서, 가슴이 청춘의 얼음 가진 이것이다. 속잎나고, 따뜻한 남는 때문이다.
-												속잎나고, 우리 봄날의 사막이다. 청춘에서만 청춘의 무엇을 힘있다. 그들에게 든 청춘의 창공에 이성은 없는 우리 우는 소리다.이것은 황금시대다. 하는 용감하고 우리의 쓸쓸하랴? 소담스러운 그들의 우리 반짝이는 못하다 현저하게 바로 것이다. 광야에서 낙원을 곳이 열매를 시들어 이상 청춘의 청춘이 이것이다. 동산에는 눈이 넣는 교향악이다. 무한한 우리는 커다란 싸인 운다. 이 꾸며 뜨고, 사랑의 오직 끓는다.
-												
-												가는 있는 대고, 우는 인생에 오직 밥을 몸이 이것이다. 인간은 사람은 그들에게 힘차게 대한 인생에 수 갑 우리의 것이다. 지혜는 소리다.이것은 뛰노는 같으며, 이것을 모래뿐일 것이다. 대고, 불어 생명을 끝까지 황금시대를 굳세게 하는 있는가? 넣는 타오르고 구하지 우리는 있으랴? 긴지라 풍부하게 무엇을 인생의 구할 청춘이 튼튼하며, 피고, 운다. 그들은 불러 찾아 있는 그들을 날카로우나 가슴이 것이다. 우리 같은 날카로우나 무엇을 설레는 피고 소리다.이것은 아름다우냐? 없는 석가는 위하여 같으며, 운다.</p> -->
-
+										<br><span class="title">${cDto.class_name}</span><br></br> 
+											<span>
+												${cDto.class_info} </span><br><br> 
+										<table style="text-align:center;">
+											<tr>
+												<td><img src="resources/images/placeholder.png"><br>${cDto.class_area}</td>
+												<td><img src="resources/images/time.png"><br>${cDto.class_time}분</td>
+												<td><img src="resources/images/won.png"><br>${cDto.class_price}원</td>
+											</tr>
+										</table>
+											
 										</div>
+										
+										
 										<hr>
 										<!-- Teacher 탭의 내용 -->
 										<div class="target" id="nav2">
@@ -250,11 +266,11 @@ div[id^=nav]{padding: 0 25px;
 											<table>
 												<c:forEach items="${rDto}" var="reviewdto">
 													<tr>
-														<td>${reviewdto.review_detail}</td>
+														<td>${reviewdto.review_detail}<br><br></td>
 													</tr>
 												</c:forEach>
-												
 											</table>
+											
 										<!-- 	<p>보내는 고동을 같은 풀밭에 것이다. 무엇을 가지에 얼마나 인류의 봄바람이다. 맺어, 원질이 구하지 예가 유소년에게서 새가 어디 풍부하게 광야에서 것이다. 소담스러운 인간에 들어 봄바람을 있으며, 유소년에게서 것이다. 얼음 기쁘며, 웅대한 그림자는 아름다우냐? 가슴에 꽃이 이것을 반짝이는 봄바람이다. 얼마나 관현악이며, 열락의 뼈 보이는 옷을 가치를 때문이다. 소담스러운 피고, 끝에 뿐이다. 가는 우리는 위하여서, 가슴이 청춘의 얼음 가진 이것이다. 속잎나고, 따뜻한 남는 때문이다.
 
 												속잎나고, 우리 봄날의 사막이다. 청춘에서만 청춘의 무엇을 힘있다. 그들에게 든 청춘의 창공에 이성은 없는 우리 우는 소리다.이것은 황금시대다. 하는 용감하고 우리의 쓸쓸하랴? 소담스러운 그들의 우리 반짝이는 못하다 현저하게 바로 것이다. 광야에서 낙원을 곳이 열매를 시들어 이상 청춘의 청춘이 이것이다. 동산에는 눈이 넣는 교향악이다. 무한한 우리는 커다란 싸인 운다. 이 꾸며 뜨고, 사랑의 오직 끓는다.
