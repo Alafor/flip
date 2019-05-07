@@ -249,7 +249,9 @@ function auto_phone( e, oThis ){
     		<label class="text-black" >프로필등록</label>
     			<div class="row form-group mb-6" style="border: 1px solid #ced4da; border-radius: 10px; ">
   					<div class="col-md-6"><!--left col--><br>
-                       <div class="text-center testimonial"><figure class="mb-6"><img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar"><br><br>
+                       <div class="text-center testimonial">
+                       <figure class="mb-6">
+                       <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar"><br><br>
         					<h6><b>프로필</b></h6></div></div>
         		       <div class="col-md-6 hidden_input" style="text-align:center;margin-top:15%"><p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
         					<label for="hidden_file">프로필등록</label>

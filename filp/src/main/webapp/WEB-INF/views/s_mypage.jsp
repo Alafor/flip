@@ -51,7 +51,7 @@
     .member_container{
 /*      	background-color:rgba(138,138,138,0.2); */
     	padding-left: 20px;
-   		border: 2px solid #30e3ca;
+   		/* border: 2px solid #30e3ca; */
     	border-radius: 20px;
     	margin:0 50px;
     	margin-bottom: 5px;
