@@ -289,11 +289,11 @@ div[id^=nav]{padding: 0 25px;
 					</c:forEach><hr>
 					<c:set value="${cDto.class_sd}" var="class_sd"/>
 					<c:set value="${cDto.class_cd}" var="class_cd"/>
-					일자:${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"> ~ ${fn:substring(class_cd,0,10)}</c:if><hr>
-					${cDto.class_time}<hr>
-					${cDto.class_starttime}<hr>
-					${cDto.class_participation}<hr>
-					${cDto.class_price}<hr>
+					일자 : ${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"> ~ ${fn:substring(class_cd,0,10)}</c:if><hr>
+					강의시간 : ${cDto.class_time}분<hr>
+					강의 시작일 : ${cDto.class_starttime}<hr>
+					참가 인원 : ${cDto.class_participation}명<hr>
+					금액 : ${cDto.class_price}원<hr>
 					<div class="col-md-12">
 						<button class="btn center-block py-2 px-4"  style="margin-top: 5px;width: 100%;"
 						onclick="">gogogo</button>
