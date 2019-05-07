@@ -57,7 +57,7 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request) {
+	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request, String num, String selArea) {
 		logger.info("search list 시작{}.", locale);
 		String addArea = "";
 		Map<String, String> paramList = new HashMap<String, String>();
@@ -153,6 +153,15 @@ public class SeoController {
 					return "Redirect";
 				}
 			}
+			
+	}
+	
+	@RequestMapping(value = "/websocket.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String websocket(Locale locale, Model model,HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String id = "seo";
+		session.setAttribute("userId",id);
+		return "websocket-echo";
 			
 	}
 }

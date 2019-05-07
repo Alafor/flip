@@ -18,11 +18,14 @@ $(function(){
 			$('#sarea-'+i).val(areas3);
 	}*/
 	$('.dropdown').on('click',function(){
-		
+		var nulls = $('.hiddenBtn').attr('data-null');
+		if(!(!nulls)){
+			$('.search-area').css('display','none');
+		}
 		if($('.search-area').css('display')=='none'){
-			$('.search-area').slideDown(200);
+			$('.search-area').slideDown(400);
 		}else if($('.search-area').css('display')!='none'){
-			$('.search-area').slideUp(200);
+			$('.search-area').slideUp(400);
 		}
 	});
 	
@@ -30,7 +33,7 @@ $(function(){
 		if($(this).find('.areachk').is(':checked')){
 			$(this).css('background-color','#30E3CA');
 		}else{
-			$(this).css('background-color','#808080');
+			$(this).css('background-color','#e9ecef');
 		};
 	});
 });
