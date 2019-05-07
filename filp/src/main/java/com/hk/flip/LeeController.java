@@ -66,7 +66,7 @@ public class LeeController {
 		System.out.println(getCreview);
 		model.addAttribute("cDto", getCdetail);
 		model.addAttribute("rDto", getCreview);
-		return "cdetail";
+		return "cdetail2";
 	}
 
 	//리뷰작성 페이지로 이동 : 리뷰 등록한 사람, 수업 seq, 별점, 후기, 삭제여부(무조건 Y / 끝난 강의만), 등록일
