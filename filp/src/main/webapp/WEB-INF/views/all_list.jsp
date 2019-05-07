@@ -105,7 +105,7 @@
 							</a>
 						</div>
 						<div class="col-sm-3 col-md-2 mb-1 mb-lg-0 col-lg-1">
-							<a href="searchlist.do?department=lifestyle" class="popular-category h-100" data-category="lifestyle"> <span
+							<a href="searchlist.do?department=yolo" class="popular-category h-100" data-category="lifestyle"> <span
 								class="icon"><span class="flaticon-dance"></span></span> <span
 								class="caption mb-2 d-block"><b>YOLO</b></span> <span
 								class="number">32,891</span>
