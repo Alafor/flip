@@ -18,13 +18,15 @@
 	</select>
 	
 	<select id="chkinclasstime_join" parameterType="map" resultType="String">
-		  SELECT class_name FROM (select CLASS_TYPE,CLASS_MEMBER_SEQ,CLASS_NAME,REGDATE,SEQ,CLASS_TERMIN,CLASS_PARTICIPATION,CLASS_SD,CLASS_DEPA,CLASS_STARTTIME,CLASS_WEEK,
-            CLASS_CD,CLASS_TIME from class where class_type in('W','C') AND class_termin = 'N' and seq in(select inclass_class_seq from inclass where inclass_member_seq = #{member_seq} )) 
+		 SELECT a.class_name FROM (select CLASS_TYPE,CLASS_MEMBER_SEQ,CLASS_NAME,REGDATE,SEQ,CLASS_TERMIN,CLASS_PARTICIPATION,CLASS_SD,CLASS_DEPA,CLASS_STARTTIME,CLASS_WEEK,
+            CLASS_CD,CLASS_TIME from class where class_type in('W','C') AND class_termin = 'N' and seq in(select inclass_class_seq from inclass where inclass_member_seq = #{member_seq} )) a, 
+            (select CLASS_TYPE,CLASS_MEMBER_SEQ,CLASS_NAME,REGDATE,SEQ,CLASS_TERMIN,CLASS_PARTICIPATION,CLASS_SD,CLASS_DEPA,CLASS_STARTTIME,CLASS_WEEK,
+            CLASS_CD,CLASS_TIME from class where class_type in('W','C') AND class_termin = 'N' and seq = #{seq}) b 
             WHERE 
-            seq = #{seq}
-            and CLASS_SD<![CDATA[<=]]>to_date(class_cd,'yyyy-mm-dd') and (CLASS_CD<![CDATA[>=]]>to_date(class_sd,'yyyy-mm-dd'))
-            and (to_date(class_starttime, 'hh24mi') <![CDATA[<=]]> (to_date(class_starttime, 'hh24mi')+class_time/(24*60)) and  ( to_date(class_starttime, 'hh24mi')+class_time/(24*60))<![CDATA[>=]]>(to_date(class_starttime, 'hh24mi')))
-             and REGEXP_LIKE(CLASS_WEEK,class_week)
+          a.CLASS_SD<![CDATA[<=]]>b.class_cd and (a.CLASS_CD<![CDATA[>=]]>b.class_sd)
+            and (to_date(a.class_starttime, 'hh24mi') <![CDATA[<=]]> (to_date(b.class_starttime, 'hh24mi')+b.class_time/(24*60))) 
+            and  ( to_date(a.class_starttime, 'hh24mi')+a.class_time/(24*60))<![CDATA[>=]]>(to_date(a.class_starttime, 'hh24mi'))
+             and REGEXP_LIKE(a.CLASS_WEEK,b.class_week)
 	</select>
 
 	<select id="chkinclasstime_create" parameterType="ClassDto" resultType="String">

@@ -54,14 +54,16 @@ function registClass(seq) {
 			return false;
 		}
 	}else {
-		if(member_type.equals('T')) {
+		if(member_type==('T')) {
 			alert('강의를 신청하실수 없습니다');
 			return false;
 		}
 	}
-var result;	
-
-$.ajax({
+return ajaxChk(seq);
+	
+}
+function ajaxChk(seq) {
+	$.ajax({
 
 	    url: "chkclasstime.do", // 클라이언트가 요청을 보낼 서버의 URL 주소
 
@@ -74,27 +76,18 @@ $.ajax({
 	    success : function(data) {
 	    	rst =data["rst"];
 	    	if(rst=="개설가능"){
-	    		result = 'true';
-	    		
-//	    		alert("개설가능");
+	    		$('#regist_class').submit();
 	    	}else{
 	    		alert(rst);
-	    		result = 'false';
+	    		
+	    		return false;
 	    	}
 	    },
 	    error: function(data,status,xhr){
-		alert("통신실패");
-		result= 'false';
+		alert("통신실패로 인한 수강신청 실패 입니다.");
+		return false;
 		}
 	});
-	alert('result:'+result);
-	if(result=='true'){
-	return true;
-		
-	}else{
-	return false;
-		
-	}
 }
 </script>
 <!-- tab menu 부트스트랩 css -->
@@ -398,11 +391,12 @@ String member_type= memberDto.getMember_type(); %>
 					<div class="detail_head">참가 인원 : <div class="detail_content">${cDto.class_participation}명</div></div>
 					<div class="detail_head">금액 : <div class="detail_content">${cDto.class_price}원</div></div>
 					<div class="col-md-12">
-						<form action="regist_class.do" onsubmit="return registClass(${cDto.seq})" method="post">
+						<form action="regist_class.do" id="regist_class" method="post">
 						<input type="hidden" name="seq" value="${cDto.seq}">
-						<button class="btn btn-warning center-block py-2 px-4 text-white"  style="margin-top: 5px;width: 100%;"
-						type="submit"><b>강의 신청</b></button>
 						</form>
+						<button type="button" class="btn btn-warning center-block py-2 px-4 text-white"  style="margin-top: 5px;width: 100%;"
+						onclick="registClass(${cDto.seq})">
+						<b>강의 신청</b></button>
                		</div>
 				</div>
 				</div>
