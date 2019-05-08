@@ -143,7 +143,6 @@ public class ClassService implements IClassService {
 	}
 	@Override
 	public String chkInclassTime_Join(int member_seq, int parseInt) {
-		
 		System.out.println("chkInclassTime_Join의 service member_seq,parseInt = \n member_seq::parseInt"+member_seq+"::"+parseInt);
 		List<String> list = inclassDao.chkInclassTime_Join(member_seq, parseInt);
 		System.out.println("겹치는 리스트 가져오기");
