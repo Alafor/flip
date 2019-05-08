@@ -141,4 +141,23 @@ public class ClassService implements IClassService {
 //		}
 		return myScheduleList; 
 	}
+	@Override
+	public String chkInclassTime_Join(int member_seq, int parseInt) {
+		
+		System.out.println("chkInclassTime_Join의 service member_seq,parseInt = \n member_seq::parseInt"+member_seq+"::"+parseInt);
+		List<String> list = inclassDao.chkInclassTime_Join(member_seq, parseInt);
+		System.out.println("겹치는 리스트 가져오기");
+		System.out.println(list);				
+		if(!(list.isEmpty())) {
+			String rst="";
+			for (String string : list) {
+				rst = rst+",\n"+string;
+			}
+			rst = rst+"\n 강의와 시간이 겹칩니다 ";
+			return rst;
+		}else {
+			return null;
+		}
+		
+	}
 }

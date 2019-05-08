@@ -61,4 +61,10 @@ public class InclassService implements IInclassService {
 	public List<InclassDto> myClass(int memberSeq) {
 		return inclassDao.myClass(memberSeq);
 	}
+
+
+	@Override
+	public boolean regist_class(int member_seq, int seq) {
+		return inclassDao.addInclass(member_seq, seq);
+	}
 }

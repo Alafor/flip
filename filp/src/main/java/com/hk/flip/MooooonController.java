@@ -39,6 +39,7 @@ import com.hk.flip.dtos.DataTableWrapperDto;
 import com.hk.flip.dtos.MemberDto;
 import com.hk.flip.service.IAdminService;
 import com.hk.flip.service.IClassService;
+import com.hk.flip.service.IInclassService;
 import com.hk.flip.service.IMemberService;
 import com.hk.flip.service.IMyPageService;
 
@@ -59,6 +60,8 @@ public class MooooonController {
 	private IClassService classService;
 	@Autowired
 	private IAdminService adminService;
+	@Autowired
+	private IInclassService inclassService;
 	
 	@Scheduled(cron="0 0 0 * * ? ")
 	public void doSchedule() {
@@ -219,7 +222,21 @@ public class MooooonController {
 		model.addAttribute("url","main.do");
 		return "Redirect";
 	}
-	
+	@RequestMapping(value = "/regist_class.do", method = RequestMethod.POST)
+	public String regist_class(Locale locale, Model model,HttpServletRequest request,int seq) {
+		logger.info("강의등록이동(W,S){}.", locale);
+		int member_seq = ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_seq();
+		if(inclassService.regist_class(member_seq,seq)) {
+			model.addAttribute("msg","수강 신청에 성공했습니다.");		
+			model.addAttribute("url","cdetail.do?class_seq="+seq);
+			return "Redirect";
+		}else {
+			model.addAttribute("msg","수강 신청에 실패했습니다.");		
+			model.addAttribute("url","cdetail.do?class_seq="+seq);
+			return "Redirect";
+		}
+		
+	}
 	@ResponseBody
 	@RequestMapping(value = "/chkclasstime.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
 	public Map chkclasstime(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) {
@@ -228,7 +245,7 @@ public class MooooonController {
 		ClassDto classdto = new ClassDto(); 
 		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
 		System.out.println(memberDto);
-		int memberSeq = memberDto.getMember_seq();
+		int member_seq = memberDto.getMember_seq();
 		SimpleDateFormat fomat = new SimpleDateFormat("yyyy/MM/dd");
 //		Date sd = new Date();
 //		Date cd =new Date();
@@ -239,21 +256,32 @@ public class MooooonController {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-		classdto.setClass_member_seq(memberSeq);
-		classdto.setClass_starttime(request.getParameter("class_starttime"));
-		classdto.setClass_sd(request.getParameter("class_sd"));
-		classdto.setClass_cd(request.getParameter("class_cd"));
-		classdto.setClass_time(Integer.parseInt(request.getParameter("class_time")));
-		classdto.setClass_week(request.getParameter("class_week"));
-		System.out.println("아작스에서 넘기기전 classdto::\n"+classdto);
-		String rst = classService.chkInclassTime_Create(classdto);
-		if(rst==null) {
-			map.put("rst","개설가능");
-			return map;
+		classdto.setClass_member_seq(member_seq);
+		String strSeq = (request.getParameter("seq"));
+		String rst = "";
+		System.out.println("chkclasstime if 앞 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
+		if(!strSeq.isEmpty()) {
+			System.out.println("strSeq::member_seq="+strSeq+"::"+member_seq);
+			int seq = Integer.parseInt(strSeq);
+			rst = classService.chkInclassTime_Join(member_seq,seq);
+			System.out.println("rst::::::::"+rst);
 		}else {
-			map.put("rst",rst);
-			return map;
+			classdto.setClass_starttime(request.getParameter("class_starttime"));
+			classdto.setClass_sd(request.getParameter("class_sd"));
+			classdto.setClass_cd(request.getParameter("class_cd"));
+			classdto.setClass_time(Integer.parseInt(request.getParameter("class_time")));
+			classdto.setClass_week(request.getParameter("class_week"));
+			System.out.println("아작스에서 넘기기전 classdto::\n"+classdto);
+			rst = classService.chkInclassTime_Create(classdto);
 		}
+			if(rst==null) {
+				map.put("rst","개설가능");
+				return map;
+			}else {
+				map.put("rst",rst);
+				return map;
+			}
+		
 	}
 	
 	@RequestMapping(value = "/memberMgt.do", method = RequestMethod.GET)//로그인 성공여부 확인후 메인으로

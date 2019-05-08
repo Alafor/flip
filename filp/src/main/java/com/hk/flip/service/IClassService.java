@@ -23,6 +23,7 @@ public interface IClassService {
 	public String addsClass(List<ClassDto> classList);
 	public int pageCount(String search, String department, String classType, String selArea);
 	public String chkInclassTime_Create(ClassDto dto);
+	public String chkInclassTime_Join(int member_seq, int parseInt);
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	//스케줄
 	public List<CalendarDto> scheduleList(List<InclassDto> myClass,Map<String, Object> month);
