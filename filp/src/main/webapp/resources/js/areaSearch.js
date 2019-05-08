@@ -26,15 +26,17 @@ $(function(){
 	});
 	
 	$('label').on('click',function(){
-		alert('ss');
 		if($(this).find('.areachk').is(':checked')){
-			
 			$(this).css('background-color','#30E3CA');
-			$('.areaspan').css('color','#FFFAFA');
+			$(this).find('.areaspan').css('color','#FFF');
 		}else{
-			alert('aas');
 			$(this).css('background-color','#FFFAFA');
-			$('.areaspan').css('color','#000000');
+			$(this).find('.areaspan').css('color','#000');
 		};
 	});
+	
+	var datanull = $('.current').find('.hiddenBtn').attr('data-null');
+	if(datanull==0){
+		$('.search-area').css('display','none');
+	}
 });
