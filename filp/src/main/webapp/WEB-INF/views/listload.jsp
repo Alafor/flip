@@ -38,7 +38,7 @@
 label {
 	width: 100px;
 	height: 40px;
-	background-color: #e9ecef;
+	background-color: #FFFAFA;
 	text-align: center;
 	vertical-align: middle;
 }
@@ -56,6 +56,9 @@ label {
 .search-area {
 	background-color: #e9ecef;
 	position:relative;
+	border:1px;
+	border-style:double;
+	border-color: gray;
 }
 
 .btnBox {
@@ -65,8 +68,8 @@ label {
 }
 .subdiv{
 	float: right;
-	margin-top:5px;
-	margin-bottom: 5px;
+	margin-top: 7px;
+	margin-bottom: auto;
 }
 #subs{
 	font-size: 15px;
@@ -78,26 +81,30 @@ label {
 	color:white;
 	border-radius: 5px;
 }
-.labelBox{
-
+.areaArea{
+	width:850px;
+	margin-left: auto;
+	margin-right:auto;
 }
 </style>
 </head>
 <body>
 	<div class="container search-area" data-search>
+	<div class="areaArea">
 		<form action="searchlist.do" method="post">
 			<input type="hidden" name="search" value="${paramList.search}" /> <input
 				type="hidden" name="department" value="${paramList.category}" /> <input
 				type="hidden" name="classType" value="${paramList.classType}" />
 			<c:set value="${searchList[0].class_type}" var="class_type"></c:set>
 			<div class="hiddenBtn" data-null="${areaList}"></div>
+			
 			<c:choose>
 				<c:when test="${class_type eq 'C'}">
 					<div id="areasize-c" data-areasize="${fn:length(areaList)}"></div>
 					<c:forEach var="areaList" items="${areaList}" varStatus="seq">
 						<label for="carea-${seq.index}"> <input type="checkbox"
 							class="areachk" name="selectedarea" id="carea-${seq.index}"
-							value="${areaList.class_area}" /> <span class="carea"
+							value="${areaList.class_area}" /> <span class="carea areaspan"
 							data-area="${areaList.class_area}">${areaList.class_area}</span>
 							<span>(${areaList.class_area_count})</span>
 						</label>
@@ -109,7 +116,7 @@ label {
 						<label for="sarea-${seq.index}"> <input type="checkbox"
 							class="areachk" name="selectedarea" id="sarea-${seq.index}"
 							value="${areaList.class_area}" /> <span class="areabox">
-								<span class="sarea" data-area="${areaList.class_area}">${areaList.class_area}</span>
+								<span class="sarea areaspan" data-area="${areaList.class_area}">${areaList.class_area}</span>
 								<span>(${areaList.class_area_count})</span>
 						</span>
 						</label>
@@ -121,7 +128,7 @@ label {
 						<label for="warea-${seq.index}"> <input type="checkbox"
 							class="areachk" name="selectedarea" id="warea-${seq.index}"
 							value="${areaList.class_area}" /> <span class="areabox">
-								<span class="warea" data-area="${areaList.class_area}">${areaList.class_area}</span>
+								<span class="warea areaspan" data-area="${areaList.class_area}">${areaList.class_area}</span>
 								<span>(${areaList.class_area_count})</span>
 						</span>
 						</label>
@@ -132,6 +139,7 @@ label {
 				<input id="subs" type="submit" value="선택지역 검색">
 			</div>
 		</form>
+		</div>
 	</div>
 	<div class="btnBox">
 		<button class="dropdown">
@@ -189,7 +197,7 @@ label {
 									</c:otherwise>
 								</c:choose>
 								<address>${searchList.class_area}</address>
-							</div>
+						</div>
 						</div>
 					</div>
 				</c:forEach>

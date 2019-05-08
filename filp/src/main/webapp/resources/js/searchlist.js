@@ -94,7 +94,5 @@ $(document).ready(function() {
 						$('ul.tabs li').eq(0).addClass('current');
 						$("#" + tab_id).addClass('current');
 					}
-					
-					$()
 				};
 		});

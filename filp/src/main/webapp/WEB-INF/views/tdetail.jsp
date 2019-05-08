@@ -147,8 +147,8 @@ nav > div a.nav-item.nav-link:focus
 					<!-- 강사 이미지 -->
 					<div class="container">
 						<div class="user-image">
-							<img src="resources/images/강사1.jpg" alt="Image"
-								class="img-fluid mb-3"> ${tDto.member_profile}
+						<img src="resources/img/member/${tDto.member_profile}" alt="Image"
+										class="img-fluid mb-3">
 						</div>
 
 						<!-- 강사 이름 -->
@@ -215,7 +215,7 @@ nav > div a.nav-item.nav-link:focus
 													<tr>
 														<td>
 														<%-- <td>${reviewdto.review_seq}</td> --%>
-														<td>${reviewdto.review_detail}</td>
+														<td>${reviewdto.review_detail}<br><br></td>
 													</tr>
 												</c:forEach>
 											</table>
