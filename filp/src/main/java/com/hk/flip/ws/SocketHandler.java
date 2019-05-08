@@ -33,14 +33,16 @@ public class SocketHandler extends TextWebSocketHandler{
 
 	 @Override
 		protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-
+		 	System.out.println("message:"+message);
 			MsgDao dao = sqlsession.getMapper(MsgDao.class);
 
 			this.logger.info(message.getPayload());
+			
+			System.out.println("message.getPayload():"+message.getPayload());
 
-			/*session.sendMessage(new TextMessage(dao.count_receive_note(message.getPayload()))); */
+			session.sendMessage(new TextMessage(dao.count_receive_note(message.getPayload())));
 
-	//현재 수신자에게 몇개의 메세지가 와있는지 디비에서 검색함.
+	
 
 			
 
