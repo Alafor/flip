@@ -36,42 +36,6 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 <link rel="stylesheet" href="resources/css/listcss.css">
 <link rel="stylesheet" href="resources/css/style.css">
-
-<<<<<<< HEAD
-.classnames {
-	height: 40px;
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
-.classnames a:link {
-	color: #666;
-	font-weight: bold;
-}
-
-.classnames a:hover {
-	color: #30e3ca;
-	font-weight: bold;
-}
-
-.classnames a:visited {
-	color: #666;
-	font-weight: bold;
-}
-
-.hohoho {
-	display: block;
-	width: 45px;
-	height: 45px;
-	border-radius: 50%;
-	background-size: cover;
-}
-</style>
-
-
-
-=======
->>>>>>> branch 'master' of https://github.com/Alafor/FLIP.git
 </head>
 <body>
 
