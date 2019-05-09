@@ -102,7 +102,7 @@
 						<h2 class="font-weight-light text-primary">
 							<b>검색<span class="text-warning">결과</span></b>
 						</h2>
-						<p class="color-black-opacity-5">${pageCount}개수업</p>
+						<p class="color-black-opacity-5">${allPageCount}개수업</p>
 					</div>
 				</div>
 			</div>
@@ -152,6 +152,22 @@
 			</div>
 		</div>
 	</div>
+			<div class="container">
+				<form action="searchlist.do" method="get" id="pages">
+				<input type="hidden" name="search" value="${paramList.search}" />
+				<input type="hidden" name="department" value="${paramList.category}" /> 
+				<input type="hidden" name="classType" value="${paramList.classType}" />
+				<input type="hidden" name="num" />
+				<c:forEach var="areaList" items="${areaList}" varStatus="seq">
+						<input type="checkbox"
+							class="areachk" name="selectedarea" id="carea-${seq.index}"
+							value="${areaList.class_area}" checked="checked" style="display:none;"/>
+				</c:forEach>
+				<c:forEach begin="1" end="${pageCount}" varStatus="seq">
+					<input type="button" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit()"> 
+				</c:forEach>
+				</form>
+			</div>
 	<script defer
 		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
 		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
