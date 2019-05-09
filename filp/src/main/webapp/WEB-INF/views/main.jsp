@@ -32,42 +32,9 @@
 
 <link rel="stylesheet" href="resources/css/aos.css">
 <link rel="stylesheet" href="resources/css/rangeslider.css">
-
+<link rel="stylesheet" href="resources/css/listcss.css">
 <link rel="stylesheet" href="resources/css/style.css">
-<style type="text/css">
-.lh-content {
-	height: 201px;
-}
 
-.classnames {
-	height: 40px;
-	margin-top: auto;
-	margin-bottom: auto;
-}
-
-.classnames a:link {
-	color: #666;
-	font-weight: bold;
-}
-
-.classnames a:hover {
-	color: #30e3ca;
-	font-weight: bold;
-}
-
-.classnames a:visited {
-	color: #666;
-	font-weight: bold;
-}
-
-.hohoho {
-	display: block;
-	width: 45px;
-	height: 45px;
-	border-radius: 50%;
-	background-size: cover;
-}
-</style>
 </head>
 <body>
 	<div class="site-wrap">
@@ -232,10 +199,11 @@
 									<a href="cdetail.do?class_seq=${wantlist.seq}" class="img d-block"
 									style="background-image: url('resources/img/class/${wantlist.class_img}')"
 										data-img="${wantlist.class_img}"></a>
-										
 									<div class="lh-content">
-										<span class="category">${wantlist.class_creator_name}</span> 
-										<span class="instructor_img">${wantlist.class_creator_name}</span>
+										<div class="instructorBox">
+										<span class="instructor_img" style="background-image:url('resources/img/member/${wantlist.profile_img}')"></span> 
+										<span class="instructor_name">${wantlist.class_creator_name}</span>
+										</div>
 										<a href="insertwhishlist.do?class_seq=${wantlist.seq}" class="bookmark" data-classseq="${wantlist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames">
 											<a href="cdetail.do?class_seq=${wantlist.seq}">${wantlist.class_name}</a>
@@ -280,12 +248,12 @@
 										style="background-image: url('resources/img/class/${classlist.class_img}')">
 										</a>
 									<div class="lh-content">
-										<div style="height: 52px; margin-bottom:10px; vertical-align: middle;">
+										<div class="instructorBox">
 										<a href="tdetail.do?member_seq=${classlist.class_member_seq}">
-										<span class="hohoho" style="background-image:url('resources/img/member/${classlist.profile_img}')"></span> 
-										<span class="instructor_img" style="position: relative; top:-35px; left: 60px; color:black; font-weight: bold;">${classlist.class_creator_name}</span></a>
-										<a href="insertwhishlist.do?class_seq=${classlist.seq}" class="bookmark" data-classseq="${classlist.seq}"><span class="icon-heart"></span></a>
+										<span class="instructor_img" style="background-image:url('resources/img/member/${classlist.profile_img}')"></span> 
+										<span class="instructor_name">${classlist.class_creator_name}</span></a>
 										</div>
+										<a href="insertwhishlist.do?class_seq=${classlist.seq}" class="bookmark" data-classseq="${classlist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames" >
 											<a href="cdetail.do?class_seq=${classlist.seq}">${classlist.class_name}</a>
 										</h3>
@@ -338,8 +306,10 @@
 										style="background-image: url('resources/img/class/${studylist.class_img}')">
 									</a>
 									<div class="lh-content">
-										<span class="category">${studylist.class_creator_name}</span> 
-										<span class="instructor_img">강사사진</span>
+										<div class="instructorBox">
+										<span class="instructor_img" style="background-image:url('resources/img/member/${wantlist.profile_img}')"></span> 
+										<span class="instructor_name">${wantlist.class_creator_name}</span>
+										</div>
 										<a href="insertwhishlist.do?class_seq=${studylist.seq}" class="bookmark" data-classseq="${studylist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames">
 											<a href="cdetail.do?class_seq=${studylist.seq}">${studylist.class_name}</a>
