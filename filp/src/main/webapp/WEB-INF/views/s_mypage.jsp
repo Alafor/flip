@@ -216,7 +216,7 @@
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
-														<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+														<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 														<h3>
 															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
@@ -241,7 +241,7 @@
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
-														<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+														<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 														<h3>
 															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
@@ -298,7 +298,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -323,7 +323,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -398,7 +398,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -423,7 +423,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -500,7 +500,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -525,7 +525,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>

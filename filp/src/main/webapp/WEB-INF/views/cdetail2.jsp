@@ -123,6 +123,8 @@ nav > div a.nav-item.nav-link.active:after
     line-height: 25px;
     border: 1px solid #ddd;
     border-top:5px solid #30E3CA;
+    border-top-left-radius:8px;
+    border-top-right-radius:8px;
     border-bottom:5px solid #30E3CA;
     padding:30px 25px;
 }
@@ -144,6 +146,7 @@ nav > div a.nav-item.nav-link:focus
 .tapped{
 		position : sticky;
  	   	top: 0px; 
+ 	   	z-index: 99;
 }
 
 
@@ -180,7 +183,7 @@ margin: 2px;
 }
 /* 강의 제목 */
 .title{ 
-font-size : 25px; font-weight : bold; text-align: center; 
+font-size : 25px; font-weight : bold; margin-bottom: 15px;
 }
 /*수평선*/
 hr{
@@ -196,7 +199,15 @@ color : #30E3CA;
     	text-align: center;
     }
 .detail_head{font-size: 20px;border-bottom: 1px solid #ced4da;margin-bottom: 5px;}
-
+.nav1_icon{display: inline-block;
+	text-align: center;}
+.member_image {
+    width: 150px;
+    height:150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 10px;
+    }
 </style>
 <!-------------------------------------->
 </head>
@@ -266,8 +277,6 @@ String member_type= memberDto.getMember_type(); %>
 						<!-- 강의 이름 -->
 
 						<!-- 강사 별 --->
-						<div class="mb-0 teacherstar" data-minority="${cDto.class_member_rating}"
-							onclick="gogostar(this)"></div>
 
 						<!-- 강사 상세보기와 같은 부트스트랩 적용 -->
 						<!-- 탭 이동 메뉴 -->
@@ -291,31 +300,40 @@ String member_type= memberDto.getMember_type(); %>
 									<!-- top 탭의 내용 -->
 									<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 										<div class="target" id="nav1">
-										<br><span class="title">${cDto.class_name}</span><br></br> 
-											<span>
-												${cDto.class_info} </span><br><br> 
-										<table style="text-align:center;">
-											<tr>
-												<td><img src="resources/images/placeholder.png"><br>${cDto.class_area}</td>
-												<td><img src="resources/images/time.png"><br>${cDto.class_time}분</td>
-												<td><img src="resources/images/won.png"><br>${cDto.class_price}원</td>
-											</tr>
-										</table>
-											
+										<br><div class="title">${cDto.class_name}</div>	 
+											<div class="row">
+												<div class="col-md-8">${cDto.class_info}</div>
+												<div class="col-md-4">
+													<div class="nav1_icon"><img src="resources/images/placeholder.png"><br>${cDto.class_area}</div>
+													<div class="nav1_icon"><img src="resources/images/time.png"><br>${cDto.class_time}분</div>
+													<div class="nav1_icon"><img src="resources/images/won.png"><br>${cDto.class_price}원</div>
+													<div class="nav1_icon" ><img src="resources/images/education.png"><br>${cDto.class_now_participation}/${cDto.class_participation}명</div>
+												</div>
+											</div>
 										</div>
 										
 										
 										<hr>
 										<!-- Teacher 탭의 내용 -->
 										<div class="target" id="nav2">
-											<span>강사님 소개 </br> ${cDto.class_creator_name}
-											</span> <span></span>
-											<!-- <p>보내는 고동을 같은 풀밭에 것이다. 무엇을 가지에 얼마나 인류의 봄바람이다. 맺어, 원질이 구하지 예가 유소년에게서 새가 어디 풍부하게 광야에서 것이다. 소담스러운 인간에 들어 봄바람을 있으며, 유소년에게서 것이다. 얼음 기쁘며, 웅대한 그림자는 아름다우냐? 가슴에 꽃이 이것을 반짝이는 봄바람이다. 얼마나 관현악이며, 열락의 뼈 보이는 옷을 가치를 때문이다. 소담스러운 피고, 끝에 뿐이다. 가는 우리는 위하여서, 가슴이 청춘의 얼음 가진 이것이다. 속잎나고, 따뜻한 남는 때문이다.
-												속잎나고, 우리 봄날의 사막이다. 청춘에서만 청춘의 무엇을 힘있다. 그들에게 든 청춘의 창공에 이성은 없는 우리 우는 소리다.이것은 황금시대다. 하는 용감하고 우리의 쓸쓸하랴? 소담스러운 그들의 우리 반짝이는 못하다 현저하게 바로 것이다. 광야에서 낙원을 곳이 열매를 시들어 이상 청춘의 청춘이 이것이다. 동산에는 눈이 넣는 교향악이다. 무한한 우리는 커다란 싸인 운다. 이 꾸며 뜨고, 사랑의 오직 끓는다.
-												
-												가는 있는 대고, 우는 인생에 오직 밥을 몸이 이것이다. 인간은 사람은 그들에게 힘차게 대한 인생에 수 갑 우리의 것이다. 지혜는 소리다.이것은 뛰노는 같으며, 이것을 모래뿐일 것이다. 대고, 불어 생명을 끝까지 황금시대를 굳세게 하는 있는가? 넣는 타오르고 구하지 우리는 있으랴? 긴지라 풍부하게 무엇을 인생의 구할 청춘이 튼튼하며, 피고, 운다. 그들은 불러 찾아 있는 그들을 날카로우나 가슴이 것이다. 우리 같은 날카로우나 무엇을 설레는 피고 소리다.이것은 아름다우냐? 없는 석가는 위하여 같으며, 운다.</p>
-
-	 -->									</div>
+											<span><b>강사님 소개 </b></br></br>
+											</span> 
+											<div class="row">
+												<div class="col-md-3 center-block">
+													<div style="height: 160px;text-align:center;">
+														<img style="margin-left: auto;margin-right:auto;display: inline-block;" class="member_image" alt="강사이미지" src="resources/img/member/${cDto.profile_img}">
+													</div>
+													<div class="" style="padding-top: 10px; text-align: center;margin-top: 10px;">${cDto.class_creator_name}</div>
+													<div style="text-align: center;">
+														<div class="mb-0 teacherstar" data-minority="${cDto.class_member_rating}"
+															onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;"></div>(${cDto.class_member_rating})
+													</div>
+												</div>
+												<div class="col-md-8">
+													<div><textarea style="width: 100%; height: 50px;overflow-y:hidden; border: 0px solid black; resize:none;" readonly="readonly" id="member_info" >${cDto.member_info}</textarea> </div>
+												</div>
+											</div>
+										</div>
 										<hr>
 
 
@@ -385,9 +403,25 @@ String member_type= memberDto.getMember_type(); %>
 					</c:forEach></div></div>
 					<c:set value="${cDto.class_sd}" var="class_sd"/> 
 					<c:set value="${cDto.class_cd}" var="class_cd"/>
-					<div class="detail_head">일자 : <div class="detail_content">${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"> ~ ${fn:substring(class_cd,0,10)}</c:if></div></div>
+					<c:if test="${cDto.class_cd ne null}">
+						<c:set value="${fn:substring(cDto.class_starttime,0,2)}" var="class_time_H"/>
+						<c:set value="${fn:substring(cDto.class_starttime,2,5)}" var="class_time_M"/>
+						<c:set value="${cDto.class_time mod 60}" var="class_time_m"/>
+						<fmt:parseNumber var="class_time_h" value="${(cDto.class_time-class_time_m)/60}" integerOnly="true" />
+						
+						<c:set value="${class_time_M+ class_time_m}" var="class_time_mm"/>
+						<c:set value="${class_time_mm mod 60}" var="class_time_MM"/>
+						<fmt:parseNumber var="class_time_hh" value="${(class_time_mm-class_time_MM)/60}" integerOnly="true" />
+						
+						<c:set value="${class_time_h+class_time_hh+class_time_H}" var="class_time_HH"/>
+						
+						
+						
+					</c:if>
+					<div class="detail_head">일자 : <div class="detail_content">${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"><div class="detail_content"> ~ ${fn:substring(class_cd,0,10)}</div></c:if></div></div>
+					<div class="detail_head">시작시간 : <div class="detail_content">${class_time_H}시 ${class_time_M}분
+						<c:if test="${cDto.class_cd ne null}"><div class="detail_content"> ~ ${class_time_HH}시 <c:if test="${class_time_MM<10}">0</c:if>${class_time_MM}분</div></c:if></div></div>
 					<div class="detail_head">강의시간 : <div class="detail_content">${cDto.class_time}분</div></div>
-					<div class="detail_head">시작일 : <div class="detail_content">${cDto.class_starttime}</div></div>
 					<div class="detail_head">참가 인원 : <div class="detail_content">${cDto.class_participation}명</div></div>
 					<div class="detail_head">금액 : <div class="detail_content">${cDto.class_price}원</div></div>
 					<div class="col-md-12">
@@ -424,11 +458,26 @@ String member_type= memberDto.getMember_type(); %>
 	<script src="resources/js/rangeslider.min.js"></script>
 	<script src="resources/js/main.js"></script>
 	<script src="resources/js/signup.js"></script>
+	<script defer
+	src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+	integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	crossorigin="anonymous"></script>
+	<script defer
+	src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	crossorigin="anonymous"></script>
+	<script src="resources/js/star.js" defer="defer"></script>
 <script type="text/javascript">
 $('#nav > ul > li > a').on('click', function(event) {
     $(this).parent().parent().find('li').removeClass('actived');
     $(this).parent().addClass('actived');
 });
+$(document).ready(function() { // 객체명, 기본사이즈
+	    var sTextarea = document.getElementById('member_info');
+	    var csize = (sTextarea.scrollHeight >= 50) ? sTextarea.scrollHeight+"px" : 50+"px";
+	    sTextarea.style.height = 50+"px"; 
+	    sTextarea.style.height = csize;
+	});
 
 $(window).on('scroll',function() {
        if($(window).scrollTop() >= $('#nav').offset().top) {

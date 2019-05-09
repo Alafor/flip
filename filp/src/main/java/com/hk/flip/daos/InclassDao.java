@@ -80,6 +80,7 @@ public class InclassDao implements IInclassDao {
 		//내수강 보기
 		@Override
 		public List<ClassDto> getAllMyInclass(int member_seq){
+			System.out.println("getAllMyInclass 맵퍼 값=="+member_seq);
 			List<ClassDto> list = sqlSession.selectList(nameSpace+"getinclasslist", member_seq);
 			return list;
 		}

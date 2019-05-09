@@ -77,9 +77,9 @@ public class MooooonController {
 		String type = memberDto.getMember_type();
 		int member_seq = memberDto.getMember_seq();
 		String member_name = memberDto.getMember_name();
-		
 		System.out.println("로그인 타입:"+type);
-		model.addAttribute("inclassList", myPageService.getAllInclassList(member_seq));
+		System.out.println("member_seq:"+member_seq);
+		model.addAttribute("inclassList",myPageService.getAllInclassList(member_seq) );		
 		model.addAttribute("member", myPageService.viewMyMember(member_seq));
 		if(type.equals("S")) {
 			return "s_mypage";
@@ -88,8 +88,6 @@ public class MooooonController {
 		}else {
 			AdminDto adminDto = adminService.getFlipStatus();
 			model.addAttribute("admindata",adminDto);			
-			
-			
 			return "admin/A_mypage";
 		}
 	}
@@ -622,7 +620,8 @@ public class MooooonController {
 			,int seq,String email) {
 		logger.info("회원 정보 수정폼.", locale);
 		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
-		if(memberDto.getMember_type()==null|!(memberDto.getMember_email().equals(email))) {
+		System.out.println("cancelClass.do"+memberDto+" seq ++ email  "+seq+"++"+email);
+		if(memberDto.getMember_type()==null||!(memberDto.getMember_email().equals(email))) {
 			model.addAttribute("msg","권한이 없습니다.");
 			model.addAttribute("url","main.do");
 			return "Redirect";
@@ -646,12 +645,12 @@ public class MooooonController {
 	public String cancelWishlist(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession
 			,int seq,String email) {
 		logger.info("회원 정보 수정폼.", locale);
-//		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
-//		if(memberDto.getMember_type()==null|(!memberDto.getMember_type().equals("A"))) {
-//			model.addAttribute("msg","권한이 없습니다.");
-//			model.addAttribute("url","main.do");
-//			return "Redirect";
-//		}
+		MemberDto memberDto = (MemberDto) httpSession.getAttribute("logInMember");
+		if(memberDto.getMember_type()==null|!(memberDto.getMember_email().equals(email))) {
+			model.addAttribute("msg","권한이 없습니다.");
+			model.addAttribute("url","main.do");
+			return "Redirect";
+		}
 		if(!(myPageService.deleteWishlist(seq,email))) {
 			model.addAttribute("msg","강의 삭제에 실패했습니다.");		
 			model.addAttribute("url","mypage.do");
