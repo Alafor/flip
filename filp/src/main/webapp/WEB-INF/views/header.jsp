@@ -73,30 +73,3 @@
 	</div>
 </header>
 
-<script type="text/javascript">
-    var wsUri = "ws://localhost:8888/flip/count";
-    function send_message() {
-        websocket = new WebSocket(wsUri);
-        websocket.onopen = function(evt) {
-            onOpen(evt);
-        };
-        websocket.onmessage = function(evt) {
-            onMessage(evt);
-        };
-        websocket.onerror = function(evt) {
-            onError(evt);
-        };
-    }
-    function onOpen(evt) 
-    {
-       websocket.send("${logInMember.member_email}");
-    }
-    function onMessage(event) {
-    		$('#count').append(evt.data);
-    }
-    function onError(evt) {
-    }
-    $(document).ready(function(){
-    		send_message();
-    });
- </script>

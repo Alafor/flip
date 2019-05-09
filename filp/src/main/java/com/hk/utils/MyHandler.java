@@ -1,4 +1,4 @@
-package com.hk.utils;
+/*package com.hk.utils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,4 +36,4 @@ public class MyHandler extends TextWebSocketHandler{
 		sessionList.remove(session);
 		logger.info("{} 연결 끊김",session.getId());
 	}
-}
+}*/

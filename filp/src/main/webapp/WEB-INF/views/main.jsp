@@ -1,3 +1,4 @@
+<%@page import="com.hk.flip.dtos.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -8,6 +9,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%MemberDto memberDto = (MemberDto)request.getSession().getAttribute("logInMember"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -68,8 +70,13 @@
 	background-size: cover;
 }
 </style>
+
+
+
 </head>
 <body>
+
+
 	<div class="site-wrap">
 		<div class="site-mobile-menu">
 			<div class="site-mobile-menu-header">
@@ -79,7 +86,7 @@
 			</div>
 			<div class="site-mobile-menu-body"></div>
 		</div>
-
+		
 		<!-- header -->
 		<jsp:include page="header.jsp" />
 		<!-- header 종료 -->
@@ -529,6 +536,9 @@
 			</div>
 		</div>
 	</div>
+	<%if(memberDto !=null){ %>
+	<input type="hidden" value='<%=memberDto.getMember_email()%>' id="ws_email">
+	<%} %>
 	<!-- 광고 이미지 세션 -->
 	<jsp:include page="advertisor.jsp" />
 	<!-- 광고 이미지 세션 종료 -->
@@ -564,5 +574,40 @@
 	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
 	
+<script type="text/javascript">
+    var wsUri = "ws://localhost:8888/flip/count.do";
+    function send_message() {
+        websocket = new WebSocket(wsUri);
+        websocket.onopen = function(evt) {
+            onOpen(evt);
+        };
+        websocket.onmessage = function(evt) {
+            onMessage(evt);
+        };
+        websocket.onerror = function(evt) {
+            onError(evt);
+        };
+    }
+    function onOpen(evt) 
+    {
+    	var email = $('#ws_email').val();
+    	alert(email);
+       websocket.send(email);
+    }
+    function onMessage(event) {
+    		$('#count').append(evt.data);
+    }
+    function onError(evt) {
+    }
+    $(document).ready(function(){
+    	var email = $('#ws_email').val();
+    	if(email ==null||email==""){
+    		
+    	}else{
+    		send_message();
+    	}
+    });
+    
+ </script>
 </body>
 </html>

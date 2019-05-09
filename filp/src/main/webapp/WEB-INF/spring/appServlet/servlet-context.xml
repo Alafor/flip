@@ -46,11 +46,21 @@
 		</beans:property>
 	</beans:bean>
 	<!-- 웹소켓 핸들러 설정 -->
-	<websocket:handlers>
+	<!-- <websocket:handlers>
 		<websocket:mapping handler="myHandler" path="/count"/>
-	</websocket:handlers>
+	</websocket:handlers> -->
 	
 	<beans:bean id="myHandler" class="com.hk.flip.ws.SocketHandler"/>
+	
+	
+	<!--    요청에 대한 웹소켓 연결을 위해 핸들러(EchoHandler.class)를 등록한다 -->
+   <websocket:handlers>
+      <websocket:mapping handler="myHandler" path="/count.do"/>
+      <websocket:handshake-interceptors>
+         <beans:bean  class="org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor"></beans:bean>
+      </websocket:handshake-interceptors>
+<!--       <websocket:sockjs /> -->
+   </websocket:handlers> 
 	
 	
 </beans:beans>

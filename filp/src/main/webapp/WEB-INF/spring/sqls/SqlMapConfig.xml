@@ -13,7 +13,7 @@
 		<typeAlias type="com.hk.flip.dtos.PagingDto" alias="PagingDto"/>
 		<typeAlias type="com.hk.flip.dtos.AdminDto" alias="AdminDto"/>
 		<typeAlias type="com.hk.flip.dtos.CalendarDto" alias="CalendarDto"/>
-	<!-- 	<typeAlias type="com.hk.flip.dtos.MsgDto" alias="MsgDto"/> -->
+		<typeAlias type="com.hk.flip.dtos.MsgDto" alias="MsgDto"/>
 	</typeAliases>
 	
 	<mappers>
@@ -25,6 +25,6 @@
 		<mapper resource="/sqls/flip_Member_mapper.xml"/>
 		<mapper resource="/sqls/flip_Review_mapper.xml"/>
 		<mapper resource="/sqls/flip_Admin_mapper.xml"/>
-	<!-- 	<mapper resource="/sqls/flip_Msg_mapper.xml"/> -->
+	 	<mapper resource="/sqls/flip_Msg_mapper.xml"/>
 	</mappers>
 </configuration>

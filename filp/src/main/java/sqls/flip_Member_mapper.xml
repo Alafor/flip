@@ -4,7 +4,7 @@
 <mapper namespace="com.hk.flip.Member">
 	
    <select id="login" resultType="MemberDto" parameterType="Map">
-   		SELECT MEMBER_SEQ ,MEMBER_NAME ,MEMBER_TYPE ,MEMBER_KEY FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password}
+   		SELECT MEMBER_SEQ ,MEMBER_NAME ,MEMBER_TYPE ,MEMBER_KEY,MEMBER_EMAIL FROM MEMBER WHERE MEMBER_ID=#{id} AND MEMBER_PASSWORD=#{password}
    </select>
 
 	<insert id="signupmember" parameterType="MemberDto">
