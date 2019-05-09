@@ -27,85 +27,8 @@
 <link rel="stylesheet" href="resources/css/aos.css">
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 <link rel="stylesheet" href="resources/css/style.css">
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<style type="text/css">
-.areachk {
-	display: none;
-}
-
-label {
-	width: 100px;
-	height: 40px;
-	background-color: #FFFAFA;
-	text-align: center;
-	font-weight: bold;
-	margin-top:5px;
-	margin-right:1px;
-	margin-bottom: 0px;
-	line-height: 40px;
-	border-radius: 3px;
-}
-
-.dropdown {
-	font-size: 10px;
-	color: white;
-	border: none;
-	background-color: #e9ecef;
-	padding: 5px;
-	width:50px;
-	height: 30px;
-}
-
-.search-area {
-	background-color: white;
-	position:relative;
-	border:1px;
-	border-style:double;
-	border-color: #30E3CA;
-	border-radius: 10px;
-}
-
-.btnBox {
-	margin: auto;
-	width: 50%;
-	text-align: center;
-}
-.subdiv{
-	margin-top: 25px;
-	margin-bottom:10px;	
-	text-align: center;
-}
-#subs{
-	font-size: 15px;
-	background-color: #30E3CA;
-	border:none;
-	width:170px;
-	height:35px;
-	font-weight:bold;
-	color:white;
-	border-radius: 5px;
-}
-.areaArea{
-	width:850px;
-	margin-left: auto;
-	margin-right:auto;
-}
-.labelBox{
-	margin-bottom: 5px;
-}
-.areaSelText{
-	margin-top: 20px;
-	margin-bottom:18px;
-}
-.selText{
-	font-size: 20px;
-	color:#666666;
-	font-weight: bold;
-	border-bottom: solid #30E3CA 2px;
-	padding-bottom: 3px;
-}
-</style>
+<link rel="stylesheet" href="resources/css/listcss.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 <body>
 	<div class="container search-area" data-search>
@@ -136,7 +59,7 @@ label {
 					<div id="areasize-s" class="labelBox" data-areasize="${fn:length(areaList)}">
 					<c:forEach var="areaList" items="${areaList}" varStatus="seq">
 						<label for="sarea-${seq.index}"> 
-						<input type="checkbox" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
+						<input type="checkbox" checked="checked" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
 								<span class="sarea areaspan" data-area="${areaList.class_area}">${areaList.class_area}</span>
 								<span  class="areaspan">(${areaList.class_area_count})</span>
@@ -179,7 +102,7 @@ label {
 						<h2 class="font-weight-light text-primary">
 							<b>검색<span class="text-warning">결과</span></b>
 						</h2>
-						<p class="color-black-opacity-5">${pageCount}개수업</p>
+						<p class="color-black-opacity-5">${allPageCount}개수업</p>
 					</div>
 				</div>
 			</div>
@@ -194,13 +117,13 @@ label {
 							<div class="lh-content">
 								<c:choose>
 									<c:when test="${searchList.class_type eq 'C'}">
+										<div class="instructorBox">
 										<a href="tdetail.do?member_seq=${searchList.class_member_seq}">
-											<span class="category">${searchList.class_creator_name}</span>
-											<span class="instructor_img">등록자 사진</span>
-										</a>
-										<a href="insertwhishlist.do" class="bookmark"><span
-											class="icon-heart"></span></a>
-										<h3>
+										<span class="instructor_img" style="background-image:url('resources/img/member/${searchList.profile_img}')"></span> 
+										<span class="instructor_name">${searchList.class_creator_name}</span></a>
+										</div>
+										<a href="insertwhishlist.do?class_seq=${searchList.seq}" class="bookmark" data-classseq="${searchList.seq}"><span class="icon-heart"></span></a>
+										<h3 class="classnames" >
 											<a href="cdetail.do?class_seq=${searchList.seq}">${searchList.class_name}</a>
 										</h3>
 										<div class="mb-0 teacherstar"
@@ -211,23 +134,39 @@ label {
 											Reviews)</span>
 									</c:when>
 									<c:otherwise>
-										<span class="category">${searchList.class_creator_name}</span>
-										<span class="instructor_img">강사사진</span>
-										<a href="insertwhishlist.do" class="bookmark"><span
-											class="icon-heart"></span></a>
+										<div class="instructorBox">
+										<span class="instructor_img" style="background-image:url('resources/img/member/${searchList.profile_img}')"></span> 
+										<span class="instructor_name">${searchList.class_creator_name}</span>
+										</div>
+										<a href="insertwhishlist.do?class_seq=${searchList.seq}" class="bookmark" data-classseq="${searchList.seq}"><span class="icon-heart"></span></a>
 										<h3>
 											<a href="cdetail.do?class_seq=${searchList.seq}">${searchList.class_name}</a>
 										</h3>
 									</c:otherwise>
 								</c:choose>
 								<address>${searchList.class_area}</address>
-						</div>
+							</div>
 						</div>
 					</div>
 				</c:forEach>
 			</div>
 		</div>
 	</div>
+			<div class="container">
+				<form action="searchlist.do" method="post" id="pages">
+				<input type="hidden" name="search" value="${paramList.search}" />
+				<input type="hidden" name="department" value="${paramList.category}" /> 
+				<input type="hidden" name="classType" value="${paramList.classType}" />
+				<input type="hidden" id="numId" name="num" />
+				<c:forEach var="areaList" items="${areaList}" varStatus="seq">
+						<input type="checkbox"
+							class="areachk" name="selectedarea"	value="${areaList.class_area}" checked="checked">${areaList.class_area}
+				</c:forEach>
+				<c:forEach begin="1" end="${pageCount}" varStatus="seq">
+					<input type="button" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+				</c:forEach>
+				</form>
+			</div>
 	<script defer
 		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
 		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"

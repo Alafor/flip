@@ -57,13 +57,15 @@ public class SeoController {
 	
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request, String num, String selArea) {
+	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request,String num, String selArea) {
 		logger.info("search list 시작{}.", locale);
 		String addArea = "";
 		Map<String, String> paramList = new HashMap<String, String>();
 		paramList.put("search", search);
 		paramList.put("category", department);
 		paramList.put("classType", classType);
+		paramList.put("pagenum", num);
+		System.out.println("****num출력: "+num);
 		model.addAttribute("paramList",paramList);
 		String[] areas = request.getParameterValues("selectedarea");
 		if(areas!=null) {
@@ -84,16 +86,23 @@ public class SeoController {
 	@RequestMapping(value = "/listload.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String listload(Locale locale, Model model,String search, String department, String classType, String num, String selArea) {
 		logger.info("Started main{}.", locale);
-		int pageCount = classService.pageCount(search, department, classType,selArea);
+		int allPageCount = classService.pageCount(search, department, classType,selArea);
+		int pageCount = allPageCount/16;
+		int checkFloat = allPageCount%16;
+		System.out.println("checkFloat: "+checkFloat);
 		List<ClassDto> areaList = classService.areaCount(search, department, classType,selArea);
-		if(num==null || Integer.parseInt(num)<=0) {
-			num="1";
-		}else if(Integer.parseInt(num)>pageCount) {
-			num=String.valueOf(pageCount);
+		int thisPage=Integer.parseInt(num);
+		if(thisPage==0||thisPage<=0) {
+			thisPage=1;
 		}
+		if(checkFloat>0) {
+			pageCount+=1;
+		}
+		
 		System.out.println("sel*********:"+selArea);
-		List<ClassDto> searchList = classService.searchList(search, department, classType, Integer.parseInt(num),selArea);
-		System.out.println("**검색 조건 파라미터 - searchlist:"+search+", category:"+department+", classType:"+classType+", selArea: "+selArea);
+		System.out.println("checkechek thisPage: "+thisPage);
+		List<ClassDto> searchList = classService.searchList(search, department, classType, thisPage, selArea);
+		System.out.println("SeoController 검색 조건 파라미터 - searchlist:"+search+", category:"+department+", classType:"+classType+", selArea: "+selArea+",thisPage: "+thisPage);
 		System.out.println("출력출력:"+searchList);
 		Map<String, String> paramList = new HashMap<String, String>();
 		paramList.put("search", search);
@@ -101,7 +110,8 @@ public class SeoController {
 		paramList.put("classType", classType);
 		model.addAttribute("paramList",paramList);
 		model.addAttribute("searchList",searchList);
-		model.addAttribute("thisPage",num);
+		model.addAttribute("thisPage",thisPage);
+		model.addAttribute("allPageCount",allPageCount);
 		model.addAttribute("pageCount",pageCount);
 		model.addAttribute("areaList",areaList);
 		return "listload";
@@ -153,15 +163,6 @@ public class SeoController {
 					return "Redirect";
 				}
 			}
-			
-	}
-	
-	@RequestMapping(value = "/websocket.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String websocket(Locale locale, Model model,HttpServletRequest request) {
-		HttpSession session = request.getSession();
-		String id = "seo";
-		session.setAttribute("userId",id);
-		return "websocket-echo";
 			
 	}
 }
