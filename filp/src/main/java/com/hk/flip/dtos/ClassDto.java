@@ -29,6 +29,8 @@ public class ClassDto {
 	private float class_member_rating;
 	//강사, 수강생 프로필 이미지
 	private String profile_img;
+	//강사, 자기 소개
+	private String member_info;
 	//강사, 수강생 이름
 	private String class_creator_name;
 	// 강의 리뷰 개수
@@ -195,26 +197,18 @@ public class ClassDto {
 	public void setClass_area_count(int class_area_count) {
 		this.class_area_count = class_area_count;
 	}
-	@Override
-	public String toString() {
-		return "ClassDto [class_type=" + class_type + ", seq=" + seq + ", class_name=" + class_name + ", regdate="
-				+ regdate + ", class_info=" + class_info + ", class_area=" + class_area + ", class_depa=" + class_depa
-				+ ", class_sd=" + class_sd + ", class_cd=" + class_cd + ", class_week=" + class_week
-				+ ", class_starttime=" + class_starttime + ", class_time=" + class_time + ", class_price=" + class_price
-				+ ", class_detail=" + class_detail + ", class_img=" + class_img + ", class_hashtag=" + class_hashtag
-				+ ", class_termin=" + class_termin + ", class_member_seq=" + class_member_seq + ", class_participation="
-				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
-				+ class_d_day + ", class_member_rating=" + class_member_rating + ", profile_img=" + profile_img
-				+ ", class_creator_name=" + class_creator_name + ", class_review_count=" + class_review_count
-				+ ", class_area_count=" + class_area_count + "]";
+	public String getMember_info() {
+		return member_info;
+	}
+	public void setMember_info(String member_info) {
+		this.member_info = member_info;
 	}
 	public ClassDto(String class_type, int seq, String class_name, Date regdate, String class_info, String class_area,
 			String class_depa, String class_sd, String class_cd, String class_week, String class_starttime,
 			int class_time, int class_price, String class_detail, String class_img, String class_hashtag,
 			String class_termin, int class_member_seq, int class_participation, int class_now_participation,
-			int class_d_day, float class_member_rating, String profile_img, String class_creator_name,
-			int class_review_count, int class_area_count) {
-		super();
+			int class_d_day, float class_member_rating, String profile_img, String member_info,
+			String class_creator_name, int class_review_count, int class_area_count) {
 		this.class_type = class_type;
 		this.seq = seq;
 		this.class_name = class_name;
@@ -238,10 +232,26 @@ public class ClassDto {
 		this.class_d_day = class_d_day;
 		this.class_member_rating = class_member_rating;
 		this.profile_img = profile_img;
+		this.member_info = member_info;
 		this.class_creator_name = class_creator_name;
 		this.class_review_count = class_review_count;
 		this.class_area_count = class_area_count;
 	}
+	@Override
+	public String toString() {
+		return "ClassDto [class_type=" + class_type + ", seq=" + seq + ", class_name=" + class_name + ", regdate="
+				+ regdate + ", class_info=" + class_info + ", class_area=" + class_area + ", class_depa=" + class_depa
+				+ ", class_sd=" + class_sd + ", class_cd=" + class_cd + ", class_week=" + class_week
+				+ ", class_starttime=" + class_starttime + ", class_time=" + class_time + ", class_price=" + class_price
+				+ ", class_detail=" + class_detail + ", class_img=" + class_img + ", class_hashtag=" + class_hashtag
+				+ ", class_termin=" + class_termin + ", class_member_seq=" + class_member_seq + ", class_participation="
+				+ class_participation + ", class_now_participation=" + class_now_participation + ", class_d_day="
+				+ class_d_day + ", class_member_rating=" + class_member_rating + ", profile_img=" + profile_img
+				+ ", member_info=" + member_info + ", class_creator_name=" + class_creator_name
+				+ ", class_review_count=" + class_review_count + ", class_area_count=" + class_area_count + "]";
+	}
+	
+	
 	
 
 

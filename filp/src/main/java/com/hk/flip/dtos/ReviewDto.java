@@ -12,6 +12,10 @@ public class ReviewDto {
 	private String review_delflag;
 	private Date review_regdate;
 	private int review_instructor_seq;
+	
+	//member
+	private String member_name;
+	private String profile_img;
 	public int getClass_seq() {
 		return review_class_seq;
 	}
@@ -32,15 +36,7 @@ public class ReviewDto {
 	
 	public ReviewDto() {
 		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	public String toString() {
-		return "ReviewDto [review_seq=" + review_seq + ", review_member_seq=" + review_member_seq + ", class_seq="
-				+ review_class_seq + ", review_rating=" + review_rating + ", review_detail=" + review_detail
-				+ ", review_delflag=" + review_delflag + ", review_regdate=" + review_regdate
-				+ ", review_instructor_seq=" + review_instructor_seq + "]";
-	}
+	}	
 
 	public int getReview_seq() {
 		return review_seq;
@@ -108,21 +104,49 @@ public class ReviewDto {
 		this.review_instructor_seq = review_instructor_seq;
 	}
 
-	public ReviewDto(int review_seq, int review_member_seq, int seq, float review_rating, String review_detail,
-			String review_delflag, Date review_regdate, int review_instructor_seq) {
-		super();
+	public String getMember_name() {
+		return member_name;
+	}
+
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
+	}
+
+	public String getProfile_img() {
+		return profile_img;
+	}
+
+	public void setProfile_img(String profile_img) {
+		this.profile_img = profile_img;
+	}
+
+	public static ReviewDto cReview(int seq) {
+		return null;
+	}
+
+	public ReviewDto(int review_seq, int review_member_seq, int review_class_seq, float review_rating,
+			String review_detail, String review_delflag, Date review_regdate, int review_instructor_seq,
+			String member_name, String profile_img, String comment) {
 		this.review_seq = review_seq;
 		this.review_member_seq = review_member_seq;
-		this.review_class_seq = seq;
+		this.review_class_seq = review_class_seq;
 		this.review_rating = review_rating;
 		this.review_detail = review_detail;
 		this.review_delflag = review_delflag;
 		this.review_regdate = review_regdate;
 		this.review_instructor_seq = review_instructor_seq;
+		this.member_name = member_name;
+		this.profile_img = profile_img;
+		this.comment = comment;
 	}
 
-	public static ReviewDto cReview(int seq) {
-		return null;
+	@Override
+	public String toString() {
+		return "ReviewDto [review_seq=" + review_seq + ", review_member_seq=" + review_member_seq
+				+ ", review_class_seq=" + review_class_seq + ", review_rating=" + review_rating + ", review_detail="
+				+ review_detail + ", review_delflag=" + review_delflag + ", review_regdate=" + review_regdate
+				+ ", review_instructor_seq=" + review_instructor_seq + ", member_name=" + member_name + ", profile_img="
+				+ profile_img + ", comment=" + comment + "]";
 	}
 
 

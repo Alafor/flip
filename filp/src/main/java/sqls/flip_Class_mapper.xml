@@ -2,9 +2,7 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Class">
-	<!-- <resultMap type="" id="">
-		<collection property=""></collection>
-	</resultMap> -->
+	
 	
 	<!-- 강의 추가 하기 -->
 	<insert id="c_classinsert" parameterType="ClassDto">
@@ -103,7 +101,7 @@
 		</if>
 		AND C.CLASS_TYPE = 'C'
 	<![CDATA[
-	AND ROWNUM <= 20
+	AND ROWNUM <= 10
 	]]>
 		ORDER BY DBMS_RANDOM.RANDOM
 	</select>
@@ -147,7 +145,7 @@
 		</if>
 		AND C.CLASS_TYPE = 'W'
 	<![CDATA[
-	AND ROWNUM <= 20
+	AND ROWNUM <= 10
 	]]>
 		ORDER BY DBMS_RANDOM.RANDOM
 	</select>
@@ -190,7 +188,7 @@
 		</if>
 		AND C.CLASS_TYPE = 'S'
 	<![CDATA[
-	AND ROWNUM <= 20
+	AND ROWNUM <= 10
 	]]>
 		ORDER BY DBMS_RANDOM.RANDOM
 	</select>
@@ -199,7 +197,8 @@
 	<select id="getCdetail" parameterType="int"
 		resultType="ClassDto">
 		   SELECT
-		d.member_name as class_creator_name,
+		d.member_name as class_creator_name,D.member_profile as profile_img
+		,d.member_info,
 		A.CLASS_TYPE, A.SEQ, A.CLASS_NAME, A.REGDATE, A.CLASS_INFO,
 		A.CLASS_AREA,
 		A.CLASS_DEPA , TO_CHAR(A.CLASS_SD,'YYYY-MM-DD') as CLASS_SD,
@@ -227,7 +226,7 @@
 		WHERE INCLASS.INCLASS_CLASS_SEQ =#{class_seq}) AS CLASS_NOW_PARTICIPATION,
 		(TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS
 		CLASS_D_DAY FROM CLASS) C,
-		(select a.member_name from member a,class b
+		(select a.member_name, a.MEMBER_PROFILE, a.member_info from member a,class b
 		 where b.SEQ = #{class_seq} and a.member_seq = b.class_member_seq) d
 		WHERE
         B.CLASS_MEMBER_SEQ = A.CLASS_MEMBER_SEQ
@@ -237,7 +236,14 @@
 	
 	<!-- 강의 상세보기 페이지-강사가 진행했던 강의의 후기 리스트 -->
 	<select id="getCreview" parameterType="int" resultType="ReviewDto">
-		SELECT CLASS.SEQ, REVIEW.REVIEW_SEQ, REVIEW.REVIEW_MEMBER_SEQ, REVIEW.REVIEW_RATING, REVIEW.REVIEW_DETAIL, REVIEW.REVIEW_DELFLAG, REVIEW.REVIEW_REGDATE FROM REVIEW, CLASS WHERE REVIEW.REVIEW_Class_SEQ = CLASS.SEQ AND CLASS.SEQ = #{class_seq}
+		select * from(
+		SELECT review.review_class_seq, REVIEW.REVIEW_SEQ, REVIEW.REVIEW_MEMBER_SEQ,
+		 REVIEW.REVIEW_RATING, REVIEW.REVIEW_DETAIL, REVIEW.REVIEW_DELFLAG,
+		  REVIEW.REVIEW_REGDATE,
+          member.member_name,member.member_profile as profile_img
+		  FROM REVIEW, MEMBER 
+		  WHERE REVIEW.REVIEW_CLASS_SEQ = #{class_seq} and          
+          member.member_seq = review.review_member_seq order by REVIEW_REGDATE) where rownum<![CDATA[<=]]>5
 	</select>
 	
 	<!-- 검색리스트 -->
@@ -332,9 +338,9 @@
 			</if>
 		</where>
 		)ROWNUMS
-		<where>
+		<!-- <where>
 			CEIL(ROWNUMS.RN/16)=#{count}
-		</where>
+		</where> -->
 	</select>
 	<!-- PAGEING COUNT -->
 	<select id="pageCount" parameterType="Map" resultType="int">
