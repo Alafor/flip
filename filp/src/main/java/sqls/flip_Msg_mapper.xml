@@ -2,6 +2,10 @@
 <!DOCTYPE mapper PUBLIC "//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.hk.flip.Msg">
+
+	<select id="count_receive" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM MSG WHERE MSG_TO=#{msg_email} AND MSG_READ='N'
+	</select>
 	<!--
    <insert id="insertfile" parameterType="FileDto"> 
        insert into FILEINFO values (fileinfo_seq.nextval,#{origin_fname},#{stored_fname},

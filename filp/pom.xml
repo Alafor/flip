@@ -54,7 +54,8 @@
 			<artifactId>spring-orm</artifactId>
 			<version>4.3.4.RELEASE</version>
 		</dependency>
-
+		
+		
 		<!-- IO관련 라이브러리 -->
 		<!-- 자바의 IO기능을 개발하는데 도움을 주는 유틸리티 라이브러리 commons-fileupload에서 내부적으로 사용 -->
 		<dependency>
@@ -193,10 +194,12 @@
 		<!-- Servlet -->
 		<!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>3.0-alpha-1</version>
-		</dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
+
 
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>

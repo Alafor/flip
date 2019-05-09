@@ -561,6 +561,7 @@
        websocket.send(email);
     }
     function onMessage(event) {
+    	alert("성공?");
     		$('#count').append(evt.data);
     }
     function onError(evt) {

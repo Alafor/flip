@@ -1,11 +1,27 @@
 package com.hk.flip.daos;
 
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+
 public class MsgDao implements IMsgDao{
 
+	
+	@Autowired
+	private SqlSessionTemplate sqlsession;
+	private String namespace = "com.hk.flip.Msg.";
+	
 	public CharSequence count_receive_note(String payload) {
-		
-		return null;
+		System.out.println("payload:"+payload);
+		String msg_email = payload;
+	 return sqlsession.selectOne(namespace+"count_receive"+msg_email);
 	}
+	/*@Override
+	public CharSequence count_receive(String msg_email) {
+		System.out.println("다오인데여기는 오냐?");
+		return sqlsession.selectOne(namespace+"count_receive"+msg_email);
+	}*/
+
+
 
 	/*@Override
 	public void aaaa() {
