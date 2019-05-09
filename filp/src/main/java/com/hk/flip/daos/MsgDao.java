@@ -7,10 +7,10 @@ public class MsgDao implements IMsgDao{
 		return null;
 	}
 
-	@Override
+	/*@Override
 	public void aaaa() {
 		// TODO Auto-generated method stub
 		
-	}
+	}*/
 
 }

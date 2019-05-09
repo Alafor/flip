@@ -22,9 +22,9 @@ public class SocketHandler extends TextWebSocketHandler{
 	
 	 @Autowired
 		SqlSession sqlsession;
-	 @Autowired
+	/* @Autowired
 	 	private IMsgDao msgDao;
-	 
+	 */
 		private final Logger logger = LogManager.getLogger(getClass());
 	  @Override
 
