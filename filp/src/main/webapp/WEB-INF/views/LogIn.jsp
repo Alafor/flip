@@ -113,7 +113,7 @@
               <div class="row">
                 <div class="col-md-6 col-sm-6 col-xs-6">
                   <input type="submit" value="로그인" class="btn btn-primary text-white" style="width: 232px; height: 50px;"></div>
-                  <div class="col-md-6 col-sm-6 col-xs-6" id="naverIdLogin"></div>
+                  <br><br><div class="col-md-6 col-sm-6 col-xs-6" id="naverIdLogin"></div>
                   
              <!--    <div id="naverIdLogin">
                 	<a id="naver-login-btn" href="#" role="button">

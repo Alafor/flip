@@ -1,3 +1,4 @@
+<%@page import="com.hk.flip.dtos.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
@@ -7,6 +8,13 @@
 	response.setContentType("text/html; charset=utf-8");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
+<%
+/*  String Msg_to =  ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_email();  */
+
+%>
+
+
 
 <!DOCTYPE html>
 <header class="site-navbar container py-0 bg-white navbar-fixed-top"
@@ -47,6 +55,8 @@
 					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login" ><a href="mypage.do"><span
 								class="border-left pl-xl-3" ></span><b>${logInMember.member_name}</b></a></li>
+								<span id="count" class="badge bg-theme"></span>
+
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
 						<li><a href="addclassform.do" class="cta">
@@ -62,3 +72,31 @@
 		</div>
 	</div>
 </header>
+
+<script type="text/javascript">
+    var wsUri = "ws://localhost:8888/flip/count";
+    function send_message() {
+        websocket = new WebSocket(wsUri);
+        websocket.onopen = function(evt) {
+            onOpen(evt);
+        };
+        websocket.onmessage = function(evt) {
+            onMessage(evt);
+        };
+        websocket.onerror = function(evt) {
+            onError(evt);
+        };
+    }
+    function onOpen(evt) 
+    {
+       websocket.send("${logInMember.member_email}");
+    }
+    function onMessage(event) {
+    		$('#count').append(evt.data);
+    }
+    function onError(evt) {
+    }
+    $(document).ready(function(){
+    		send_message();
+    });
+ </script>

@@ -1,7 +1,10 @@
+<%@page import="com.hk.flip.dtos.MemberDto"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>
 <%response.setContentType("text/html;charset=utf-8"); %>
+<%MemberDto memberDto= (MemberDto)request.getSession().getAttribute("logInMember"); %>
+
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -33,7 +36,60 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript">
+function registClass(seq) {
+	var class_type = $('input[name=class_type]').val()
+	var member_type = $('input[name=member_type]').val()
+	if(member_type == null){
+		alert('로그인 후 신청하실수 있습니다');
+		return false;
+	}else if(class_type=='C') {
+		if(member_type != 'S') {
+			alert('강의를 신청하실수 없습니다');
+			return false;
+		}
+	}else if(class_type=='S') {
+		if(member_type !='T') {
+			alert('강의를 신청하실수 없습니다');
+			return false;
+		}
+	}else {
+		if(member_type==('T')) {
+			alert('강의를 신청하실수 없습니다');
+			return false;
+		}
+	}
+return ajaxChk(seq);
+	
+}
+function ajaxChk(seq) {
+	$.ajax({
 
+	    url: "chkclasstime.do", // 클라이언트가 요청을 보낼 서버의 URL 주소
+
+	    data: { "seq":seq},                // HTTP 요청과 함께 서버로 보낼 데이터
+
+	    method: "post",                             // HTTP 요청 방식(GET, POST)
+
+	    dataType: "json",                         // 서버에서 보내줄 데이터의 타입
+	    
+	    success : function(data) {
+	    	rst =data["rst"];
+	    	if(rst=="개설가능"){
+	    		$('#regist_class').submit();
+	    	}else{
+	    		alert(rst);
+	    		
+	    		return false;
+	    	}
+	    },
+	    error: function(data,status,xhr){
+		alert("통신실패로 인한 수강신청 실패 입니다.");
+		return false;
+		}
+	});
+}
+</script>
 <!-- tab menu 부트스트랩 css -->
 <style type="text/css">
 nav > .nav.nav-tabs{
@@ -64,7 +120,6 @@ nav > div a.nav-item.nav-link.active:after
   border-top-color: #30E3CA ;
 }
 .tab-content{
-  background: #fdfdfd;
     line-height: 25px;
     border: 1px solid #ddd;
     border-top:5px solid #30E3CA;
@@ -92,8 +147,8 @@ nav > div a.nav-item.nav-link:focus
 }
 
 
-
-#nav > ul{background-color: white;border-bottom: gray;
+#nav{border-bottom: 1px solid gray;background-color: white;}
+#nav > ul{background-color: white;
 }
 #nav ul li{
 		width: 24%;
@@ -114,7 +169,7 @@ div[id^=nav]{padding: 0 25px;
 .inside_container{background-color: white; padding: 0;}
 .side_container{
  	display:inline-block; 
- 	background-color: #bbd8e9;
+ 	border-radius: 10px;
 /*  	position: fixed; */
 /* 	top: 50px; */
 /* 	left:30%; */
@@ -134,11 +189,23 @@ color : #30E3CA;
 
 }
 .site-section{padding-top: 32px;}
-.side_container_tapped{position: fixed; right: 20%;}
+.side_container_tapped{position: fixed; right: 12.5%; top:50px;}
+.detail_content{
+    	display: inline-block;
+    	
+    	text-align: center;
+    }
+.detail_head{font-size: 20px;border-bottom: 1px solid #ced4da;margin-bottom: 5px;}
+
 </style>
 <!-------------------------------------->
 </head>
 <body>
+<%if(memberDto != null){
+String member_type= memberDto.getMember_type(); %>
+<input name="member_type" type="hidden" value="<%=member_type%>">
+<%}%>
+<input name="class_type" type="hidden" value="${cDto.class_type}">
 <!-- #f8f9fa -->
 <div class="site-wrap">
 
@@ -174,9 +241,9 @@ color : #30E3CA;
     </div>
 
 
-	<div class="site-section bg-light">
-		<div class="row justify-content-center mb-5">
-				<div class="col-md-7 text-center border-primary">
+	<div class="site-section bg-white">
+		<div class="row mb-5">
+				<div class="col-md-10 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
 						강의<span class="text-warning">등록</span>
 					</h2>
@@ -219,6 +286,7 @@ color : #30E3CA;
 										<li><a href="#" onclick="moveNav('3')">Information </a></li>
 										<li><a href="#" onclick="moveNav('4')">Review</a></li>
 									</ul>
+									
 								</div>
 									<!-- top 탭의 내용 -->
 									<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
@@ -300,11 +368,12 @@ color : #30E3CA;
 			<!-- footer시작 -->
 				
 				</div>
-				<div class="side_container col-md-2 mb-2">
-					위치 : ${cDto.class_area}<hr>
-					<c:set value="${cDto.class_week}" var="class_week"/><br>
-					요일:<c:forEach items="${fn:split(class_week,'|')}" var="week">
-						<button class="btn btn-danger">
+				<div  class="side_container_container col-md-2 mb-2" style="padding:0 0;">
+				<div class="side_container bg-light col-md-12 mb-12">
+					<div class="detail_head col-md-12 mb-12">위치 : <div class="detail_content">${cDto.class_area}</div></div>
+					<c:set value="${cDto.class_week}" var="class_week"/>
+					<div class="detail_head col-md-12 mb-12">요일: <div class="detail_content"><c:forEach items="${fn:split(class_week,'|')}" var="week">
+						<button class="btn btn-primary">
 						<c:if test="${week==1}">일</c:if>
 						<c:if test="${week==2}">월</c:if>
 						<c:if test="${week==3}">화</c:if>
@@ -313,18 +382,23 @@ color : #30E3CA;
 						<c:if test="${week==6}">금</c:if>
 						<c:if test="${week==7}">토</c:if>
 						</button>
-					</c:forEach><hr>
-					<c:set value="${cDto.class_sd}" var="class_sd"/>
+					</c:forEach></div></div>
+					<c:set value="${cDto.class_sd}" var="class_sd"/> 
 					<c:set value="${cDto.class_cd}" var="class_cd"/>
-					일자 : ${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"> ~ ${fn:substring(class_cd,0,10)}</c:if><hr>
-					강의시간 : ${cDto.class_time}분<hr>
-					강의 시작일 : ${cDto.class_starttime}<hr>
-					참가 인원 : ${cDto.class_participation}명<hr>
-					금액 : ${cDto.class_price}원<hr>
+					<div class="detail_head">일자 : <div class="detail_content">${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"> ~ ${fn:substring(class_cd,0,10)}</c:if></div></div>
+					<div class="detail_head">강의시간 : <div class="detail_content">${cDto.class_time}분</div></div>
+					<div class="detail_head">시작일 : <div class="detail_content">${cDto.class_starttime}</div></div>
+					<div class="detail_head">참가 인원 : <div class="detail_content">${cDto.class_participation}명</div></div>
+					<div class="detail_head">금액 : <div class="detail_content">${cDto.class_price}원</div></div>
 					<div class="col-md-12">
-						<button class="btn center-block py-2 px-4"  style="margin-top: 5px;width: 100%;"
-						onclick="">gogogo</button>
+						<form action="regist_class.do" id="regist_class" method="post">
+						<input type="hidden" name="seq" value="${cDto.seq}">
+						</form>
+						<button type="button" class="btn btn-warning center-block py-2 px-4 text-white"  style="margin-top: 5px;width: 100%;"
+						onclick="registClass(${cDto.seq})">
+						<b>강의 신청</b></button>
                		</div>
+				</div>
 				</div>
 			</div>
 			</div>
@@ -374,10 +448,12 @@ $(window).on('scroll',function() {
 });
 
 $(window).on('scroll',function() {
-       if($(window).scrollTop() >= $('.side_container').offset().top) {
-         $('.side_container').addClass('side_container_tapped');
+       if($(window).scrollTop()+100 >= $('.side_container_container').offset().top) {
+    	 $('.side_container').removeClass('col-md-12 mb-12');
+         $('.side_container').addClass('side_container_tapped col-md-2 mb-2');
        }else{
-    	   $('.side_container').removeClass('side_container_tapped');
+    	   $('.side_container').removeClass('side_container_tapped col-md-2 mb-2');
+    	   $('.side_container').addClass('col-md-12 mb-12');
        }
 });
 // function moveSite-section(section) {

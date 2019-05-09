@@ -62,8 +62,12 @@ public class InclassDao implements IInclassDao {
 		
 		//수강신청전 시간이 겹치는지 검사
 		@Override
-		public List<String> chkInclassTime_Join(int member_seq, int class_seq) {
-			return sqlSession.selectList(nameSpace+"chkinclasstime_join", getClassDto(member_seq, class_seq));
+		public List<String> chkInclassTime_Join(int member_seq, int seq) {
+			Map<String,String> map = new HashMap<String, String>();
+			map.put("member_seq",Integer.toString(member_seq));
+			map.put("seq",Integer.toString(seq));
+			System.out.println("오라클 들어가는 chkInclassTime_Join값"+map);
+			return sqlSession.selectList(nameSpace+"chkinclasstime_join",map);
 		}
 		
 		//강의 개설전 시간이 겹치는지 검사
@@ -99,7 +103,8 @@ public class InclassDao implements IInclassDao {
 		
 			
 	//------------------------------------강사전용	--------------------------------------------------------
-	public ClassDto getClassDto(int member_seq,int class_seq){
+		//강의 seq를 넣으면 강사의 seq가 나옴
+		public ClassDto getClassDto(int member_seq,int class_seq){
 		ClassDto dto = sqlSession.selectOne(nameSpace+"getinclasslist", class_seq);
 		dto.setClass_member_seq(member_seq);
 		return dto;
