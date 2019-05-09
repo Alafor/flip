@@ -11,8 +11,7 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-
-
+import com.hk.flip.daos.IMsgDao;
 import com.hk.flip.daos.MsgDao;
 
 
@@ -23,6 +22,9 @@ public class SocketHandler extends TextWebSocketHandler{
 	
 	 @Autowired
 		SqlSession sqlsession;
+	 @Autowired
+	 	private IMsgDao msgDao;
+	 
 		private final Logger logger = LogManager.getLogger(getClass());
 	  @Override
 
@@ -47,7 +49,7 @@ public class SocketHandler extends TextWebSocketHandler{
 			System.out.println("message.getPayload():"+message.getPayload());
 			System.out.println("2");
 			session.sendMessage(new TextMessage(dao.count_receive_note(message.getPayload())));
-
+											/*	msgDao.aaaa(message.getPayload());*/
 	
 
 			
