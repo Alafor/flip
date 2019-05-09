@@ -20,15 +20,17 @@ $(function(){
 	if(datanull==0){
 		$('.search-area').css('display','none');
 	}
-	
-	function pagesubmit(){
-		var selPageNum = $(this).attr("data-page");
-		var allPageNum=$(this).attr("data-allpage");
-		for(i=1;i<=allpageNum;i++){
-			if(i==selpageNum){
-				$("input[name=num]").val(selPageNum);
-				$("#pages").submit();
-			}
+});
+
+function pagesubmit(selPage){
+	var selPageNum = $(selPage).attr("data-page");
+	var allPageNum=$(selPage).attr("data-allpage");
+	var allPageNumParse=Number(allPageNum);
+	var selPageNumParse=Number(selPageNum);
+	for(i=1;i<=allPageNumParse;i++){
+		if(i==selPageNumParse){
+			$("#numId").val(selPageNumParse);
+			$("#pages").submit();
 		}
 	}
-});
+}

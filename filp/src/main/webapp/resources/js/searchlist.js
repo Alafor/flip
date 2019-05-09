@@ -5,14 +5,10 @@
 $(document).ready(function() {
 			
 			var search = $("#search").attr("data-param");
-			
 			var category = $("#category").attr("data-param");
-			
 			var classType = $("#classType").attr("data-param");
-			
 			var addArea = $("#addArea").attr("data-param");
-			
-			var pagenum=$("#pageCount").attr("data-param");
+			var pagenum=$("#thisPage").attr("data-param");
 			if(!pagenum){
 				pagenum=1;
 			}

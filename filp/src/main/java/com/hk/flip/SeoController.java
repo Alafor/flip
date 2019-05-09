@@ -65,6 +65,7 @@ public class SeoController {
 		paramList.put("category", department);
 		paramList.put("classType", classType);
 		paramList.put("pagenum", num);
+		System.out.println("****num출력: "+num);
 		model.addAttribute("paramList",paramList);
 		String[] areas = request.getParameterValues("selectedarea");
 		if(areas!=null) {

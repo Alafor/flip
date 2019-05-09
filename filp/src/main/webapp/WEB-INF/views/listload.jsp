@@ -59,7 +59,7 @@
 					<div id="areasize-s" class="labelBox" data-areasize="${fn:length(areaList)}">
 					<c:forEach var="areaList" items="${areaList}" varStatus="seq">
 						<label for="sarea-${seq.index}"> 
-						<input type="checkbox" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
+						<input type="checkbox" checked="checked" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
 								<span class="sarea areaspan" data-area="${areaList.class_area}">${areaList.class_area}</span>
 								<span  class="areaspan">(${areaList.class_area_count})</span>
@@ -145,7 +145,7 @@
 									</c:otherwise>
 								</c:choose>
 								<address>${searchList.class_area}</address>
-						</div>
+							</div>
 						</div>
 					</div>
 				</c:forEach>
@@ -153,18 +153,17 @@
 		</div>
 	</div>
 			<div class="container">
-				<form action="searchlist.do" method="get" id="pages">
+				<form action="searchlist.do" method="post" id="pages">
 				<input type="hidden" name="search" value="${paramList.search}" />
 				<input type="hidden" name="department" value="${paramList.category}" /> 
 				<input type="hidden" name="classType" value="${paramList.classType}" />
-				<input type="hidden" name="num" />
+				<input type="hidden" id="numId" name="num" />
 				<c:forEach var="areaList" items="${areaList}" varStatus="seq">
 						<input type="checkbox"
-							class="areachk" name="selectedarea" id="carea-${seq.index}"
-							value="${areaList.class_area}" checked="checked" style="display:none;"/>
+							class="areachk" name="selectedarea"	value="${areaList.class_area}" checked="checked">${areaList.class_area}
 				</c:forEach>
 				<c:forEach begin="1" end="${pageCount}" varStatus="seq">
-					<input type="button" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit()"> 
+					<input type="button" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
 				</c:forEach>
 				</form>
 			</div>

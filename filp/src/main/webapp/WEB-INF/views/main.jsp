@@ -201,7 +201,7 @@
 										data-img="${wantlist.class_img}"></a>
 									<div class="lh-content">
 										<div class="instructorBox">
-										<span class="instructor_img" style="background-image:url('resources/img/member/${wantlist.profile_img}')"></span> 
+										<span class="instructor_img" style="background-image:url('resources/img/member/${wantlist.profile_img}')"></span>
 										<span class="instructor_name">${wantlist.class_creator_name}</span>
 										</div>
 										<a href="insertwhishlist.do?class_seq=${wantlist.seq}" class="bookmark" data-classseq="${wantlist.seq}"><span class="icon-heart"></span></a>
@@ -307,8 +307,8 @@
 									</a>
 									<div class="lh-content">
 										<div class="instructorBox">
-										<span class="instructor_img" style="background-image:url('resources/img/member/${wantlist.profile_img}')"></span> 
-										<span class="instructor_name">${wantlist.class_creator_name}</span>
+										<span class="instructor_img" style="background-image:url('resources/img/member/${studylist.profile_img}')"></span> 
+										<span class="instructor_name">${studylist.class_creator_name}</span>
 										</div>
 										<a href="insertwhishlist.do?class_seq=${studylist.seq}" class="bookmark" data-classseq="${studylist.seq}"><span class="icon-heart"></span></a>
 										<h3 class="classnames">

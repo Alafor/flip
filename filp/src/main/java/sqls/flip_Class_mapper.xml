@@ -399,7 +399,6 @@
 			</if>
 		</where>
 	</select>
-	
 	<!-- 지역검색 -->
 	<select id="areaCount" parameterType="Map" resultType="ClassDto">
 		SELECT
