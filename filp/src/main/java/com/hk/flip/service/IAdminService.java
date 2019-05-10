@@ -18,6 +18,8 @@ public interface IAdminService {
 	public boolean updateClass(ClassDto dto);
 	public boolean aClassDelete(int seq);
 	public boolean aClassClose(int seq);
+	public boolean cleanClass();
+	public boolean aInclassDelete(int seq);
 
 
 }

@@ -139,5 +139,13 @@ public class InclassDao implements IInclassDao {
 		System.out.println("deleteInclass map::"+map);
 		return sqlSession.delete(nameSpace+"setClassTermin",map)>0?true:false;
 	}
+	@Override
+	public boolean deleteInclass_T(int seq, String email) {
+		Map<String,String> map = new HashMap();
+		map.put("email", email);
+		map.put("seq", Integer.toString(seq));
+		System.out.println("deleteInclass_T map::"+map);
+		return sqlSession.delete(nameSpace+"deleteInclass_T",map)>0?true:false;
+	}
 	
 }

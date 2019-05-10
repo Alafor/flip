@@ -98,6 +98,12 @@
 		(SELECT member_seq FROM member WHERE member_email = #{email}) 
 	</delete>
 	
+	<delete id="deleteInclass_T" parameterType="Map">
+		select inclass_member_seq FROM inclass WHERE inclass_class_seq = #{seq} and inclass_member_seq = 
+		(SELECT member_seq FROM member WHERE member_email = #{email}) and 
+        ((SELECT class_sd FROM class WHERE SEQ = #{seq}) <![CDATA[>]]>  (sysdate+3))		
+	</delete>
+	
 	<delete id="deleteWishlist" parameterType="Map">
 		DELETE FROM class_wishlist WHERE wishlist_class_seq = #{seq} and wishlist_member_seq = 
 		(SELECT member_seq FROM member WHERE member_email = #{email}) 

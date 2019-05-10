@@ -80,6 +80,16 @@ public class AdminDao implements IAdminDao {
 		return sqlSession.update(namespace+"classclose", seq)>0?true:false;
 	}
 
+	@Override
+	public boolean cleanClass() {
+		return sqlSession.delete(namespace+"cleanClass")>0?true:false;
+	}
+
+	@Override
+	public boolean aInclassDelete(int seq) {
+		return sqlSession.delete(namespace+"aInclassDelete")>0?true:false;
+	}
+
 
 
 
