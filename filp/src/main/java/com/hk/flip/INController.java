@@ -31,9 +31,11 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.hk.flip.dtos.AnswerBoardDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.dtos.MsgDto;
 import com.hk.flip.dtos.PagingDto;
 import com.hk.flip.service.IAnswerBoardService;
 import com.hk.flip.service.IMemberService;
+import com.hk.flip.service.IMsgService;
 import com.hk.flip.service.UserMailSendService;
 import com.hk.flip.service.UserSearchService;
 
@@ -53,7 +55,8 @@ public class INController {
 	private UserMailSendService mailsender;
 	@Autowired
 	private UserSearchService  searchService;
-
+	@Autowired
+	private IMsgService msgService;
 
 	@RequestMapping(value = "/loginform.do", method = RequestMethod.GET)//로그인폼 이동
 	public String loginform(Locale locale, Model model) {
@@ -482,8 +485,21 @@ public class INController {
 		
 		
 	}
+	@RequestMapping(value = "/myMsg.do", method = RequestMethod.GET)
+	public String myMsg(Locale locale, Model model,HttpSession session) {
+		logger.info("쪽지함 이동하기 {}.", locale);
+		
+		MemberDto memberDto	=(MemberDto)session.getAttribute("logInMember");
+		String msg_email = memberDto.getMember_email();
+		System.out.println("세션에 담긴값:"+msg_email);
+		List<MsgDto> list= msgService.getmsglist(msg_email);
+		System.out.println("리스트 담은값:"+list);
+		model.addAttribute("list", list );
+		return "MyMsg";
+	}
 	
 	
-
+	
+	
 	
 }

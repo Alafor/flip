@@ -7,6 +7,24 @@
 		SELECT COUNT(*) FROM MSG WHERE MSG_TO = #{msg_email} AND MSG_READ = 'N'
 	</select>
 	
+	<select id="getMsgList" resultType="MsgDto" parameterType="String">
+		SELECT MSG_READ,MSG_TO,MSG_FROM,MSG_CONTENT,MSG_REGDATE,MSG_SEQ FROM MSG WHERE MSG_TO=#{msg_email}
+	</select>
+	
+	<select id="msgDetail" parameterType="int" resultType="MsgDto">
+		SELECT MSG_FROM,MSG_CONTENT,MSG_REGDATE FROM MSG WHERE msg_seq = #{msg_seq}
+	</select>
+	
+	<update id="readConfirm" parameterType="int" >
+		UPDATE MSG SET MSG_READ = 'Y' WHERE MSG_SEQ = #{msg_seq}
+	</update>
+	
+	<delete id="muldelMsg" parameterType="Map">
+		DELETE FROM MSG WHRER MSG_SEQ=
+		<foreach collection="seqs" item="msg_seq" open="(" close=")" separator=",">
+			#{msg_seq}
+		</foreach>
+	</delete>
 </mapper>
 
 

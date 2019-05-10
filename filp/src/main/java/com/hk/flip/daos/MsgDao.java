@@ -1,8 +1,12 @@
 package com.hk.flip.daos;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.hk.flip.dtos.MsgDto;
 
 @Repository
 public class MsgDao implements IMsgDao{
@@ -29,12 +33,14 @@ public class MsgDao implements IMsgDao{
 		return Integer.toString(result);
 	}
 
-
-
-	/*@Override
-	public void aaaa() {
-		// TODO Auto-generated method stub
+	@Override
+	public List<MsgDto> getmsglist(String msg_email) {
 		
-	}*/
+		return sqlsession.selectList(namespace+"getMsgList",msg_email);
+	}
+
+
+
+	
 
 }

@@ -58,7 +58,7 @@
 					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login" ><a href="mypage.do"><span
 								class="border-left pl-xl-3" ></span><b>${logInMember.member_name}</b></a></li>
-						<li><a href="#"><b><span id="count1" ></span></b></a>
+						<li><a href="#" onclick="showMsg();"><b><span id="count1" ></span></b></a>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
 						<li><a href="addclassform.do" class="cta">
@@ -100,7 +100,7 @@
        websocket.send(email);
     }
     function onMessage(evt) {
-    	/* alert(evt.data); */
+    	 /* alert(evt.data);  */
 //     	alert($('#count1').prop("tagName"));
     		$('#count1').append(evt.data);
     		
@@ -117,3 +117,9 @@
     });
     
  </script>
+<script type="text/javascript">
+	function showMsg() {
+		
+		window.open('myMsg.do', '쪽지함', 'width=500,height=500,toolbars=no,scrollbars=no');
+	}
+</script>
