@@ -151,22 +151,54 @@
 				</c:forEach>
 			</div>
 		</div>
-	</div>
-			<div class="container">
-				<form action="searchlist.do" method="post" id="pages">
-				<input type="hidden" name="search" value="${paramList.search}" />
-				<input type="hidden" name="department" value="${paramList.category}" /> 
-				<input type="hidden" name="classType" value="${paramList.classType}" />
-				<input type="hidden" id="numId" name="num" />
-				<c:forEach var="areaList" items="${areaList}" varStatus="seq">
-						<input type="checkbox"
-							class="areachk" name="selectedarea"	value="${areaList.class_area}" checked="checked">${areaList.class_area}
-				</c:forEach>
-				<c:forEach begin="1" end="${pageCount}" varStatus="seq">
-					<input type="button" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
-				</c:forEach>
-				</form>
+			<div class="container pagingbox">
+				<c:choose>
+					<c:when test="${class_type eq 'W'}">
+						<form action="searchlist.do" method="post" id="pages-w" >
+							<input type="hidden" name="search" value="${paramList.search}" />
+							<input type="hidden" name="department" value="${paramList.category}" /> 
+							<input type="hidden" name="classType" value="${paramList.classType}" />
+							<input type="hidden" id="numId" name="num" />
+							<div id="areatest-w" class="pagearea" style="display: none;"></div>
+							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
+							<c:forEach begin="1" end="${pageCount}" varStatus="seq">
+								<input type="button" class="buttons" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+							</c:forEach>
+						</form>
+					</c:when>
+					<c:when test="${class_type eq 'C'}">
+						<form action="searchlist.do" method="post" id="pages-c">
+							<input type="hidden" name="search" value="${paramList.search}" />
+							<input type="hidden" name="department" value="${paramList.category}" /> 
+							<input type="hidden" name="classType" value="${paramList.classType}" />
+							<input type="hidden" id="numId" name="num" />
+							<div id="areatest-c" class="pagearea" style="display: none;"></div>
+							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
+							<c:forEach begin="1" end="${pageCount}" varStatus="seq">
+								<input type="button" class="buttons" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+							</c:forEach>
+						</form>		
+					</c:when>
+					<c:when test="${class_type eq 'S'}">
+						<form action="searchlist.do" method="post" id="pages-s">
+							<input type="hidden" name="search" value="${paramList.search}" />
+							<input type="hidden" name="department" value="${paramList.category}" /> 
+							<input type="hidden" name="classType" value="${paramList.classType}" />
+							<input type="hidden" id="numId" name="num" />
+							<div id="areatest-s" class="pagearea" style="display: none;"></div>
+							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
+							<c:forEach begin="1" end="${pageCount}" varStatus="seq">
+								<input type="button" class="buttons" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+							</c:forEach>
+						</form>		
+					</c:when>
+				</c:choose>
 			</div>
+	</div>
+	
+	
+	
+		
 	<script defer
 		src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
 		integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"

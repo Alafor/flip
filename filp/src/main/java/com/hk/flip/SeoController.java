@@ -65,6 +65,7 @@ public class SeoController {
 		paramList.put("category", department);
 		paramList.put("classType", classType);
 		paramList.put("pagenum", num);
+		System.out.println("search: "+search+", department: "+department+", classType: "+ classType);
 		System.out.println("****num출력: "+num);
 		model.addAttribute("paramList",paramList);
 		String[] areas = request.getParameterValues("selectedarea");
@@ -98,7 +99,6 @@ public class SeoController {
 		if(checkFloat>0) {
 			pageCount+=1;
 		}
-		
 		System.out.println("sel*********:"+selArea);
 		System.out.println("checkechek thisPage: "+thisPage);
 		List<ClassDto> searchList = classService.searchList(search, department, classType, thisPage, selArea);
