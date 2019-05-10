@@ -9,7 +9,7 @@
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<%MemberDto memberDto = (MemberDto)request.getSession().getAttribute("logInMember"); %>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -55,7 +55,7 @@
 		<!-- header 종료 -->
 
 		<div class="site-blocks-cover overlay"
-			style="background-image: url('resources/images/제빵.png');"
+			style="background-image: url('resources/images/배경8.jpg');"
 			data-aos="fade" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div
@@ -67,7 +67,7 @@
 									지루한 일상을 뒤엎다!!<span class="text-warning">플</span><span
 										class="text-primary">립</span>
 								</h1>
-								<p data-aos="fade-up" data-aos-delay="100">You can buy, sell
+								<p data-aos="fade-up" data-aos-delay="100">You can learn
 									anything you want.</p>
 							</div>
 						</div>
@@ -502,9 +502,7 @@
 			</div>
 		</div>
 	</div>
-	<%if(memberDto !=null){ %>
-	<input type="hidden" value='<%=memberDto.getMember_email()%>' id="ws_email">
-	<%} %>
+	
 	<!-- 광고 이미지 세션 -->
 	<jsp:include page="advertisor.jsp" />
 	<!-- 광고 이미지 세션 종료 -->
@@ -539,41 +537,7 @@
 	crossorigin="anonymous"></script>
 	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-	
-<script type="text/javascript">
-    var wsUri = "ws://localhost:8888/flip/count.do";
-    function send_message() {
-        websocket = new WebSocket(wsUri);
-        websocket.onopen = function(evt) {
-            onOpen(evt);
-        };
-        websocket.onmessage = function(evt) {
-            onMessage(evt);
-        };
-        websocket.onerror = function(evt) {
-            onError(evt);
-        };
-    }
-    function onOpen(evt) 
-    {
-    	var email = $('#ws_email').val();
-    	alert(email);
-       websocket.send(email);
-    }
-    function onMessage(event) {
-    		$('#count').append(evt.data);
-    }
-    function onError(evt) {
-    }
-    $(document).ready(function(){
-    	var email = $('#ws_email').val();
-    	if(email ==null||email==""){
-    		
-    	}else{
-    		send_message();
-    	}
-    });
-    
- </script>
+
+ 
 </body>
 </html>

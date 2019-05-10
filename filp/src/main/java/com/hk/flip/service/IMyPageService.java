@@ -14,6 +14,8 @@ public interface IMyPageService {
 
 	public List<ClassDto> getAllInclassList(int member_seq);
 
+	public List<ClassDto> getAllWishList(int member_seq);
+
 	public boolean cancelInclass(int member_seq, int class_seq);
 
 	public boolean deleteInclass(int seq, String email);
@@ -21,5 +23,6 @@ public interface IMyPageService {
 	public boolean deleteWishlist(int seq, String email);
 
 	public boolean setClassTermin(int seq, String termin);
+
 
 }

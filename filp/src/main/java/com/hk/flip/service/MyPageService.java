@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.hk.flip.daos.IClassWishlistDao;
 import com.hk.flip.daos.IInclassDao;
 import com.hk.flip.daos.IMemberDao;
 import com.hk.flip.dtos.ClassDto;
@@ -17,6 +18,8 @@ public class MyPageService implements IMyPageService {
 	IInclassDao dao;
 	@Autowired
 	IMemberDao memberDao;
+	@Autowired
+	IClassWishlistDao classWishlistDao;
 	public MyPageService() {
 		// TODO Auto-generated constructor stub
 	}
@@ -46,6 +49,11 @@ public class MyPageService implements IMyPageService {
 		return dao.getAllMyInclass(member_seq);
 	}
 	
+	//내 위시리스트 가져오기
+	@Override
+	public List<ClassDto> getAllWishList(int member_seq) {
+		return classWishlistDao.viewMyWishlist(member_seq);
+	}
 	//내 수강삭제
 	@Override
 	public boolean cancelInclass(int member_seq, int class_seq){
@@ -70,4 +78,7 @@ public class MyPageService implements IMyPageService {
 		return dao.setClassTermin(seq,termin);
 		
 	}
+
+
+	
 }

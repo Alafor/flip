@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Insert title here</title>
+<title>회원 마이페이지</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -92,6 +92,8 @@
     	border-radius: 8px;
     	border-bottom: 6px solid #30e3ca!important;
     }
+    .listing{
+    	height: 200px;}
 }
 </style>
 
@@ -131,48 +133,44 @@
 	
 		<div class="site-section">
 			<div class="container mb-5" >
-<!-- 				<div style="display: inline-block;text-align: center;"> -->
-						<div class="row mb-5">
-						<div class="col-md-7 text-left border-primary">
-							<h2 class="font-weight-light text-primary">
-								<a href="searchlist.do?classType=C">
-									<b>회원<span class="text-warning">정보</span></b>
-								</a>
-							</h2>
-							<p class="color-black-opacity-5"  >User Infomation</p>
-						</div>
-						</div>
-						
-					<div class="member_container justify-content-center col-md-9 mb-9">
-						
-						<div class="member_img col-mb-6 md-6">
-						<c:choose>
-							<c:when test="${member.member_profile eq null}">
-								<img class="member_image" alt="" src="resources/images/User_icon_BLACK-01.png" class="member_profile_img">							
-								
-							</c:when>
-							<c:otherwise>
-								<img class="member_image" alt="" src="resources/img/member/${member.member_profile}" class="member_profile_img">							
-							</c:otherwise>
-						</c:choose>
-						</div>
-						<div class="member_infomation col-mb-6 md-6" style="font-size: 16px;">
-							<c:set value="${member.member_regdate}" var="member_regdate" />
-							<div class="member_infomation_head"> &nbsp; 이름 : <div class="member_infomation_detail">&nbsp;${member.member_name}</div> </div>
-							<div class="member_infomation_head">아이디 : <div class="member_infomation_detail">${member.member_id}</div></div>
-							<div class="member_infomation_head">이메일 : <div class="member_infomation_detail">${member.member_email}</div> </div>
-							<div class="member_infomation_head" >가입일 : <div class="member_infomation_detail">${fn:substring(member_regdate,0,10)} </div></div>
-						<div class=" text-right mySchedule">
-							<input type="button" value=" 일정보기 " class="btn btn-primary text-white member_button"
-							onclick="window.open('scheduleCalendar.do', 'calendar', 'width=700px,height=700px,toolbars=no,scrollbars=no'); return false;">
-							<input type="button" value=" 정보수정 " class="btn btn text-white member_button" style="background-color:#f89d13;" 
-							onclick="location.href='memberDetail.do?email=${member.member_email}'">
-						</div>
-						</div>
-						
-						
+				<div class="row mb-5">
+					<div class="col-md-7 text-left border-primary">
+						<h2 class="font-weight-light text-primary">
+							<a href="searchlist.do?classType=C">
+								<b>회원<span class="text-warning">정보</span></b>
+							</a>
+						</h2>
+						<p class="color-black-opacity-5"  >User Infomation</p>
 					</div>
-<!-- 				</div> -->
+				</div>
+					
+				<div class="member_container justify-content-center col-md-9 mb-9">
+					<div class="member_img col-mb-6 md-6">
+					<c:choose>
+						<c:when test="${member.member_profile eq null}">
+							<img class="member_image" alt="" src="resources/images/User_icon_BLACK-01.png" class="member_profile_img">							
+							
+						</c:when>
+						<c:otherwise>
+							<img class="member_image" alt="" src="resources/img/member/${member.member_profile}" class="member_profile_img">							
+						</c:otherwise>
+					</c:choose>
+					</div>
+					<div class="member_infomation col-mb-6 md-6" style="font-size: 16px;">
+						<c:set value="${member.member_regdate}" var="member_regdate" />
+						<div class="member_infomation_head"> &nbsp; 이름 : <div class="member_infomation_detail">&nbsp;${member.member_name}</div> </div>
+						<div class="member_infomation_head">아이디 : <div class="member_infomation_detail">${member.member_id}</div></div>
+						<div class="member_infomation_head">이메일 : <div class="member_infomation_detail">${member.member_email}</div> </div>
+						<div class="member_infomation_head" >가입일 : <div class="member_infomation_detail">${fn:substring(member_regdate,0,10)} </div></div>
+					<div class=" text-right mySchedule">
+						<input type="button" value=" 일정보기 " class="btn btn-primary text-white member_button"
+						onclick="window.open('scheduleCalendar.do', 'calendar', 'width=700px,height=700px,toolbars=no,scrollbars=no'); return false;">
+						<input type="button" value=" 정보수정 " class="btn btn text-white member_button" style="background-color:#f89d13;" 
+						onclick="location.href='memberDetail.do?email=${member.member_email}'">
+					</div>
+					</div>
+				</div>
+				
 				<div class="w3-row">
 					<a href="javascript:void(0)" onclick="openCity(event, 'AllMyClass');">
 						<div
@@ -216,12 +214,12 @@
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
-														<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+														<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 														<h3>
-															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+															<a href="cdetail.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
 														<!-- 별 -->
-														<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
+														<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 														</div>
 															<!-- <p class="teacherstar" style="float:left;"></p> -->
 															<span class="review" >(${inclass.class_review_count} Reviews)</span>
@@ -241,12 +239,12 @@
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
-														<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+														<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 														<h3>
 															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
 														<!-- 별 -->
-														<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
+														<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 														</div>
 															<!-- <p class="teacherstar" style="float:left;"></p> -->
 															<span class="review" >(${inclass.class_review_count} Reviews)</span>
@@ -298,12 +296,12 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																		<a href="cdetail.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
-																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
+																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 																	</div>
 																		<!-- <p class="teacherstar" style="float:left;"></p> -->
 																		<span class="review" >(${inclass.class_review_count} Reviews)</span>
@@ -323,12 +321,12 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
-																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
+																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 																	</div>
 																		<!-- <p class="teacherstar" style="float:left;"></p> -->
 																		<span class="review" >(${inclass.class_review_count} Reviews)</span>
@@ -398,15 +396,15 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																		<a href="cdetail.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
-																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
+																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 																	</div>
 																		<!-- <p class="teacherstar" style="float:left;"></p> -->
-																		<span class="review" >(${inclass.class_review_count} Reviews)</span>
+																		<span class="review" > </span>
 																	<!-- 별 -->
 																	<address>${inclass.class_area}</address>
 																</div>
@@ -423,15 +421,15 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
-																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
+																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 																	</div>
 																		<!-- <p class="teacherstar" style="float:left;"></p> -->
-																		<span class="review" >(${inclass.class_review_count} Reviews)</span>
+																		<span class="review" > </span>
 																	<!-- 별 -->
 																	<address>${inclass.class_area}</address>
 																</div>
@@ -478,73 +476,67 @@
 
 						</div>
 					</div>
-
-
-
-							<div class="row mt-5">
-							<c:choose>						
-								<c:when test="${not empty inclassList}">
-									<c:set var="i" value="1" />
-									<c:forEach items="${inclassList}" var="inclass">
-	<%-- 									<c:forEach begin="1" end="${fn:length(inclassList)}" var="j" step="1"> --%>
-	<%-- 									<c:choose> --%>
-	<%-- 										<c:when test="${(i %2) ==1 } }"> --%>
-										<c:choose>
-											<c:when test="${inclass.class_type == 'W'}">
-												<c:choose>
-													<c:when test="${inclass.class_termin eq 'N'}">
-														<div class="col-lg-6">
-															<div class="d-block d-md-flex listing">
-																<a href="cdetail.do?class_seq=${inclass.seq}" class="img d-block"
-																	style="background-image: url('resources/img/class/${inclass.class_img}');"></a>
-																<div class="lh-content">
-																	<span class="category">${inclass.class_creator_name}</span> 
-																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
-																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
-																	</h3>
-																	<!-- 별 -->
-																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
-																	</div>
-																		<!-- <p class="teacherstar" style="float:left;"></p> -->
-																		<span class="review" >(${inclass.class_review_count} Reviews)</span>
-																	<!-- 별 -->
-																	<address>${inclass.class_area}</address>
+					<div class="row mt-5">
+						<c:choose>						
+							<c:when test="${not empty inclassList}">
+								<c:set var="i" value="1" />
+								<c:forEach items="${inclassList}" var="inclass">
+									<c:choose>
+										<c:when test="${inclass.class_type == 'W'}">
+											<c:choose>
+												<c:when test="${inclass.class_termin eq 'N'}">
+													<div class="col-lg-6">
+														<div class="d-block d-md-flex listing">
+															<a href="cdetail.do?class_seq=${inclass.seq}" class="img d-block"
+																style="background-image: url('resources/img/class/${inclass.class_img}');"></a>
+															<div class="lh-content">
+																<span class="category">${inclass.class_creator_name}</span> 
+																<span class="instructor_img"></span>
+																<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																<h3>
+																	<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																</h3>
+																<!-- 별 -->
+																<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 																</div>
+																	<!-- <p class="teacherstar" style="float:left;"></p> -->
+																	<span class="review" > </span>
+																<!-- 별 -->
+																<address>${inclass.class_area}</address>
 															</div>
 														</div>
-													</c:when>
-													<c:otherwise>
-														<div class="col-lg-6">
-															<div class="d-block d-md-flex listing">
-																<a href="review.do?class_seq=${inclass.seq}" class="img d-block"
-																	style="background-image: url('resources/img/class/${inclass.class_img}') ; background-color:rgba(138,138,138,0.8);background-size:cover; background-blend-mode: saturation;">
-																	<div style="font-size: 20px; padding-left: 30px;padding-top: 50px;">폐강된 강의 입니다~<br> 강의평을 남기실수 <br>있습니다.</div>
-																	</a>
-																<div class="lh-content">
-																	<span class="category">${inclass.class_creator_name}</span> 
-																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
-																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
-																	</h3>
-																	<!-- 별 -->
-																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
-																	</div>
-																		<!-- <p class="teacherstar" style="float:left;"></p> -->
-																		<span class="review" >(${inclass.class_review_count} Reviews)</span>
-																	<!-- 별 -->
-																	<address>${inclass.class_area}</address>
-																</div>
-															</div>
-														</div>
-													</c:otherwise>
-												</c:choose>
-												<c:set var="i" value="${i+1}" />
+													</div>
 												</c:when>
 												<c:otherwise>
+													<div class="col-lg-6">
+														<div class="d-block d-md-flex listing">
+															<a href="review.do?class_seq=${inclass.seq}" class="img d-block"
+																style="background-image: url('resources/img/class/${inclass.class_img}') ; background-color:rgba(138,138,138,0.8);background-size:cover; background-blend-mode: saturation;">
+																<div style="font-size: 20px; padding-left: 30px;padding-top: 50px;">폐강된 강의 입니다~<br>
+																</a>
+															<div class="lh-content">
+																<span class="category">${inclass.class_creator_name}</span> 
+																<span class="instructor_img"></span>
+																<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																<h3>
+																	<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																</h3>
+																<!-- 별 -->
+																<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
+																</div>
+																	<!-- <p class="teacherstar" style="float:left;"></p> -->
+																	<span class="review" > </span>
+																<!-- 별 -->
+																<address>${inclass.class_area}</address>
+															</div>
+														</div>
+													</div>
 												</c:otherwise>
+											</c:choose>
+											<c:set var="i" value="${i+1}" />
+											</c:when>
+											<c:otherwise>
+											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 									<c:if test="${i == 1}">
@@ -554,7 +546,6 @@
 											</h2>
 										</div>
 									</c:if>
-	<!-- 								</div> -->
 								</c:when>
 								
 								<c:otherwise>
@@ -569,42 +560,37 @@
 					</div>
 				</div>
 
-
 				<div id="MyWishlist" class="container depa" style="display: none">   <!-- 내 위시리스트 보기 탭 내용  -->
 					<div class="container">
-							<div class="row mb-5">
-						<div class="col-md-7 text-left border-primary">
-							<h2 class="font-weight-light text-primary">
-								<b>찜목록<span class="text-warning">보기</span>
-							</h2>
-							<p class="color-black-opacity-5">MY LIST</p>
-
+						<div class="row mb-5">
+							<div class="col-md-7 text-left border-primary">
+								<h2 class="font-weight-light text-primary">
+									<b>찜목록<span class="text-warning">보기</span>
+								</h2>
+								<p class="color-black-opacity-5">MY LIST</p>
+							</div>
 						</div>
-					</div>
-
-
-
-							<div class="row mt-5">
+						<div class="row mt-5">
 							<c:choose>						
-								<c:when test="${not empty wishList}">
+								<c:when test="${not empty myWishList}">
 									<c:set var="i" value="1" />
-									<c:forEach items="${wishList}" var="wishclass">
+									<c:forEach items="${myWishList}" var="wishclass">
 										<div class="col-lg-6">
 											<div class="d-block d-md-flex listing">
 												<a href="cdetail.do?class_seq=${wishclass.seq}" class="img d-block"
-													style="background-image: url('resources/img/class/${inclass.class_img}')"></a>
+													style="background-image: url('resources/img/class/${wishclass.class_img}')"></a>
 												<div class="lh-content">
 													<span class="category">${wishclass.class_creator_name}</span> 
 													<span class="instructor_img"></span>
-													<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+													<a href="cancelWishlist.do?seq=${wishclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 													<h3>
 														<a href="cdetail.do?seq=${wishclass.seq}">${wishclass.class_name}</a>
 													</h3>
 													<!-- 별 -->
-													<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${wishclass.class_member_rating}" onclick="gogostar(this)">
+													<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${wishclass.class_member_rating}" onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;">
 													</div>
 														<!-- <p class="teacherstar" style="float:left;"></p> -->
-														<span class="review" >(${wishclass.class_review_count} Reviews)</span>
+														<span class="review" ><c:if test="${wishclass.class_type eq 'C'}">(${wishclass.class_review_count} Reviews) </c:if></span>
 													<!-- 별 -->
 													<address>${wishclass.class_area}</address>
 												</div>
@@ -612,7 +598,6 @@
 										</div>
 									</c:forEach>
 								</c:when>
-								
 								<c:otherwise>
 									<div class="col-lg-6">
 										<h2 class="font-weight-light text-primary">
@@ -624,16 +609,9 @@
 						</div>
 					</div>
 				</div>
-
-
-
-
-
-
-
 			</div>
 		</div>
-		</div>
+	</div>
 		<script>
 function openCity(evt, cityName) {
 var i, x, tablinks;
@@ -669,65 +647,14 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 <script src="resources/js/rangeslider.min.js"></script>
 <script src="resources/js/main.js"></script>
 <script src="resources/js/signup.js"></script>
-
-
-<%-- <p>${member.member_name}</p>
-<p>${member.member_email}</p>
-<p>${member.member_phone}</p>
-<p>${member.member_email}</p>
-<p>${member.member_email}</p>
-
-	<ul class=”navnav-tabs”><!–nav/ nav-tab 클래스를 추가하면 탭스타일로 나타납니다.–>
-		<li class=”active”><a href=“#tab1″ data-toggle=”tab” onclick="myclass(myclass)">내수강보기</a></li>
-		<li><a href=“#tab2″ data-toggle=”tab” onclick="myclass(mystudy)">내스터디 보기</a></li><!–탭메뉴를 사용하기위해 data-toggle=”tab”을 지정해줍니다.–>
-		<li><a href=”#tab3″ data-toggle=”tab” onclick="myclass(want)">원해요 보기</a></li>
-		<li><a href=”#tab4″ data-toggle=”tab” onclick="myclass(wishlist)">위시리스트 보기</a></li>
-	</ul>
-
-	<div class=”tab-content”>
-		<!–탭내용을 보여주는 곳에 ‘tab-content’ 클래스를걸어줍니다–>
-		<div class=”tab-pane active” id=“tab1″>
-			<!–nav-tab부분 링크부분과 탭내용을 보여줄 id를 맞춰줍니다–>
-			<p>내수강보기 부분입니다.</p>
-			<c:forEach var="inclass" items="allInclass" >
-				<p>${inclass.class_name}</p>
-				<p>${inclass.regdate}</p>
-				<p>${inclass.class_area}</p>
-				<p>${inclass.class_depa}</p>
-				<p>${inclass.class_sd}</p>
-				<p>${inclass.class_instructor}</p>
-				<p>${inclass.class_termin}</p>
-				<p>${inclass.class_participation}</p>
-				<p>${inclass.class_detail}</p>
-				<p>${inclass.class_img}</p>
-				<p>${inclass.class_participation}</p>
-				<p>${inclass.class_now_participation}</p>
-				<p>${inclass.class_rating}</p>
-				<p>${inclass.d_day}</p>
-			</c:forEach>
-			
-		</div>
-		<div class=”tab-pane” id=“tab2″>
-			<p>내스터디 보기 부분입니다.</p>
-			<c:forEach var="study" items="allStudyList" >
-				<p>${study.class_name}</p>
-			</c:forEach>
-		</div>
-		<div class=”tab-pane” id=“tab3″>
-			<p>내원해요 보기 부분입니다.</p>
-			<c:forEach var="want" items="allwantList" >
-				<p>${want.class_name}</p>
-			</c:forEach>
-		</div>
-		<div class=”tab-pane” id=“tab4″>
-			<p>내위시리스트 보기 부분입니다.</p>
-			<c:forEach var="wishlist" items="allwishlist" >
-				<p>${wishlist.class_name}</p>
-			</c:forEach>
-		</div>
-	</div> --%>
-<div><a href="scheduleCalendar.do"
- onclick="window.open(this.href, 'calendar', 'width=700px,height=700px,toolbars=no,scrollbars=no'); return false;">캘린더바로가기</a>
- </div>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js"
+	integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l"
+	crossorigin="anonymous"></script>
+<script defer
+	src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js"
+	integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c"
+	crossorigin="anonymous"></script>
+<script src="resources/js/star.js" defer="defer"></script>
 </body>
 </html>
