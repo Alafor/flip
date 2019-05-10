@@ -8,7 +8,7 @@
 	response.setContentType("text/html; charset=utf-8");
 %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-
+<%MemberDto memberDto = (MemberDto)request.getSession().getAttribute("logInMember"); %>
 <%
 /*  String Msg_to =  ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_email();  */
 
@@ -28,6 +28,7 @@
 					src="resources/images/로고.png"></a>
 			</h1>
 		</div>
+			
 		<div class="col-12 col-md-10 d-none d-xl-block">
 			<nav class="site-navigation position-relative text-right "
 				role="navigation">
@@ -41,8 +42,10 @@
 								<div class="input-group-append">
 									<button class="btn btn-primary text-white rounded">Search</button>
 								</div>
+								
 							</div>
 						</form>
+					
 					</li>
 					<c:if test="${logInMember eq null}">
 						<li class="ml-xl-3 login"><a href="loginform.do"><span
@@ -55,14 +58,14 @@
 					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login" ><a href="mypage.do"><span
 								class="border-left pl-xl-3" ></span><b>${logInMember.member_name}</b></a></li>
-								<span id="count" class="badge bg-theme"></span>
-
+						<li><a href="#"><b><span id="count1" ></span></b></a>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
 						<li><a href="addclassform.do" class="cta">
 						<span class="bg-primary text-white rounded">강의등록</span></a></li>	
 					</c:if>
 				</ul>
+				<!-- <span id="count1" ></span> -->
 			</nav>
 		</div>
 		<div class="d-inline-block d-xl-none ml-auto py-3 col-6 text-right"
@@ -71,5 +74,46 @@
 				class="icon-menu h3"></span></a>
 		</div>
 	</div>
+	<%if(memberDto !=null){ %>
+	<input type="hidden" value='<%=memberDto.getMember_email()%>' id="ws_email">
+	<%} %>
 </header>
-
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript">
+    var wsUri = "ws://localhost:8888/flip/count.do";
+    function send_message() {
+        websocket = new WebSocket(wsUri);
+        websocket.onopen = function(evt) {
+            onOpen(evt);
+        };
+        websocket.onmessage = function(evt) {
+            onMessage(evt);
+        };
+        websocket.onerror = function(evt) {
+            onError(evt);
+        };
+    }
+    function onOpen(evt) 
+    {
+    	var email = $('#ws_email').val();
+    	alert(email);
+       websocket.send(email);
+    }
+    function onMessage(evt) {
+    	/* alert(evt.data); */
+//     	alert($('#count1').prop("tagName"));
+    		$('#count1').append(evt.data);
+    		
+    }
+    function onError(evt) {
+    }
+    $(document).ready(function(){
+    	var email = $('#ws_email').val();
+    	if(email ==null||email==""){
+    		
+    	}else{
+    		send_message();
+    	}
+    });
+    
+ </script>

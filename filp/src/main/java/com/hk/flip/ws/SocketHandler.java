@@ -25,9 +25,9 @@ public class SocketHandler extends TextWebSocketHandler{
 	 @Autowired
 		SqlSession sqlsession;
 /*	 @Autowired
-	 	private IMsgDao msgDao;
+	 	private IMsgDao msgDao;*/
 	@Autowired
-		private IMsgService msgService;*/
+		private IMsgService msgService;
 	
 		private final Logger logger = LogManager.getLogger(getClass());
 	  @Override
@@ -49,13 +49,14 @@ public class SocketHandler extends TextWebSocketHandler{
 		 	System.out.println("msg_email:"+msg_email);
 		 	
 		/*	MsgDao dao = sqlsession.getMapper(MsgDao.class);*/
-			MsgDao dao = new MsgDao();
+			/*MsgDao dao = new MsgDao();*/
 			this.logger.info(message.getPayload());
 			System.out.println("1");
 			System.out.println("message.getPayload():"+message.getPayload());
 			System.out.println("2");
-		/*	session.sendMessage(new TextMessage(msgService.count_receive(msg_email)));*/
-		session.sendMessage(new TextMessage(dao.count_receive_note(message.getPayload())));
+		session.sendMessage(new TextMessage(msgService.count_receive(msg_email)));
+		
+		/*session.sendMessage(new TextMessage(dao.count_receive_note(message.getPayload())+""));*/
 												/*msgDao.aaaa(message.getPayload());
 */
 
