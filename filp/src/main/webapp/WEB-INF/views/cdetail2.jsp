@@ -40,6 +40,13 @@
 function registClass(seq) {
 	var class_type = $('input[name=class_type]').val()
 	var member_type = $('input[name=member_type]').val()
+	var class_participation = $('input[name=class_participation]').val()
+	var class_now_participation = $('input[name=class_now_participation]').val()
+	if(class_participation<=class_now_participation){
+		alert(class_participation+class_now_participation);
+		alert('신청 인원이 초과되었습니다');
+		return false;
+	}
 	if(member_type == null){
 		alert('로그인 후 신청하실수 있습니다');
 		return false;
@@ -49,12 +56,12 @@ function registClass(seq) {
 			return false;
 		}
 	}else if(class_type=='S') {
-		if(member_type !='T') {
+		if(member_type !='S') {
 			alert('강의를 신청하실수 없습니다');
 			return false;
 		}
 	}else {
-		if(member_type==('T')) {
+		if(member_type!=('T')) {
 			alert('강의를 신청하실수 없습니다');
 			return false;
 		}
@@ -174,6 +181,7 @@ div[id^=nav]{padding: 0 25px;
  	display:inline-block; 
  	border-radius: 10px;
  	font-size: 16px;
+ 	border: 2px solid #ccc;
 /*  	position: fixed; */
 /* 	top: 50px; */
 /* 	left:30%; */
@@ -212,6 +220,9 @@ color : #30E3CA;
 .review_container{
 	margin-top: 30px;
 	font-size: 14px;
+	border: 2px solid #30e3ca;
+    border-radius: 20px;
+    padding: 15px;
 }
 .review_img {
     width:30px;
@@ -219,14 +230,15 @@ color : #30E3CA;
     object-fit: cover;
     border-radius: 50%;
     margin-bottom: 10px;
+    margin-right: 10px;
+    
     }
 .review_name {
 	   display: inline-block;
+	   margin-right: 10px;
     }
 .review_content{
-	border: 2px solid #30e3ca;
-    border-radius: 20px;
-    padding: 10px;
+	
     }
     
 </style>
@@ -237,6 +249,8 @@ color : #30E3CA;
 String member_type= memberDto.getMember_type(); %>
 <input name="member_type" type="hidden" value="<%=member_type%>">
 <%}%>
+<input name="class_now_participation" type="hidden" value="${cDto.class_now_participation}">
+<input name="class_participation" type="hidden" value="${cDto.class_participation}">
 <c:set value="${fn:substring(cDto.class_starttime,0,2)}" var="class_time_H"/>
 <c:set value="${fn:substring(cDto.class_starttime,2,5)}" var="class_time_M"/>
 
@@ -333,9 +347,11 @@ String member_type= memberDto.getMember_type(); %>
 									<!-- top 탭의 내용 -->
 									<div class="tab-content py-3 px-3 px-sm-0" id="nav-tabContent">
 										<div class="target" id="nav1">
-										<br><div class="title">${cDto.class_name}</div>	 
-											<div class="row">
-												<div class="col-md-8">${cDto.class_info}</div>
+										<br><div class="row">
+												<div class="col-md-8">
+													<div class="title">${cDto.class_name}</div>	 
+													${cDto.class_info}
+												</div>
 												<div class="col-md-4">
 													<div class="nav1_icon"><img src="resources/images/placeholder.png"><br>${cDto.class_area}</div>
 													<div class="nav1_icon"><img src="resources/images/time.png"><br>${cDto.class_time}분</div>
@@ -362,8 +378,9 @@ String member_type= memberDto.getMember_type(); %>
 															onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;"></div>(${cDto.class_member_rating})
 													</div>
 												</div>
+												<div class="col-lg-1"></div>
 												<div class="col-lg-8">
-													<div><textarea style="width: 100%; height: 50px;overflow-y:hidden; border: 0px solid black; resize:none;" readonly="readonly" id="member_info" >${cDto.member_info}</textarea> </div>
+													<div><textarea style="width: 100%; height: 50px;overflow-y:hidden; border: 0px solid black; resize:none; margin-top: 20px;" readonly="readonly" id="member_info" >${cDto.member_info}</textarea> </div>
 												</div>
 											</div>
 										</div>
@@ -372,7 +389,7 @@ String member_type= memberDto.getMember_type(); %>
 
 										<!-- class information 탭의 내용 -->
 										<div class="target" id="nav3">
-											<span><b>강의 소개 : </b></span></br>
+											<div style="margin-bottom: 10px;"><b>강의 소개 : </b></div>
 											<div> &nbsp; &nbsp;${cDto.class_detail}</div><br>
 											<span><b>강의 지역 : </b></span>  &nbsp; &nbsp;  ${cDto.class_area} <br>
 											<span><b>강의 기간 : </b></span> &nbsp; &nbsp;  ${cDto.class_sd} <c:if test="${cDto.class_cd ne cDto.class_sd}"><div class="detail_content">~ ${cDto.class_cd}</div></c:if><br>
@@ -398,12 +415,12 @@ String member_type= memberDto.getMember_type(); %>
 											<!-- 후기 목록 가져오기 -->
 											<span><b>강사 후기 : </b></span></br>
 											<c:forEach items="${rDto}" var="reviewdto">
-												<div class="review_container">->
+												<div class="review_container col-md-10 col-sm-12">->
 													<img class="review_img" alt="회원 프로필" src="resources/img/member/${reviewdto.profile_img}">
 													<div class="review_name">${reviewdto.member_name}</div>
 													<div class="mb-0 teacherstar" data-minority="${reviewdto.review_rating}"
-															onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;"></div>(${reviewdto.review_rating})
-													<div class="review_content col-md-10 col-sm-12"> &nbsp; &nbsp;${reviewdto.review_detail}</div>
+															onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;"></div>(${reviewdto.review_rating})<hr>
+													<div class="review_content"> &nbsp; &nbsp;${reviewdto.review_detail}</div>
 												</div>
 												
 											</c:forEach>
@@ -429,7 +446,7 @@ String member_type= memberDto.getMember_type(); %>
 				
 				</div>
 				<div  class="side_container_container col-md-2 mb-2" style="padding:0 0;">
-				<div class="side_container bg-light col-md-12 mb-12">
+				<div class="side_container col-md-12 mb-12">
 					<div class="detail_head">위치 : <div class="detail_content">${cDto.class_area}</div></div>
 					<c:set value="${cDto.class_week}" var="class_week"/>
 					<div class="detail_head">요일: <div class="detail_content"><c:forEach items="${fn:split(class_week,'|')}" var="week">
@@ -446,7 +463,7 @@ String member_type= memberDto.getMember_type(); %>
 					<c:set value="${cDto.class_sd}" var="class_sd"/> 
 					<c:set value="${cDto.class_cd}" var="class_cd"/>
 					
-					<div class="detail_head">일자 : <div class="detail_content">${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_type eq 'C'}"><div class="detail_content"> ~ ${fn:substring(class_cd,0,10)}</div></c:if></div></div>
+					<div class="detail_head">일자 : <div class="detail_content">${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_cd ne cDto.class_sd}"><div class="detail_content"> ~ ${fn:substring(class_cd,0,10)}</div></c:if></div></div>
 					<div class="detail_head">시작시간 : <div class="detail_content">${class_time_H}시 ${class_time_M}분
 						<c:if test="${cDto.class_cd eq cDto.class_sd}"><div class="detail_content"> ~ ${class_time_HH}시 <c:if test="${class_time_MM<10}">0</c:if>${class_time_MM}분</div></c:if></div></div>
 					<div class="detail_head">강의시간 : <div class="detail_content">${cDto.class_time}분</div></div>

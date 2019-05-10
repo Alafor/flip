@@ -216,9 +216,9 @@
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
-														<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+														<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 														<h3>
-															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+															<a href="cdetail.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
 														<!-- 별 -->
 														<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
@@ -241,7 +241,7 @@
 													<div class="lh-content">
 														<span class="category">${inclass.class_creator_name}</span> 
 														<span class="instructor_img"></span>
-														<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+														<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 														<h3>
 															<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 														</h3>
@@ -298,9 +298,9 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																		<a href="cdetail.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
 																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
@@ -323,7 +323,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -398,9 +398,9 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																		<a href="cdetail.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
 																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
@@ -423,7 +423,7 @@
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
-																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
+																	<a href="cancelClass.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
 																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
 																	</h3>
@@ -518,16 +518,16 @@
 													<c:otherwise>
 														<div class="col-lg-6">
 															<div class="d-block d-md-flex listing">
-																<a href="review.do?class_seq=${inclass.seq}" class="img d-block"
+																<a href="#" class="img d-block"
 																	style="background-image: url('resources/img/class/${inclass.class_img}') ; background-color:rgba(138,138,138,0.8);background-size:cover; background-blend-mode: saturation;">
-																	<div style="font-size: 20px; padding-left: 30px;padding-top: 50px;">폐강된 강의 입니다~<br> 강의평을 남기실수 <br>있습니다.</div>
+																	<div style="font-size: 20px; padding-left: 30px;padding-top: 50px;">폐강된 강의 입니다~<br>
 																	</a>
 																<div class="lh-content">
 																	<span class="category">${inclass.class_creator_name}</span> 
 																	<span class="instructor_img"></span>
 																	<a href="cancelWishlist.do?seq=${inclass.seq}&email=${member.member_email}" class="bookmark" style="text-align: center;vertical-align: middle;"><span class="fas fa-trash-alt"></span></a>
 																	<h3>
-																		<a href="review.do?class_seq=${inclass.seq}">${inclass.class_name}</a>
+																		<a href="#">${inclass.class_name}</a>
 																	</h3>
 																	<!-- 별 -->
 																	<div class="mb-0 teacherstar" style="width:90px; float:left;" data-minority="${inclass.class_member_rating}" onclick="gogostar(this)">
