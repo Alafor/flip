@@ -21,7 +21,7 @@ $(document).ready(function() {
 			//클래스 탭메뉴 종료
 				$('ul.tabs li').click(function() {
 					var tab_id = $(this).attr('data-tab');//tab-1
-					
+					pagenum=1;
 					$('ul.tabs li').removeClass('current');
 					$('.tab-content').removeClass('current');
 

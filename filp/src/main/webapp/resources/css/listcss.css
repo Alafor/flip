@@ -121,3 +121,22 @@ label {
 	border-bottom: solid #30E3CA 2px;
 	padding-bottom: 3px;
 }
+.pagingbox{
+	text-align: center;
+}
+input[type=button]{
+	border: none;
+	background-color:white;
+	color: #666;
+	font-weight: bold;
+	font-size: 18px;
+}
+input[type=button]:hover{
+	border: 1px solid;
+	border-color: #dcdbde;
+	color:	#F89D13;
+	padding-right: 5px;
+	padding-left: 5px;
+	padding-top:0px;
+	padding-bottom: 0px;
+}
