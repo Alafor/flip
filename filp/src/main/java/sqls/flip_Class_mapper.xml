@@ -338,9 +338,9 @@
 			</if>
 		</where>
 		)ROWNUMS
-		<!-- <where>
+		<where>
 			CEIL(ROWNUMS.RN/16)=#{count}
-		</where> -->
+		</where>
 	</select>
 	<!-- PAGEING COUNT -->
 	<select id="pageCount" parameterType="Map" resultType="int">
