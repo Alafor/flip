@@ -72,8 +72,8 @@ public class MooooonController {
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
 	public String mypage(Locale locale, Model model,HttpServletRequest request,HttpSession session) {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		MemberDto memberDto = (MemberDto) request.getSession().getAttribute("logInMember");
-		
+		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("logInMember");
+		System.out.println(memberDto);
 		String type = memberDto.getMember_type();
 		int member_seq = memberDto.getMember_seq();
 		String member_name = memberDto.getMember_name();
