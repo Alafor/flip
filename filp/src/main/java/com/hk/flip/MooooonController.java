@@ -80,6 +80,7 @@ public class MooooonController {
 		System.out.println("로그인 타입:"+type);
 		System.out.println("member_seq:"+member_seq);
 		model.addAttribute("inclassList",myPageService.getAllInclassList(member_seq) );		
+		model.addAttribute("myWishList",myPageService.getAllWishList(member_seq) );		
 		model.addAttribute("member", myPageService.viewMyMember(member_seq));
 		if(type.equals("S")) {
 			return "s_mypage";
@@ -223,8 +224,11 @@ public class MooooonController {
 	@RequestMapping(value = "/regist_class.do", method = RequestMethod.POST)
 	public String regist_class(Locale locale, Model model,HttpServletRequest request,int seq) {
 		logger.info("강의등록이동(W,S){}.", locale);
-		int member_seq = ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_seq();
+		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("logInMember");
+		int member_seq = memberDto.getMember_seq();
+		String email = memberDto.getMember_email();
 		if(inclassService.regist_class(member_seq,seq)) {
+			myPageService.deleteWishlist(seq,email);
 			model.addAttribute("msg","수강 신청에 성공했습니다.");		
 			model.addAttribute("url","cdetail.do?class_seq="+seq);
 			return "Redirect";

@@ -38,10 +38,10 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <script type="text/javascript">
 function registClass(seq) {
-	var class_type = $('input[name=class_type]').val()
-	var member_type = $('input[name=member_type]').val()
-	var class_participation = $('input[name=class_participation]').val()
-	var class_now_participation = $('input[name=class_now_participation]').val()
+	var class_type = $('input[name=class_type]').val();
+	var member_type = $('input[name=member_type]').val();
+	var class_participation = $('input[name=class_participation]').val()*1;
+	var class_now_participation = $('input[name=class_now_participation]').val()*1;
 	if(class_participation<=class_now_participation){
 		alert(class_participation+class_now_participation);
 		alert('신청 인원이 초과되었습니다');
@@ -61,7 +61,7 @@ function registClass(seq) {
 			return false;
 		}
 	}else {
-		if(member_type!=('T')) {
+		if(member_type==('T')) {
 			alert('강의를 신청하실수 없습니다');
 			return false;
 		}
@@ -182,6 +182,7 @@ div[id^=nav]{padding: 0 25px;
  	border-radius: 10px;
  	font-size: 16px;
  	border: 2px solid #ccc;
+ 	background-color: white;
 /*  	position: fixed; */
 /* 	top: 50px; */
 /* 	left:30%; */
@@ -311,7 +312,7 @@ String member_type= memberDto.getMember_type(); %>
 <!-- 			</div> -->
 			<div class="row-fluid">
 			<div class="row justify-content-center">
-				<div class="col-md-7 mb-7" data-aos="fade">
+				<div class="col-md-6 mb-6" data-aos="fade">
 					<!-------------------------------------------------------------------------------------------------->
 
 
@@ -365,7 +366,9 @@ String member_type= memberDto.getMember_type(); %>
 										<hr>
 										<!-- Teacher 탭의 내용 -->
 										<div class="target" id="nav2">
-											<span><b>강사님 소개 </b></br></br>
+											<c:if test="${cDto.class_type eq 'C'}"><span><b>강사님 소개 </b></br></br></c:if> 
+											<c:if test="${cDto.class_type eq 'W'}"><span><b>강의 리더 </b></br></br></c:if> 
+											<c:if test="${cDto.class_type eq 'S'}"><span><b>스터디 리더 </b></br></br></c:if> 
 											</span> 
 											<div class="row">
 												<div class="col-md-3 center-block">
@@ -374,12 +377,12 @@ String member_type= memberDto.getMember_type(); %>
 													</div>
 													<div class="" style="padding-top: 10px; text-align: center;margin-top: 10px;">${cDto.class_creator_name}</div>
 													<div style="text-align: center;">
-														<div class="mb-0 teacherstar" data-minority="${cDto.class_member_rating}"
-															onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;"></div>(${cDto.class_member_rating})
+														<c:if test="${cDto.class_type eq 'C'}"><div class="mb-0 teacherstar" data-minority="${cDto.class_member_rating}"
+															onclick="gogostar(this)" style="padding-top: 10px; display: inline-block;"></div>(${cDto.class_member_rating})</c:if>
 													</div>
 												</div>
-												<div class="col-lg-1"></div>
-												<div class="col-lg-8">
+												<div class="col-lg-1 col-md-1"></div>
+												<div class="col-lg-8 col-md-7">
 													<div><textarea style="width: 100%; height: 50px;overflow-y:hidden; border: 0px solid black; resize:none; margin-top: 20px;" readonly="readonly" id="member_info" >${cDto.member_info}</textarea> </div>
 												</div>
 											</div>
@@ -465,7 +468,7 @@ String member_type= memberDto.getMember_type(); %>
 					
 					<div class="detail_head">일자 : <div class="detail_content">${fn:substring(class_sd,0,10)} <c:if test="${cDto.class_cd ne cDto.class_sd}"><div class="detail_content"> ~ ${fn:substring(class_cd,0,10)}</div></c:if></div></div>
 					<div class="detail_head">시작시간 : <div class="detail_content">${class_time_H}시 ${class_time_M}분
-						<c:if test="${cDto.class_cd eq cDto.class_sd}"><div class="detail_content"> ~ ${class_time_HH}시 <c:if test="${class_time_MM<10}">0</c:if>${class_time_MM}분</div></c:if></div></div>
+						<div class="detail_content"> ~ ${class_time_HH}시 <c:if test="${class_time_MM<10}">0</c:if>${class_time_MM}분</div></div></div>
 					<div class="detail_head">강의시간 : <div class="detail_content">${cDto.class_time}분</div></div>
 					<div class="detail_head">참가 인원 : <div class="detail_content">${cDto.class_now_participation}/${cDto.class_participation}명</div></div>
 					<c:if test="${cDto.class_type eq 'C'}"><div class="detail_head">금액 : <div class="detail_content">${cDto.class_price}원</div></div></c:if>

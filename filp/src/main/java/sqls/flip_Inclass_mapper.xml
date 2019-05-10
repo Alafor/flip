@@ -50,7 +50,7 @@
 		
 		(select count(a.inclass_member_seq) as CLASS_NOW_PARTICIPATION from inclass a,
 		    (select member_seq,member_type from member b where member_type ='S') b
-		where a.inclass_class_seq = 184 and a.inclass_member_seq = b.member_seq)
+		where a.inclass_class_seq = #{class_seq} and a.inclass_member_seq = b.member_seq)
 	</insert>
 	
 	<select id="getinclasslist" parameterType="int" resultType="ClassDto">
@@ -58,18 +58,24 @@
 		A.CLASS_TYPE,A.SEQ, A.CLASS_NAME,A.REGDATE, A.CLASS_INFO, A.CLASS_AREA, A.CLASS_DEPA 
 		, A.CLASS_SD , A.CLASS_CD, A.CLASS_WEEK
 		, A.CLASS_STARTTIME , A.CLASS_TIME
-		, A.CLASS_PRICE, A.CLASS_PARTICIPATION, A.CLASS_DETAIL, A.CLASS_IMG , A.CLASS_HASHTAG, A.CLASS_TERMIN,
-			NVL(B.RATING,0) AS RATING,	
+		, A.CLASS_PRICE, A.CLASS_PARTICIPATION, A.CLASS_DETAIL, A.CLASS_IMG , A.CLASS_HASHTAG, A.CLASS_TERMIN
+         , a.class_creator_name , a.profile_img,
+			NVL(B.RATING,0) AS class_member_rating,	
+			NVL(b.CLASS_REVIEW_COUNT,0) as class_review_count,
 			C.PARTICIPATION,
 			C.D_DAY,
 			D.MEMBER_NAME AS CLASS_CREATOR_NAME
-		  FROM (SELECT CLASS_TYPE, SEQ, CLASS_NAME, REGDATE, CLASS_INFO, CLASS_AREA, CLASS_DEPA 
-		, CLASS_SD , CLASS_CD, CLASS_WEEK
-		, CLASS_STARTTIME , CLASS_TIME
-		, CLASS_PRICE, CLASS_PARTICIPATION, CLASS_DETAIL, CLASS_IMG , CLASS_HASHTAG, CLASS_TERMIN,CLASS_MEMBER_SEQ  FROM CLASS WHERE SEQ IN(SELECT INCLASS_CLASS_SEQ FROM INCLASS 
+		  FROM (SELECT a.class_type, a.seq, a.class_name, a.regdate, a.class_info, a.class_area, a.class_depa 
+		, a.class_sd , a.class_cd, a.class_week
+		, a.class_starttime , a.class_time
+		, a.class_price, a.class_PARTICIPATION, a.class_detail, a.class_img , a.class_hashtag, a.class_termin, a.CLASS_MEMBER_SEQ  
+        , b.member_name as class_creator_name, b.member_profile as profile_img
+        FROM class a,member b
+        WHERE  b.member_seq = a.class_member_seq and
+        SEQ IN(SELECT INCLASS_CLASS_SEQ FROM INCLASS 
 		 WHERE INCLASS_MEMBER_SEQ= #{member_seq})) A,
-		 (SELECT CLASS.CLASS_MEMBER_SEQ, ROUND(AVG(REVIEW.REVIEW_RATING),1) AS RATING FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ GROUP BY CLASS.CLASS_MEMBER_SEQ) B,
-		  (SELECT SEQ,	(SELECT COUNT(INCLASS.INCLASS_CLASS_SEQ) FROM INCLASS WHERE INCLASS.INCLASS_CLASS_SEQ = CLASS.SEQ) AS PARTICIPATION, (TO_CHAR(CLASS.CLASS_SD,'YYYYMMDD')-TO_CHAR(SYSDATE,'YYYYMMDD')) AS D_DAY
+		 (SELECT CLASS.CLASS_MEMBER_SEQ, ROUND(AVG(REVIEW.REVIEW_RATING),1) AS RATING, COUNT(REVIEW_CLASS_SEQ) AS CLASS_REVIEW_COUNT FROM REVIEW, CLASS WHERE REVIEW.REVIEW_CLASS_SEQ = CLASS.SEQ GROUP BY CLASS.CLASS_MEMBER_SEQ) B,
+		  (SELECT SEQ,	(SELECT COUNT(INCLASS.INCLASS_CLASS_SEQ) FROM INCLASS WHERE INCLASS.INCLASS_CLASS_SEQ = CLASS.SEQ) AS PARTICIPATION, TRUNC((CLASS.CLASS_SD-SYSDATE),0) AS D_DAY
 			FROM CLASS) C,
 			(SELECT MEMBER_SEQ,MEMBER_NAME FROM MEMBER) D
 		 WHERE A.CLASS_MEMBER_SEQ = B.CLASS_MEMBER_SEQ (+)
