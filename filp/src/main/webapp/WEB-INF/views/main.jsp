@@ -39,7 +39,9 @@
 </head>
 <body>
 
-
+<!-- header -->
+		<jsp:include page="header.jsp" />
+		<!-- header 종료 -->
 	<div class="site-wrap">
 		<div class="site-mobile-menu">
 			<div class="site-mobile-menu-header">
@@ -50,9 +52,7 @@
 			<div class="site-mobile-menu-body"></div>
 		</div>
 		
-		<!-- header -->
-		<jsp:include page="header.jsp" />
-		<!-- header 종료 -->
+		
 
 		<div class="site-blocks-cover overlay"
 			style="background-image: url('resources/images/배경8.jpg');"

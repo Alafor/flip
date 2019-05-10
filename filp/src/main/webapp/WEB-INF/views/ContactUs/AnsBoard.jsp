@@ -52,7 +52,9 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 </head>
 <body>
 <jsp:useBean id="util" class="com.hk.utils.Util"/>
-
+<!-- header -->
+		<jsp:include page="../header.jsp"/>
+		<!-- header 종료 -->
 <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -64,9 +66,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
       <div class="site-mobile-menu-body"></div>
     </div>
     </div>
-	<!-- header -->
-		<jsp:include page="../header.jsp"/>
-		<!-- header 종료 -->
+	
 		
 	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/jump.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">

@@ -74,6 +74,9 @@
 <script src="resources/js/AddClass_S.js"></script>
 </head>
 <body>
+	<!-- header -->
+	<jsp:include page="header.jsp" />
+	<!-- header 종료 -->
 	<div class="site-wrap">
 		<div class="site-mobile-menu">
 			<div class="site-mobile-menu-header">
@@ -84,9 +87,6 @@
 			<div class="site-mobile-menu-body"></div>
 		</div>
 	</div>
-	<!-- header -->
-	<jsp:include page="header.jsp" />
-	<!-- header 종료 -->
 
 	<div class="site-blocks-cover inner-page-cover overlay"
 		style="background-image: url(resources/images/아이.jpg);"

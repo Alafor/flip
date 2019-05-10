@@ -84,6 +84,9 @@ nav > div a.nav-item.nav-link:focus
 <!-------------------------------------->
 </head>
 <body>
+	<!-- header -->
+		<jsp:include page="header.jsp"/>
+		<!-- header 종료 -->
 
 <div class="site-wrap">
 
@@ -96,9 +99,6 @@ nav > div a.nav-item.nav-link:focus
       <div class="site-mobile-menu-body"></div>
     </div>
     </div>
-	<!-- header -->
-		<jsp:include page="header.jsp"/>
-		<!-- header 종료 -->
 		
 	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">

@@ -264,6 +264,9 @@ String member_type= memberDto.getMember_type(); %>
 
 <input name="class_type" type="hidden" value="${cDto.class_type}">
 <!-- #f8f9fa -->
+	<!-- header -->
+		<jsp:include page="header.jsp"/>
+		<!-- header 종료 -->
 <div class="site-wrap">
 
     <div class="site-mobile-menu">
@@ -275,9 +278,6 @@ String member_type= memberDto.getMember_type(); %>
       <div class="site-mobile-menu-body"></div>
     </div>
     </div>
-	<!-- header -->
-		<jsp:include page="header.jsp"/>
-		<!-- header 종료 -->
 		
 	<div class="site-blocks-cover inner-page-cover overlay" style="background-image: url(resources/images/아이.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
