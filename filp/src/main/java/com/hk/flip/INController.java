@@ -483,11 +483,7 @@ public class INController {
 		
 	}
 	
-	@RequestMapping(value = "/A_sendMsg.do", method = RequestMethod.GET)
-	public String A_sendMsg(Locale locale, Model model) {
-		logger.info("{}.", locale);
-		return "admin/sendMsg";
-	}
+	
 
 	
 }

@@ -682,4 +682,11 @@ public class MooooonController {
 			return "Redirect";
 		}
 	}
+	//대영씨 내꺼에 만들어 논거 지우기 뭐해서 옮겨놨어요 ㅎ
+	@RequestMapping(value = "/A_sendMsg.do", method = RequestMethod.GET)
+	public String A_sendMsg(Locale locale, Model model) {
+		logger.info("{}.", locale);
+		return "admin/sendMsg";
+	}
+	
 }
