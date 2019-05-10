@@ -55,7 +55,7 @@
 		<!-- header 종료 -->
 
 		<div class="site-blocks-cover overlay"
-			style="background-image: url('resources/images/제빵.png');"
+			style="background-image: url('resources/images/배경8.jpg');"
 			data-aos="fade" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div
@@ -67,7 +67,7 @@
 									지루한 일상을 뒤엎다!!<span class="text-warning">플</span><span
 										class="text-primary">립</span>
 								</h1>
-								<p data-aos="fade-up" data-aos-delay="100">You can buy, sell
+								<p data-aos="fade-up" data-aos-delay="100">You can learn
 									anything you want.</p>
 							</div>
 						</div>
