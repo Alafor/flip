@@ -46,6 +46,10 @@
 		DELETE FROM class WHERE seq = #{seq}
 	</delete>
 	
+	<delete id="aInclassDelete" parameterType="int">
+		DELETE FROM inclass WHERE inclass_class_seq = #{seq}
+	</delete>
+	
 	<select id="getclasslist" parameterType="String" resultType="ClassDto">
 		SELECT
         C.CLASS_TYPE,
@@ -98,4 +102,7 @@
 		WHERE seq = #{seq}
 	</update>
 	
+	<update id="cleanClass">
+		update class set class_termin ='Y' where class_cd<![CDATA[<]]> sysdate
+	</update>
 </mapper>

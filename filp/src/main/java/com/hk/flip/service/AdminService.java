@@ -32,50 +32,52 @@ public class AdminService implements IAdminService {
 
 	@Override
 	public MemberDto getMemberProfil(String email) {
-		// TODO Auto-generated method stub
 		return adminDao.getMemberProfil(email);
 	}
 
 	@Override
 	public List<ClassDto> getClassList(String class_termin) {
-		// TODO Auto-generated method stub
 		return adminDao.getClassList(class_termin);
 	}
 
 	@Override
 	public ClassDto getClassProfil(int seq) {
-		// TODO Auto-generated method stub
 		return adminDao.getClassProfil(seq);
 	}
 
 	@Override
 	public boolean updateMember(MemberDto dto) {
-		// TODO Auto-generated method stub
 		return adminDao.updateMember(dto);
 	}
 
 	@Override
 	public boolean aMemberDelete(String member_email) {
-		// TODO Auto-generated method stub
 		return adminDao.aMemberDelete(member_email);
 	}
 
 	@Override
 	public boolean updateClass(ClassDto dto) {
-		// TODO Auto-generated method stub
 		return adminDao.updateClass(dto);
 	}
 
 	@Override
 	public boolean aClassDelete(int seq) {
-		// TODO Auto-generated method stub
 		return adminDao.aClassDelete(seq);
 	}
 
 	@Override
 	public boolean aClassClose(int seq) {
-		// TODO Auto-generated method stub
 		return adminDao.aClassClose(seq);
+	}
+
+	@Override
+	public boolean cleanClass() {
+		return adminDao.cleanClass();
+	}
+
+	@Override
+	public boolean aInclassDelete(int seq) {
+		return adminDao.aInclassDelete(seq);
 	}
 
 

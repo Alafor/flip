@@ -29,13 +29,7 @@ public interface IInclassDao {
 
 	public boolean setClassTermin(int seq, String termin);
 
-
-
-
-
-
-
-
+	public boolean deleteInclass_T(int seq, String email);
 
 
 

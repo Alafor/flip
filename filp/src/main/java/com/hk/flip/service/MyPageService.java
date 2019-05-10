@@ -80,5 +80,9 @@ public class MyPageService implements IMyPageService {
 	}
 
 
+	@Override
+	public boolean deleteInclass_T(int seq, String email) {
+		return dao.deleteInclass_T(seq,email);
+	}
 	
 }

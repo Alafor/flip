@@ -66,6 +66,10 @@ public class MooooonController {
 	@Scheduled(cron="0 0 0 * * ? ")
 	public void doSchedule() {
 	   logger.info("Spring Schedule Start!");
+	   if(!adminService.cleanClass()) {
+		   
+	   }
+	   
 	   
 	}
 	
@@ -217,7 +221,7 @@ public class MooooonController {
 				return "Redirect";
 			}
 		}
-		model.addAttribute("msg","강의가 등록 되었습니다.");		
+		model.addAttribute("msg","강의가 등록 되었습니다.");	
 		model.addAttribute("url","main.do");
 		return "Redirect";
 	}
@@ -630,18 +634,30 @@ public class MooooonController {
 			model.addAttribute("url","main.do");
 			return "Redirect";
 		}
-		if(!(myPageService.deleteInclass(seq,email))) {
-			model.addAttribute("msg","강의 삭제에 실패했습니다.");		
-			model.addAttribute("url","mypage.do");
-			return "Redirect";
-		}else {
-			System.out.println("강의 삭제 성공");
-			if(memberDto.getMember_type().equals("T")) {
-				myPageService.setClassTermin(seq,"Y");		
+		if(memberDto.getMember_type().equals("T")) {
+			if(!myPageService.deleteInclass_T(seq, email)){
+				model.addAttribute("msg","강의 삭제는 개강 3일 전까지만 가능합니다.");		
+				model.addAttribute("url","mypage.do");
+				return "Redirect";
+			}else {
+				adminService.aClassDelete(seq);
+				adminService.aInclassDelete(seq);
+				System.out.println("inclass 삭제 성공");				
+				model.addAttribute("msg","강의 삭제에 성공했습니다.");		
+				model.addAttribute("url","mypage.do");
+				return "Redirect";
 			}
-			model.addAttribute("msg","강의 삭제에 성공했습니다.");		
-			model.addAttribute("url","mypage.do");
-			return "Redirect";
+		}else {
+			if(!(myPageService.deleteInclass(seq,email))) {
+				model.addAttribute("msg","강의 삭제에 실패했습니다.");		
+				model.addAttribute("url","mypage.do");
+				return "Redirect";
+			}else {
+				System.out.println("inclass 삭제 성공");				
+				model.addAttribute("msg","강의 삭제에 성공했습니다.");		
+				model.addAttribute("url","mypage.do");
+				return "Redirect";
+			}
 		}
 	}
 	

@@ -28,6 +28,10 @@ public interface IAdminDao {
 
 	public boolean aClassClose(int seq);
 
+	public boolean cleanClass();
+
+	public boolean aInclassDelete(int seq);
+
 
 
 }
