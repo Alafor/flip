@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.hk.flip.daos.IMsgDao;
 import com.hk.flip.dtos.MsgDto;
@@ -25,6 +26,19 @@ public class MsgService implements IMsgService {
 	public List<MsgDto> getmsglist(String msg_email) {
 		
 		return msgDao.getmsglist(msg_email);
+	}
+	
+	@Transactional
+	@Override
+	public MsgDto detailmsg(int msg_seq) {
+		msgDao.readConfirm(msg_seq);
+		return msgDao.detailmsg(msg_seq);
+	}
+
+	@Override
+	public boolean muldelmsg(String[] seqs) {
+		
+		return msgDao.muldelmsg(seqs);
 	}
 
 }

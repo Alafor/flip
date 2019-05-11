@@ -8,16 +8,19 @@
 	</select>
 	
 	<select id="getMsgList" resultType="MsgDto" parameterType="String">
-		SELECT MSG_READ,MSG_TO,MSG_FROM,MSG_CONTENT,MSG_REGDATE,MSG_SEQ FROM MSG WHERE MSG_TO=#{msg_email}
-	</select>
-	
-	<select id="msgDetail" parameterType="int" resultType="MsgDto">
-		SELECT MSG_FROM,MSG_CONTENT,MSG_REGDATE FROM MSG WHERE msg_seq = #{msg_seq}
+		SELECT A.MSG_READ,A.MSG_FROM,A.MSG_CONTENT,A.MSG_REGDATE,A.MSG_SEQ,B.MEMBER_NAME 
+		FROM MSG A INNER JOIN MEMBER B ON A.MSG_FROM = B.MEMBER_EMAIL WHERE MSG_TO=#{msg_email}
 	</select>
 	
 	<update id="readConfirm" parameterType="int" >
 		UPDATE MSG SET MSG_READ = 'Y' WHERE MSG_SEQ = #{msg_seq}
 	</update>
+	
+	<select id="msgDetail" parameterType="int" resultType="MsgDto">
+		SELECT A.MSG_READ,A.MSG_FROM,A.MSG_CONTENT,A.MSG_REGDATE,A.MSG_SEQ,B.MEMBER_NAME 
+		 FROM MSG A INNER JOIN MEMBER B ON A.MSG_FROM = B.MEMBER_EMAIL WHERE MSG_SEQ = #{msg_seq}
+	</select>
+	
 	
 	<delete id="muldelMsg" parameterType="Map">
 		DELETE FROM MSG WHRER MSG_SEQ=

@@ -53,7 +53,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 <body>
 
 
-<div class="site-wrap">
+<!-- <div class="site-wrap">
 
     <div class="site-mobile-menu">
       <div class="site-mobile-menu-header">
@@ -64,12 +64,12 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
       <div class="site-mobile-menu-body"></div>
     </div>
     </div>
-	
+	 -->
 		
 	
 
- <div class="site-section bg-light">
-<div id="container">
+<!--  <div class="site-section bg-light">
+<div class="container"> -->
 
 <div class="row justify-content-center mb-5">
 				<div class="col-md-7 text-center border-primary">
@@ -79,11 +79,11 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 					<p class="color-black-opacity-5">MY&amp;MESSAGE</p>
 				</div>
 			</div>
- <div class="row justify-content-center" >
-          <div class="col-md-5 mb-3"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;">
+<!--  <div class="row justify-content-center" >
+          <div class="col-md-5 mb-3"  data-aos="fade" style="border: 2px solid #30e3ca; border-radius: 20px;"> -->
 
- <form action="msgmuldel.do" method="post" style="margin: 20px;"> 
-<table class="table  " >
+ <form action="muldelMsg.do" method="post" style="margin: 20px;"> 
+<table class="table" >
 	
 	 <col width="5%"><col width="10%"><col width="10%"><col width="35%"><col width="30%"><col width="10%"> 
 	<tr style="text-align: center;">
@@ -92,7 +92,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 		<th>보낸사람</th>
 		<th>내용</th>
 		<th>작성일</th>
-		<th>읽음여부</th>
+		<th style="text-align: center;">읽음여부</th>
 	
 	</tr>
 	<c:choose>
@@ -104,8 +104,8 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 				<tr>
 					 <td><input type="checkbox" name="chk" value="${msgDto.msg_seq}"/></td>
 					<td  style="text-align: center;">${msgDto.msg_seq}</td>
-					<td  style="text-align: center;">${msgDto.msg_from}</td>
-					<td style="text-align: center;"><a href="msgdetail.do?seq=${msgDto.msg_seq}">${msgDto.msg_content}</a></td>
+					<td  style="text-align: center;">${msgDto.member_name}</td>
+					<td style="text-align: center;"><a href="msgdetail.do?msg_seq=${msgDto.msg_seq}">${msgDto.msg_content}</a></td>
 					<td  style="text-align: center;"> <fmt:formatDate value="${msgDto.msg_regdate}" pattern="yyyy년MM월dd일"/> </td>
 					<c:choose>
 						<c:when test="${msgDto.msg_read=='Y'}">
@@ -126,8 +126,8 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 		<td colspan="10">
 			<div class="row form-group" style="text-align: center;">
                 <div class="col-md-12">
-                  <input type="button" value="글쓰기" class="btn btn-primary text-white" style="width: 20%; float: right;" onclick="location.href='ansinsertform.do'">
-                  <input type="submit" value="삭제" class="btn btn-primary text-white" style="width: 20%; float: right;"/>
+                  <input type="button" value="닫기" class="btn btn-primary text-white" style="width: 15%; float: right;" onclick="window.close()">
+                  <input type="submit" value="삭제" class="btn btn-primary text-white" style="width: 15%; float: right; margin-right: 10px;"/>
                 </div>
               </div>
 		</td>
@@ -139,8 +139,8 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 
 
 </div>
-</div>
-</div>
+<!-- </div>
+</div> -->
 
 
 	

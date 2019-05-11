@@ -96,7 +96,7 @@
     function onOpen(evt) 
     {
     	var email = $('#ws_email').val();
-    	alert(email);
+    	/* alert(email); */
        websocket.send(email);
     }
     function onMessage(evt) {
@@ -120,6 +120,6 @@
 <script type="text/javascript">
 	function showMsg() {
 		
-		window.open('myMsg.do', '쪽지함', 'width=500,height=500,toolbars=no,scrollbars=no');
+		window.open('myMsg.do', '쪽지함', 'width=920,height=500,toolbars=no,scrollbars=no,resizable=0');
 	}
 </script>

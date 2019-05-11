@@ -10,9 +10,18 @@ public class MsgDto {
 	private String msg_read;
 	private Date msg_regdate;
 	private int msg_seq;
+	private String member_name;
 	public MsgDto() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public String getMember_name() {
+		return member_name;
+	}
+	public void setMember_name(String member_name) {
+		this.member_name = member_name;
 	}
 	public String getMsg_to() {
 		return msg_to;
@@ -51,7 +60,7 @@ public class MsgDto {
 		this.msg_seq = msg_seq;
 	}
 	
-	public MsgDto(String msg_to, String msg_from, String msg_content, String msg_read, Date msg_regdate, int msg_seq) {
+	public MsgDto(String msg_to, String msg_from, String msg_content, String msg_read, Date msg_regdate, int msg_seq,String member_name) {
 		super();
 		this.msg_to = msg_to;
 		this.msg_from = msg_from;
@@ -59,11 +68,15 @@ public class MsgDto {
 		this.msg_read = msg_read;
 		this.msg_regdate = msg_regdate;
 		this.msg_seq = msg_seq;
+		this.member_name = member_name;
 	}
+
+
 	@Override
 	public String toString() {
 		return "MsgDto [msg_to=" + msg_to + ", msg_from=" + msg_from + ", msg_content=" + msg_content + ", msg_read="
-				+ msg_read + ", msg_regdate=" + msg_regdate + ", msg_seq=" + msg_seq + "]";
+				+ msg_read + ", msg_regdate=" + msg_regdate + ", msg_seq=" + msg_seq + ", member_name=" + member_name
+				+ "]";
 	}
 	
 }

@@ -498,6 +498,26 @@ public class INController {
 		return "MyMsg";
 	}
 	
+	@RequestMapping(value = "/msgdetail.do", method = RequestMethod.GET)
+	public String msgdetail(Locale locale, Model model,int msg_seq) {
+		logger.info("쪽지 상세보기 {}.", locale);
+		MsgDto dto = msgService.detailmsg(msg_seq);
+		model.addAttribute("dto", dto );
+		return "MsgDetail";
+	}
+	
+	@RequestMapping(value = "/muldelMsg.do",  method = {RequestMethod.GET, RequestMethod.POST})
+	public String muldelMsg(Locale locale, Model model, String[] chk) {
+		logger.info("쪽지 삭제하기 {}.", locale);
+		boolean isS = msgService.muldelmsg(chk);
+		if(isS) {
+			return "redirect:myMsg.do";
+		}else {
+			model.addAttribute("msg","글 삭제 실패");
+			return "error";
+		}	
+	}
+	
 	
 	
 	
