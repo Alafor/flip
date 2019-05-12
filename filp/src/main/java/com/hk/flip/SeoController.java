@@ -88,8 +88,10 @@ public class SeoController {
 	public String listload(Locale locale, Model model,String search, String department, String classType, String num, String selArea) {
 		logger.info("Started main{}.", locale);
 		int allPageCount = classService.pageCount(search, department, classType,selArea);
-		int pageCount = allPageCount/16;
-		int checkFloat = allPageCount%16;
+		int pageCount = allPageCount/4;
+		int checkFloat = allPageCount%4;
+		int beginPage=1;
+		int endPage=0;
 		System.out.println("checkFloat: "+checkFloat);
 		List<ClassDto> areaList = classService.areaCount(search, department, classType,selArea);
 		int thisPage=Integer.parseInt(num);
@@ -98,7 +100,17 @@ public class SeoController {
 		}
 		if(checkFloat>0) {
 			pageCount+=1;
+			System.out.println("allpageCount: "+pageCount);
 		}
+		if(thisPage!=1 && (thisPage-1)%5==0) {
+			beginPage=thisPage;
+		}
+		endPage=beginPage+4;
+		if(pageCount<6) {
+			endPage=pageCount;
+		}
+		System.out.println("beginPage: "+beginPage);
+		System.out.println("endPage: "+endPage);
 		System.out.println("sel*********:"+selArea);
 		System.out.println("checkechek thisPage: "+thisPage);
 		List<ClassDto> searchList = classService.searchList(search, department, classType, thisPage, selArea);
@@ -112,8 +124,10 @@ public class SeoController {
 		model.addAttribute("searchList",searchList);
 		model.addAttribute("thisPage",thisPage);
 		model.addAttribute("allPageCount",allPageCount);
-		model.addAttribute("pageCount",pageCount);
 		model.addAttribute("areaList",areaList);
+		model.addAttribute("pageCount",pageCount);
+		model.addAttribute("beginpage",beginPage);
+		model.addAttribute("endpage",endPage);
 		return "listload";
 	}	
 	

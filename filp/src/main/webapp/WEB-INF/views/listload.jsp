@@ -59,7 +59,7 @@
 					<div id="areasize-s" class="labelBox" data-areasize="${fn:length(areaList)}">
 					<c:forEach var="areaList" items="${areaList}" varStatus="seq">
 						<label for="sarea-${seq.index}"> 
-						<input type="checkbox" checked="checked" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
+						<input type="checkbox" class="areachk" name="selectedarea" id="sarea-${seq.index}" value="${areaList.class_area}" />
 							<span class="areabox">
 								<span class="sarea areaspan" data-area="${areaList.class_area}">${areaList.class_area}</span>
 								<span  class="areaspan">(${areaList.class_area_count})</span>
@@ -159,11 +159,20 @@
 							<input type="hidden" name="department" value="${paramList.category}" /> 
 							<input type="hidden" name="classType" value="${paramList.classType}" />
 							<input type="hidden" id="numId" name="num" />
-							<div id="areatest-w" class="pagearea" style="display: none;"></div>
+							<div id="areatest-w" class="pagearea" style="display: none;">
+								<c:forEach var="areaList" items="${areaList}" varStatus="seq">
+									<input type="checkbox" name="selectedarea" value="${areaList.class_area}" checked="checked"/>${areaList.class_area}
+								</c:forEach>
+							</div>
 							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
-							<c:forEach begin="1" end="${pageCount}" varStatus="seq">
-								<input type="button" class="buttons" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
-							</c:forEach>
+								
+								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${thisPage-1}" value="이전"  onclick="pagesubmit(this)">
+							<c:forEach begin="${beginpage}" end="${endpage}" varStatus="seq">
+								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+							</c:forEach>	
+								<input type="button" id="next" class="buttons" data-allpage="${endpage}" data-page="${thisPage+1}" value="다음"  onclick="pagesubmit(this)">
+							
+								
 						</form>
 					</c:when>
 					<c:when test="${class_type eq 'C'}">
@@ -172,10 +181,14 @@
 							<input type="hidden" name="department" value="${paramList.category}" /> 
 							<input type="hidden" name="classType" value="${paramList.classType}" />
 							<input type="hidden" id="numId" name="num" />
-							<div id="areatest-c" class="pagearea" style="display: none;"></div>
+							<div id="areatest-c" class="pagearea" style="display: none;">
+								<c:forEach var="areaList" items="${areaList}" varStatus="seq">
+									<input type="checkbox" name="selectedarea" value="${areaList.class_area}" checked="checked"/>${areaList.class_area}
+								</c:forEach>
+							</div>
 							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
-							<c:forEach begin="1" end="${pageCount}" varStatus="seq">
-								<input type="button" class="buttons" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+							<c:forEach begin="${beginpage}" end="${endpage}" varStatus="seq">
+								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
 							</c:forEach>
 						</form>		
 					</c:when>
@@ -185,10 +198,14 @@
 							<input type="hidden" name="department" value="${paramList.category}" /> 
 							<input type="hidden" name="classType" value="${paramList.classType}" />
 							<input type="hidden" id="numId" name="num" />
-							<div id="areatest-s" class="pagearea" style="display: none;"></div>
+							<div id="areatest-s" class="pagearea" style="display: none;">
+								<c:forEach var="areaList" items="${areaList}" varStatus="seq">
+									<input type="checkbox" name="selectedarea" value="${areaList.class_area}" checked="checked"/>${areaList.class_area}
+								</c:forEach>
+							</div>
 							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
-							<c:forEach begin="1" end="${pageCount}" varStatus="seq">
-								<input type="button" class="buttons" data-allpage="${pageCount}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
+							<c:forEach begin="${beginpage}" end="${endpage}" varStatus="seq">
+								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
 							</c:forEach>
 						</form>		
 					</c:when>
