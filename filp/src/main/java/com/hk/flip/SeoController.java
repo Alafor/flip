@@ -15,14 +15,17 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.InclassDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.dtos.SearchDto;
 import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IClassWishlistService;
 import com.hk.flip.service.IInclassService;
+import com.hk.flip.service.ISreachService;
 import com.hk.utils.Util;
 
 /**
@@ -39,7 +42,8 @@ public class SeoController {
 	private IInclassService inclassService;
 	@Autowired
 	private IClassWishlistService classwishlistService;
-	
+	@Autowired
+	private ISreachService searchService;
 	//main list
 	@RequestMapping(value = "/main.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String mainOpen(Locale locale, Model model, String department, HttpServletRequest request) {
@@ -54,7 +58,18 @@ public class SeoController {
 		model.addAttribute("wantlist", wantList);
 		return "main";
 	}
-	
+	@RequestMapping(value="/searchCount.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String searchCount(Locale local, Model model, String search) {
+		int searchList=classService.pageCount(search);
+		if(searchList!=0) {
+			if(searchService.chkSearchWord(search)) {
+				System.out.println("검색어 리스트 수정 성공");
+			}else {
+				System.out.println("검색어 리스트 수정 실패");
+			}
+		}
+		return "forward:/searchlist.do";
+	}
 	//search list
 	@RequestMapping(value = "/searchlist.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String searchlist(Locale locale, Model model,String search, String department, String classType, HttpServletRequest request,String num, String selArea) {
@@ -88,27 +103,31 @@ public class SeoController {
 	public String listload(Locale locale, Model model,String search, String department, String classType, String num, String selArea) {
 		logger.info("Started main{}.", locale);
 		int allPageCount = classService.pageCount(search, department, classType,selArea);
-		int pageCount = allPageCount/4;
-		int checkFloat = allPageCount%4;
-		int beginPage=1;
+		int pageCount = allPageCount/16;
+		int checkFloat = allPageCount%16;
+		int thisPage=Integer.parseInt(num);
+		int nowBlock = thisPage/5;
 		int endPage=0;
 		System.out.println("checkFloat: "+checkFloat);
 		List<ClassDto> areaList = classService.areaCount(search, department, classType,selArea);
-		int thisPage=Integer.parseInt(num);
-		if(thisPage==0||thisPage<=0) {
-			thisPage=1;
+		//현재 보는 페이지 블록계산
+		if(thisPage%5==0) {
+			nowBlock-=1;
 		}
+		int beginPage=nowBlock*5+1;
+		//전체 페이지 계산
 		if(checkFloat>0) {
 			pageCount+=1;
 			System.out.println("allpageCount: "+pageCount);
 		}
-		if(thisPage!=1 && (thisPage-1)%5==0) {
-			beginPage=thisPage;
-		}
+		
 		endPage=beginPage+4;
-		if(pageCount<6) {
+		
+		if(pageCount/5==nowBlock) {
 			endPage=pageCount;
 		}
+		System.out.println("nowblock:"+nowBlock);
+		System.out.println("pageCount: "+pageCount);
 		System.out.println("beginPage: "+beginPage);
 		System.out.println("endPage: "+endPage);
 		System.out.println("sel*********:"+selArea);
@@ -125,6 +144,7 @@ public class SeoController {
 		model.addAttribute("thisPage",thisPage);
 		model.addAttribute("allPageCount",allPageCount);
 		model.addAttribute("areaList",areaList);
+		model.addAttribute("nowBlock",nowBlock+1);
 		model.addAttribute("pageCount",pageCount);
 		model.addAttribute("beginpage",beginPage);
 		model.addAttribute("endpage",endPage);
@@ -177,7 +197,16 @@ public class SeoController {
 					return "Redirect";
 				}
 			}
-			
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/autoComplete.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public Map<String,List<SearchDto>> autoComplete(Locale locale, Model model,HttpServletRequest request, String search) {
+		Map<String,List<SearchDto>> autoMap = new HashMap<String,List<SearchDto>>();
+		List<SearchDto> autoSearchList = searchService.autoSearchList(search);
+		autoMap.put("autoList", autoSearchList);
+		return autoMap;
+	
 	}
 }
 

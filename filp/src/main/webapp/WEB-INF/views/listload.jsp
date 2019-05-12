@@ -165,13 +165,15 @@
 								</c:forEach>
 							</div>
 							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
-								
-								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${thisPage-1}" value="이전"  onclick="pagesubmit(this)">
+								<c:if test="${thisPage ge '6'}">
+								<input type="button" id="prev" data-allpage="${endpage}" data-page="${nowBlock*5-5}" value="이전" onclick="pagesubmit(this)">								
+								</c:if>
 							<c:forEach begin="${beginpage}" end="${endpage}" varStatus="seq">
 								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
 							</c:forEach>	
-								<input type="button" id="next" class="buttons" data-allpage="${endpage}" data-page="${thisPage+1}" value="다음"  onclick="pagesubmit(this)">
-							
+								<c:if test="${pageCount gt '5' && endpage ne pageCount}">
+								<input type="button" id="next"  data-allpage="${endpage}" data-page="${nowBlock*5+1}" value="다음" onclick="pagesubmit(this)">
+								</c:if>
 								
 						</form>
 					</c:when>
@@ -187,9 +189,15 @@
 								</c:forEach>
 							</div>
 							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
+							<c:if test="${thisPage gt '5'}">
+								<input type="button" id="prev" data-allpage="${endpage}" data-page="${nowBlock*5-5}" value="이전" onclick="pagesubmit(this)">								
+								</c:if>
 							<c:forEach begin="${beginpage}" end="${endpage}" varStatus="seq">
 								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
-							</c:forEach>
+							</c:forEach>	
+								<c:if test="${pageCount gt '5' && endpage ne pageCount}">
+								<input type="button" id="next"  data-allpage="${endpage}" data-page="${nowBlock*5+1}" value="다음" onclick="pagesubmit(this)">
+								</c:if>
 						</form>		
 					</c:when>
 					<c:when test="${class_type eq 'S'}">
@@ -204,9 +212,15 @@
 								</c:forEach>
 							</div>
 							<div id="thisPage" data-thisPage="${thisPage}" style="display: none;"></div>
+							<c:if test="${thisPage ge '6'}">
+								<input type="button" id="prev" data-allpage="${endpage}" data-page="${nowBlock*5-5}" value="이전" onclick="pagesubmit(this)">								
+								</c:if>
 							<c:forEach begin="${beginpage}" end="${endpage}" varStatus="seq">
 								<input type="button" class="buttons" data-allpage="${endpage}" data-page="${seq.index}" value="${seq.index}" onclick="pagesubmit(this)"> 
-							</c:forEach>
+							</c:forEach>	
+								<c:if test="${pageCount gt '5' && endpage ne pageCount}">
+								<input type="button" id="next"  data-allpage="${endpage}" data-page="${nowBlock*5+1}" value="다음" onclick="pagesubmit(this)">
+								</c:if>
 						</form>		
 					</c:when>
 				</c:choose>

@@ -96,6 +96,12 @@ public class ClassDao implements IClassDao {
 		return sqlsession.selectOne(nameSpace + "pageCount",searchFilter);
 	}
 	@Override
+	public int pageCount(String search) {
+		Map<String, String> searchFilter = new HashMap<String, String>();
+		searchFilter.put("search", search);
+		return sqlsession.selectOne(nameSpace + "pageCount",searchFilter);
+	}
+	@Override
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea) {
 		Map<String, String> searchFilter = new HashMap<String, String>();
 		searchFilter.put("search", search);
@@ -113,4 +119,8 @@ public class ClassDao implements IClassDao {
 		map.put("month", month);
 		return sqlsession.selectList(nameSpace+"myschedule",map);
 	}
+
+	
+
+	
 }

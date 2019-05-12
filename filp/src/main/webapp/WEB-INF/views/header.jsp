@@ -34,7 +34,7 @@
 				role="navigation">
 				<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 					<li>
-						<form action="searchlist.do" method="get">
+						<form action="searchCount.do" method="get">
 							<div class="input-group mb-3 ">
 								<input type="text"
 									class="form-control text-black bg-transparent "

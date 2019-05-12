@@ -22,6 +22,7 @@ public interface IClassService {
 	public List<ClassDto> searchList(String search, String department, String classType, int count,String selArea);
 	public String addsClass(List<ClassDto> classList);
 	public int pageCount(String search, String department, String classType, String selArea);
+	public int pageCount(String search);
 	public String chkInclassTime_Create(ClassDto dto);
 	public String chkInclassTime_Join(int member_seq, int parseInt);
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);

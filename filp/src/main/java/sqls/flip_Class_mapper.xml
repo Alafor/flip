@@ -339,7 +339,7 @@
 		</where>
 		)ROWNUMS
 		<where>
-			CEIL(ROWNUMS.RN/4)=#{count}
+			CEIL(ROWNUMS.RN/16)=#{count}
 		</where>
 	</select>
 	<!-- PAGEING COUNT -->

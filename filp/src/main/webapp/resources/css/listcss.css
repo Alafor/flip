@@ -143,3 +143,13 @@ input[type=button]:hover{
 .areaspan{
 	color: #666;
 }
+#prev, #next{
+	height: 32px;
+	font-size: 14px;
+}
+#prev{
+	margin-right: 5px;
+}
+#next{
+	margin-left: 5px;
+}

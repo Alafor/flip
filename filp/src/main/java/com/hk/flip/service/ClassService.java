@@ -119,6 +119,10 @@ public class ClassService implements IClassService {
 		return classDao.pageCount(search, department, classType, selArea);
 	}
 	@Override
+	public int pageCount(String search) {
+		return classDao.pageCount(search);
+	}
+	@Override
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea){
 		return classDao.areaCount(search, department, classType, selArea);
 	}
@@ -159,4 +163,5 @@ public class ClassService implements IClassService {
 		}
 		
 	}
+	
 }

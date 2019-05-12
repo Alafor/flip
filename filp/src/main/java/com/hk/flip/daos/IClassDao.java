@@ -21,9 +21,12 @@ public interface IClassDao {
 	//검색 리스트
 	public List<ClassDto> searchList(String search, String department, String classType, int count, String selArea);
 	public int pageCount(String search, String department, String classType, String selArea);
+	public int pageCount(String search);
 	//지역검색
 	public List<ClassDto> areaCount(String search, String department, String classType, String selArea);
 	public int insertClass(ClassDto classDto);
 	//칼린다
 	public List<CalendarDto> scheduleList(int memberSeq, int month);
+	
+	
 }

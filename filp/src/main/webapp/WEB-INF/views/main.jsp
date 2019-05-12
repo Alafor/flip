@@ -75,7 +75,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="bg-white" style="padding-bottom: 20px">
+		<div class="bg-light" style="padding-bottom: 20px">
 			<div class="container" >
 			<!-- 카테고리 시작 -->
 				<div class="overlap-category mb-5">
@@ -224,7 +224,7 @@
 				<!-- 카테고리 메뉴 종료 -->
 				<!-- 선생님 찾기 세션 -->
 		<!-- <div class="site-section" data-aos="fade"> -->
-		<div class="site-section bg-light">
+		<div class="site-section bg-light" style="padding-top: 20px">
 			<div class="container">
 				<div class="row mb-5">
 					<div class="col-md-7 text-left border-primary">
@@ -286,7 +286,7 @@
 			</div>
 		</div>
 <!-- </div> -->
-	<div class="site-section bg-white">
+	<div class="site-section bg-white" style="padding-top: 20px">
 		<div class="container">
 			<div class="row mb-5">
 				<div class="col-md-7 text-left border-primary">

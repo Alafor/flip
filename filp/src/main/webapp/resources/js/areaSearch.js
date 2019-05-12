@@ -25,20 +25,29 @@ $(function(){
 	}
 	
 	//pageing css 처리
-	var thisPage_w = Number($("#pages-w").find("#thisPage").attr("data-thisPage"));
-	var thisPage_c = Number($("#pages-c").find("#thisPage").attr("data-thisPage"));
-	var thisPage_s = Number($("#pages-s").find("#thisPage").attr("data-thisPage"));
-	$("#pages-w").find(".buttons").eq(thisPage_w).css({
+	var thisPage_w = Number($("#pages-w").find("#thisPage").attr("data-thisPage"))%5;
+	var thisPage_c = Number($("#pages-c").find("#thisPage").attr("data-thisPage"))%5;
+	var thisPage_s = Number($("#pages-s").find("#thisPage").attr("data-thisPage"))%5;
+	if(thisPage_w==0){
+		thisPage_w=5;
+	};
+	if(thisPage_c==0){
+		thisPage_c=5;
+	};
+	if(thisPage_s==0){
+		thisPage_s=5;
+	};
+	$("#pages-w").find(".buttons").eq(thisPage_w-1).css({
 		"border":"solid 1px",
 		"border-color":"#DCDBDE",
 		"color":"#30E3CA",
 		"padding":"0px 5px"});
-	$("#pages-c").find(".buttons").eq(thisPage_c).css({
+	$("#pages-c").find(".buttons").eq(thisPage_c-1).css({
 		"border":"solid 1px",
 		"border-color":"#DCDBDE",
 		"color":"#30E3CA",
 		"padding":"0px 5px"});
-	$("#pages-s").find(".buttons").eq(thisPage_s).css({
+	$("#pages-s").find(".buttons").eq(thisPage_s-1).css({
 		"border":"solid 1px",
 		"border-color":"#DCDBDE",
 		"color":"#30E3CA",
