@@ -51,9 +51,7 @@ public class SocketHandler extends TextWebSocketHandler{
 		/*	MsgDao dao = sqlsession.getMapper(MsgDao.class);*/
 			/*MsgDao dao = new MsgDao();*/
 			this.logger.info(message.getPayload());
-			System.out.println("1");
 			System.out.println("message.getPayload():"+message.getPayload());
-			System.out.println("2");
 		session.sendMessage(new TextMessage(msgService.count_receive(msg_email)));
 		
 		/*session.sendMessage(new TextMessage(dao.count_receive_note(message.getPayload())+""));*/

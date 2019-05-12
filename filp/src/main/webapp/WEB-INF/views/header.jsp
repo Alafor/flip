@@ -38,7 +38,7 @@
 							<div class="input-group mb-3 ">
 								<input type="text"
 									class="form-control text-black bg-transparent "
-									style="border-left-radius: 10px; min-width: 320px;" name="search" placeholder="검색어를 입력하세요.">
+									style="border-left-radius: 10px; min-width: 280px;" name="search" placeholder="검색어를 입력하세요.">
 								<div class="input-group-append">
 									<button class="btn btn-primary text-white rounded">Search</button>
 								</div>
@@ -58,14 +58,16 @@
 					<c:if test="${logInMember ne null}">
 						<li class="ml-xl-3 login" ><a href="mypage.do"><span
 								class="border-left pl-xl-3" ></span><b>${logInMember.member_name}</b></a></li>
-						<li><a href="#" onclick="showMsg();"><b><span id="count1" ></span></b></a>
 						<li><a href="logout.do"><b>로그아웃</b></a></li>
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
+						<li><a href="#" onclick="showMsg();"><img alt="message" src="resources/images/message.png" style="width: 20px; height: 20px; position:relative;">
+						<span class="nav-counter" id="count1"  style="position:absolute; top: 22px;right: 147px; min-width: 6px;height: 20px;line-height: 20px; margin-top: -11px; padding: 0 6px;
+						 font-weight: normal; font-size: small;color: white;text-align: center; text-shadow: 0 1px rgba(0, 0, 0, 0.2); background: #e23442;border: 1px solid #911f28; border-radius: 11px;"></span></a></li>
 						<li><a href="addclassform.do" class="cta">
-						<span class="bg-primary text-white rounded">강의등록</span></a></li>	
+						<span class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>
 				</ul>
-				<!-- <span id="count1" ></span> -->
+				
 			</nav>
 		</div>
 		<div class="d-inline-block d-xl-none ml-auto py-3 col-6 text-right"
@@ -101,16 +103,16 @@
     }
     function onMessage(evt) {
     	 /* alert(evt.data);  */
-//     	alert($('#count1').prop("tagName"));
+//     	alert($('#count1').prop("tagName"));  	
     		$('#count1').append(evt.data);
-    		
+    	 
     }
     function onError(evt) {
     }
     $(document).ready(function(){
     	var email = $('#ws_email').val();
     	if(email ==null||email==""){
-    		
+
     	}else{
     		send_message();
     	}

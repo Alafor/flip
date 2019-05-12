@@ -511,6 +511,7 @@ public class INController {
 		logger.info("쪽지 삭제하기 {}.", locale);
 		boolean isS = msgService.muldelmsg(chk);
 		if(isS) {
+			model.addAttribute("msg","삭제를 성공했습니다.");
 			return "redirect:myMsg.do";
 		}else {
 			model.addAttribute("msg","글 삭제 실패");

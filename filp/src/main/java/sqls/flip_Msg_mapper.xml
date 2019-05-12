@@ -8,8 +8,8 @@
 	</select>
 	
 	<select id="getMsgList" resultType="MsgDto" parameterType="String">
-		SELECT A.MSG_READ,A.MSG_FROM,A.MSG_CONTENT,A.MSG_REGDATE,A.MSG_SEQ,B.MEMBER_NAME 
-		FROM MSG A INNER JOIN MEMBER B ON A.MSG_FROM = B.MEMBER_EMAIL WHERE MSG_TO=#{msg_email}
+		SELECT A.MSG_READ,A.MSG_FROM,A.MSG_CONTENT,A.MSG_REGDATE,A.MSG_SEQ,B.MEMBER_NAME ,A.MSG_DELFLAG
+		FROM MSG A INNER JOIN MEMBER B ON A.MSG_FROM = B.MEMBER_EMAIL WHERE MSG_TO=#{msg_email} AND MSG_DELFLAG = 'N'
 	</select>
 	
 	<update id="readConfirm" parameterType="int" >
@@ -22,12 +22,12 @@
 	</select>
 	
 	
-	<delete id="muldelMsg" parameterType="Map">
-		DELETE FROM MSG WHRER MSG_SEQ=
+	<update id="muldelMsg" parameterType="Map">
+		UPDATE MSG SET MSG_DELFLAG='Y' WHERE MSG_SEQ IN
 		<foreach collection="seqs" item="msg_seq" open="(" close=")" separator=",">
 			#{msg_seq}
 		</foreach>
-	</delete>
+	</update>
 </mapper>
 
 

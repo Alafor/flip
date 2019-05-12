@@ -54,7 +54,7 @@ public class MsgDao implements IMsgDao{
 	public boolean muldelmsg(String[] seqs) {
 		Map<String ,String[]>map = new HashMap<String,String[]>();
 		map.put("seqs", seqs);
-		int cnt=sqlsession.delete(namespace+"muldelMsg", map);
+		int cnt=sqlsession.update(namespace+"muldelMsg", map);
 		return cnt>0?true:false;
 	}
 

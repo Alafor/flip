@@ -7,13 +7,13 @@
 	<insert id="sendAllMSG" parameterType="MsgDto">
 		INSERT INTO msg
 		SELECT SUBSTR('N',0,1) AS msg_read,member_email AS msg_from,'admin@gmail.com' AS msg_to,sysdate AS msg_regdate,
-		#{msg_content} AS msg_content,MSG_SEQ.NEXTVAL AS msg_seq
+		#{msg_content} AS msg_content,MSG_SEQ.NEXTVAL AS msg_seq,SUBSTR('N',0,1) AS msg_delflag
 		FROM (SELECT member_email FROM member WHERE member_type != 'A')
 	</insert>
 	
 	<insert id="sendMSG" parameterType="MsgDto">
-		INSERT INTO msg (MSG_READ, MSG_TO, MSG_FROM, MSG_REGDATE, MSG_CONTENT, MSG_SEQ)
-				select 'N',#{msg_to},'admin@gmail.com',sysdate,#{msg_content},MSG_SEQ.NEXTVAL from dual 
+		INSERT INTO msg (MSG_READ, MSG_TO, MSG_FROM, MSG_REGDATE, MSG_CONTENT, MSG_SEQ,MSG_DELFLAG )
+				select 'N',#{msg_to},'admin@gmail.com',sysdate,#{msg_content},MSG_SEQ.NEXTVAL,'N' from dual 
 				where #{msg_to} = (select member_email from member where member_email = #{msg_to})
 	</insert>
 
