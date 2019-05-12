@@ -88,8 +88,8 @@
         </a>
         <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <a class="collapse-item" href="A_sendMsg.do">메세지 보내기</a>
-            <a class="collapse-item" href="register.html">메세지 확인</a>
+            <a class="collapse-item" href="A_sendMsgForm.do">메세지 보내기</a>
+<!--             <a class="collapse-item" href="register.html">메세지 확인</a> -->
           </div>
         </div>
       </li>

@@ -28,5 +28,6 @@
 		<mapper resource="/sqls/flip_Admin_mapper.xml"/>
 	 	<mapper resource="/sqls/flip_Msg_mapper.xml"/>
 	 	<mapper resource="/sqls/flip_Search_mapper.xml"	/>
+	 	<mapper resource="/sqls/flip_moons_MSG_mapper.xml"/>
 	</mappers>
 </configuration>

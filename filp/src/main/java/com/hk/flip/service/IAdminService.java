@@ -20,6 +20,7 @@ public interface IAdminService {
 	public boolean aClassClose(int seq);
 	public boolean cleanClass();
 	public boolean aInclassDelete(int seq);
+	public List<MemberDto> getUsersEmail(String searchValue);
 
 
 }

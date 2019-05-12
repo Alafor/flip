@@ -32,6 +32,9 @@ public interface IAdminDao {
 
 	public boolean aInclassDelete(int seq);
 
+	public List<MemberDto> getUsersEmail(String searchValue);
+
+
 
 
 }

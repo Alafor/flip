@@ -37,10 +37,12 @@ import com.hk.flip.dtos.AdminDto;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.DataTableWrapperDto;
 import com.hk.flip.dtos.MemberDto;
+import com.hk.flip.dtos.MsgDto;
 import com.hk.flip.service.IAdminService;
 import com.hk.flip.service.IClassService;
 import com.hk.flip.service.IInclassService;
 import com.hk.flip.service.IMemberService;
+import com.hk.flip.service.IMoons_service;
 import com.hk.flip.service.IMyPageService;
 
 /**
@@ -62,6 +64,8 @@ public class MooooonController {
 	private IAdminService adminService;
 	@Autowired
 	private IInclassService inclassService;
+	@Autowired
+	private IMoons_service moons_service;
 	
 	@Scheduled(cron="0 0 0 * * ? ")
 	public void doSchedule() {
@@ -683,10 +687,50 @@ public class MooooonController {
 		}
 	}
 	//대영씨 내꺼에 만들어 논거 지우기 뭐해서 옮겨놨어요 ㅎ
-	@RequestMapping(value = "/A_sendMsg.do", method = RequestMethod.GET)
-	public String A_sendMsg(Locale locale, Model model) {
+	@RequestMapping(value = "/A_sendMsgForm.do", method = RequestMethod.GET)
+	public String A_sendMsgForm(Locale locale, Model model) {
 		logger.info("{}.", locale);
-		return "admin/sendMsg";
+		return "admin/sendMsgForm";
 	}
 	
+	@RequestMapping(value = "/A_sendMsg.do", method = RequestMethod.POST)
+	public String A_sendMsg(Locale locale, Model model,MsgDto msg) {
+		logger.info("{}.", locale);
+		boolean rst;
+		if(msg.getMsg_to().equals("A")) {			
+			rst = moons_service.sendAllMSG(msg);
+		}else {
+			rst = moons_service.sendMSG(msg);
+		}
+		if(rst) {
+			model.addAttribute("msg","메세지 전송에 성공했습니다.");		
+			model.addAttribute("url","A_sendMsgForm.do");
+			return "Redirect";
+		}else {
+			model.addAttribute("msg","메세지 전송에 실패했습니다.");		
+			model.addAttribute("url","A_sendMsgForm");
+			return "Redirect";
+		}
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/userSerch.do", method = RequestMethod.POST)//로그인 성공여부 확인후 메인으로
+	public String userSerch(HttpServletRequest request,Locale locale, Model model,HttpSession httpSession) throws JsonProcessingException {
+		logger.info("시간체크 에이작스.", locale);
+		String searchValue = request.getParameter("searchValue");
+		System.out.println("searchValue~~~~~~~~~~~~~~~~~~~"+searchValue);
+		Map<String, String> map = new HashMap<String, String>();
+		List<MemberDto> list = adminService.getUsersEmail(searchValue);
+		List<String> list2 = new ArrayList<String>();
+
+		for(MemberDto dto:list) {
+			list2.add(dto.getMember_email());
+		}
+		System.out.println("~~~~~~~~~");
+		System.out.println(map);
+		System.out.println("~~~~~~~~~");
+		String json = new ObjectMapper().writeValueAsString(list2);
+		System.out.println(json);
+		return json;
+	}
 }

@@ -80,5 +80,10 @@ public class AdminService implements IAdminService {
 		return adminDao.aInclassDelete(seq);
 	}
 
+	@Override
+	public List<MemberDto> getUsersEmail(String searchValue) {
+		return adminDao.getUsersEmail(searchValue);
+	}
+
 
 }

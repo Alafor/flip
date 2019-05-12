@@ -105,4 +105,9 @@
 	<update id="cleanClass">
 		update class set class_termin ='Y' where class_cd<![CDATA[<]]> sysdate
 	</update>
+	
+	<select id="getUsersEmail" resultType="MemberDto">
+		SELECT member_email FROM member WHERE member_seq != 0 
+		and member_email like #{searchValue}||'%'
+	</select>
 </mapper>

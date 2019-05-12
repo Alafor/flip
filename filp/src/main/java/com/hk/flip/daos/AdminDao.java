@@ -90,6 +90,11 @@ public class AdminDao implements IAdminDao {
 		return sqlSession.delete(namespace+"aInclassDelete")>0?true:false;
 	}
 
+	@Override
+	public List<MemberDto> getUsersEmail(String searchValue) {
+		return sqlSession.selectList(namespace+"getUsersEmail",searchValue);
+	}
+
 
 
 
