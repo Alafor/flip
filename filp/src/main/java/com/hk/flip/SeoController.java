@@ -198,12 +198,19 @@ public class SeoController {
 				}
 			}
 	}
+	@RequestMapping(value = "/autocompleteTest.do", method = {RequestMethod.GET, RequestMethod.POST})
+	public String testPage(Locale locale, Model model) {
+		return "autocompleteTest";
+	}
 	
 	@ResponseBody
 	@RequestMapping(value = "/autoComplete.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public Map<String,List<SearchDto>> autoComplete(Locale locale, Model model,HttpServletRequest request, String search) {
+		logger.info("ajaxajax select{}.", locale);
 		Map<String,List<SearchDto>> autoMap = new HashMap<String,List<SearchDto>>();
+		System.out.println("컨트롤러 들어옴");
 		List<SearchDto> autoSearchList = searchService.autoSearchList(search);
+		System.out.println(autoSearchList);
 		autoMap.put("autoList", autoSearchList);
 		return autoMap;
 	
