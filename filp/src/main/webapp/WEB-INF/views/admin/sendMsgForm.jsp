@@ -18,7 +18,17 @@
   <!-- Custom styles for this template-->
   <link href="resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
   <title>Flip 관리자 페이지</title>
-
+  <style type="text/css">
+  .ui-menu{padding-left: 0px;}
+  	.ui-menu-item{list-style:none;width: 180px;
+  	}
+  	.ui-menu-item-wrapper{
+  		background-color: #f8f9fc;
+  		list-style:none;
+  		  
+  	}
+  	
+  </style>
 </head>
 
 <body id="page-top">
@@ -362,14 +372,15 @@
 						searchValue : request.term
 					},
 					success : function(data) { //return 된놈을 response() 함수내에 다음과 같이 정의해서 뽑아온다.
+						
 						response($.map(data, function(item) {
 							return {
 								//label : 화면에 보여지는 텍스트
 								//value : 실제 text태그에 들어갈 값
 								//본인은 둘다 똑같이 줬음 
 								//화면에 보여지는 text가 즉, value가 되기때문 
-								label : item.data,
-								value : item.data
+								label : item,
+								value : item
 							}
 						}));
 					}
@@ -378,8 +389,17 @@
 			minLength : 1,
 			//자동완성 목록에서 특정 값 선택시 처리하는 동작 구현 
 			//구현없으면 단순 text태그내에 값이 들어간다. 
-			select : function(event, ui) {
-			}
+// 			select : function(event, ui) {
+// 				if (ui.item) {
+// 	                event.preventDefault();
+// 	                $("#selected_tags span").append('<div style:"background-color:gray;">'+ ui.item.label +'</div>');
+// 	                //$("#tagQuery").value = $("#tagQuery").defaultValue
+// 	                var defValue = $("#tagQuery").prop('defaultValue');
+// 	                $("#tagQuery").val(defValue);
+// 	                $("#tagQuery").blur();
+// 	                return false;
+// 	            }
+// 			}
 // 			,focus: function(event, ui){ return false;}
 		});
 	});

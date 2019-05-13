@@ -727,7 +727,7 @@ public class MooooonController {
 			list2.add(dto.getMember_email());
 		}
 		System.out.println("~~~~~~~~~");
-		System.out.println(map);
+		System.out.println(list2);
 		System.out.println("~~~~~~~~~");
 		String json = new ObjectMapper().writeValueAsString(list2);
 		System.out.println(json);

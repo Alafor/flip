@@ -5,7 +5,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 <script src="resources/js/searchAutoComplete.js"></script>
+
 <title>Insert title here</title>
 </head>
 <body>
@@ -20,7 +25,7 @@ $(function() {
 				type:"post",
 				dataType:"json",                  //data를 json으로 return 받음.
 				url:"autoComplete.do",          //json으로 데이터를 반환해야한다.
-				data:{search : request.term},
+				data:{"search" : request.term},
 				success:function(data){
 					alert("아작스 실행");
 					response($.map(data, function(item){     //function의 item에 data가 바인딩된다.
