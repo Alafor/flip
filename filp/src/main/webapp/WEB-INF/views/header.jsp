@@ -80,7 +80,7 @@
 						<li><a href="ansboard.do"><b>문의게시판</b></a></li>
 						<li><a href="#" onclick="showMsg();"><img alt="message" src="resources/images/message.png" style="width: 20px; height: 20px; position:relative;">
 						<span class="nav-counter" id="count1"  style="position:absolute; top: 22px;right: 147px; min-width: 6px;height: 20px;line-height: 20px; margin-top: -11px; padding: 0 6px;
-						 font-weight: normal; font-size: small;color: white;text-align: center; text-shadow: 0 1px rgba(0, 0, 0, 0.2); background: #e23442;border: 1px solid #911f28; border-radius: 11px;"></span></a></li>
+						 font-weight: normal; font-size: small;color: white;text-align: center; text-shadow: 0 1px rgba(0, 0, 0, 0.2); border-radius: 11px;"></span></a></li>
 						<li><a href="addclassform.do" class="cta">
 						<span class="bg-primary text-white rounded">강의등록</span></a></li>
 					</c:if>
@@ -120,8 +120,12 @@
     }
     function onMessage(evt) {
     	 /* alert(evt.data);  */
-//     	alert($('#count1').prop("tagName"));  	
+//     	alert($('#count1').prop("tagName"));  
+    	 	if(evt.data!=0){
     		$('#count1').append(evt.data);
+    		$('#count1').css("background-color","#e23442");
+    		$('#count1').css("border","1px solid #911f28");
+    	 	}
     	 
     }
     function onError(evt) {
