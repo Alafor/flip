@@ -1,5 +1,6 @@
 package com.hk.flip;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -17,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hk.flip.dtos.CalendarDto;
 import com.hk.flip.dtos.ClassDto;
 import com.hk.flip.dtos.InclassDto;
@@ -103,8 +106,8 @@ public class SeoController {
 	public String listload(Locale locale, Model model,String search, String department, String classType, String num, String selArea) {
 		logger.info("Started main{}.", locale);
 		int allPageCount = classService.pageCount(search, department, classType,selArea);
-		int pageCount = allPageCount/16;
-		int checkFloat = allPageCount%16;
+		int pageCount = allPageCount/12;
+		int checkFloat = allPageCount%12;
 		int thisPage=Integer.parseInt(num);
 		int nowBlock = thisPage/5;
 		int endPage=0;
@@ -198,22 +201,24 @@ public class SeoController {
 				}
 			}
 	}
-	@RequestMapping(value = "/autocompleteTest.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public String testPage(Locale locale, Model model) {
-		return "autocompleteTest";
-	}
 	
-	@ResponseBody
-	@RequestMapping(value = "/autoComplete.do", method = {RequestMethod.GET, RequestMethod.POST})
-	public Map<String,List<SearchDto>> autoComplete(Locale locale, Model model,HttpServletRequest request, String search) {
+	/*@ResponseBody
+	@RequestMapping(value = "/autoComplete.do", method = {RequestMethod.GET, RequestMethod.POST},produces="text/plain;charset=UTF-8")
+	public String autoComplete(Locale locale, Model model,HttpServletRequest request, String search) throws JsonProcessingException {
 		logger.info("ajaxajax select{}.", locale);
 		Map<String,List<SearchDto>> autoMap = new HashMap<String,List<SearchDto>>();
 		System.out.println("컨트롤러 들어옴");
 		List<SearchDto> autoSearchList = searchService.autoSearchList(search);
+		List<String> searchJsonList = new ArrayList<String>();
+		for(SearchDto dto:autoSearchList) {
+			searchJsonList.add(dto.getSearch_word());
+		}
 		System.out.println(autoSearchList);
 		autoMap.put("autoList", autoSearchList);
-		return autoMap;
-	
-	}
+		ObjectMapper obj = new ObjectMapper();
+		String json = obj.writeValueAsString(searchJsonList);
+		return json;
+		
+	}*/
 }
 

@@ -534,7 +534,7 @@
 	crossorigin="anonymous"></script>
 	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-
+	
  
 </body>
 </html>

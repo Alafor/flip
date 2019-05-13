@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="EUC-KR"%>
+    pageEncoding="UTF-8"%>
+<% response.setCharacterEncoding("utf-8"); %>
+<% request.setCharacterEncoding("utf-8"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,34 +20,28 @@
 </body>
 <script type="text/javascript">
 $(function() {
-	//inputÀÇ id¸¦ autocompleteÇÑ´Ù.
+	//inputì˜ idë¥¼ autocompleteí•œë‹¤.
 	$( "#autos").autocomplete({
 		source : function(request, response){
 			$.ajax({
 				type:"post",
-				dataType:"json",                  //data¸¦ jsonÀ¸·Î return ¹ŞÀ½.
-				url:"autoComplete.do",          //jsonÀ¸·Î µ¥ÀÌÅÍ¸¦ ¹İÈ¯ÇØ¾ßÇÑ´Ù.
+				dataType:"json",                  //dataë¥¼ jsonìœ¼ë¡œ return ë°›ìŒ.
+				url:"autoComplete.do",          //jsonìœ¼ë¡œ ë°ì´í„°ë¥¼ ë°˜í™˜í•´ì•¼í•œë‹¤.
 				data:{"search" : request.term},
 				success:function(data){
-					alert("¾ÆÀÛ½º ½ÇÇà");
-					response($.map(data, function(item){     //functionÀÇ item¿¡ data°¡ ¹ÙÀÎµùµÈ´Ù.
+					response($.map(data, function(item){     //functionì˜ itemì— dataê°€ ë°”ì¸ë”©ëœë‹¤.
 						return{
-							//±âº»ÀûÀ¸·Î label°ú value¸¦ »ç¿ëÇÏÁö¸¸ custom º¯¼ö¸¦ ¼±¾ğÇØ¼­ »ç¿ë °¡´ÉÇÏ´Ù. ui.item.º¯¼ö¸íÀ¸·Î »ç¿ë°¡´ÉÇÔ.
-							//data´Â ¹İÈ¯ÇÑ ¹è¿­, data[i].USER_INFO ¹× ¾Æ·¡ ¼±¾ğµÈ KEY°ªÀÌ µé¾î°¡ÀÖ´Ù.
-							label:item.autoList,
-							value:item.autoList
+							//ê¸°ë³¸ì ìœ¼ë¡œ labelê³¼ valueë¥¼ ì‚¬ìš©í•˜ì§€ë§Œ custom ë³€ìˆ˜ë¥¼ ì„ ì–¸í•´ì„œ ì‚¬ìš© ê°€ëŠ¥í•˜ë‹¤. ui.item.ë³€ìˆ˜ëª…ìœ¼ë¡œ ì‚¬ìš©ê°€ëŠ¥í•¨.
+							//dataëŠ” ë°˜í™˜í•œ ë°°ì—´, data[i].USER_INFO ë° ì•„ë˜ ì„ ì–¸ëœ KEYê°’ì´ ë“¤ì–´ê°€ìˆë‹¤.
+							label:item,
+							value:item
 						}
 					}));
-				},
-				error: function(jqxhr, status, error){
-					alert(jqxhr.statusText + ",  " + status + ",   " + error);
-					alert(jqxhr.status);
-					alert(jqxhr.responseText);
 				}
 			})
 		},
-		minLength:1,               //1±ÛÀÚ ÀÌ»ó ÀÔ·ÂÇØ¾ß autocompleteÀÌ ÀÛµ¿ÇÑ´Ù.
-		focus:function(event, ui){return false;} //ÇÑ±ÛÀÔ·Â½Ã Æ÷Ä¿½ºÀÌµ¿ÇÏ¸é ¼­Á¦½ºÆ®°¡ »èÁ¦µÇ¹Ç·Î focusÃ³¸®
+		minLength:1               //1ê¸€ì ì´ìƒ ì…ë ¥í•´ì•¼ autocompleteì´ ì‘ë™í•œë‹¤.
+		/* focus:function(event, ui){return false;} //í•œê¸€ì…ë ¥ì‹œ í¬ì»¤ìŠ¤ì´ë™í•˜ë©´ ì„œì œìŠ¤íŠ¸ê°€ ì‚­ì œë˜ë¯€ë¡œ focusì²˜ë¦¬ */
 	});
 });
 </script>
