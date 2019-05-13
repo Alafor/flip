@@ -13,12 +13,30 @@
 /*  String Msg_to =  ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_email();  */
 
 %>
-
-
-
+<style type="text/css">
+	 .ui-menu{
+  padding:0px; position: relative; 
+  }
+     .ui-menu-item{
+     list-style:none;
+   	 border:1px solid #ced4da; border-top:0px; border-left:0px;
+     background-color:white;
+     }
+     .ui-menu-item-wrapper{
+        background-color: #f8f9fc;
+        list-style:none;
+        font-size:16px;
+        width:260px;
+        padding-left:10px;
+     }
+</style>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 <!DOCTYPE html>
 <header class="site-navbar container py-0 bg-white navbar-fixed-top"
-	 role="banner">
+	 role="banner" style="z-index:1;">
 <!-- style="position: fixed;" -->
 	<!-- <div class="container"> -->
 	<div class="row align-items-center">
@@ -35,10 +53,10 @@
 				<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 					<li>
 						<form action="searchCount.do" method="get">
-							<div class="input-group mb-3 ">
-								<input type="text"
+							<div class="input-group mb-3" style="width:355px;border-left-radius: 10px;">
+								<input type="text" id="autos"
 									class="form-control text-black bg-transparent "
-									style="border-left-radius: 10px; min-width: 280px;" name="search" placeholder="검색어를 입력하세요.">
+									 name="search" placeholder="검색어를 입력하세요." style="padding-left:20px;">
 								<div class="input-group-append">
 									<button class="btn btn-primary text-white rounded">Search</button>
 								</div>
@@ -80,7 +98,6 @@
 	<input type="hidden" value='<%=memberDto.getMember_email()%>' id="ws_email">
 	<%} %>
 </header>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
     var wsUri = "ws://localhost:8888/flip/count.do";
     function send_message() {
@@ -124,4 +141,43 @@
 		
 		window.open('myMsg.do', '쪽지함', 'width=920,height=500,toolbars=no,scrollbars=no,resizable=0');
 	}
+</script>
+<script type="text/javascript">
+$(function() {
+	//input의 id를 autocomplete한다.
+	$( "#autos").autocomplete({
+		source : function(request, response){
+			$.ajax({
+				type:"post",
+				dataType:"json",                  //data를 json으로 return 받음.
+				url:"autoComplete.do",          //json으로 데이터를 반환해야한다.
+				data:{"search" : request.term},
+				success:function(data){
+					response($.map(data, function(item){     //function의 item에 data가 바인딩된다.
+						return{
+							//기본적으로 label과 value를 사용하지만 custom 변수를 선언해서 사용 가능하다. ui.item.변수명으로 사용가능함.
+							//data는 반환한 배열, data[i].USER_INFO 및 아래 선언된 KEY값이 들어가있다.
+							label:item,
+							value:item
+						}
+					}));
+				$(".ui-menu").css({
+					"width":"268px"
+					});
+				$(".ui-widget-content").css({
+					"border":"0px"
+				})
+				$(".ui-menu-item").css({
+					"width":"268px",
+					"border":"1px solid #a6c9e2",
+					"margin-left":"10px"
+				});	
+				}
+			})
+		},
+		minLength:1               //1글자 이상 입력해야 autocomplete이 작동한다.
+		/* focus:function(event, ui){return false;} //한글입력시 포커스이동하면 서제스트가 삭제되므로 focus처리 */
+	});
+});
+
 </script>

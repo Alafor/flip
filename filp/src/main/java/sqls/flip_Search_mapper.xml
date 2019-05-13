@@ -5,7 +5,7 @@
 	<select id="wordSelect" parameterType="String" resultType="SearchDto">
 		SELECT * FROM SEARCH_LIST WHERE SEARCH_WORD LIKE #{search_word}
 	</select>
-	<select id="autoSeachList" parameterType="String" resultType="SearchDto">
+	<select id="autoSearchList" parameterType="String" resultType="SearchDto">
 		SELECT SEARCH_WORD FROM SEARCH_LIST WHERE SEARCH_WORD LIKE '%'||#{search_word}||'%'
 	</select>
 	<insert id="newWord" parameterType="String">
