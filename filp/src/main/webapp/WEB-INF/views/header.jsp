@@ -53,10 +53,10 @@
 				<ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
 					<li>
 						<form action="searchCount.do" method="get">
-							<div class="input-group mb-3" style="width:355px;border-left-radius: 10px;">
+							<div class="input-group mb-3" style="border-left-radius: 10px;">
 								<input type="text" id="autos"
 									class="form-control text-black bg-transparent "
-									 name="search" placeholder="검색어를 입력하세요." style="padding-left:20px;">
+									 name="search" placeholder="검색어를 입력하세요." style="width:280px;padding-left:20px;">
 								<div class="input-group-append">
 									<button class="btn btn-primary text-white rounded">Search</button>
 								</div>
