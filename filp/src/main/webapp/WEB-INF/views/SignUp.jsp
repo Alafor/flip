@@ -183,7 +183,7 @@ function auto_phone( e, oThis ){
  			<div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "한글과영문만 사용가능합니다">
                   <label class="text-black" for="name">이름</label> 
-                  <input type="text" class="form-control" name="member_name">
+                  <input type="text" class="form-control" name="member_name" autofocus="autofocus">
                 </div>
               </div>	            
              
