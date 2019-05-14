@@ -36,6 +36,9 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	
 <script type="text/javascript">
 function registClass(seq) {
 	var class_type = $('input[name=class_type]').val();
@@ -491,10 +494,6 @@ String member_type= memberDto.getMember_type(); %>
 	<div>
 	<jsp:include page="footer.jsp" />
 	</div>
-	
-	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>

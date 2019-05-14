@@ -34,6 +34,9 @@
 
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="resources/css/searchlist.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
+	
 </head>
 <body>
 		<!-- header -->
@@ -206,9 +209,7 @@
 	<!-- site-wrap div 종료 -->
 	<!-- footer종료 -->
 	
-	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/jquery-ui.js"></script>
+
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>
