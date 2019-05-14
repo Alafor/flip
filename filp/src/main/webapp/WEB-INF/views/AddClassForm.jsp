@@ -24,6 +24,8 @@
 <link rel="stylesheet" href="resources/css/aos.css">
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 <title>Flip</title>
 <style type="text/css">
 
@@ -225,9 +227,6 @@ body {
 		</div>
 	
 	
-	 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>

@@ -13,6 +13,10 @@
 /*  String Msg_to =  ((MemberDto)request.getSession().getAttribute("logInMember")).getMember_email();  */
 
 %>
+<script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+  crossorigin="anonymous"></script>
 <style type="text/css">
 	 .ui-menu{
   padding:0px; position: relative; 
@@ -30,10 +34,8 @@
         padding-left:10px;
      }
 </style>
-<script
-  src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-  integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-  crossorigin="anonymous"></script>
+
+
 <!DOCTYPE html>
 <header class="site-navbar container py-0 bg-white navbar-fixed-top"
 	 role="banner" style="z-index:1;">
@@ -98,7 +100,6 @@
 	<input type="hidden" value='<%=memberDto.getMember_email()%>' id="ws_email">
 	<%} %>
 </header>
-<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
     var wsUri = "ws://localhost:8888/flip/count.do";
     function send_message() {
@@ -147,7 +148,7 @@
 		window.open('myMsg.do', '쪽지함', 'width=920,height=500,toolbars=no,scrollbars=no,resizable=0');
 	}
 </script>
-<!-- <script type="text/javascript">
+<script type="text/javascript">
 $(function() {
 	//input의 id를 autocomplete한다.
 	$( "#autos").autocomplete({
@@ -185,4 +186,4 @@ $(function() {
 	});
 });
 
-</script> -->
+</script>

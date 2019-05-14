@@ -11,23 +11,14 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1 shrink-to-fit=no">
-<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 <link
 	href="https://fonts.googleapis.com/css?family=Nanum+Gothic:400,700,800"
 	rel="stylesheet">
 <link rel="stylesheet" href="resources/fonts/icomoon/style.css">
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-<link href="resources/dist/css/datepicker.min.css" rel="stylesheet"
-	type="text/css">
-<script src="resources/dist/js/datepicker.min.js"></script>
-<script src="resources/dist/js/datepicker.ko.js"></script>
 <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 <link rel="stylesheet" href="resources/css/bootstrap.min.css">
 <link rel="stylesheet" href="resources/css/magnific-popup.css">
-<link rel="stylesheet" href="resources/css/jquery-ui.css">
-<link rel="stylesheet" href="resources/css/owl.carousel.min.css">
-<link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
-<script src="resources/js/jquery-ui.js"></script>
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 	rel="stylesheet">
@@ -40,8 +31,6 @@
 
 <link rel="stylesheet" href="resources/css/style.css">
 
-<script type="text/javascript"
-	src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
 <script type="text/javascript"
 	src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
 <script type="text/javascript"
