@@ -47,7 +47,7 @@
 	src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-
+<script src="resources/js/jquery-ui.js"></script>
 <style type="text/css">
 #id {
 	margin-left: 20px;
@@ -344,10 +344,6 @@
 	<div>
 		<jsp:include page="footer.jsp" />
 	</div>
-
-
-
-	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>

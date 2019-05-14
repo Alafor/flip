@@ -36,7 +36,8 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
 <style type="text/css">
 	.site-section{
 	background-color: #f8f9fa;
@@ -526,9 +527,7 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 
 <jsp:include page="footer.jsp" />
 
-<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="resources/js/jquery-ui.js"></script>
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/owl.carousel.min.js"></script>

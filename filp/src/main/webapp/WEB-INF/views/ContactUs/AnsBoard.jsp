@@ -31,8 +31,8 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
-
-<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
  <script type="text/javascript">
 function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는다
 	//	alert(bool.tagName);
@@ -216,10 +216,7 @@ function allSel(bool) {//---->allSel(this.checked)체크여부를 bool이 받는
 <div>
 	<jsp:include page="../footer.jsp" />
 	</div>
-	
-	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/jquery-ui.js"></script>
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>

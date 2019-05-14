@@ -27,6 +27,7 @@
 <link rel="stylesheet" href="resources/css/jquery-ui.css">
 <link rel="stylesheet" href="resources/css/owl.carousel.min.css">
 <link rel="stylesheet" href="resources/css/owl.theme.default.min.css">
+<script src="resources/js/jquery-ui.js"></script>
 <link
 	href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css"
 	rel="stylesheet">

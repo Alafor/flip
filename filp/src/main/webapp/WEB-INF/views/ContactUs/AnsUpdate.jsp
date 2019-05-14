@@ -29,6 +29,8 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 
 <link rel="stylesheet" href="resources/css/style.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
 <style type="text/css">
 	/* table tr th{width:13px;height: 13px;} */
 </style>
@@ -120,9 +122,9 @@
 	<jsp:include page="../footer.jsp" />
 	</div>
 	
-	<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+	
 	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	<script src="resources/js/jquery-ui.js"></script>
+	
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>
