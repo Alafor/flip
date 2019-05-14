@@ -63,12 +63,15 @@ public class SeoController {
 	}
 	@RequestMapping(value="/searchCount.do", method = {RequestMethod.GET, RequestMethod.POST})
 	public String searchCount(Locale local, Model model, String search) {
-		int searchList=classService.pageCount(search);
-		if(searchList!=0) {
-			if(searchService.chkSearchWord(search)) {
-				System.out.println("검색어 리스트 수정 성공");
-			}else {
-				System.out.println("검색어 리스트 수정 실패");
+		System.out.println("search~~~~~~~"+search);
+		if(!search.equals("")) {
+			int searchList=classService.pageCount(search);
+			if(searchList!=0) {
+				if(searchService.chkSearchWord(search)) {
+					System.out.println("검색어 리스트 수정 성공");
+				}else {
+					System.out.println("검색어 리스트 수정 실패");
+				}
 			}
 		}
 		return "forward:/searchlist.do";
