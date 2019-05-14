@@ -168,7 +168,8 @@ $(function() {
 						}
 					}));
 				$(".ui-menu").css({
-					"width":"268px"
+					"width":"268px",
+					"z-index":"2"
 					});
 				$(".ui-widget-content").css({
 					"border":"0px"
