@@ -202,7 +202,7 @@ public class SeoController {
 			}
 	}
 	
-	@ResponseBody
+	/*@ResponseBody
 	@RequestMapping(value = "/autoComplete.do", method = {RequestMethod.GET, RequestMethod.POST},produces="text/plain;charset=UTF-8")
 	public String autoComplete(Locale locale, Model model,HttpServletRequest request, String search) throws JsonProcessingException {
 		logger.info("ajaxajax select{}.", locale);
@@ -219,6 +219,6 @@ public class SeoController {
 		String json = obj.writeValueAsString(searchJsonList);
 		return json;
 		
-	}
+	}*/
 }
 

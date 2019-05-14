@@ -98,6 +98,7 @@
 	<input type="hidden" value='<%=memberDto.getMember_email()%>' id="ws_email">
 	<%} %>
 </header>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript">
     var wsUri = "ws://localhost:8888/flip/count.do";
     function send_message() {
@@ -146,7 +147,7 @@
 		window.open('myMsg.do', '쪽지함', 'width=920,height=500,toolbars=no,scrollbars=no,resizable=0');
 	}
 </script>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 $(function() {
 	//input의 id를 autocomplete한다.
 	$( "#autos").autocomplete({
@@ -184,4 +185,4 @@ $(function() {
 	});
 });
 
-</script>
+</script> -->
