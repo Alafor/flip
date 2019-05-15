@@ -54,16 +54,16 @@
     $.ajax({
        type:"post",
        async:false,  
-       url:"handler.do",
+       url:"handler_id.do",
        dataType:"text",
        data: {id:_id},
        success:function (data,textStatus){
     	   
           if(data=='usable'){
-        	  $('#message').text("사용할 수 있는 ID입니다.");
+        	  $('#message_id').text("사용할 수 있는 ID입니다.");
               $('#btnDuplicate').prop("disabled", true);
            }else{
-             $('#message').text("사용할 수 없는 ID입니다.");
+             $('#message_id').text("사용할 수 없는 ID입니다.");
           }
        },
        error:function(data,textStatus){
@@ -73,7 +73,36 @@
           //alert("작업을완료 했습니다");
        }
     });  //end ajax    
- }      
+ }   
+ function fn_process_email(){
+	    var _email=$("#t_email").val();
+	    if(_email==''){
+	       alert("email를 입력하세요");
+	       return;
+	    }
+	    $.ajax({
+	       type:"post",
+	       async:false,  
+	       url:"handler_email.do",
+	       dataType:"text",
+	       data: {email:_email},
+	       success:function (data,textStatus){
+	    	   
+	          if(data=='usable'){
+	        	  $('#message_email').text("사용할 수 있는 ID입니다.");
+	              $('#btnDuplicate').prop("disabled", true);
+	           }else{
+	             $('#message_email').text("사용할 수 없는 Email입니다.");
+	          }
+	       },
+	       error:function(data,textStatus){
+	          alert("에러가 발생했습니다.");
+	       },
+	       complete:function(data,textStatus){
+	          //alert("작업을완료 했습니다");
+	       }
+	    });  //end ajax    
+	 }   
 </script>
 <script type="text/javascript">
 
@@ -192,7 +221,7 @@ function auto_phone( e, oThis ){
                   <label class="text-black" for="id">아이디</label> 
                   <input type="text" id="t_id" class="form-control" name="member_id" onchange="fn_process()">
                 </div>
-                <div id="message" style="margin-left: 20px; color: red;"></div>
+                <div id="message_id" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "최소 8자리에 숫자, 문자, 특수문자 각각 1개 이상 포함되야합니다">
@@ -209,8 +238,9 @@ function auto_phone( e, oThis ){
               <div class="row form-group">              
                 <div class="col-md-12 validate-input " data-validate = "이메일을 정확히 입력해주세요">
                   <label class="text-black" for="email">이메일</label> 
-                  <input type="email" class="form-control" name="member_email" placeholder="ex)***@gmail.com">
+                  <input type="email" id="t_email" class="form-control" name="member_email" onchange="fn_process_email() placeholder="ex)***@gmail.com">
                 </div>
+                <div id="message_email" style="margin-left: 20px; color: red;"></div>
               </div>
               <div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "생년월일을 입력해주세요">

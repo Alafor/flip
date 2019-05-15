@@ -26,7 +26,7 @@
 <link rel="stylesheet" href="resources/css/style.css">
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
 <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-<title>Flip</title>
+<title>강의등록선택</title>
 <style type="text/css">
 
 body {

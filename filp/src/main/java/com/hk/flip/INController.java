@@ -171,8 +171,8 @@ public class INController {
 		}
 	}
 	
-	@RequestMapping(value = "/handler.do", method = RequestMethod.POST)
-	public void handler(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,String id) throws IOException {
+	@RequestMapping(value = "/handler_id.do", method = RequestMethod.POST)
+	public void handler_id(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,String id) throws IOException {
 		logger.info("아이디 중복 확인 {}.", locale);
 		PrintWriter writer = response.getWriter();
 		System.out.println("id:"+id);
@@ -181,8 +181,19 @@ public class INController {
 			writer.print("not_usable");
 		} else {
 			writer.print("usable");
-		}
-		
+		}		
+	}
+	@RequestMapping(value = "/handler_email.do", method = RequestMethod.POST)
+	public void handler_email(Locale locale, Model model,HttpServletRequest request,HttpServletResponse response,String email) throws IOException {
+		logger.info("아이디 중복 확인 {}.", locale);
+		PrintWriter writer = response.getWriter();
+		System.out.println("email:"+email);
+		boolean isS = memberService.overlappedEmail(email);
+		if(isS) {
+			writer.print("not_usable");
+		} else {
+			writer.print("usable");
+		}		
 	}
 	
 	

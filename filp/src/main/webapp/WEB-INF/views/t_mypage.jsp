@@ -94,8 +94,8 @@
     	border-radius: 8px;
     	border-bottom: 6px solid #30e3ca!important;
     }
-    .listing{
-    	height: 200px;}
+/*     .listing{ */
+/*     	height: 200px;} */
 }
 </style>
 

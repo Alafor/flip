@@ -137,4 +137,12 @@ public class MemberDao implements IMemberDao {
 		int cnt= sqlsession.insert(namespace+"naverSignUp", map);
 		return cnt>0?true:false;
 	}
+
+	@Override
+	public boolean overlappedEmail(String email) {
+		int cnt = sqlsession.selectOne(namespace+"overlappedEmail",email);
+		System.out.println("cnt:"+cnt);
+		return cnt>0?true:false;
+	}	
+	
 }

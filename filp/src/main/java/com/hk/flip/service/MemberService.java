@@ -62,4 +62,9 @@ public class MemberService implements IMemberService {
 			String member_type) {
 		return memberDao.NaverSignUp(member_email,member_name,member_id,member_birth,member_type);
 	}
+
+	@Override
+	public boolean overlappedEmail(String email) {
+		return memberDao.overlappedEmail(email);
+	}
 }
