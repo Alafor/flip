@@ -4,9 +4,10 @@
 <mapper namespace="com.hk.flip.Admin">
 	
 	<select id="getflipstatus" resultType="AdminDto">
-		SELECT (select count(*) from member) as member_number,    
-	    (select count(*) from class) as class_number,
-	    (select count(*) from (SELECT * FROM class WHERE CLASS_TERMIN = 'C')) as close_class_number
+		SELECT (select count(*) from member) as MEMBER_NUMBER,    
+	    (select count(*) from class) as CLASS_NUMBER,
+	    (select count(*) from (SELECT * FROM class WHERE CLASS_TERMIN = 'C')) as CLOSE_CLASS_NUMBER,
+	    (SELECT COUNT(*) FROM ANSWER_BOARD WHERE BOARD_STEP = 0) as NO_REPLY_NUMBER
 	    from dual
 	</select>
 	
