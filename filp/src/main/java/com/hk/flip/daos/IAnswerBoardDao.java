@@ -24,6 +24,8 @@ public interface IAnswerBoardDao {
 	public int replyBoardInsert(AnswerBoardDto dto);
 	//문의글 게시판 갯수 가져오기
 	public int selectTotalPaging();
+	//문의글 무답변 갯수 구하기
+	public int AnswerCount();
 	
 
 }

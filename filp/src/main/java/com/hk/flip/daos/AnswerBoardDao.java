@@ -81,6 +81,14 @@ public class AnswerBoardDao implements IAnswerBoardDao {
 	}
 
 
+	@Override
+	public int AnswerCount() {
+		
+		return sqlSession.selectOne(namespace+"answercount");
+		
+	}
+
+
 	
 	
 	

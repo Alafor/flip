@@ -61,4 +61,9 @@ public class AnswerBoardService implements IAnswerBoardService {
 		return ansDao.selectTotalPaging();
 	}
 
+	@Override
+	public int AnswerCount() {	
+		return ansDao.AnswerCount();
+	}
+
 }
