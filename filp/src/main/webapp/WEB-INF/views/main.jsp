@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="resources/css/listcss.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
-<script src="resources/js/jquery-ui.js"></script>
+<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
 </head>
 <body>
 
@@ -297,7 +297,7 @@
 							<b>스터디<span class="text-warning">찾기</span></b>
 						</a>
 					</h2>
-					<p class="color-black-opacity-5">Find a Study</p>
+					<p class="color-black-opacity-5">Find a Study</p> 
 
 				</div>
 			</div>
@@ -364,10 +364,7 @@
 							<p>가볍게 들릴 수도 있지만 즐거운 분위기의 강의를 위해 항상 마음속으로 상기시키는 말입니다. 정보 보안
 								과정이 생소한 용어와 이론들을 배우고, 실제 네트워크 환경과 유사한 망을 구성하여 다양한 공격 기법과 방어 기법을
 								익혀야 하는 복잡한 과정이기 때문에 '비유'와 '쉬운 예제'들을 통해 쉽게 이해하고 습득할 수 있도록 노력하고
-								있습니다. 처음부터 잘 할 수 있는 일은 없습니다. 해커들도 처음부터 해킹을 잘하지는 않았을 것입니다. 부단한
-								노력과 열정으로 해커라는 타이틀을 부여받았겠죠. 분야가 많아서, 내용이 어려울 것 같아서, IT에 대한 기본 지식이
-								없어서... 등의 두려운 마음이 든다면 열정과 자신감으로 못할 일이 없다는 각오로 모두 떨쳐버리시기 바랍니다. 할
-								수 있습니다!&rdquo;</p>
+								있습니다.&rdquo;</p> 
 						</blockquote>
 					</div>
 				</div>
@@ -416,7 +413,7 @@
 						<figure class="mb-4">
 							<img src="resources/images/강사4.jpg" alt="Image"
 								class="img-fluid mb-3">
-							<p>시옷</p>
+							<p>시옷<span class="text-warning">강사</span></p>
 						</figure>
 						<blockquote>
 							<p>
@@ -517,8 +514,6 @@
 	<!-- footer종료 -->
 	</div>
 	
-	<script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-	
 	<script src="resources/js/popper.min.js"></script>
 	<script src="resources/js/bootstrap.min.js"></script>
 	<script src="resources/js/owl.carousel.min.js"></script>
@@ -539,7 +534,7 @@
 	crossorigin="anonymous"></script>
 	<script src="resources/js/mainAjax.js"></script>
 	<script src="resources/js/star.js" defer="defer"></script>
-
+	
  
 </body>
 </html>

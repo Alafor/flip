@@ -43,5 +43,7 @@ public interface IMemberDao {
 	public boolean NaverSignUp(String member_email, String member_name, String member_id, String member_birth,//네이버 로그인시 회원가입하기
 			String member_type);
 
+	public boolean overlappedEmail(String email);
+
 	
 }

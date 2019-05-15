@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8"); %>   
 <%response.setContentType("text/html;charset=utf-8"); %> 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
 
 
@@ -47,7 +47,13 @@
             alert('비밀번호가 틀렸습니다. 다시 입력해 주세요');
             return false;
         }
+        var imgg = $('.avatar').attr('data-isImg');
+        if(imgg != 'OK'){
+        	alert("사진을 넣어주세요");
+        	return false;
+        }
     }
+    
 </script>
 <!-- <script type="text/javascript">
 	function checkProfile() {
@@ -200,7 +206,7 @@ function auto_phone( e, oThis ){
  			<div class="row form-group">              
                 <div class="col-md-12 validate-input" data-validate = "한글과영문만 사용가능합니다">
                   <label class="text-black" for="name">이름</label> 
-                  <input type="text" class="form-control" name="member_name">
+                  <input type="text" class="form-control" name="member_name" autofocus="autofocus">
                 </div>
               </div>	            
              
@@ -251,7 +257,7 @@ function auto_phone( e, oThis ){
   					<div class="col-md-6"><!--left col--><br>
                        <div class="text-center testimonial">
                        <figure class="mb-6">
-                       <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar"><br><br>
+                       <img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png" class=" avatar img-fluid mb-6"" alt="avatar" data-isImg="NO"><br><br>
         					<h6><b>프로필</b></h6></div></div>
         		       <div class="col-md-6 hidden_input" style="text-align:center;margin-top:15%"><p style="color: orange;">업로드할 사진은 가로세로 사이즈가 같은걸로 하자.</p>
         					<label for="hidden_file">프로필등록</label>
@@ -315,13 +321,13 @@ function auto_phone( e, oThis ){
 
 	            reader.onload = function (e) {
 	                $('.avatar').attr('src', e.target.result);
+	                $('.avatar').attr('data-isImg', "OK");
 	            }
 	    
 	            reader.readAsDataURL(input.files[0]);
 	        }
 	    }
-	    
-
+	   
 	    $(".file-upload").on('change', function(){
 	        readURL(this);
 	    });

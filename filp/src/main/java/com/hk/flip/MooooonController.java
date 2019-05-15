@@ -67,7 +67,7 @@ public class MooooonController {
 	@Autowired
 	private IMoons_service moons_service;
 	
-	@Scheduled(cron="0 0 0 * * ? ")
+	@Scheduled(cron="0 41 16 * * ? ")
 	public void doSchedule() {
 	   logger.info("Spring Schedule Start!");
 	   if(!adminService.cleanClass()) {
@@ -95,6 +95,7 @@ public class MooooonController {
 		}else if(type.equals("T")){
 			return "t_mypage";
 		}else {
+			adminService.cleanClass();
 			AdminDto adminDto = adminService.getFlipStatus();
 			model.addAttribute("admindata",adminDto);			
 			return "admin/A_mypage";
@@ -270,7 +271,7 @@ public class MooooonController {
 		String strSeq = (request.getParameter("seq"));
 		String rst = "";
 		System.out.println("chkclasstime if 앞 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		if(!strSeq.isEmpty()) {
+		if(strSeq!=null&&strSeq.length()!=0) {
 			System.out.println("strSeq::member_seq="+strSeq+"::"+member_seq);
 			int seq = Integer.parseInt(strSeq);
 			rst = classService.chkInclassTime_Join(member_seq,seq);

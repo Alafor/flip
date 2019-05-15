@@ -18,6 +18,10 @@
 		SELECT COUNT(MEMBER_ID) FROM MEMBER WHERE MEMBER_ID=#{ID}
 	</select>
 	
+	<select id="overlappedEmail" parameterType="String" resultType="int">
+		SELECT COUNT(MEMBER_EMAIL) FROM MEMBER WHERE MEMBER_EMAIL=#{email}
+	</select>
+	
 	<!-- 강사 상세보기 페이지-강사 프로필+평균 평점 // avg=강사 평균 평점-->
 	<select id="getTProfile" parameterType="int" resultType="MemberDto">
 		SELECT MEMBER_ID,

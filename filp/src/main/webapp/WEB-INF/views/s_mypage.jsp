@@ -36,6 +36,8 @@
 <link rel="stylesheet" href="resources/css/rangeslider.css">
 <link rel="stylesheet" href="resources/css/style.css">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+<script src="resources/js/jquery-ui.js"></script>
 <style type="text/css">
 	.site-section{
 	background-color: #f8f9fa;
@@ -92,8 +94,8 @@
     	border-radius: 8px;
     	border-bottom: 6px solid #30e3ca!important;
     }
-    .listing{
-    	height: 200px;}
+/*     .listing{ */
+/*     	height: 200px;} */
 }
 </style>
 
@@ -198,7 +200,6 @@
 									<b>모든 강의 <span class="text-warning">보기</span>
 								</h2>
 								<p class="color-black-opacity-5">MY LIST</p>
-	
 							</div>
 						</div>
 						<div class="row mt-5">
@@ -633,9 +634,8 @@ evt.currentTarget.firstElementChild.className += " w3-border-aqua";
 <jsp:include page="footer.jsp" />
 </div>
 
-<script type="text/javascript" src="resources/js/jquery-3.3.1.min.js"></script>
+
 <script src="resources/js/jquery-migrate-3.0.1.min.js"></script>
-<script src="resources/js/jquery-ui.js"></script>
 <script src="resources/js/popper.min.js"></script>
 <script src="resources/js/bootstrap.min.js"></script>
 <script src="resources/js/owl.carousel.min.js"></script>

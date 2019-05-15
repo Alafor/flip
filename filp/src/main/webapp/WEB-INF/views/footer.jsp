@@ -6,22 +6,23 @@
 <footer class="site-footer">						                                          
 		<div class="container">
 			<div class="row">
+				<div class="col-md-1"> 
+				</div>
 				<div class="col-md-9">
 					<div class="row">
 						<div class="col-md-6">
 							<h2 class="footer-heading mb-4">About</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-								Provident rerum unde possimus molestias dolorem fuga, illo quis
-								fugiat!</p>
+							<p>Flip은 학생과 선생을 잇는것을 넘어 우리를 하나로 엮는 것을 목표로 하고있습니다. 크게 꿈을 갖자면,  언젠가 
+							국경도 인종도 넘어 우주를 하나로 묶고 싶습니다.</p>
 						</div>
 
 						<div class="col-md-3">
-							<h2 class="footer-heading mb-4">Navigations</h2>
+							<h2 class="footer-heading mb-4">3강의실 사람들</h2>
 							<ul class="list-unstyled">
-								<li><a href="#">About Us</a></li>
-								<li><a href="#">Services</a></li>
-								<li><a href="#">Testimonials</a></li>
-								<li><a href="#">Contact Us</a></li>
+								<li><a href="#">김일남</a></li>
+								<li><a href="#">서홍민</a></li>
+								<li><a href="#">김소진</a></li>
+								<li><a href="#">문대영</a></li>
 							</ul>
 						</div>
 						<div class="col-md-3">
@@ -32,20 +33,6 @@
 							<a href="#" class="pl-3 pr-3"><span class="icon-linkedin"></span></a>
 						</div>
 					</div>
-				</div>
-				<div class="col-md-3">
-					<form action="#" method="post">
-						<div class="input-group mb-3">
-							<input type="text"
-								class="form-control border-secondary text-white bg-transparent"
-								placeholder="Search products..." aria-label="Enter Email"
-								aria-describedby="button-addon2">
-							<div class="input-group-append">
-								<button class="btn btn-primary text-white" type="button"
-									id="button-addon2">Search</button>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 			<div class="row pt-5 mt-5 text-center">
