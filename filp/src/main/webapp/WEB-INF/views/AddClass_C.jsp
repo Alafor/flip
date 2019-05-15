@@ -289,7 +289,7 @@
 									<div class="text-center testimonial">
 										<figure class="mb-6">
 											<img src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"
-												class=" avatar img-fluid mb-6" " alt="avatar">
+												class=" avatar img-fluid mb-6" " alt="avatar"  data-isImg="NO">
 											<br>
 											<br>
 											<h6>

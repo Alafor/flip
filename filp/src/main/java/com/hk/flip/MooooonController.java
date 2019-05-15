@@ -270,7 +270,7 @@ public class MooooonController {
 		String strSeq = (request.getParameter("seq"));
 		String rst = "";
 		System.out.println("chkclasstime if 앞 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		if(!strSeq.isEmpty()) {
+		if(strSeq!=null&&strSeq.length()!=0) {
 			System.out.println("strSeq::member_seq="+strSeq+"::"+member_seq);
 			int seq = Integer.parseInt(strSeq);
 			rst = classService.chkInclassTime_Join(member_seq,seq);

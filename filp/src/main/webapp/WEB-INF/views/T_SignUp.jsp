@@ -49,7 +49,7 @@
         }
         var imgg = $('.avatar').attr('data-isImg');
         if(imgg != 'OK'){
-        	alert("사진을 넣어주세요♥");
+        	alert("사진을 넣어주세요");
         	return false;
         }
     }

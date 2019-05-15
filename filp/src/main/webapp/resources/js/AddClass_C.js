@@ -7,6 +7,7 @@
 
    	            reader.onload = function (e) {
    	                $('.avatar').attr('src', e.target.result);
+   	                $('.avatar').attr('data-isImg', "OK");
    	            }
    	    
    	            reader.readAsDataURL(input.files[0]);
@@ -88,7 +89,6 @@
     	$('.time_container').append($div);
 	} 
     function delClassTime(th) {
-    	alert(th.scrollTop);
 		$(th).parent().parent().remove();
 	}
     function sumclasstime(selectone) {
@@ -123,7 +123,6 @@
 			weekhidden+="|"+$(acti[i]).val();				
 			}
 		}
-		alert(acti.length);
 		changeOkTimes();
 		$('#class_week').val(weekhidden);
 	}
@@ -158,8 +157,8 @@
    		 $("#class_time").focus();
    		return 0;
    	}else{
-   		alert("정상작동---class_sd:"+class_sd+"   class_cd:"+class_cd+"  class_time: "+class_time
-   				+"class_starttime:" +class_starttime);
+//   		alert("정상작동---class_sd:"+class_sd+"   class_cd:"+class_cd+"  class_time: "+class_time
+//   				+"class_starttime:" +class_starttime);
    	}
    	
 //    	var oktimes = $(".time_container input");
@@ -173,7 +172,7 @@
    		var oriarr = new Array();
    		var oridate = new Date();
    		var oridate2 = new Date();
-   		alert(Number(class_starttime.substr(0, 2))+class_starttime.substr(2));
+//   		alert(Number(class_starttime.substr(0, 2))+class_starttime.substr(2));
    		oridate.setHours(Number(class_starttime.substr(0, 2)));
    		oridate2.setHours(Number(class_starttime.substr(0, 2)));
    		oridate.setMinutes(Number(class_starttime.substr(2, 2)));
@@ -181,8 +180,8 @@
    		oriarr[0] = oridate;
    		oridate2.setMinutes(oridate.getMinutes()+Number(class_time));
    		oriarr[1] = oridate2;
-   		alert("oriarr"+"##"+oriarr[0].getHours()+oriarr[0].getMinutes());
-   		alert("oriarr2"+"##"+oriarr[1]);
+//   		alert("oriarr"+"##"+oriarr[0].getHours()+oriarr[0].getMinutes());
+//   		alert("oriarr2"+"##"+oriarr[1]);
    		
    		var arr = new Array();
    	   	arr[0] = new Array();
@@ -194,17 +193,17 @@
    	    	date.setHours(hour);
    	    	date.setMinutes(min); 
    	    	var date2 = new Date(date.getTime());
-   	    	alert("192줄 hour:"+hour+"  min:"+min);
+//   	    	alert("192줄 hour:"+hour+"  min:"+min);
    	    	arr[0][i] = date;
-   	    	alert("Number(class_time):"+Number(class_time));
+//   	    	alert("Number(class_time):"+Number(class_time));
    	    	 date2.setMinutes(date.getMinutes()+(Number(class_time)));
    	    	arr[1][i] = date2;
-   	    	alert("arr[0]["+i+"]"+arr[0][i].getHours()+"시"+arr[0][i].getMinutes()+"분");
-   	    	alert("arr[1]["+i+"]"+arr[1][i].getHours()+"시"+arr[1][i].getMinutes()+"분");
+//   	    	alert("arr[0]["+i+"]"+arr[0][i].getHours()+"시"+arr[0][i].getMinutes()+"분");
+//   	    	alert("arr[1]["+i+"]"+arr[1][i].getHours()+"시"+arr[1][i].getMinutes()+"분");
    	    }
    	    for(var i =0;i<oktimes.length;i++){
-   	    	alert(arr[0][i].getHours()+"시"+arr[0][i].getMinutes()+"분 "+oriarr[1].getHours()+ "시"+oriarr[1].getMinutes()+"분");
-   	    	alert(arr[1][i].getHours()+"시"+arr[1][i].getMinutes()+"분 "+oriarr[0].getHours()+ "시"+oriarr[0].getMinutes()+"분");
+//   	    	alert(arr[0][i].getHours()+"시"+arr[0][i].getMinutes()+"분 "+oriarr[1].getHours()+ "시"+oriarr[1].getMinutes()+"분");
+//   	    	alert(arr[1][i].getHours()+"시"+arr[1][i].getMinutes()+"분 "+oriarr[0].getHours()+ "시"+oriarr[0].getMinutes()+"분");
    	    	if(arr[0][i]<=oriarr[1] & arr[1][i]>=oriarr[0]){
    	    		alert(arr[0][i].getHours()+"시"+arr[0][i].getMinutes()+"분의 시간대가 겹칩니다.");
    	    		return;
@@ -255,11 +254,17 @@
    			 return false;
    		 }
    	  }
+      var imgg = $('.avatar').attr('data-isImg');
+      if(imgg != 'OK'){
+      	alert("사진을 넣어주세요");
+      	return false;
+      }
    	  return true;
+   	  
      }
      function changeOkTimes() {
    	  var oktimes = $(".time_container input");
-   	  alert("changeOkTimes 실행 "+oktimes.length+"개");
+//   	  alert("changeOkTimes 실행 "+oktimes.length+"개");
    	  for(var i=0;i<oktimes.length;i++){
    		 oktimes.eq(i).removeClass("timeOk")
    		$(".flaticon-done").css('color', 'red');

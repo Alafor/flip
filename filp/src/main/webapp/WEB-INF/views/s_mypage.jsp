@@ -200,7 +200,6 @@
 									<b>모든 강의 <span class="text-warning">보기</span>
 								</h2>
 								<p class="color-black-opacity-5">MY LIST</p>
-	
 							</div>
 						</div>
 						<div class="row mt-5">

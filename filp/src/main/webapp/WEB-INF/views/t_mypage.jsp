@@ -134,10 +134,19 @@
 	
 		<div class="site-section">
 			<div class="container mb-5">
-							
-			
-				<div class="member_container col-md-7 mb-5">
-					<div class="member_img">
+				<div class="row mb-5">
+					<div class="col-md-7 text-left border-primary">
+						<h2 class="font-weight-light text-primary">
+							<a href="searchlist.do?classType=C">
+								<b>회원<span class="text-warning">정보</span></b>
+							</a>
+						</h2>
+						<p class="color-black-opacity-5"  >User Infomation</p>
+					</div>
+				</div>
+					
+				<div class="member_container justify-content-center col-md-9 mb-9">
+					<div class="member_img col-mb-6 md-6">
 					<c:choose>
 						<c:when test="${member.member_profile eq null}">
 							<img class="member_image" alt="" src="resources/images/User_icon_BLACK-01.png" class="member_profile_img">							
@@ -148,39 +157,34 @@
 						</c:otherwise>
 					</c:choose>
 					</div>
-					<div class="member_infomation" style="font-size: 1.5vw;">
+					<div class="member_infomation col-mb-6 md-6" style="font-size: 16px;">
 						<c:set value="${member.member_regdate}" var="member_regdate" />
-						<h2 class="font-weight-light text-primary">
-									<b>회원 <span class="text-warning">정보</span></b>
-								</h2>
-						<div class="member_infomation_head">이름 : <div class="member_infomation_detail">${member.member_name}</div> </div>
+						<div class="member_infomation_head"> &nbsp; 이름 : <div class="member_infomation_detail">&nbsp;${member.member_name}</div> </div>
 						<div class="member_infomation_head">아이디 : <div class="member_infomation_detail">${member.member_id}</div></div>
 						<div class="member_infomation_head">이메일 : <div class="member_infomation_detail">${member.member_email}</div> </div>
-						<div class="member_infomation_head" >가입일 : <div class="member_infomation_detail"></div>${fn:substring(member_regdate,0,10)} </div>
-					</div>
-					
+						<div class="member_infomation_head" >가입일 : <div class="member_infomation_detail">${fn:substring(member_regdate,0,10)} </div></div>
 					<div class=" text-right mySchedule">
-						<input type="button" value=" 일정보기 " class="btn btn-primary text-white"
+						<input type="button" value=" 일정보기 " class="btn btn-primary text-white member_button"
 						onclick="window.open('scheduleCalendar.do', 'calendar', 'width=700px,height=700px,toolbars=no,scrollbars=no'); return false;">
-						<input type="button" value=" 정보수정 " class="btn btn text-white" style="background-color:#f89d13;" 
+						<input type="button" value=" 정보수정 " class="btn btn text-white member_button" style="background-color:#f89d13;" 
 						onclick="location.href='memberDetail.do?email=${member.member_email}'">
 					</div>
-					
-				</div>
+					</div>
+				</div>			
 
 				<div class="w3-row">
 					<a href="javascript:void(0)" onclick="openCity(event, 'AllMyClass');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-aqua w3-col s3" style="width: 25%; font-size: 1.5vw">내모든강의</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-border-aqua w3-col s3" style="width: 20%; font-size: 16px;text-align: center;">내모든강의</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyClass');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 25%;font-size: 1.5vw;">내강의보기</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%; font-size: 16px;text-align: center;">내강의보기</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyWant');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 25%;font-size: 1.5vw;">원해요보기</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%; font-size: 16px;text-align: center;">원해요보기</div>
 					</a> <a href="javascript:void(0)" onclick="openCity(event, 'MyWishlist');">
 						<div
-							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 25%;font-size: 1.5vw;">위시리스트</div>
+							class="w3-col tablink w3-bottombar w3-hover-light-grey w3-padding w3-col s3" style="width: 20%; font-size: 16px;text-align: center;">위시리스트</div>
 					</a>
 				</div>
 
