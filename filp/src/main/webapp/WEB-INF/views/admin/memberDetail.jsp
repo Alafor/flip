@@ -315,8 +315,25 @@
   <script src="resources/admin/js/demo/chart-area-demo.js"></script>
   <script src="resources/admin/js/demo/chart-pie-demo.js"></script>
 	<script type="text/javascript">
-	
-	$('document').ready(function(){
+	$(document).ready(function() {
+   	    var readURL = function(input) {
+   	        if (input.files && input.files[0]) {
+   	            var reader = new FileReader();
+
+   	            reader.onload = function (e) {
+   	                $('.avatar').attr('src', e.target.result);
+   	                $('.avatar').attr('data-isImg', "OK");
+   	            }
+   	    
+   	            reader.readAsDataURL(input.files[0]);
+   	        }
+   	    }
+   	    
+
+   	    $(".file-upload").on('change', function(){
+   	        readURL(this);
+   	    });
+   	
 		$('#delmember').click(function(){
 			var str = "aMemberDelete.do?member_email="+$('input[name=member_email]').val();
 			location.replace(str);
