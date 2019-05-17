@@ -90,11 +90,11 @@
 		
 		<tr>
 			<th>제목</th>
-			<td><input type="text" class="form-control" name="board_title" value="${dto.board_title}"/></td>
+			<td><input type="text" class="form-control" name="board_title" value="${dto.board_title} required="required""/></td>
 		</tr>
 		<tr>
 			<th>내용</th>
-			<td><textarea class="form-control col-mb-5 mb-5" rows="10"  cols="70"   name="board_content" >${dto.board_content}</textarea></td>
+			<td><textarea class="form-control col-mb-5 mb-5" rows="10"  cols="70"   name="board_content" required="required">${dto.board_content}</textarea></td>
 		</tr>
 		<tr>
 			<td>비밀글</td>

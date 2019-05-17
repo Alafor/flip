@@ -127,18 +127,18 @@
 				<tr>
 					<td>제목</td>
 					<td >
-						<input type="text" name="board_title" class="form-control">
+						<input type="text" name="board_title" class="form-control" required="required">
 					</td>
 				</tr>
 				<tr>
 					<td>내용</td>
 					<td >
-						<textarea class="form-control col-mb-5 mb-5" rows="5"  cols="70"  name="board_content" ></textarea>
+						<textarea class="form-control col-mb-5 mb-5" rows="5"  cols="70"  name="board_content" required="required"></textarea>
 					</td>
 				</tr>
 				<tr>
 			<td>비밀글</td>
-			<td><input type="radio" name="board_secret" value="N" checked="checked"> 공개 <input type="radio" name="board_secret" value="Y"> 비공개 </td>
+			<td><input type="radio" name="board_secret" value="N" checked="checked"> 공개 <input type="radio" name="board_secret" value="Y" > 비공개 </td>
 		</tr>
 				<tr>
 					<td colspan="2">

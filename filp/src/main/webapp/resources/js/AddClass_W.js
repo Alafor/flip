@@ -226,7 +226,7 @@
      }
      function changeOkTimes() {
    	  var oktimes = $(".time_container input");
-   	  alert("changeOkTimes 실행 "+oktimes.length+"개");
+//   	  alert("changeOkTimes 실행 "+oktimes.length+"개");
    	  for(var i=0;i<oktimes.length;i++){
    		 oktimes.eq(i).removeClass("timeOk")
    		$(".flaticon-done").css('color', 'red');
