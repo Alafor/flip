@@ -305,7 +305,7 @@ String member_type= memberDto.getMember_type(); %>
 		<div class="row mb-5">
 				<div class="col-md-10 text-center border-primary">
 					<h2 class="font-weight-light text-primary">
-						강의<span class="text-warning">등록</span>
+						강의<span class="text-warning"><br>상세보기</span>
 					</h2>
 					<p class="color-black-opacity-5">Lecture&amp;Registration</p>
 				</div>
