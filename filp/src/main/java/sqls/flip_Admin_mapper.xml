@@ -7,7 +7,8 @@
 		SELECT (select count(*) from member) as MEMBER_NUMBER,    
 	    (select count(*) from class) as CLASS_NUMBER,
 	    (select count(*) from (SELECT * FROM class WHERE CLASS_TERMIN = 'C')) as CLOSE_CLASS_NUMBER,
-	    (SELECT COUNT(*) FROM ANSWER_BOARD WHERE BOARD_STEP = 0) as NO_REPLY_NUMBER
+	    (SELECT COUNT(BOARD_REFER) FROM ANSWER_BOARD 
+		WHERE BOARD_REFER NOT IN(SELECT BOARD_REFER FROM ANSWER_BOARD WHERE BOARD_STEP>0)) as NO_REPLY_NUMBER
 	    from dual
 	</select>
 	

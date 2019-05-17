@@ -116,6 +116,7 @@
 
             <!-- Earnings (Monthly) Card Example -->
             <div class="row">
+            <a href="ansboard.do">
             <div class="col-xl-6 col-md-6 mb-4">
               <div class="card border-left-info shadow h-100 py-2">
                 <div class="card-body">
@@ -131,6 +132,7 @@
                 </div>
               </div>
             </div>
+            </a>
          </div>
             
           <!-- Content Row -->
