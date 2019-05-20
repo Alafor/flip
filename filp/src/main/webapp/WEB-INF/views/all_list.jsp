@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="site-blocks-cover overlay"
-			style="background-image: url('resources/images/제빵.png');"
+			style="background-image: url('resources/images/배경7.jpg');"
 			data-aos="fade" data-stellar-background-ratio="0.5">
 			<div class="container">
 				<div

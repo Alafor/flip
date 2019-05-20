@@ -109,8 +109,8 @@ public class SeoController {
 	public String listload(Locale locale, Model model,String search, String department, String classType, String num, String selArea) {
 		logger.info("Started main{}.", locale);
 		int allPageCount = classService.pageCount(search, department, classType,selArea);
-		int pageCount = allPageCount/12;
-		int checkFloat = allPageCount%12;
+		int pageCount = allPageCount/16;
+		int checkFloat = allPageCount%16;
 		int thisPage=Integer.parseInt(num);
 		int nowBlock = thisPage/5;
 		int endPage=0;
@@ -184,13 +184,13 @@ public class SeoController {
 			MemberDto memberDto = (MemberDto)session.getAttribute("logInMember");
 			if(memberDto==null) {
 				model.addAttribute("msg","로그인이 필요합니다.");
-				model.addAttribute("url","main.do");
+				model.addAttribute("url","login.do");
 				return "Redirect";
 			}else{
 				int member_seq = memberDto.getMember_seq();
 				if(memberDto.getMember_type().equals("T")) {
 					model.addAttribute("msg","강사는 강의에 참여할 수 없습니다.");
-					model.addAttribute("url","main.do");
+					model.addAttribute("url","mainform.do");
 					return "Redirect";
 				}
 				boolean success =  classwishlistService.addWishlist(member_seq, Integer.parseInt(class_seq));
