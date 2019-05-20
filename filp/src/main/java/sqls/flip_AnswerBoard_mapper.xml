@@ -63,7 +63,5 @@
              (SELECT BOARD_DEPTH FROM ANSWER_BOARD WHERE BOARD_SEQ=#{board_seq})+1,#{board_secret},'N')
    </insert>
    
-   <select id="answercount" resultType="int">
-   		SELECT COUNT(*) FROM ANSWER_BOARD WHERE BOARD_STEP = 0
-   </select>
+
 </mapper>

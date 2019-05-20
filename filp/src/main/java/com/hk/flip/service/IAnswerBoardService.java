@@ -23,7 +23,5 @@ public interface IAnswerBoardService {
 	public boolean replyBoard(AnswerBoardDto dto);
 	//문의글 리스트 갯수 가져오기
 	public int selectTotalPaging();
-	//문의글 무답변 갯수 가져오기
-	public int AnswerCount();
-
+	
 }
