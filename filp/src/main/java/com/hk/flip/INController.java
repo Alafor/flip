@@ -157,7 +157,7 @@ public class INController {
 			return "error";
 		}
 		}else {
-			dto.setMember_profile("null");
+			dto.setMember_profile("study.png");
 			boolean isS = memberService.newMember(dto);
 			boolean isS2 = mailsender.mailSendWithUserKey(dto.getMember_email(),dto.getMember_id(),request);
 			if(isS&&isS2) {
@@ -531,14 +531,7 @@ public class INController {
 	}
 	
 	
-	@RequestMapping(value = "/answerCount.do",  method = {RequestMethod.GET, RequestMethod.POST})
-	public String answerCount(Locale locale, Model model) {
-		logger.info("문의게시판 무답변 갯수구하기 {}.", locale);
-		int result = ansService.AnswerCount();
-		System.out.println("result:"+result);
-		return null;
-		
-	}
+	
 	
 	
 }
